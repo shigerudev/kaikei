@@ -4,7 +4,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from kaikei import __version__
-from kaikei.api.routes import health
+from kaikei.api.routes import (
+    consolidations,
+    facts,
+    files,
+    findings,
+    groups,
+    health,
+    mappings,
+)
 from kaikei.settings import Settings, get_settings
 
 
@@ -18,6 +26,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(health.router)
+    app.include_router(groups.router)
+    app.include_router(files.router)
+    app.include_router(mappings.router)
+    app.include_router(consolidations.router)
+    app.include_router(findings.router)
+    app.include_router(facts.router)
     return app
 
 
