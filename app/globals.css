@@ -56,6 +56,11 @@
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Public site (kaikei.io) brand palette and type */
+  --color-beige: var(--beige);
+  --color-ink: var(--ink);
+  --color-blue: var(--blue);
+  --font-display: var(--font-excon);
 }
 
 /*
@@ -196,6 +201,230 @@
   }
 }
 
+/* ── Public site (kaikei.io): beige / ink / blue, Excon + Synonym ─────────── */
+
+:root {
+  --beige: #dcd1c2;
+  --ink: #212927;
+  --blue: #3544d5;
+}
+.dark {
+  --beige: #161b1a;
+  --ink: #e6ddd0;
+  --blue: #5562ec;
+}
+.site {
+  background: var(--beige);
+  color: var(--ink);
+  font-family: var(--font-synonym), Arial, sans-serif;
+  font-feature-settings: normal;
+  font-variant-numeric: tabular-nums;
+  overflow-x: clip;
+}
+.site ::selection {
+  background: var(--blue);
+  color: #fff;
+}
+.site :focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .t-display {
+    font-family: var(--font-excon), Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 1.6rem + 3.2vw, 3.5rem);
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .t-h2 {
+    font-family: var(--font-excon), Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2rem);
+    line-height: 1.125;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .t-h3 {
+    font-family: var(--font-excon), Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .t-sub {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.444;
+  }
+  .t-lead {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+  .t-body {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+  .t-small {
+    font-size: 0.875rem;
+    line-height: 1.43;
+  }
+  .t-label {
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.33;
+    letter-spacing: 0.02em;
+  }
+  .btn {
+    display: inline-flex;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 24px;
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      box-shadow 150ms ease,
+      transform 160ms var(--ease-out);
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: color-mix(in oklab, var(--blue) 88%, black);
+  }
+  .btn-ink {
+    background: var(--ink);
+    color: var(--beige);
+  }
+  .btn-ink:hover {
+    background: color-mix(in oklab, var(--ink) 85%, white);
+  }
+  .btn-secondary {
+    box-shadow: inset 0 0 0 1px var(--ink);
+    color: var(--ink);
+  }
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--beige);
+  }
+  .field {
+    display: block;
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    background: color-mix(in oklab, var(--beige) 55%, white);
+    box-shadow: inset 0 0 0 1px var(--ink);
+    color: var(--ink);
+    font-size: 1rem;
+    transition: box-shadow 150ms ease;
+  }
+  .field::placeholder {
+    color: color-mix(in oklab, var(--ink) 45%, transparent);
+  }
+  .field:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--blue);
+  }
+  .field[aria-invalid="true"] {
+    box-shadow: inset 0 0 0 2px var(--ink);
+  }
+}
+
+@keyframes site-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+.reveal {
+  animation: site-reveal 600ms var(--ease-out) both;
+}
+
+/* ── View transitions between public routes ─────────────────────────────────
+ * Header stays put; page content slides by navigation direction; plan cards morph into checkout. */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+::view-transition-old(.nav-forward) {
+  --slide-offset: -48px;
+  animation:
+    150ms ease-in both vt-fade reverse,
+    380ms var(--ease-out) both vt-slide reverse;
+}
+::view-transition-new(.nav-forward) {
+  --slide-offset: 48px;
+  animation:
+    220ms ease-out 120ms both vt-fade,
+    380ms var(--ease-out) both vt-slide;
+}
+::view-transition-old(.nav-back) {
+  --slide-offset: 48px;
+  animation:
+    150ms ease-in both vt-fade reverse,
+    380ms var(--ease-out) both vt-slide reverse;
+}
+::view-transition-new(.nav-back) {
+  --slide-offset: -48px;
+  animation:
+    220ms ease-out 120ms both vt-fade,
+    380ms var(--ease-out) both vt-slide;
+}
+::view-transition-group(.morph) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: vt-via-blur;
+}
+::view-transition-old(.lang-fade) {
+  animation: 160ms ease-in both vt-fade reverse;
+}
+::view-transition-new(.lang-fade) {
+  animation: 240ms ease-out 80ms both vt-fade;
+}
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes vt-slide {
+  from {
+    translate: var(--slide-offset) 0;
+  }
+}
+@keyframes vt-via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
 /* ── Motion tuning for Radix overlays ─────────────────────────────────────── */
 
 /* Popovers, menus, selects, tooltips: strong ease-out, scale from their trigger (origin set by Radix vars). */
@@ -246,5 +475,14 @@
   }
   .pressable:active {
     transform: none;
+  }
+  .btn:active {
+    transform: none;
+  }
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }
