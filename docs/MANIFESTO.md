@@ -64,8 +64,9 @@ A group finance reviewer who receives one budget pack per company and must publi
 2. Unrealized intercompany profit in inventory or fixed assets; dividends; FX differences on intragroup monetary items.
 3. Read-only AI access to published runs over MCP (the former Grok/Claude/ChatGPT goal), returning engine figures with source refs.
 4. AI-assisted mapping suggestions with explainable confidence and reviewer approval.
-5. Multiple hierarchies and subgroups; approval workflows; SSO/RBAC; multi-tenancy; background workers.
-6. ERP/Drive/S3 connectors; incremental reprocessing.
+5. Accounts and sign-in with **Better Auth** in the Next.js app. The engine verifies its JWTs (JWKS) and scopes every query to the user's group (PLAN.md §17).
+6. Multiple hierarchies and subgroups; approval workflows; SSO/RBAC; multi-tenancy; background workers.
+7. ERP/Drive/S3 connectors; incremental reprocessing.
 
 **Never claimed:** certified IFRS statutory reporting. This is management/budget consolidation (PLAN.md §0).
 
