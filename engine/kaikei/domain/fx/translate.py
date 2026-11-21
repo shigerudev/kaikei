@@ -12,7 +12,10 @@ from kaikei.domain.intercompany.aliases import Entity
 
 @dataclass(frozen=True)
 class CanonicalAmount:
-    """Minimal shape until Jose's CanonicalRecord (PIPER-58/65) lands."""
+    """Minimal FX input shape.
+
+    TODO(Jose): prefer `normalization.CanonicalRecord` (PIPER-58) once ingest emits it.
+    """
 
     record_id: str
     company_id: str
