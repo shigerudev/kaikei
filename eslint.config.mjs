@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Standalone Remotion pitch video with its own deps and tsconfig.
+    "pitch-video/**",
     // Agent git worktrees (full repo copies) live here; never lint them as part of this tree.
     ".claude/**",
   ]),
