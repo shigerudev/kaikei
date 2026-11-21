@@ -188,7 +188,7 @@ J: fixtures JSON ─▶ upload ─▶ findings + dashboard ───────
 | **A1** | The organizers' data has the same shape as the fixture pack (six companies, three currencies, IC partner hints) | Mappings and rules are tuned to it | Inspect as soon as it arrives | Jo + H |
 | **A2** | The data is summary budget lines per account and month, not transactions | Matching is aggregate per company pair + period (PLAN.md §8.2) | Same | H |
 | A3 | Hosting: UI on Vercel, engine on a container host, Postgres on Neon | The demo needs a reachable URL, or else a local compose fallback | Kickoff decision | A |
-| A4 | Python packages install on the venue network (Fortinet SSL inspection, see AGENTS.md) | `uv sync` fails without the CA | Run `uv sync` at kickoff | A |
+| A4 | Package installs (`uv sync`, `npm install`) work on the venue network. Unrelated to app authentication: some networks inspect TLS (e.g. Fortinet, see AGENTS.md) and break installs until their CA is trusted | Nobody can build if installs fail | Run `uv sync` and `npm install` at kickoff | A |
 | A5 | Golden numbers can be hand-computed for the listed figures by R+1:05 | AC7 depends on them | J reports at C1 | J |
 | A6 | Management budget consolidation is what the judges expect (no statutory IFRS) | Scope of claims in the pitch | Ask organizers (PLAN.md §18.1) | J |
 
