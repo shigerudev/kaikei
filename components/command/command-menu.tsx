@@ -90,7 +90,7 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { setTheme } = useTheme();
-  const onDashboard = pathname === gPath(group);
+  const onDashboard = pathname === gPath(group) || pathname === "/";
 
   const go = React.useCallback(
     (href: string) => {

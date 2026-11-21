@@ -26,4 +26,4 @@ export function safeNext(next: string | null | undefined): string | null {
 }
 
 /** Where to land after login/onboarding, given the host serving the request. */
-export const appHomeFor = (host: string | null | undefined) => (hostRole(host) === "site" ? `${APP_ORIGIN}/app` : "/app");
+export const appHomeFor = (host: string | null | undefined) => (hostRole(host) === "site" ? `${APP_ORIGIN}/` : "/app");
