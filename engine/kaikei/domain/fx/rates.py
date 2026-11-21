@@ -41,9 +41,7 @@ def load_rate_set(
             if currency == reporting_currency:
                 # Identity row for the reporting currency — keep for completeness.
                 period = (row.get("period") or "-").strip()
-                rid = _rate_id(
-                    rate_set_id, currency, reporting_currency, period, "identity"
-                )
+                rid = _rate_id(rate_set_id, currency, reporting_currency, period, "identity")
                 rates.append(
                     FxRate(
                         rate_id=rid,
@@ -65,9 +63,7 @@ def load_rate_set(
             rate_type = RateType(rate_type_raw)
             period = (row.get("period") or "").strip()
             usd_per_unit = Decimal((row.get("usd_per_unit") or "").strip())
-            rid = _rate_id(
-                rate_set_id, currency, reporting_currency, period, rate_type
-            )
+            rid = _rate_id(rate_set_id, currency, reporting_currency, period, rate_type)
             rates.append(
                 FxRate(
                     rate_id=rid,
