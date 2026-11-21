@@ -1,71 +1,47 @@
-"""Group configuration behind `GET /groups/{id}` and friends (MANIFESTO §4.4, SCOPE §1.1.1).
+"""Group configuration for the API and the in-memory pipeline (MANIFESTO §4.4, D1).
 
-Entities, the pinned rate set and the group parameters all come from the group's own data
-files — `entidades.csv`, `tasas_grupo.csv`, `parametros_grupo.csv` — read through the loaders
-that already own them (`load_entities`, `load_rate_set`). Nothing about a company, a currency
-or an account is written in Python here.
-
-What *is* written here is the group register itself (`GROUPS`): the id, display name,
-reporting currency, scenario and fiscal calendar. K1 (the `groups` table) isn't built yet, so
-this declarative table stands in for it.
-
-TODO(Jo): move `GROUPS` into the `groups`/`scenarios` tables when K1 lands; this module then
-becomes the query, not the register.
-TODO(Jordi): `name`, `scenario` and the fiscal calendar would sit naturally in group
-configuration next to `parametros_grupo.csv`; `fixtures/` is K7's lane, so they live here.
+The register is Postgres (`groups`, `companies`, `fx_rate_sets`, `group_parameters`,
+`group_accounts`, mappings). An in-process snapshot is filled from the database on first
+lookup, and tests / the seed helper can put a snapshot without opening `fixtures/` on a
+request — `FIXTURES_ROOT` lives only on the seed command and in tests.
 """
 
 from __future__ import annotations
 
-import csv
-from dataclasses import dataclass
-from functools import lru_cache
+import re
+from dataclasses import dataclass, field
+from decimal import Decimal
 from pathlib import Path
+from threading import Lock
 
 from kaikei.domain.fx.models import FxRateSet
-from kaikei.domain.fx.rates import load_rate_set
-from kaikei.domain.intercompany.aliases import Entity, load_entities
+from kaikei.domain.intercompany.aliases import Entity
+from kaikei.domain.normalization.long_format import LongAccount
+from kaikei.domain.normalization.models import Statement
 
-FIXTURES_ROOT = Path(__file__).resolve().parents[3] / "fixtures"
+_SLUG_RE = re.compile(r"[^a-z0-9]+")
+_UUID_RE = re.compile(
+    r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.IGNORECASE
+)
 
 
 @dataclass(frozen=True)
 class GroupMeta:
-    """One consolidation group (MANIFESTO §4.2 `groups` + `scenarios`)."""
+    """One consolidation group as the pipeline and K6 GroupOut see it.
+
+    `id` is the URL-safe slug (D5). `uuid` is the table primary key.
+    """
 
     id: str
     name: str
     reporting_currency: str
     scenario: str
     fiscal_year: str
-    closing_period: str  # the balance-sheet period, MANIFESTO §4.2 "period of its closing date"
-    data_dirname: str
-    mapping_version: str = "answer_key_mapping.csv"
+    closing_period: str
+    uuid: str = ""
+    mapping_version: str = "v1"
     rule_set_version: str = "v1"
     rate_set_version: str = "1"
-
-
-GROUPS: dict[str, GroupMeta] = {
-    "grupo-ag": GroupMeta(
-        id="grupo-ag",
-        name="Grupo AG",
-        reporting_currency="USD",
-        scenario="BUDGET_2027",
-        fiscal_year="2027",
-        closing_period="2027-12",
-        data_dirname="grupo-ag",
-    ),
-}
-
-DEFAULT_GROUP_ID = "grupo-ag"
-
-
-def get_group(group_id: str) -> GroupMeta | None:
-    return GROUPS.get(group_id)
-
-
-def data_dir(group: GroupMeta) -> Path:
-    return FIXTURES_ROOT / group.data_dirname
 
 
 @dataclass(frozen=True)
@@ -74,27 +50,113 @@ class CompanyConfig:
 
     entity: Entity
     file_format: str
+    uuid: str = ""
 
 
-@lru_cache(maxsize=8)
+@dataclass(frozen=True)
+class MappingEntry:
+    local_code: str
+    local_name: str
+    group_account: str
+    account_type: str
+    counterparty: str | None = None
+
+
+@dataclass(frozen=True)
+class ParameterRow:
+    parameter: str
+    scope: str
+    value: str
+    unit: str
+    used_for: str
+    source: str
+
+
+@dataclass
+class GroupState:
+    """In-process snapshot of one group's configuration (not pack bytes)."""
+
+    meta: GroupMeta
+    companies: tuple[CompanyConfig, ...]
+    rate_set: FxRateSet
+    units: dict[tuple[str, str, str], str]
+    parameters: tuple[ParameterRow, ...]
+    mappings: dict[str, tuple[MappingEntry, ...]] = field(default_factory=dict)
+    accounts: tuple[tuple[str, str, str, str, str, bool], ...] = ()
+    """(code, name, statement, account_type, normal_balance, ic_eligible)"""
+    pack_root: Path | None = None
+    """Pack CSV directory for the in-memory pipeline slice (tests/seed; Phase 2 uses storage)."""
+
+
+_LOCK = Lock()
+_BY_KEY: dict[str, GroupState] = {}
+
+
+def slugify(name: str) -> str:
+    slug = _SLUG_RE.sub("-", name.strip().casefold()).strip("-")
+    return slug or "group"
+
+
+def is_uuid(value: str) -> bool:
+    return bool(_UUID_RE.match(value or ""))
+
+
+def put_state(state: GroupState) -> None:
+    """Register a snapshot under both slug and UUID (tests and seed)."""
+    with _LOCK:
+        previous = _BY_KEY.get(state.meta.id)
+        if previous is not None and state.pack_root is None:
+            state.pack_root = previous.pack_root
+        _BY_KEY[state.meta.id] = state
+        if state.meta.uuid:
+            _BY_KEY[state.meta.uuid] = state
+
+
+def drop_all() -> None:
+    with _LOCK:
+        _BY_KEY.clear()
+
+
+def list_states() -> list[GroupState]:
+    seen: set[str] = set()
+    out: list[GroupState] = []
+    with _LOCK:
+        for state in _BY_KEY.values():
+            if state.meta.id in seen:
+                continue
+            seen.add(state.meta.id)
+            out.append(state)
+    return sorted(out, key=lambda s: s.meta.name.casefold())
+
+
+def list_group_ids() -> list[str]:
+    return [s.meta.id for s in list_states()]
+
+
+def get_state(group_id: str) -> GroupState | None:
+    with _LOCK:
+        hit = _BY_KEY.get(group_id)
+    if hit is not None:
+        return hit
+    loaded = _load_from_db(group_id)
+    if loaded is not None:
+        put_state(loaded)
+    return loaded
+
+
+def get_group(group_id: str) -> GroupMeta | None:
+    state = get_state(group_id)
+    return None if state is None else state.meta
+
+
+def pack_dir(group_id: str) -> Path | None:
+    state = get_state(group_id)
+    return None if state is None else state.pack_root
+
+
 def load_companies(group_id: str) -> tuple[CompanyConfig, ...]:
-    """Entities from `entidades.csv`, in file order.
-
-    `load_entities` (K5, Hugo's lane) stays the single parser for the entity fields the
-    matcher needs. The `format` column is a human description of the pack's layout, which
-    `Entity` has no reason to carry, so it is joined on here from the same file.
-    """
-    group = GROUPS[group_id]
-    path = data_dir(group) / "entidades.csv"
-    entities = load_entities(path)
-    with path.open(newline="", encoding="utf-8") as fh:
-        formats = {
-            (row.get("entity") or "").strip(): (row.get("format") or "").strip()
-            for row in csv.DictReader(fh)
-        }
-    return tuple(
-        CompanyConfig(entity=e, file_format=formats.get(e.entity_id, "")) for e in entities
-    )
+    state = get_state(group_id)
+    return () if state is None else state.companies
 
 
 def company_ids(group_id: str) -> tuple[str, ...]:
@@ -106,35 +168,15 @@ def company_by_file(group_id: str) -> dict[str, str]:
     return {c.entity.file: c.entity.entity_id for c in load_companies(group_id) if c.entity.file}
 
 
-@lru_cache(maxsize=8)
 def load_rates(group_id: str) -> tuple[FxRateSet, tuple[tuple[tuple[str, str, str], str], ...]]:
-    """The pinned rate set, plus each row's `units_per_usd` exactly as the group table writes it.
-
-    `load_rate_set` (K5) keeps `rate` = units of USD per 1 local unit, which is the direction
-    the engine translates with. The reviewer screens quote the inverse ("1 USD = 7.75 GTQ"), so
-    the published string is taken from the source column rather than divided out here — the
-    group table is the authority on both sides of its own quote.
-    """
-    group = GROUPS[group_id]
-    path = data_dir(group) / "tasas_grupo.csv"
-    rate_set = load_rate_set(path, reporting_currency=group.reporting_currency)
-    units: dict[tuple[str, str, str], str] = {}
-    with path.open(newline="", encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            currency = (row.get("currency") or "").strip().upper()
-            if not currency:
-                continue
-            key = (
-                currency,
-                (row.get("rate_type") or "").strip().lower(),
-                (row.get("period") or "").strip(),
-            )
-            units[key] = (row.get("units_per_usd") or "").strip()
-    return rate_set, tuple(units.items())
+    state = get_state(group_id)
+    if state is None:
+        empty = FxRateSet(rate_set_id="", reporting_currency="USD", rates=[])
+        return empty, ()
+    return state.rate_set, tuple(state.units.items())
 
 
 def units_per_usd(group_id: str, from_ccy: str, rate_type: str, period: str) -> str:
-    """`units_per_usd` for one rate row; the quote's own currency+period identifies it."""
     _, items = load_rates(group_id)
     table = dict(items)
     exact = table.get((from_ccy, rate_type, period))
@@ -146,13 +188,113 @@ def units_per_usd(group_id: str, from_ccy: str, rate_type: str, period: str) -> 
     return ""
 
 
-@lru_cache(maxsize=8)
 def load_parameters(group_id: str) -> tuple[dict[str, str], ...]:
-    """`parametros_grupo.csv` rows verbatim (parameter, scope, value, unit, used_for, source)."""
-    group = GROUPS[group_id]
-    with (data_dir(group) / "parametros_grupo.csv").open(newline="", encoding="utf-8") as fh:
-        return tuple(
-            {key: (value or "").strip() for key, value in row.items() if key}
-            for row in csv.DictReader(fh)
-            if (row.get("parameter") or "").strip()
+    state = get_state(group_id)
+    if state is None:
+        return ()
+    return tuple(
+        {
+            "parameter": p.parameter,
+            "scope": p.scope,
+            "value": p.value,
+            "unit": p.unit,
+            "used_for": p.used_for,
+            "source": p.source,
+        }
+        for p in state.parameters
+    )
+
+
+def ic_tolerance(group_id: str, default: Decimal = Decimal("1.00")) -> Decimal:
+    for row in load_parameters(group_id):
+        if row.get("parameter") == "ic_match_tolerance":
+            return Decimal(row.get("value") or str(default))
+    return default
+
+
+def entities(group_id: str) -> list[Entity]:
+    return [c.entity for c in load_companies(group_id)]
+
+
+def account_mappings(group_id: str, company_id: str) -> dict[str, LongAccount]:
+    state = get_state(group_id)
+    if state is None:
+        return {}
+    out: dict[str, LongAccount] = {}
+    for entry in state.mappings.get(company_id, ()):
+        raw_type = entry.account_type.strip().upper()
+        statement = Statement.BS if raw_type.startswith("BS") else Statement.PL
+        out[entry.local_code] = LongAccount(
+            local_code=entry.local_code,
+            group_account_code=entry.group_account,
+            statement=statement,
         )
+    return out
+
+
+def counterparties(group_id: str, company_id: str) -> dict[str, str]:
+    state = get_state(group_id)
+    if state is None:
+        return {}
+    return {
+        e.local_code: e.counterparty for e in state.mappings.get(company_id, ()) if e.counterparty
+    }
+
+
+def mapping_entries(group_id: str, company_id: str) -> tuple[MappingEntry, ...]:
+    state = get_state(group_id)
+    if state is None:
+        return ()
+    return state.mappings.get(company_id, ())
+
+
+def default_group_id() -> str | None:
+    ids = list_group_ids()
+    if len(ids) == 1:
+        return ids[0]
+    if not ids:
+        loaded = _load_all_from_db()
+        if loaded:
+            for state in loaded:
+                put_state(state)
+            ids = list_group_ids()
+            if len(ids) == 1:
+                return ids[0]
+    return None
+
+
+def _load_from_db(group_id: str) -> GroupState | None:
+    session = _try_session()
+    if session is None:
+        return None
+    try:
+        from kaikei.application.group_repo import load_state
+
+        return load_state(session, group_id)
+    except Exception:
+        return None
+    finally:
+        session.close()
+
+
+def _load_all_from_db() -> list[GroupState]:
+    session = _try_session()
+    if session is None:
+        return []
+    try:
+        from kaikei.application.group_repo import load_all_states
+
+        return load_all_states(session)
+    except Exception:
+        return []
+    finally:
+        session.close()
+
+
+def _try_session():  # noqa: ANN201
+    try:
+        from kaikei.infrastructure.db.session import get_sessionmaker
+
+        return get_sessionmaker()()
+    except Exception:
+        return None

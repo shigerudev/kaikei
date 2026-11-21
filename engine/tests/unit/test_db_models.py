@@ -9,6 +9,7 @@ TABLES = Base.metadata.tables
 
 EXPECTED = {
     "groups",
+    "group_parameters",
     "companies",
     "company_aliases",
     "scenarios",
@@ -99,6 +100,10 @@ def test_run_level_uniques():
     assert ("run_id", "canonical_record_id") in _uniques("translated_records")
     assert ("run_id", "match_group_id") in _uniques("adjustment_journals")
     assert ("group_id", "alias_normalized") in _uniques("company_aliases")
+    assert ("slug",) in _uniques("groups")
+    assert ("group_id", "code") in _uniques("companies")
+    assert ("group_id", "version") in _uniques("fx_rate_sets")
+    assert ("group_id", "parameter", "scope") in _uniques("group_parameters")
 
 
 def test_source_rows_reference_source_files():

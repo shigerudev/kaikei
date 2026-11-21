@@ -33,7 +33,6 @@ same translated contributions rather than summed in the browser (MANIFESTO princ
 
 from __future__ import annotations
 
-import csv
 import hashlib
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
@@ -53,8 +52,6 @@ from kaikei.domain.intercompany import (
     MatchGroup,
     MatchStatus,
     elimination_amount,
-    load_entities,
-    load_ic_tolerance,
     match_intercompany,
 )
 from kaikei.domain.consolidation import Journal, build_elimination_journal
@@ -83,21 +80,17 @@ from kaikei.domain.fx import (
     FxFinding,
     FxRateSet,
     TranslatedRecord,
-    load_rate_set,
     translate_records,
 )
 from kaikei.domain.ingestion.csv_adapter import SourceRow, read_csv_rows
 from kaikei.domain.ingestion.models import SourceRef
 from kaikei.domain.lineage import Lineage, LineageAdjustment, LineageContribution, build_lineage
 from kaikei.domain.normalization.long_format import LongAccount, LongLayout, LongMapping
-from kaikei.domain.normalization.mapping_loader import load_account_mappings
 from kaikei.domain.normalization.models import CanonicalRecord, Statement
 from kaikei.domain.normalization.normalize import normalize, parse_period
 from kaikei.domain.validation.helpers import finding_id, observed_fields
 from kaikei.domain.validation.models import Finding, FindingStatus, Severity
 from kaikei.domain.validation.rules import find_duplicates
-
-FIXTURES_DIR = group_config.FIXTURES_ROOT / "grupo-ag"
 
 _EMP2_MONTH_COLUMNS = [
     "Ene",
@@ -223,9 +216,11 @@ def _money(value: Decimal) -> str:
     return format(value.quantize(Decimal("0.0001"), rounding=ROUND_HALF_EVEN), "f")
 
 
-def _emp1_mapping(fixtures_dir: Path) -> LongMapping:
+def _emp1_mapping(group_id: str) -> LongMapping:
+    group = group_config.get_group(group_id)
+    mapping_version = group.mapping_version if group else "v1"
     structural = LongLayout(
-        mapping_version="answer_key_mapping.csv",
+        mapping_version=mapping_version,
         company_id="EMP1",
         period_column="Mes",
         account_column="Cuenta",
@@ -239,7 +234,7 @@ def _emp1_mapping(fixtures_dir: Path) -> LongMapping:
             "Balance": "BALANCE_2027",
         },
     )
-    accounts = load_account_mappings(fixtures_dir / "answer_key_mapping.csv", "EMP1")
+    accounts = group_config.account_mappings(group_id, "EMP1")
     return LongMapping(structural=structural, accounts=accounts)
 
 
@@ -311,22 +306,9 @@ def _normalize_emp2_budget(
     return records, findings
 
 
-def _load_counterparty(path: Path, company_id: str) -> dict[str, str]:
-    """IC partner hint per local account, read straight from `answer_key_mapping.csv`'s
-    `counterparty` column. K3's `load_account_mappings` (Jose's lane) intentionally
-    doesn't carry that column into `AccountMapping` — it's intercompany-matching input,
-    not a structural/account-mapping concern, so this lane reads it directly instead of
-    asking Jose's loader to grow a field it doesn't need.
-    """
-    out: dict[str, str] = {}
-    with Path(path).open(newline="", encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            if row["entity"] != company_id:
-                continue
-            counterparty = (row.get("counterparty") or "").strip()
-            if counterparty:
-                out[row["local_account"].strip()] = counterparty
-    return out
+def _load_counterparty(group_id: str, company_id: str) -> dict[str, str]:
+    """IC partner hint per local account, from the group's mapping snapshot."""
+    return group_config.counterparties(group_id, company_id)
 
 
 def _raw_cells(rows: list[SourceRow]) -> dict[tuple[str, int, str], str]:
@@ -698,32 +680,33 @@ def _decision_digest() -> list[str]:
 def run_consolidation(
     fixtures_dir: Path | None = None,
     *,
-    group_id: str = group_config.DEFAULT_GROUP_ID,
+    group_id: str | None = None,
     reason: str | None = None,
 ) -> RunRecord:
     """Ingest -> normalize -> validate -> translate -> match -> eliminate -> aggregate,
     for EMP1 + EMP2 (see module docstring for the exact, deliberate scope cuts)."""
+    group_id = group_id or group_config.default_group_id() or ""
     group = group_config.get_group(group_id)
     if group is None:
         raise UnknownGroupError(group_id)
-    fixtures_dir = fixtures_dir or group_config.data_dir(group)
+    fixtures_dir = fixtures_dir or group_config.pack_dir(group_id)
+    if fixtures_dir is None:
+        raise UnknownGroupError(group_id)
     run_id = str(uuid4())
 
-    entities = load_entities(fixtures_dir / "entidades.csv")
-    rate_set = load_rate_set(
-        fixtures_dir / "tasas_grupo.csv", reporting_currency=group.reporting_currency
-    )
-    tolerance = load_ic_tolerance(fixtures_dir / "parametros_grupo.csv")
+    entities = group_config.entities(group_id)
+    rate_set, _units = group_config.load_rates(group_id)
+    tolerance = group_config.ic_tolerance(group_id)
     rate_by_id = {r.rate_id: r for r in rate_set.rates}
     files_by_company = {
         c.entity.entity_id: c.entity.file for c in group_config.load_companies(group_id)
     }
 
     emp1_sha, emp1_rows = read_csv_rows(fixtures_dir / files_by_company["EMP1"])
-    emp1_records, emp1_findings = normalize(emp1_rows, _emp1_mapping(fixtures_dir))
+    emp1_records, emp1_findings = normalize(emp1_rows, _emp1_mapping(group_id))
 
     emp2_sha, emp2_rows = read_csv_rows(fixtures_dir / files_by_company["EMP2"])
-    emp2_accounts = load_account_mappings(fixtures_dir / "answer_key_mapping.csv", "EMP2")
+    emp2_accounts = group_config.account_mappings(group_id, "EMP2")
     emp2_records, emp2_findings = _normalize_emp2_budget(emp2_rows, emp2_accounts)
 
     source_rows = [*emp1_rows, *emp2_rows]
@@ -742,10 +725,7 @@ def run_consolidation(
     translated_index = {t.canonical_record_id: t for t in translation.translated}
     findings += [_fx_finding_to_record(f, record_index) for f in translation.findings]
 
-    counterparty = {
-        company_id: _load_counterparty(fixtures_dir / "answer_key_mapping.csv", company_id)
-        for company_id in _INGEST
-    }
+    counterparty = {company_id: _load_counterparty(group_id, company_id) for company_id in _INGEST}
     ic_candidates: list[IcCandidate] = []
     for record in records:
         if record.statement != Statement.PL:

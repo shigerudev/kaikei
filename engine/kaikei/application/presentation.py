@@ -96,6 +96,7 @@ def file_id(company_id: str) -> str:
 def group_out(group: GroupMeta) -> GroupOut:
     return GroupOut(
         id=group.id,
+        slug=group.id,
         name=group.name,
         reporting_currency=group.reporting_currency,
         scenario=group.scenario,
@@ -136,7 +137,9 @@ def rate_out(group_id: str, rate: FxRate) -> FxRateOut:
 
 
 def rate_set_out(group_id: str) -> RateSetOut:
-    group = group_config.GROUPS[group_id]
+    group = group_config.get_group(group_id)
+    if group is None:
+        raise KeyError(group_id)
     rate_set, _units = group_config.load_rates(group_id)
     return RateSetOut(
         id=rate_set.rate_set_id,
@@ -267,7 +270,9 @@ def statement_out(record: RunRecord, *, period: str, statement: Statement) -> Fa
     the subtotals and totals are always present so the reviewer can see the shape of the
     statement — and they are computed here, from the chart of accounts, never in the browser.
     """
-    group = group_config.GROUPS[record.group_id]
+    group = group_config.get_group(record.group_id)
+    if group is None:
+        raise KeyError(record.group_id)
     reported_period = group.closing_period if statement is Statement.BS else period
     blocked = sorted(excluded_companies(record.findings).get(statement, frozenset()))
 
@@ -569,23 +574,27 @@ def search_out(
             )
 
     if record is not None:
-        group = group_config.GROUPS[group_id]
-        facts = statement_out(record, period=group.fiscal_year, statement=Statement.PL)
-        for row in facts.rows:
-            if needle in _normalize(f"{row.name} {row.group_account}"):
-                hits.append(
-                    SearchHitOut(
-                        kind="account",
-                        id=row.id,
-                        title=row.name,
-                        subtitle=f"{row.group_account} · FY {group.fiscal_year}",
-                        href=(
-                            f"{base}/inspector/{row.id}"
-                            if row.kind == "line"
-                            else f"{base}?period={group.fiscal_year}"
-                        ),
+        group = group_config.get_group(group_id)
+        if group is not None:
+            facts = statement_out(record, period=group.fiscal_year, statement=Statement.PL)
+        else:
+            facts = None
+        if facts is not None:
+            for row in facts.rows:
+                if needle in _normalize(f"{row.name} {row.group_account}"):
+                    hits.append(
+                        SearchHitOut(
+                            kind="account",
+                            id=row.id,
+                            title=row.name,
+                            subtitle=f"{row.group_account} · FY {group.fiscal_year}",
+                            href=(
+                                f"{base}/inspector/{row.id}"
+                                if row.kind == "line"
+                                else f"{base}?period={group.fiscal_year}"
+                            ),
+                        )
                     )
-                )
         for finding in findings_out(record):
             haystack = (
                 f"{finding.reference or ''} {finding.rule_id} {finding.title} "

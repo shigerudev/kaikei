@@ -6,10 +6,13 @@ pipeline instead of answering 404, or the platform layout 404s before rendering.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from fastapi.testclient import TestClient
 
-from kaikei.application.group_config import FIXTURES_ROOT
 from kaikei.main import app
+
+_PACK = Path(__file__).resolve().parents[3] / "fixtures" / "grupo-ag"
 
 client = TestClient(app)
 GROUP = "grupo-ag"
@@ -35,7 +38,7 @@ def test_files_by_slug():
 
 
 def test_upload_by_slug():
-    path = FIXTURES_ROOT / "grupo-ag" / "01_AG_Distribucion_GT.csv"
+    path = _PACK / "01_AG_Distribucion_GT.csv"
     r = client.post(
         "/api/v1/files",
         data={"group_id": GROUP},

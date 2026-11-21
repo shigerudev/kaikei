@@ -67,8 +67,10 @@ PERIOD_CHECK = r"period ~ '^[0-9]{4}(-[0-9]{2})?$'"
 
 class Group(Base):
     __tablename__ = "groups"
+    __table_args__ = (UniqueConstraint("slug"),)
 
     id: Mapped[uuid_pk]
+    slug: Mapped[str] = mapped_column(String(80))
     name: Mapped[str] = mapped_column(String(200))
     reporting_currency: Mapped[ccy]
     created_at: Mapped[created_ts]
@@ -76,15 +78,22 @@ class Group(Base):
 
 class Company(Base):
     __tablename__ = "companies"
-    __table_args__ = (UniqueConstraint("group_id", "name"),)
+    __table_args__ = (
+        UniqueConstraint("group_id", "name"),
+        UniqueConstraint("group_id", "code"),
+        CheckConstraint("ownership_pct >= 0 AND ownership_pct <= 100", name="ownership_pct"),
+    )
 
     id: Mapped[uuid_pk]
     group_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("groups.id"), index=True)
+    code: Mapped[str] = mapped_column(String(64))
     name: Mapped[str] = mapped_column(String(200))
     country: Mapped[str | None] = mapped_column(String(2))
     functional_currency: Mapped[ccy]
     ownership_pct: Mapped[Decimal] = mapped_column(Numeric(7, 4), default=Decimal("100"))
     consolidation_method: Mapped[str] = mapped_column(String(32), default="full")
+    pack_filename: Mapped[str | None] = mapped_column(String(512))
+    layout_note: Mapped[str | None] = mapped_column(Text)
 
 
 class CompanyAlias(Base):
@@ -106,6 +115,22 @@ class Scenario(Base):
     group_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("groups.id"))
     code: Mapped[str] = mapped_column(String(64))  # e.g. BUDGET_2027, ACTUAL_2026
     fiscal_year: Mapped[int] = mapped_column(Integer)
+
+
+class GroupParameter(Base):
+    """Group-level parameters (IC tolerance, WACC, tax rates). Not money in a ledger."""
+
+    __tablename__ = "group_parameters"
+    __table_args__ = (UniqueConstraint("group_id", "parameter", "scope"),)
+
+    id: Mapped[uuid_pk]
+    group_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("groups.id"), index=True)
+    parameter: Mapped[str] = mapped_column(String(64))
+    scope: Mapped[str] = mapped_column(String(64), default="group")
+    value: Mapped[str] = mapped_column(String(200))
+    unit: Mapped[str] = mapped_column(String(64), default="")
+    used_for: Mapped[str] = mapped_column(Text, default="")
+    source: Mapped[str] = mapped_column(String(200), default="")
 
 
 class GroupAccount(Base):
@@ -230,11 +255,12 @@ class CanonicalRecord(Base):
 
 class FxRateSet(Base):
     __tablename__ = "fx_rate_sets"
-    __table_args__ = (UniqueConstraint("group_id", "name"),)
+    __table_args__ = (UniqueConstraint("group_id", "version"),)
 
     id: Mapped[uuid_pk]
     group_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("groups.id"))
     name: Mapped[str] = mapped_column(String(200))
+    version: Mapped[int] = mapped_column(Integer, default=1)
     reporting_currency: Mapped[ccy]
     created_at: Mapped[created_ts]
 
@@ -247,16 +273,21 @@ class FxRate(Base):
         UniqueConstraint("rate_set_id", "from_ccy", "to_ccy", "period", "rate_type"),
         CheckConstraint(in_check("rate_type", RATE_TYPES), name="rate_type"),
         CheckConstraint("rate > 0", name="rate_positive"),
-        CheckConstraint(PERIOD_CHECK, name="period_shape"),
+        CheckConstraint(
+            r"period ~ '^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$'",
+            name="period_shape",
+        ),
     )
 
     id: Mapped[uuid_pk]
     rate_set_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("fx_rate_sets.id"), index=True)
     from_ccy: Mapped[ccy]
     to_ccy: Mapped[ccy]
-    period: Mapped[period_str]
+    period: Mapped[str] = mapped_column(String(10))
     rate_type: Mapped[str] = mapped_column(String(8))
     rate: Mapped[rate]
+    units_per_usd: Mapped[Decimal | None] = mapped_column(Numeric(20, 10))
+    applies_to: Mapped[str] = mapped_column(String(200), default="")
     source: Mapped[str] = mapped_column(String(200))
 
 

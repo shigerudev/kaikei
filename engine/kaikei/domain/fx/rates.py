@@ -21,11 +21,11 @@ def _rate_id(rate_set_id: str, from_ccy: str, to_ccy: str, period: str, rate_typ
 def load_rate_set(
     path: Path | str,
     *,
-    rate_set_id: str = "grupo-ag-pinned",
+    rate_set_id: str = "pinned",
     reporting_currency: str = "USD",
 ) -> FxRateSet:
     """
-    Load `fixtures/grupo-ag/tasas_grupo.csv`.
+    Load a group rate table (`tasas_grupo.csv` columns).
 
     Fixture columns: currency, rate_type, usd_per_unit, units_per_usd, period, applies_to, source.
     Stored rate = units of reporting currency (USD) per 1 unit of local currency (= usd_per_unit).

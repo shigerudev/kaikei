@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException, Query
 from kaikei.api.deps import group_or_404
 from kaikei.application import latest_run
 from kaikei.application.contracts import FilePreviewOut
-from kaikei.application.group_config import GROUPS
+from kaikei.application.group_config import list_group_ids
 from kaikei.application.sources import preview
 
 router = APIRouter(prefix="/api/v1", tags=["files"])
@@ -20,7 +20,7 @@ def get_file_preview(file_id: str, group_id: str | None = Query(default=None)) -
     The UI addresses a file by id alone, so with no `group_id` the configured groups are
     searched for the one that holds it — never a hard-coded group.
     """
-    group_ids = [group_or_404(group_id).id] if group_id else list(GROUPS)
+    group_ids = [group_or_404(group_id).id] if group_id else list_group_ids()
     for candidate in group_ids:
         result = preview(candidate, file_id, latest_run(candidate))
         if result is not None:

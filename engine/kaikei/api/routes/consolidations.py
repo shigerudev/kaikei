@@ -29,7 +29,7 @@ from kaikei.application.contracts import (
     RunOut,
     StartRunRequest,
 )
-from kaikei.application.group_config import DEFAULT_GROUP_ID
+from kaikei.application.group_config import default_group_id
 from kaikei.application.presentation import (
     findings_out,
     reconciliations_out,
@@ -43,9 +43,9 @@ router = APIRouter(prefix="/api/v1", tags=["consolidations"])
 
 
 @router.get("/consolidations", response_model=list[RunOut])
-def list_consolidations(group_id: str = Query(default=DEFAULT_GROUP_ID)) -> list[RunOut]:
+def list_consolidations(group_id: str | None = Query(default=None)) -> list[RunOut]:
     """Every run for a group, newest first. Published runs are never overwritten."""
-    group = group_or_404(group_id)
+    group = group_or_404(group_id or default_group_id() or "")
     return runs_out(list_runs(group.id))
 
 
@@ -53,7 +53,7 @@ def list_consolidations(group_id: str = Query(default=DEFAULT_GROUP_ID)) -> list
 def create_consolidation(body: StartRunRequest | None = None) -> RunOut:
     """Start a run on the group's packs (this slice: EMP1 + EMP2)."""
     request = body or StartRunRequest()
-    group = group_or_404(request.group_id or DEFAULT_GROUP_ID)
+    group = group_or_404(request.group_id or default_group_id() or "")
     try:
         record = run_consolidation(group_id=group.id, reason=request.reason)
     except UnknownGroupError as exc:  # pragma: no cover - group_or_404 already guards this
