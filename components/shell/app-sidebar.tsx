@@ -1,9 +1,10 @@
 "use client";
 
-import { CheckIcon, ChevronsUpDownIcon, MonitorIcon, MoonIcon, SearchIcon, SunIcon } from "lucide-react";
+import { CheckIcon, ChevronsUpDownIcon, LogOutIcon, MonitorIcon, MoonIcon, SearchIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { logOutAction } from "@/app/g/[group]/actions";
 import { KaikeiSymbol, KaikeiWordmark } from "@/components/brand";
 import { useCommandMenu } from "@/components/command/command-menu";
 import { NavIcon } from "@/components/shell/nav-icon";
@@ -152,6 +153,14 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
           </SidebarMenuItem>
           <SidebarMenuItem>
             <ThemeMenu />
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <form action={logOutAction}>
+              <SidebarMenuButton type="submit" tooltip="Log out" className="text-muted-foreground">
+                <LogOutIcon />
+                <span>Log out</span>
+              </SidebarMenuButton>
+            </form>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

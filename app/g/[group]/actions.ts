@@ -75,3 +75,11 @@ export async function publishAction(runId: string): Promise<Result<Run>> {
 export async function resetPreviewAction(mode: "full" | "empty") {
   return run(() => api.resetPreview(mode));
 }
+
+/** Sign out of the platform: clears the shared session cookie and returns to the marketing login. */
+export async function logOutAction() {
+  const { cookies } = await import("next/headers");
+  const { redirect } = await import("next/navigation");
+  (await cookies()).delete("kaikei_session");
+  redirect("/login");
+}
