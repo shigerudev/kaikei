@@ -1,0 +1,26 @@
+{
+  "$comment": "K7 golden numbers (owner: Jordi). Hand-computed from SCOPE_AND_TASKS §2.1 — never copied from engine output. Amounts in GTQ minor units.",
+  "workspace": { "name": "Panadería La Ceiba", "baseCurrency": "GTQ", "period": "2026-11" },
+  "seed": {
+    "deliveries": { "budgetMinor": "300000", "actualMinor": "270000", "varianceMinor": "-30000" }
+  },
+  "afterUpload": {
+    "file": "sample_actuals_nov.csv",
+    "importSummary": { "new": 1, "repeat": 2, "flagged": 1 },
+    "flaggedRow": { "rule": "parse_error", "column": "Monto (Q)", "raw": "Q 1,2O0" },
+    "deliveries": { "budgetMinor": "300000", "actualMinor": "330000", "varianceMinor": "30000", "contributors": 4 },
+    "newTransaction": {
+      "date": "2026-11-18",
+      "amountMinor": "-60000",
+      "counterparty": "Transportes Rápidos",
+      "category": "Deliveries"
+    }
+  },
+  "bill": {
+    "file": "bill_transportes_rapidos.pdf",
+    "extraction": { "supplier": "Transportes Rápidos", "date": "2026-11-18", "currency": "GTQ", "total_minor": 60000 },
+    "expectedMatch": "the Q600 Deliveries transaction on 2026-11-18",
+    "deliveriesActualAfterConfirmMinor": "330000"
+  },
+  "repeatUpload": { "importSummary": { "new": 0 }, "totalsUnchanged": true }
+}
