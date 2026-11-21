@@ -78,8 +78,12 @@ export async function resetPreviewAction(mode: "full" | "empty") {
 
 /** Sign out of the platform: clears the shared session cookie and returns to the marketing login. */
 export async function logOutAction() {
-  const { cookies } = await import("next/headers");
+  const { cookies, headers } = await import("next/headers");
   const { redirect } = await import("next/navigation");
-  (await cookies()).delete("kaikei_session");
-  redirect("/login");
+  const { COOKIE_DOMAIN, SITE_ORIGIN, hostRole } = await import("@/lib/hosts");
+  const role = hostRole((await headers()).get("host"));
+  const jar = await cookies();
+  jar.delete("kaikei_session");
+  if (role !== "both") jar.set("kaikei_session", "", { path: "/", domain: COOKIE_DOMAIN, maxAge: 0 });
+  redirect(role === "both" ? "/login" : `${SITE_ORIGIN}/login`);
 }
