@@ -1,0 +1,521 @@
+Fecha,Concepto,Rubro,Proveedor,Monto ($),Signo,Moneda,Referencia
+2026-09-01,beneficios · Catering La Ceiba,Payroll,Catering La Ceiba,"207,865.81",out,USD,SV-202609-00013
+2026-09-01,Ingreso canal Microsoft · ref 70624,Revenue,,"11,501.98",in,USD,SV-202609-00049
+2026-09-01,beneficios · Transportes Rápidos,Payroll,Transportes Rápidos,"280,787.44",out,USD,SV-202609-00083
+2026-09-01,eventos · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"29,421.05",out,USD,SV-202609-00192
+2026-09-01,Ingreso canal Microsoft · ref 23212,Revenue,,"42,095.19",in,USD,SV-202609-00220
+2026-09-01,storage · LogiCentro CA,storage,LogiCentro CA,"296,412.35",out,USD,SV-202609-00292
+2026-09-01,eventos · Impresos del Valle,Marketing,Impresos del Valle,"17,986.22",out,USD,SV-202609-00464
+2026-09-02,ads · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"79,163.75",out,USD,SV-202609-00009
+2026-09-02,auditoría · LogiCentro CA,ProfessionalServices,LogiCentro CA,"25,769.07",out,USD,SV-202609-00096
+2026-09-02,Ingreso canal Microsoft · ref 47109,Revenue,,"67,370.81",in,USD,SV-202609-00186
+2026-09-02,eventos · LogiCentro CA,Marketing,LogiCentro CA,"48,777.55",out,USD,SV-202609-00387
+2026-09-02,consultoría · Seguros Volcán,consultoría,Seguros Volcán,"65,485.48",out,USD,SV-202609-00473
+2026-09-03,hoteles · Bufete Istmo & Asociados,hoteles,Bufete Istmo & Asociados,"69,763.68",out,USD,SV-202609-00159
+2026-09-03,Ingreso canal Microsoft · ref 79524,Revenue,,"2,856.18",in,USD,SV-202609-00366
+2026-09-03,infra cloud · Transportes Rápidos,Cloud,Transportes Rápidos,"293,892.13",out,USD,SV-202609-00520
+2026-09-04,ads · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"53,044.60",out,USD,SV-202609-00288
+2026-09-04,per diem · Datacenter Istmo,Travel,Datacenter Istmo,"86,840.52",out,USD,SV-202609-00289
+2026-09-04,storage · Catering La Ceiba,Cloud,Catering La Ceiba,"2,912.04",out,USD,SV-202609-00312
+2026-09-04,compute · Oficinas Corporativas del Istmo,compute,Oficinas Corporativas del Istmo,"28,607.08",out,USD,SV-202609-00412
+2026-09-04,hoteles · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"38,481.82",out,USD,SV-202609-00491
+2026-09-05,agua · Impresos del Valle,agua,Impresos del Valle,"43,961.66",out,USD,SV-202609-00062
+2026-09-05,Ingreso canal Microsoft · ref 91372,Revenue,,"64,499.10",in,USD,SV-202609-00171
+2026-09-05,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"11,734.76",out,USD,SV-202609-00200
+2026-09-05,eventos · Energía del Pacífico,Marketing,Energía del Pacífico,"83,370.14",out,USD,SV-202609-00261
+2026-09-05,brand · Impresos del Valle,brand,Impresos del Valle,"89,106.77",out,USD,SV-202609-00291
+2026-09-05,beneficios · Datacenter Istmo,beneficios,Datacenter Istmo,"405,688.11",out,USD,SV-202609-00335
+2026-09-05,vuelos · Datacenter Istmo,vuelos,Datacenter Istmo,"48,322.13",out,USD,SV-202609-00436
+2026-09-05,infra cloud · Seguros Volcán,Cloud,Seguros Volcán,"181,831.65",out,USD,SV-202609-00483
+2026-09-06,Ingreso canal Microsoft · ref 29007,Revenue,,"70,943.90",in,USD,SV-202609-00352
+2026-09-06,transporte last-mile · Oficinas Corporativas del Istmo,transporte last-mile,Oficinas Corporativas del Istmo,"51,433.32",out,USD,SV-202609-00391
+2026-09-06,legal · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"56,289.61",out,USD,SV-202609-00453
+2026-09-07,ads · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"24,129.35",out,USD,SV-202609-00136
+2026-09-07,auditoría · Aerolíneas Centroamericanas,auditoría,Aerolíneas Centroamericanas,"14,220.96",out,USD,SV-202609-00185
+2026-09-07,ads · Catering La Ceiba,Marketing,Catering La Ceiba,"62,868.59",out,USD,SV-202609-00302
+2026-09-07,Ingreso canal Microsoft · ref 14831,Revenue,,"59,982.22",in,USD,SV-202609-00452
+2026-09-08,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"46,227.47",out,USD,SV-202609-00036
+2026-09-08,brand · Energía del Pacífico,Marketing,Energía del Pacífico,"11,641.02",out,USD,SV-202609-00110
+2026-09-08,cargas sociales · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"125,000.34",out,USD,SV-202609-00162
+2026-09-08,infra cloud · Seguros Volcán,infra cloud,Seguros Volcán,"40,266.42",out,USD,SV-202609-00223
+2026-09-08,legal · LogiCentro CA,ProfessionalServices,LogiCentro CA,"91,708.62",out,USD,SV-202609-00235
+2026-09-08,eventos · Transportes Rápidos,Marketing,Transportes Rápidos,"9,025.52",out,USD,SV-202609-00236
+2026-09-08,electricidad · Oficinas Corporativas del Istmo,electricidad,Oficinas Corporativas del Istmo,"49,539.17",out,USD,SV-202609-00323
+2026-09-08,cargas sociales · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"232,363.08",out,USD,SV-202609-00342
+2026-09-09,auditoría · Energía del Pacífico,auditoría,Energía del Pacífico,"73,245.26",out,USD,SV-202609-00064
+2026-09-09,cargas sociales · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"249,563.29",out,USD,SV-202609-00180
+2026-09-09,transporte last-mile · Transportes Rápidos,Deliveries,Transportes Rápidos,"55,955.79",out,USD,SV-202609-00278
+2026-09-09,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"20,716.09",out,USD,SV-202609-00325
+2026-09-09,hoteles · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"40,478.31",out,USD,SV-202609-00402
+2026-09-09,Ingreso canal Microsoft · ref 25950,Revenue,,"62,686.87",in,USD,SV-202609-00519
+2026-09-10,Ingreso canal Microsoft · ref 62784,Revenue,,"20,163.74",in,USD,SV-202609-00032
+2026-09-10,logística · Oficinas Corporativas del Istmo,logística,Oficinas Corporativas del Istmo,"55,507.59",out,USD,SV-202609-00082
+2026-09-10,auditoría · Impresos del Valle,auditoría,Impresos del Valle,"20,088.52",out,USD,SV-202609-00503
+2026-09-11,consultoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"54,944.21",out,USD,SV-202609-00035
+2026-09-11,compute · Datacenter Istmo,Cloud,Datacenter Istmo,"244,096.17",out,USD,SV-202609-00177
+2026-09-11,compute · Seguros Volcán,compute,Seguros Volcán,"192,282.67",out,USD,SV-202609-00324
+2026-09-11,Ingreso canal Microsoft · ref 51034,Revenue,,"109,960.39",in,USD,SV-202609-00345
+2026-09-12,alquiler HQ · Bufete Istmo & Asociados,Rent,Bufete Istmo & Asociados,"77,195.39",out,USD,SV-202609-00039
+2026-09-12,beneficios · Agencia Brújula Media,Payroll,Agencia Brújula Media,"247,364.88",out,USD,SV-202609-00050
+2026-09-12,brand · Seguros Volcán,Marketing,Seguros Volcán,"86,888.08",out,USD,SV-202609-00079
+2026-09-12,alquiler HQ · Impresos del Valle,Rent,Impresos del Valle,"78,707.35",out,USD,SV-202609-00148
+2026-09-12,Ingreso canal Microsoft · ref 84904,Revenue,,"64,379.27",in,USD,SV-202609-00230
+2026-09-12,cargas sociales · Transportes Rápidos,Payroll,Transportes Rápidos,"124,087.17",out,USD,SV-202609-00258
+2026-09-12,storage · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"405,961.37",out,USD,SV-202609-00363
+2026-09-12,Ingreso canal Microsoft · ref 10318,Revenue,,"407,788.99",in,USD,SV-202609-00423
+2026-09-13,infra cloud · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"336,298.49",out,USD,SV-202609-00256
+2026-09-13,Ingreso canal Microsoft · ref 86317,Revenue,,"49,668.31",in,USD,SV-202609-00454
+2026-09-14,vuelos · Catering La Ceiba,Travel,Catering La Ceiba,"31,106.45",out,USD,SV-202609-00392
+2026-09-14,transporte last-mile · Impresos del Valle,transporte last-mile,Impresos del Valle,"14,128.54",out,USD,SV-202609-00427
+2026-09-14,Ingreso canal Microsoft · ref 46474,Revenue,,"23,447.57",in,USD,SV-202609-00457
+2026-09-15,Ingreso canal Microsoft · ref 65978,Revenue,,"122,793.60",in,USD,SV-202609-00026
+2026-09-15,vuelos · LogiCentro CA,Travel,LogiCentro CA,"91,865.18",out,USD,SV-202609-00069
+2026-09-15,vuelos · AWS Marketplace Reseller,Travel,AWS Marketplace Reseller,"31,919.53",out,USD,SV-202609-00187
+2026-09-15,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"90,836.19",out,USD,SV-202609-00190
+2026-09-15,auditoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"9,226.03",out,USD,SV-202609-00328
+2026-09-15,consultoría · Datacenter Istmo,consultoría,Datacenter Istmo,"14,976.55",out,USD,SV-202609-00397
+2026-09-15,infra cloud · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"130,453.56",out,USD,SV-202609-00430
+2026-09-15,cargas sociales · Impresos del Valle,Payroll,Impresos del Valle,"233,618.02",out,USD,SV-202609-00480
+2026-09-16,alquiler HQ · Bufete Istmo & Asociados,Rent,Bufete Istmo & Asociados,"15,754.10",out,USD,SV-202609-00114
+2026-09-16,infra cloud · Transportes Rápidos,infra cloud,Transportes Rápidos,"231,290.26",out,USD,SV-202609-00122
+2026-09-16,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"285,828.19",out,USD,SV-202609-00286
+2026-09-16,beneficios · Impresos del Valle,Payroll,Impresos del Valle,"177,821.22",out,USD,SV-202609-00347
+2026-09-17,logística · Transportes Rápidos,logística,Transportes Rápidos,"45,174.19",out,USD,SV-202609-00052
+2026-09-17,brand · LogiCentro CA,brand,LogiCentro CA,"14,313.97",out,USD,SV-202609-00121
+2026-09-17,Ingreso canal Microsoft · ref 13882,Revenue,,"79,387.68",in,USD,SV-202609-00201
+2026-09-17,ads · AWS Marketplace Reseller,ads,AWS Marketplace Reseller,"87,774.48",out,USD,SV-202609-00207
+2026-09-17,entregas · Transportes Rápidos,entregas,Transportes Rápidos,"78,780.93",out,USD,SV-202609-00284
+2026-09-17,infra cloud · Transportes Rápidos,Cloud,Transportes Rápidos,"189,754.39",out,USD,SV-202609-00311
+2026-09-17,internet · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"26,631.21",out,USD,SV-202609-00439
+2026-09-17,auditoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"37,934.71",out,USD,SV-202609-00461
+2026-09-17,hoteles · Datacenter Istmo,hoteles,Datacenter Istmo,"92,225.71",out,USD,SV-202609-00474
+2026-09-17,Ingreso canal Microsoft · ref 44900,Revenue,,"83,998.75",in,USD,SV-202609-00482
+2026-09-17,cargas sociales · Impresos del Valle,cargas sociales,Impresos del Valle,"50,219.47",out,USD,SV-202609-00517
+2026-09-18,Ingreso canal Microsoft · ref 70459,Revenue,,"22,332.18",in,USD,SV-202609-00005
+2026-09-18,Ingreso canal Microsoft · ref 44773,Revenue,,"10,460.53",in,USD,SV-202609-00113
+2026-09-18,Ingreso canal Microsoft · ref 40823,Revenue,,"58,584.95",in,USD,SV-202609-00131
+2026-09-19,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"45,433.03",out,USD,SV-202609-00161
+2026-09-19,Ingreso canal Microsoft · ref 11879,Revenue,,"209,628.65",in,USD,SV-202609-00252
+2026-09-19,coworking · Transportes Rápidos,coworking,Transportes Rápidos,"87,784.18",out,USD,SV-202609-00343
+2026-09-19,storage · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"109,516.01",out,USD,SV-202609-00350
+2026-09-19,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"78,446.86",out,USD,SV-202609-00440
+2026-09-19,bodega · Datacenter Istmo,Rent,Datacenter Istmo,"28,038.45",out,USD,SV-202609-00514
+2026-09-20,Ingreso canal Microsoft · ref 96024,Revenue,,"39,205.32",in,USD,SV-202609-00073
+2026-09-20,compute · Impresos del Valle,Cloud,Impresos del Valle,"262,719.14",out,USD,SV-202609-00100
+2026-09-20,Ingreso canal Microsoft · ref 29535,Revenue,,"54,361.38",in,USD,SV-202609-00140
+2026-09-20,Ingreso canal Microsoft · ref 25850,Revenue,,"74,336.70",in,USD,SV-202609-00142
+2026-09-20,infra cloud · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"254,650.18",out,USD,SV-202609-00376
+2026-09-20,legal · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"8,924.62",out,USD,SV-202609-00410
+2026-09-20,cargas sociales · Energía del Pacífico,cargas sociales,Energía del Pacífico,"119,098.23",out,USD,SV-202609-00416
+2026-09-20,Ingreso canal Microsoft · ref 29238,Revenue,,"37,892.40",in,USD,SV-202609-00426
+2026-09-20,cargas sociales · Seguros Volcán,Payroll,Seguros Volcán,"45,115.20",out,USD,SV-202609-00478
+2026-09-20,Ingreso canal Microsoft · ref 98264,Revenue,,"90,852.24",in,USD,SV-202609-00489
+2026-09-21,entregas · Seguros Volcán,entregas,Seguros Volcán,"75,077.24",out,USD,SV-202609-00197
+2026-09-21,coworking · Agencia Brújula Media,Rent,Agencia Brújula Media,"54,346.19",out,USD,SV-202609-00294
+2026-09-21,vuelos · Seguros Volcán,Travel,Seguros Volcán,"85,839.76",out,USD,SV-202609-00340
+2026-09-21,entregas · Bufete Istmo & Asociados,entregas,Bufete Istmo & Asociados,"42,808.90",out,USD,SV-202609-00479
+2026-09-21,electricidad · Datacenter Istmo,Utilities,Datacenter Istmo,"69,568.73",out,USD,SV-202609-00486
+2026-09-22,vuelos · Datacenter Istmo,Travel,Datacenter Istmo,"24,127.34",out,USD,SV-202609-00051
+2026-09-22,brand · AWS Marketplace Reseller,brand,AWS Marketplace Reseller,"30,158.24",out,USD,SV-202609-00098
+2026-09-22,eventos · Datacenter Istmo,eventos,Datacenter Istmo,"81,620.31",out,USD,SV-202609-00233
+2026-09-22,alquiler HQ · Transportes Rápidos,Rent,Transportes Rápidos,"38,845.26",out,USD,SV-202609-00393
+2026-09-22,logística · Catering La Ceiba,logística,Catering La Ceiba,"75,660.47",out,USD,SV-202609-00477
+2026-09-23,nómina · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"8,102.52",out,USD,SV-202609-00029
+2026-09-23,Ingreso canal Microsoft · ref 48891,Revenue,,"67,841.89",in,USD,SV-202609-00310
+2026-09-24,consultoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"6,714.42",out,USD,SV-202609-00042
+2026-09-24,compute · Bufete Istmo & Asociados,compute,Bufete Istmo & Asociados,"190,095.49",out,USD,SV-202609-00188
+2026-09-24,coworking · Agencia Brújula Media,Rent,Agencia Brújula Media,"28,144.36",out,USD,SV-202609-00349
+2026-09-24,auditoría · LogiCentro CA,auditoría,LogiCentro CA,"77,690.52",out,USD,SV-202609-00425
+2026-09-24,consultoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"23,396.27",out,USD,SV-202609-00455
+2026-09-25,Ingreso canal Microsoft · ref 42050,Revenue,,"370,275.17",in,USD,SV-202609-00074
+2026-09-25,agua · Seguros Volcán,agua,Seguros Volcán,"27,508.52",out,USD,SV-202609-00076
+2026-09-25,coworking · Catering La Ceiba,Rent,Catering La Ceiba,"72,963.32",out,USD,SV-202609-00224
+2026-09-25,consultoría · Impresos del Valle,ProfessionalServices,Impresos del Valle,"43,289.74",out,USD,SV-202609-00337
+2026-09-25,internet · Energía del Pacífico,internet,Energía del Pacífico,"7,935.92",out,USD,SV-202609-00384
+2026-09-25,Ingreso canal Microsoft · ref 21099,Revenue,,"33,729.41",in,USD,SV-202609-00432
+2026-09-26,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"83,258.69",out,USD,SV-202609-00184
+2026-09-26,Ingreso canal Microsoft · ref 46695,Revenue,,"26,710.23",in,USD,SV-202609-00240
+2026-09-26,beneficios · Transportes Rápidos,beneficios,Transportes Rápidos,"85,558.91",out,USD,SV-202609-00247
+2026-09-26,bodega · Energía del Pacífico,Rent,Energía del Pacífico,"63,493.63",out,USD,SV-202609-00317
+2026-09-26,hoteles · Aerolíneas Centroamericanas,hoteles,Aerolíneas Centroamericanas,"69,585.53",out,USD,SV-202609-00370
+2026-09-26,alquiler HQ · Seguros Volcán,alquiler HQ,Seguros Volcán,"10,212.32",out,USD,SV-202609-00400
+2026-09-26,eventos · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"59,236.28",out,USD,SV-202609-00507
+2026-09-26,Ingreso canal Microsoft · ref 87626,Revenue,,"52,449.90",in,USD,SV-202609-00511
+2026-09-27,logística · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"18,242.74",out,USD,SV-202609-00028
+2026-09-27,eventos · Seguros Volcán,Marketing,Seguros Volcán,"5,833.78",out,USD,SV-202609-00065
+2026-09-27,legal · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"29,740.59",out,USD,SV-202609-00153
+2026-09-27,agua · LogiCentro CA,agua,LogiCentro CA,"76,020.20",out,USD,SV-202609-00268
+2026-09-27,internet · Oficinas Corporativas del Istmo,internet,Oficinas Corporativas del Istmo,"42,919.56",out,USD,SV-202609-00368
+2026-09-27,storage · Agencia Brújula Media,storage,Agencia Brújula Media,"218,845.14",out,USD,SV-202609-00448
+2026-09-27,internet · Seguros Volcán,internet,Seguros Volcán,"46,952.85",out,USD,SV-202609-00502
+2026-09-28,storage · Catering La Ceiba,Cloud,Catering La Ceiba,"77,443.63",out,USD,SV-202609-00101
+2026-09-28,compute · Transportes Rápidos,compute,Transportes Rápidos,"229,151.31",out,USD,SV-202609-00308
+2026-09-28,auditoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"28,765.87",out,USD,SV-202609-00466
+2026-09-29,nómina · LogiCentro CA,nómina,LogiCentro CA,"304,542.83",out,USD,SV-202609-00012
+2026-09-29,bodega · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"83,168.53",out,USD,SV-202609-00107
+2026-09-29,infra cloud · Datacenter Istmo,Cloud,Datacenter Istmo,"8,885.66",out,USD,SV-202609-00218
+2026-09-29,logística · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"60,443.60",out,USD,SV-202609-00228
+2026-09-29,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"23,732.04",out,USD,SV-202609-00297
+2026-09-29,vuelos · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"51,670.98",out,USD,SV-202609-00338
+2026-09-29,eventos · Datacenter Istmo,Marketing,Datacenter Istmo,"2,808.24",out,USD,SV-202609-00346
+2026-09-29,Ingreso canal Microsoft · ref 17670,Revenue,,"44,553.94",in,USD,SV-202609-00472
+2026-09-30,ads · Agencia Brújula Media,Marketing,Agencia Brújula Media,"77,681.78",out,USD,SV-202609-00327
+2026-10-01,cargas sociales · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"135,911.79",out,USD,SV-202610-00264
+2026-10-01,ads · LogiCentro CA,ads,LogiCentro CA,"48,034.18",out,USD,SV-202610-00307
+2026-10-01,bodega · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"74,053.65",out,USD,SV-202610-00358
+2026-10-01,ads · AWS Marketplace Reseller,ads,AWS Marketplace Reseller,"40,400.82",out,USD,SV-202610-00406
+2026-10-01,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"88,249.39",out,USD,SV-202610-00451
+2026-10-02,internet · Catering La Ceiba,internet,Catering La Ceiba,"15,112.25",out,USD,SV-202610-00008
+2026-10-02,internet · Energía del Pacífico,internet,Energía del Pacífico,"63,800.14",out,USD,SV-202610-00127
+2026-10-02,cargas sociales · Oficinas Corporativas del Istmo,cargas sociales,Oficinas Corporativas del Istmo,"29,765.44",out,USD,SV-202610-00134
+2026-10-02,infra cloud · Energía del Pacífico,Cloud,Energía del Pacífico,"153,774.78",out,USD,SV-202610-00215
+2026-10-02,Ingreso canal Microsoft · ref 75471,Revenue,,"75,172.56",in,USD,SV-202610-00372
+2026-10-02,bodega · Impresos del Valle,Rent,Impresos del Valle,"47,280.76",out,USD,SV-202610-00396
+2026-10-02,logística · Seguros Volcán,logística,Seguros Volcán,"7,411.04",out,USD,SV-202610-00428
+2026-10-03,per diem · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"90,744.57",out,USD,SV-202610-00088
+2026-10-03,auditoría · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"35,711.01",out,USD,SV-202610-00103
+2026-10-03,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"58,213.29",out,USD,SV-202610-00108
+2026-10-03,electricidad · Catering La Ceiba,Utilities,Catering La Ceiba,"71,110.23",out,USD,SV-202610-00213
+2026-10-03,Ingreso canal Microsoft · ref 98055,Revenue,,"160,289.74",in,USD,SV-202610-00395
+2026-10-04,Ingreso canal Microsoft · ref 84972,Revenue,,"61,378.08",in,USD,SV-202610-00321
+2026-10-04,per diem · Datacenter Istmo,per diem,Datacenter Istmo,"34,745.65",out,USD,SV-202610-00354
+2026-10-04,Ingreso canal Microsoft · ref 12873,Revenue,,"63,525.00",in,USD,SV-202610-00424
+2026-10-04,legal · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"59,040.93",out,USD,SV-202610-00460
+2026-10-04,Ingreso canal Microsoft · ref 51947,Revenue,,"25,939.95",in,USD,SV-202610-00501
+2026-10-05,Ingreso canal Microsoft · ref 80724,Revenue,,"16,122.23",in,USD,SV-202610-00092
+2026-10-05,storage · Catering La Ceiba,storage,Catering La Ceiba,"246,988.59",out,USD,SV-202610-00355
+2026-10-05,cargas sociales · Catering La Ceiba,cargas sociales,Catering La Ceiba,"73,424.80",out,USD,SV-202610-00369
+2026-10-05,infra cloud · Datacenter Istmo,Cloud,Datacenter Istmo,"156,205.48",out,USD,SV-202610-00441
+2026-10-06,logística · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"88,135.87",out,USD,SV-202610-00195
+2026-10-06,hoteles · Seguros Volcán,Travel,Seguros Volcán,"93,945.73",out,USD,SV-202610-00209
+2026-10-06,entregas · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"87,440.07",out,USD,SV-202610-00241
+2026-10-07,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"26,734.83",out,USD,SV-202610-00046
+2026-10-07,internet · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"91,781.96",out,USD,SV-202610-00054
+2026-10-07,nómina · Bufete Istmo & Asociados,nómina,Bufete Istmo & Asociados,"143,986.03",out,USD,SV-202610-00128
+2026-10-07,Ingreso canal Microsoft · ref 32175,Revenue,,"18,064.31",in,USD,SV-202610-00260
+2026-10-07,per diem · Energía del Pacífico,per diem,Energía del Pacífico,"3,107.54",out,USD,SV-202610-00319
+2026-10-08,nómina · Transportes Rápidos,nómina,Transportes Rápidos,"37,454.06",out,USD,SV-202610-00034
+2026-10-08,Ingreso canal Microsoft · ref 92648,Revenue,,"19,042.46",in,USD,SV-202610-00126
+2026-10-08,bodega · Impresos del Valle,bodega,Impresos del Valle,"83,631.34",out,USD,SV-202610-00450
+2026-10-09,brand · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"24,710.28",out,USD,SV-202610-00004
+2026-10-09,legal · LogiCentro CA,ProfessionalServices,LogiCentro CA,"16,030.10",out,USD,SV-202610-00059
+2026-10-09,beneficios · LogiCentro CA,Payroll,LogiCentro CA,"131,905.11",out,USD,SV-202610-00231
+2026-10-09,Ingreso canal Microsoft · ref 29911,Revenue,,"101,359.72",in,USD,SV-202610-00271
+2026-10-09,coworking · Energía del Pacífico,Rent,Energía del Pacífico,"52,231.34",out,USD,SV-202610-00273
+2026-10-09,alquiler HQ · AWS Marketplace Reseller,alquiler HQ,AWS Marketplace Reseller,"59,409.64",out,USD,SV-202610-00281
+2026-10-09,beneficios · Datacenter Istmo,Payroll,Datacenter Istmo,"277,799.26",out,USD,SV-202610-00341
+2026-10-09,legal · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"15,566.77",out,USD,SV-202610-00390
+2026-10-09,entregas · Impresos del Valle,Deliveries,Impresos del Valle,"26,622.71",out,USD,SV-202610-00407
+2026-10-09,Ingreso canal Microsoft · ref 26933,Revenue,,"65,498.90",in,USD,SV-202610-00434
+2026-10-10,internet · LogiCentro CA,Utilities,LogiCentro CA,"46,105.96",out,USD,SV-202610-00250
+2026-10-10,per diem · Agencia Brújula Media,Travel,Agencia Brújula Media,"81,048.88",out,USD,SV-202610-00316
+2026-10-10,per diem · Seguros Volcán,per diem,Seguros Volcán,"93,645.46",out,USD,SV-202610-00398
+2026-10-11,cargas sociales · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"73,121.79",out,USD,SV-202610-00238
+2026-10-11,beneficios · Seguros Volcán,beneficios,Seguros Volcán,"88,136.36",out,USD,SV-202610-00313
+2026-10-11,Ingreso canal Microsoft · ref 78885,Revenue,,"7,655.17",in,USD,SV-202610-00409
+2026-10-11,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"32,019.10",out,USD,SV-202610-00433
+2026-10-12,Ingreso canal Microsoft · ref 65540,Revenue,,"22,499.39",in,USD,SV-202610-00183
+2026-10-12,electricidad · Transportes Rápidos,electricidad,Transportes Rápidos,"42,979.56",out,USD,SV-202610-00239
+2026-10-12,nómina · Impresos del Valle,Payroll,Impresos del Valle,"321,558.81",out,USD,SV-202610-00277
+2026-10-12,electricidad · Aerolíneas Centroamericanas,electricidad,Aerolíneas Centroamericanas,"70,620.62",out,USD,SV-202610-00385
+2026-10-12,alquiler HQ · Energía del Pacífico,Rent,Energía del Pacífico,"14,075.03",out,USD,SV-202610-00419
+2026-10-12,Ingreso canal Microsoft · ref 42111,Revenue,,"51,792.63",in,USD,SV-202610-00463
+2026-10-12,auditoría · Transportes Rápidos,auditoría,Transportes Rápidos,"54,728.96",out,USD,SV-202610-00470
+2026-10-13,beneficios · Transportes Rápidos,Payroll,Transportes Rápidos,"291,883.52",out,USD,SV-202610-00123
+2026-10-13,brand · LogiCentro CA,Marketing,LogiCentro CA,"63,606.38",out,USD,SV-202610-00164
+2026-10-13,internet · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"13,142.80",out,USD,SV-202610-00174
+2026-10-13,Ingreso canal Microsoft · ref 10989,Revenue,,"204,643.96",in,USD,SV-202610-00348
+2026-10-13,storage · Impresos del Valle,storage,Impresos del Valle,"288,824.85",out,USD,SV-202610-00437
+2026-10-14,electricidad · Aerolíneas Centroamericanas,electricidad,Aerolíneas Centroamericanas,"38,056.17",out,USD,SV-202610-00020
+2026-10-14,storage · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"72,339.96",out,USD,SV-202610-00071
+2026-10-14,coworking · Oficinas Corporativas del Istmo,coworking,Oficinas Corporativas del Istmo,"70,727.01",out,USD,SV-202610-00072
+2026-10-14,auditoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"26,424.25",out,USD,SV-202610-00329
+2026-10-14,Ingreso canal Microsoft · ref 43199,Revenue,,"141,680.23",in,USD,SV-202610-00339
+2026-10-14,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"78,365.61",out,USD,SV-202610-00443
+2026-10-14,Ingreso canal Microsoft · ref 82168,Revenue,,"188,345.16",in,USD,SV-202610-00494
+2026-10-15,Ingreso canal Microsoft · ref 10917,Revenue,,"31,518.87",in,USD,SV-202610-00135
+2026-10-15,internet · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"18,665.04",out,USD,SV-202610-00169
+2026-10-15,per diem · AWS Marketplace Reseller,Travel,AWS Marketplace Reseller,"79,228.24",out,USD,SV-202610-00178
+2026-10-16,agua · Catering La Ceiba,Utilities,Catering La Ceiba,"86,910.24",out,USD,SV-202610-00111
+2026-10-16,entregas · Catering La Ceiba,Deliveries,Catering La Ceiba,"78,112.20",out,USD,SV-202610-00293
+2026-10-16,storage · AWS Marketplace Reseller,storage,AWS Marketplace Reseller,"278,964.89",out,USD,SV-202610-00332
+2026-10-16,bodega · Agencia Brújula Media,bodega,Agencia Brújula Media,"9,125.95",out,USD,SV-202610-00515
+2026-10-17,bodega · Bufete Istmo & Asociados,bodega,Bufete Istmo & Asociados,"66,221.82",out,USD,SV-202610-00014
+2026-10-17,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"4,551.28",out,USD,SV-202610-00206
+2026-10-18,hoteles · Impresos del Valle,Travel,Impresos del Valle,"25,812.60",out,USD,SV-202610-00011
+2026-10-18,electricidad · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"25,070.57",out,USD,SV-202610-00053
+2026-10-18,consultoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"21,287.15",out,USD,SV-202610-00077
+2026-10-18,transporte last-mile · Catering La Ceiba,transporte last-mile,Catering La Ceiba,"49,156.21",out,USD,SV-202610-00078
+2026-10-18,Ingreso canal Microsoft · ref 46578,Revenue,,"16,950.68",in,USD,SV-202610-00099
+2026-10-18,per diem · AWS Marketplace Reseller,per diem,AWS Marketplace Reseller,"14,073.31",out,USD,SV-202610-00269
+2026-10-18,vuelos · Seguros Volcán,vuelos,Seguros Volcán,"52,223.30",out,USD,SV-202610-00481
+2026-10-19,consultoría · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"15,854.21",out,USD,SV-202610-00043
+2026-10-19,consultoría · Impresos del Valle,ProfessionalServices,Impresos del Valle,"21,688.18",out,USD,SV-202610-00056
+2026-10-19,Ingreso canal Microsoft · ref 92512,Revenue,,"25,691.13",in,USD,SV-202610-00091
+2026-10-19,internet · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"14,577.14",out,USD,SV-202610-00263
+2026-10-19,beneficios · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"342,874.86",out,USD,SV-202610-00383
+2026-10-19,entregas · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"3,150.67",out,USD,SV-202610-00388
+2026-10-19,transporte last-mile · LogiCentro CA,Deliveries,LogiCentro CA,"18,703.07",out,USD,SV-202610-00413
+2026-10-20,hoteles · Transportes Rápidos,Travel,Transportes Rápidos,"57,944.89",out,USD,SV-202610-00002
+2026-10-20,logística · Catering La Ceiba,Deliveries,Catering La Ceiba,"90,910.28",out,USD,SV-202610-00090
+2026-10-20,brand · Catering La Ceiba,Marketing,Catering La Ceiba,"6,064.04",out,USD,SV-202610-00105
+2026-10-20,Ingreso canal Microsoft · ref 69201,Revenue,,"1,093.51",in,USD,SV-202610-00182
+2026-10-20,ads · Datacenter Istmo,ads,Datacenter Istmo,"78,281.30",out,USD,SV-202610-00326
+2026-10-20,Ingreso canal Microsoft · ref 44948,Revenue,,"2,893.27",in,USD,SV-202610-00386
+2026-10-20,compute · Energía del Pacífico,Cloud,Energía del Pacífico,"438,476.40",out,USD,SV-202610-00509
+2026-10-21,Ingreso canal Microsoft · ref 63570,Revenue,,"71,273.82",in,USD,SV-202610-00003
+2026-10-21,Ingreso canal Microsoft · ref 73363,Revenue,,"72,736.27",in,USD,SV-202610-00015
+2026-10-21,auditoría · Bufete Istmo & Asociados,auditoría,Bufete Istmo & Asociados,"17,976.23",out,USD,SV-202610-00279
+2026-10-22,beneficios · Datacenter Istmo,beneficios,Datacenter Istmo,"239,130.72",out,USD,SV-202610-00023
+2026-10-22,ads · Agencia Brújula Media,ads,Agencia Brújula Media,"40,016.98",out,USD,SV-202610-00170
+2026-10-22,consultoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"66,942.79",out,USD,SV-202610-00262
+2026-10-22,consultoría · Datacenter Istmo,consultoría,Datacenter Istmo,"25,954.71",out,USD,SV-202610-00320
+2026-10-22,hoteles · Energía del Pacífico,Travel,Energía del Pacífico,"82,486.52",out,USD,SV-202610-00331
+2026-10-23,consultoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"69,306.30",out,USD,SV-202610-00048
+2026-10-23,brand · Oficinas Corporativas del Istmo,brand,Oficinas Corporativas del Istmo,"9,047.23",out,USD,SV-202610-00165
+2026-10-24,Ingreso canal Microsoft · ref 42336,Revenue,,"81,809.10",in,USD,SV-202610-00030
+2026-10-24,brand · Transportes Rápidos,Marketing,Transportes Rápidos,"50,738.81",out,USD,SV-202610-00469
+2026-10-25,auditoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"84,254.49",out,USD,SV-202610-00001
+2026-10-25,auditoría · AWS Marketplace Reseller,auditoría,AWS Marketplace Reseller,"67,526.47",out,USD,SV-202610-00067
+2026-10-25,vuelos · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"2,840.93",out,USD,SV-202610-00163
+2026-10-25,beneficios · Aerolíneas Centroamericanas,beneficios,Aerolíneas Centroamericanas,"181,939.42",out,USD,SV-202610-00229
+2026-10-25,consultoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"27,658.55",out,USD,SV-202610-00431
+2026-10-25,brand · Transportes Rápidos,Marketing,Transportes Rápidos,"67,987.92",out,USD,SV-202610-00497
+2026-10-25,Ingreso canal Microsoft · ref 13871,Revenue,,"25,058.23",in,USD,SV-202610-00516
+2026-10-26,auditoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"47,507.95",out,USD,SV-202610-00106
+2026-10-26,entregas · Impresos del Valle,entregas,Impresos del Valle,876.62,out,USD,SV-202610-00199
+2026-10-26,brand · Transportes Rápidos,brand,Transportes Rápidos,"64,560.70",out,USD,SV-202610-00280
+2026-10-26,Ingreso canal Microsoft · ref 67816,Revenue,,"92,254.79",in,USD,SV-202610-00283
+2026-10-26,compute · Agencia Brújula Media,Cloud,Agencia Brújula Media,"393,552.00",out,USD,SV-202610-00447
+2026-10-27,per diem · Catering La Ceiba,per diem,Catering La Ceiba,"7,744.73",out,USD,SV-202610-00137
+2026-10-27,hoteles · LogiCentro CA,Travel,LogiCentro CA,"16,587.64",out,USD,SV-202610-00512
+2026-10-28,alquiler HQ · Aerolíneas Centroamericanas,alquiler HQ,Aerolíneas Centroamericanas,"23,832.48",out,USD,SV-202610-00377
+2026-10-28,Ingreso canal Microsoft · ref 84745,Revenue,,"35,154.28",in,USD,SV-202610-00429
+2026-10-28,beneficios · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"208,774.35",out,USD,SV-202610-00508
+2026-10-29,hoteles · AWS Marketplace Reseller,hoteles,AWS Marketplace Reseller,"93,408.32",out,USD,SV-202610-00086
+2026-10-29,eventos · Transportes Rápidos,eventos,Transportes Rápidos,"58,993.18",out,USD,SV-202610-00418
+2026-10-29,cargas sociales · Transportes Rápidos,Payroll,Transportes Rápidos,"332,600.87",out,USD,SV-202610-00513
+2026-10-30,brand · Catering La Ceiba,Marketing,Catering La Ceiba,"80,673.13",out,USD,SV-202610-00047
+2026-10-30,transporte last-mile · Energía del Pacífico,Deliveries,Energía del Pacífico,"48,791.35",out,USD,SV-202610-00304
+2026-10-30,Ingreso canal Microsoft · ref 13953,Revenue,,"59,305.14",in,USD,SV-202610-00373
+2026-10-30,infra cloud · Catering La Ceiba,infra cloud,Catering La Ceiba,"40,172.98",out,USD,SV-202610-00442
+2026-10-31,agua · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"82,417.80",out,USD,SV-202610-00037
+2026-10-31,infra cloud · AWS Marketplace Reseller,infra cloud,AWS Marketplace Reseller,"155,616.98",out,USD,SV-202610-00060
+2026-10-31,Ingreso canal Microsoft · ref 52857,Revenue,,"26,804.04",in,USD,SV-202610-00094
+2026-10-31,per diem · Datacenter Istmo,Travel,Datacenter Istmo,"56,906.45",out,USD,SV-202610-00141
+2026-10-31,per diem · Catering La Ceiba,per diem,Catering La Ceiba,"9,359.25",out,USD,SV-202610-00158
+2026-10-31,legal · Transportes Rápidos,legal,Transportes Rápidos,"7,477.00",out,USD,SV-202610-00196
+2026-10-31,nómina · Seguros Volcán,Payroll,Seguros Volcán,"100,623.12",out,USD,SV-202610-00389
+2026-11-01,bodega · LogiCentro CA,Rent,LogiCentro CA,"9,865.98",out,USD,SV-202611-00010
+2026-11-01,auditoría · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"73,810.02",out,USD,SV-202611-00018
+2026-11-01,Ingreso canal Microsoft · ref 94477,Revenue,,"55,985.65",in,USD,SV-202611-00081
+2026-11-01,entregas · Seguros Volcán,Deliveries,Seguros Volcán,"90,890.08",out,USD,SV-202611-00208
+2026-11-01,Ingreso canal Microsoft · ref 76512,Revenue,,"20,814.28",in,USD,SV-202611-00212
+2026-11-01,hoteles · LogiCentro CA,hoteles,LogiCentro CA,"35,883.30",out,USD,SV-202611-00265
+2026-11-01,bodega · LogiCentro CA,Rent,LogiCentro CA,"14,735.15",out,USD,SV-202611-00403
+2026-11-01,storage · Seguros Volcán,Cloud,Seguros Volcán,"200,392.33",out,USD,SV-202611-00456
+2026-11-01,vuelos · Bufete Istmo & Asociados,vuelos,Bufete Istmo & Asociados,"19,127.45",out,USD,SV-202611-00490
+2026-11-02,internet · Datacenter Istmo,Utilities,Datacenter Istmo,"59,765.67",out,USD,SV-202611-00044
+2026-11-02,electricidad · Transportes Rápidos,Utilities,Transportes Rápidos,"46,487.25",out,USD,SV-202611-00055
+2026-11-02,brand · Datacenter Istmo,Marketing,Datacenter Istmo,"72,047.32",out,USD,SV-202611-00087
+2026-11-02,coworking · Impresos del Valle,Rent,Impresos del Valle,"24,597.42",out,USD,SV-202611-00211
+2026-11-02,electricidad · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"23,790.46",out,USD,SV-202611-00266
+2026-11-02,logística · Oficinas Corporativas del Istmo,logística,Oficinas Corporativas del Istmo,"57,317.80",out,USD,SV-202611-00276
+2026-11-02,hoteles · AWS Marketplace Reseller,Travel,AWS Marketplace Reseller,"61,201.88",out,USD,SV-202611-00404
+2026-11-02,electricidad · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"63,242.48",out,USD,SV-202611-00498
+2026-11-03,Ingreso canal Microsoft · ref 45499,Revenue,,"87,520.35",in,USD,SV-202611-00045
+2026-11-03,Ingreso canal Microsoft · ref 86741,Revenue,,"270,338.85",in,USD,SV-202611-00112
+2026-11-03,per diem · Seguros Volcán,per diem,Seguros Volcán,"28,972.25",out,USD,SV-202611-00168
+2026-11-03,Ingreso canal Microsoft · ref 14200,Revenue,,"53,861.67",in,USD,SV-202611-00216
+2026-11-03,compute · Catering La Ceiba,Cloud,Catering La Ceiba,"186,240.01",out,USD,SV-202611-00227
+2026-11-03,internet · LogiCentro CA,internet,LogiCentro CA,"28,457.49",out,USD,SV-202611-00300
+2026-11-03,agua · Catering La Ceiba,Utilities,Catering La Ceiba,"55,196.13",out,USD,SV-202611-00315
+2026-11-03,beneficios · Bufete Istmo & Asociados,beneficios,Bufete Istmo & Asociados,"76,069.00",out,USD,SV-202611-00359
+2026-11-03,entregas · Impresos del Valle,entregas,Impresos del Valle,"45,555.43",out,USD,SV-202611-00467
+2026-11-04,vuelos · Datacenter Istmo,Travel,Datacenter Istmo,"42,686.50",out,USD,SV-202611-00139
+2026-11-04,eventos · LogiCentro CA,Marketing,LogiCentro CA,"36,374.20",out,USD,SV-202611-00154
+2026-11-04,Ingreso canal Microsoft · ref 70147,Revenue,,"56,035.84",in,USD,SV-202611-00166
+2026-11-04,logística · Transportes Rápidos,Deliveries,Transportes Rápidos,"91,338.34",out,USD,SV-202611-00176
+2026-11-04,cargas sociales · Seguros Volcán,Payroll,Seguros Volcán,"134,344.11",out,USD,SV-202611-00375
+2026-11-04,compute · LogiCentro CA,compute,LogiCentro CA,"132,066.67",out,USD,SV-202611-00435
+2026-11-05,consultoría · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"50,549.48",out,USD,SV-202611-00191
+2026-11-05,logística · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"43,669.74",out,USD,SV-202611-00217
+2026-11-05,compute · AWS Marketplace Reseller,compute,AWS Marketplace Reseller,"57,378.64",out,USD,SV-202611-00318
+2026-11-05,eventos · LogiCentro CA,Marketing,LogiCentro CA,"29,205.21",out,USD,SV-202611-00351
+2026-11-05,per diem · AWS Marketplace Reseller,per diem,AWS Marketplace Reseller,"43,753.23",out,USD,SV-202611-00382
+2026-11-05,per diem · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"2,647.05",out,USD,SV-202611-00459
+2026-11-06,Ingreso canal Microsoft · ref 22070,Revenue,,"64,226.10",in,USD,SV-202611-00019
+2026-11-06,alquiler HQ · Catering La Ceiba,Rent,Catering La Ceiba,"44,406.59",out,USD,SV-202611-00089
+2026-11-06,Ingreso canal Microsoft · ref 38107,Revenue,,"213,529.50",in,USD,SV-202611-00138
+2026-11-06,cargas sociales · Bufete Istmo & Asociados,cargas sociales,Bufete Istmo & Asociados,"212,244.02",out,USD,SV-202611-00221
+2026-11-06,Ingreso canal Microsoft · ref 41547,Revenue,,"7,613.59",in,USD,SV-202611-00259
+2026-11-06,agua · Datacenter Istmo,Utilities,Datacenter Istmo,"54,680.51",out,USD,SV-202611-00298
+2026-11-06,cargas sociales · Catering La Ceiba,cargas sociales,Catering La Ceiba,"244,866.07",out,USD,SV-202611-00414
+2026-11-07,compute · Aerolíneas Centroamericanas,compute,Aerolíneas Centroamericanas,"327,071.56",out,USD,SV-202611-00129
+2026-11-07,ads · Datacenter Istmo,ads,Datacenter Istmo,"26,035.02",out,USD,SV-202611-00133
+2026-11-07,Ingreso canal Microsoft · ref 21775,Revenue,,"224,980.37",in,USD,SV-202611-00175
+2026-11-07,transporte last-mile · AWS Marketplace Reseller,transporte last-mile,AWS Marketplace Reseller,"49,782.72",out,USD,SV-202611-00248
+2026-11-07,entregas · Impresos del Valle,entregas,Impresos del Valle,"73,953.64",out,USD,SV-202611-00272
+2026-11-07,vuelos · Impresos del Valle,Travel,Impresos del Valle,"82,324.24",out,USD,SV-202611-00485
+2026-11-07,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"143,877.61",out,USD,SV-202611-00487
+2026-11-08,storage · Energía del Pacífico,Cloud,Energía del Pacífico,"228,694.46",out,USD,SV-202611-00057
+2026-11-08,Ingreso canal Microsoft · ref 64967,Revenue,,"2,485.37",in,USD,SV-202611-00080
+2026-11-08,per diem · Datacenter Istmo,Travel,Datacenter Istmo,"11,352.62",out,USD,SV-202611-00097
+2026-11-08,per diem · Seguros Volcán,per diem,Seguros Volcán,"43,313.39",out,USD,SV-202611-00124
+2026-11-08,agua · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"78,170.56",out,USD,SV-202611-00143
+2026-11-08,coworking · Impresos del Valle,coworking,Impresos del Valle,"6,734.07",out,USD,SV-202611-00193
+2026-11-08,beneficios · Impresos del Valle,beneficios,Impresos del Valle,"345,269.30",out,USD,SV-202611-00285
+2026-11-08,auditoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"79,497.72",out,USD,SV-202611-00518
+2026-11-09,coworking · Energía del Pacífico,Rent,Energía del Pacífico,"36,112.81",out,USD,SV-202611-00041
+2026-11-09,ads · Transportes Rápidos,Marketing,Transportes Rápidos,"93,744.27",out,USD,SV-202611-00151
+2026-11-09,electricidad · AWS Marketplace Reseller,electricidad,AWS Marketplace Reseller,"69,315.71",out,USD,SV-202611-00245
+2026-11-09,hoteles · AWS Marketplace Reseller,hoteles,AWS Marketplace Reseller,"44,325.03",out,USD,SV-202611-00254
+2026-11-09,bodega · Energía del Pacífico,Rent,Energía del Pacífico,"69,860.82",out,USD,SV-202611-00301
+2026-11-09,Ingreso canal Microsoft · ref 93350,Revenue,,"39,844.98",in,USD,SV-202611-00401
+2026-11-09,logística · LogiCentro CA,Deliveries,LogiCentro CA,"63,289.66",out,USD,SV-202611-00445
+2026-11-09,entregas · Datacenter Istmo,entregas,Datacenter Istmo,"88,088.28",out,USD,SV-202611-00495
+2026-11-09,compute · Transportes Rápidos,compute,Transportes Rápidos,"109,631.26",out,USD,SV-202611-00505
+2026-11-10,cargas sociales · LogiCentro CA,Payroll,LogiCentro CA,"237,159.19",out,USD,SV-202611-00167
+2026-11-11,bodega · LogiCentro CA,Rent,LogiCentro CA,"9,986.53",out,USD,SV-202611-00021
+2026-11-11,consultoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"4,945.13",out,USD,SV-202611-00104
+2026-11-11,agua · Agencia Brújula Media,Utilities,Agencia Brújula Media,"38,701.54",out,USD,SV-202611-00132
+2026-11-11,cargas sociales · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"207,269.00",out,USD,SV-202611-00379
+2026-11-11,hoteles · Datacenter Istmo,Travel,Datacenter Istmo,"76,430.99",out,USD,SV-202611-00500
+2026-11-12,logística · Datacenter Istmo,Deliveries,Datacenter Istmo,"50,091.61",out,USD,SV-202611-00033
+2026-11-12,infra cloud · Catering La Ceiba,Cloud,Catering La Ceiba,"105,792.77",out,USD,SV-202611-00225
+2026-11-12,Ingreso canal Microsoft · ref 58310,Revenue,,"79,120.49",in,USD,SV-202611-00243
+2026-11-12,Ingreso canal Microsoft · ref 64066,Revenue,,"68,434.60",in,USD,SV-202611-00330
+2026-11-12,Ingreso canal Microsoft · ref 68544,Revenue,,"44,637.91",in,USD,SV-202611-00381
+2026-11-13,Ingreso canal Microsoft · ref 55052,Revenue,,"45,366.54",in,USD,SV-202611-00024
+2026-11-14,brand · LogiCentro CA,Marketing,LogiCentro CA,"94,829.67",out,USD,SV-202611-00066
+2026-11-14,electricidad · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"33,414.80",out,USD,SV-202611-00102
+2026-11-14,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"252,919.63",out,USD,SV-202611-00109
+2026-11-14,electricidad · Transportes Rápidos,Utilities,Transportes Rápidos,"1,242.47",out,USD,SV-202611-00189
+2026-11-14,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"16,439.65",out,USD,SV-202611-00249
+2026-11-14,nómina · LogiCentro CA,nómina,LogiCentro CA,"8,660.39",out,USD,SV-202611-00356
+2026-11-14,eventos · Oficinas Corporativas del Istmo,eventos,Oficinas Corporativas del Istmo,"60,554.45",out,USD,SV-202611-00360
+2026-11-14,Ingreso canal Microsoft · ref 20401,Revenue,,"66,248.60",in,USD,SV-202611-00371
+2026-11-14,Ingreso canal Microsoft · ref 99090,Revenue,,"8,574.91",in,USD,SV-202611-00468
+2026-11-15,internet · Bufete Istmo & Asociados,internet,Bufete Istmo & Asociados,"35,797.54",out,USD,SV-202611-00061
+2026-11-15,Ingreso canal Microsoft · ref 49078,Revenue,,"81,494.87",in,USD,SV-202611-00181
+2026-11-15,eventos · AWS Marketplace Reseller,eventos,AWS Marketplace Reseller,"64,064.36",out,USD,SV-202611-00309
+2026-11-16,per diem · Seguros Volcán,per diem,Seguros Volcán,"12,751.66",out,USD,SV-202611-00219
+2026-11-16,bodega · Bufete Istmo & Asociados,Rent,Bufete Istmo & Asociados,"65,196.82",out,USD,SV-202611-00251
+2026-11-16,bodega · Aerolíneas Centroamericanas,bodega,Aerolíneas Centroamericanas,"32,298.35",out,USD,SV-202611-00334
+2026-11-16,vuelos · Bufete Istmo & Asociados,vuelos,Bufete Istmo & Asociados,"39,452.28",out,USD,SV-202611-00399
+2026-11-16,compute · LogiCentro CA,compute,LogiCentro CA,"117,952.16",out,USD,SV-202611-00496
+2026-11-17,beneficios · Seguros Volcán,Payroll,Seguros Volcán,"375,976.17",out,USD,SV-202611-00179
+2026-11-17,per diem · Bufete Istmo & Asociados,per diem,Bufete Istmo & Asociados,"57,290.62",out,USD,SV-202611-00222
+2026-11-18,agua · Bufete Istmo & Asociados,agua,Bufete Istmo & Asociados,"17,374.66",out,USD,SV-202611-00118
+2026-11-18,bodega · Agencia Brújula Media,Rent,Agencia Brújula Media,"1,382.40",out,USD,SV-202611-00232
+2026-11-18,agua · LogiCentro CA,agua,LogiCentro CA,"19,035.18",out,USD,SV-202611-00374
+2026-11-19,electricidad · Energía del Pacífico,electricidad,Energía del Pacífico,"66,619.82",out,USD,SV-202611-00007
+2026-11-19,consultoría · Impresos del Valle,consultoría,Impresos del Valle,"71,612.07",out,USD,SV-202611-00120
+2026-11-19,logística · Oficinas Corporativas del Istmo,logística,Oficinas Corporativas del Istmo,"77,379.11",out,USD,SV-202611-00130
+2026-11-19,internet · LogiCentro CA,Utilities,LogiCentro CA,"45,783.35",out,USD,SV-202611-00152
+2026-11-19,transporte last-mile · Transportes Rápidos,Deliveries,Transportes Rápidos,"46,937.59",out,USD,SV-202611-00405
+2026-11-19,electricidad · Aerolíneas Centroamericanas,electricidad,Aerolíneas Centroamericanas,"87,796.99",out,USD,SV-202611-00411
+2026-11-19,ads · Impresos del Valle,ads,Impresos del Valle,"71,953.08",out,USD,SV-202611-00421
+2026-11-19,Ingreso canal Microsoft · ref 29199,Revenue,,"37,980.22",in,USD,SV-202611-00462
+2026-11-19,agua · Transportes Rápidos,Utilities,Transportes Rápidos,"21,429.40",out,USD,SV-202611-00476
+2026-11-20,compute · Seguros Volcán,compute,Seguros Volcán,"256,410.46",out,USD,SV-202611-00075
+2026-11-20,nómina · Bufete Istmo & Asociados,nómina,Bufete Istmo & Asociados,"12,659.10",out,USD,SV-202611-00146
+2026-11-20,consultoría · Energía del Pacífico,consultoría,Energía del Pacífico,"26,002.33",out,USD,SV-202611-00157
+2026-11-20,storage · Impresos del Valle,Cloud,Impresos del Valle,"140,116.82",out,USD,SV-202611-00362
+2026-11-20,bodega · LogiCentro CA,Rent,LogiCentro CA,"93,630.39",out,USD,SV-202611-00378
+2026-11-20,brand · Impresos del Valle,brand,Impresos del Valle,"1,711.65",out,USD,SV-202611-00458
+2026-11-21,cargas sociales · Impresos del Valle,Payroll,Impresos del Valle,"88,344.47",out,USD,SV-202611-00006
+2026-11-21,storage · Transportes Rápidos,Cloud,Transportes Rápidos,"193,798.98",out,USD,SV-202611-00016
+2026-11-21,agua · Energía del Pacífico,agua,Energía del Pacífico,"37,509.12",out,USD,SV-202611-00244
+2026-11-21,legal · Impresos del Valle,ProfessionalServices,Impresos del Valle,"65,341.12",out,USD,SV-202611-00408
+2026-11-22,Ingreso canal Microsoft · ref 68838,Revenue,,"166,487.69",in,USD,SV-202611-00025
+2026-11-22,Ingreso canal Microsoft · ref 52337,Revenue,,"91,607.66",in,USD,SV-202611-00299
+2026-11-22,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"62,421.82",out,USD,SV-202611-00420
+2026-11-23,hoteles · Energía del Pacífico,hoteles,Energía del Pacífico,"82,182.74",out,USD,SV-202611-00149
+2026-11-23,transporte last-mile · Seguros Volcán,Deliveries,Seguros Volcán,"32,671.21",out,USD,SV-202611-00422
+2026-11-24,Ingreso canal Microsoft · ref 20278,Revenue,,"79,646.67",in,USD,SV-202611-00058
+2026-11-24,Ingreso canal Microsoft · ref 32349,Revenue,,"57,505.00",in,USD,SV-202611-00115
+2026-11-24,ads · Transportes Rápidos,Marketing,Transportes Rápidos,"5,597.04",out,USD,SV-202611-00172
+2026-11-24,alquiler HQ · AWS Marketplace Reseller,alquiler HQ,AWS Marketplace Reseller,"78,957.99",out,USD,SV-202611-00194
+2026-11-24,eventos · Datacenter Istmo,Marketing,Datacenter Istmo,"13,781.86",out,USD,SV-202611-00296
+2026-11-24,agua · Transportes Rápidos,agua,Transportes Rápidos,"28,720.91",out,USD,SV-202611-00394
+2026-11-25,storage · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"264,230.86",out,USD,SV-202611-00295
+2026-11-25,compute · Impresos del Valle,Cloud,Impresos del Valle,"380,673.88",out,USD,SV-202611-00336
+2026-11-26,alquiler HQ · Seguros Volcán,Rent,Seguros Volcán,"64,647.35",out,USD,SV-202611-00038
+2026-11-26,Ingreso canal Microsoft · ref 30650,Revenue,,"131,529.67",in,USD,SV-202611-00150
+2026-11-26,Ingreso canal Microsoft · ref 16351,Revenue,,"427,427.23",in,USD,SV-202611-00202
+2026-11-26,agua · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"28,703.57",out,USD,SV-202611-00465
+2026-11-27,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"122,180.33",out,USD,SV-202611-00173
+2026-11-27,auditoría · Oficinas Corporativas del Istmo,auditoría,Oficinas Corporativas del Istmo,"7,462.39",out,USD,SV-202611-00237
+2026-11-27,auditoría · Datacenter Istmo,ProfessionalServices,Datacenter Istmo,"21,875.88",out,USD,SV-202611-00367
+2026-11-27,brand · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"87,566.66",out,USD,SV-202611-00446
+2026-11-27,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"49,813.26",out,USD,SV-202611-00499
+2026-11-27,Ingreso canal Microsoft · ref 23791,Revenue,,"81,262.00",in,USD,SV-202611-00510
+2026-11-28,Ingreso canal Microsoft · ref 91862,Revenue,,"36,224.85",in,USD,SV-202611-00070
+2026-11-28,cargas sociales · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"267,085.11",out,USD,SV-202611-00155
+2026-11-28,bodega · Seguros Volcán,bodega,Seguros Volcán,"48,835.70",out,USD,SV-202611-00242
+2026-11-28,nómina · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"227,403.30",out,USD,SV-202611-00417
+2026-11-28,brand · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"53,024.41",out,USD,SV-202611-00471
+2026-11-28,Ingreso canal Microsoft · ref 27762,Revenue,,"81,723.61",in,USD,SV-202611-00506
+2026-11-29,agua · Agencia Brújula Media,agua,Agencia Brújula Media,"40,002.40",out,USD,SV-202611-00119
+2026-11-29,agua · AWS Marketplace Reseller,agua,AWS Marketplace Reseller,"56,353.28",out,USD,SV-202611-00353
+2026-11-29,electricidad · Transportes Rápidos,electricidad,Transportes Rápidos,"26,286.17",out,USD,SV-202611-00484
+2026-11-29,Ingreso canal Microsoft · ref 99906,Revenue,,"93,327.25",in,USD,SV-202611-00504
+2026-11-30,hoteles · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"46,476.29",out,USD,SV-202611-00125
+2026-11-30,cargas sociales · Energía del Pacífico,Payroll,Energía del Pacífico,"16,106.44",out,USD,SV-202611-00270
+2026-11-30,eventos · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"61,241.89",out,USD,SV-202611-00306
+2026-11-30,infra cloud · Impresos del Valle,infra cloud,Impresos del Valle,"137,818.90",out,USD,SV-202611-00314
+2026-11-30,eventos · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"8,057.70",out,USD,SV-202611-00365
+2026-11-30,storage · LogiCentro CA,storage,LogiCentro CA,"52,325.66",out,USD,SV-202611-00475
+2026-11-30,nómina · Transportes Rápidos,Payroll,Transportes Rápidos,"300,913.43",out,USD,SV-202611-00488
+2026-12-01,logística · Aerolíneas Centroamericanas,logística,Aerolíneas Centroamericanas,"84,971.12",out,USD,SV-202612-00040
+2026-12-01,agua · AWS Marketplace Reseller,agua,AWS Marketplace Reseller,"67,932.83",out,USD,SV-202612-00210
+2026-12-01,Ingreso canal Microsoft · ref 88372,Revenue,,"36,481.13",in,USD,SV-202612-00305
+2026-12-01,coworking · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"31,711.44",out,USD,SV-202612-00438
+2026-12-02,compute · Catering La Ceiba,compute,Catering La Ceiba,"44,366.73",out,USD,SV-202612-00027
+2026-12-02,storage · AWS Marketplace Reseller,storage,AWS Marketplace Reseller,"73,409.40",out,USD,SV-202612-00145
+2026-12-02,logística · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"15,462.73",out,USD,SV-202612-00198
+2026-12-02,legal · AWS Marketplace Reseller,legal,AWS Marketplace Reseller,"47,124.49",out,USD,SV-202612-00246
+2026-12-02,vuelos · LogiCentro CA,Travel,LogiCentro CA,"56,356.61",out,USD,SV-202612-00257
+2026-12-02,per diem · AWS Marketplace Reseller,Travel,AWS Marketplace Reseller,"55,048.44",out,USD,SV-202612-00282
+2026-12-02,bodega · Energía del Pacífico,Rent,Energía del Pacífico,"65,974.15",out,USD,SV-202612-00357
+2026-12-02,legal · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"4,222.49",out,USD,SV-202612-00364
+2026-12-02,electricidad · Energía del Pacífico,electricidad,Energía del Pacífico,"21,376.49",out,USD,SV-202612-00493
+2026-12-03,Ingreso canal Microsoft · ref 82997,Revenue,,"73,743.98",in,USD,SV-202612-00117
+2026-12-03,Ingreso canal Microsoft · ref 53807,Revenue,,"32,996.03",in,USD,SV-202612-00160
+2026-12-03,vuelos · Catering La Ceiba,Travel,Catering La Ceiba,"60,937.17",out,USD,SV-202612-00203
+2026-12-04,hoteles · LogiCentro CA,hoteles,LogiCentro CA,"28,779.13",out,USD,SV-202612-00022
+2026-12-04,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"31,452.62",out,USD,SV-202612-00095
+2026-12-04,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"12,106.43",out,USD,SV-202612-00144
+2026-12-04,infra cloud · Seguros Volcán,Cloud,Seguros Volcán,"281,797.36",out,USD,SV-202612-00156
+2026-12-04,ads · Bufete Istmo & Asociados,ads,Bufete Istmo & Asociados,"87,386.30",out,USD,SV-202612-00226
+2026-12-04,agua · Impresos del Valle,agua,Impresos del Valle,"11,325.95",out,USD,SV-202612-00267
+2026-12-04,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"8,428.42",out,USD,SV-202612-00333
+2026-12-04,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"82,852.07",out,USD,SV-202612-00344
+2026-12-04,vuelos · LogiCentro CA,Travel,LogiCentro CA,"77,393.48",out,USD,SV-202612-00444
+2026-12-04,ads · Agencia Brújula Media,Marketing,Agencia Brújula Media,"34,057.56",out,USD,SV-202612-00492
+2026-12-05,Ingreso canal Microsoft · ref 41306,Revenue,,"73,904.74",in,USD,SV-202612-00063
+2026-12-05,per diem · Datacenter Istmo,Travel,Datacenter Istmo,"27,749.27",out,USD,SV-202612-00093
+2026-12-05,brand · LogiCentro CA,Marketing,LogiCentro CA,"86,139.63",out,USD,SV-202612-00116
+2026-12-05,logística · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"93,407.10",out,USD,SV-202612-00290
+2026-12-05,ads · LogiCentro CA,Marketing,LogiCentro CA,"34,156.98",out,USD,SV-202612-00361
+2026-12-05,vuelos · Energía del Pacífico,Travel,Energía del Pacífico,"33,316.82",out,USD,SV-202612-00415
+2026-12-05,infra cloud · Energía del Pacífico,Cloud,Energía del Pacífico,"115,391.66",out,USD,SV-202612-00449
+2026-12-06,eventos · LogiCentro CA,eventos,LogiCentro CA,"86,168.81",out,USD,SV-202612-00017
+2026-12-06,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"11,406.19",out,USD,SV-202612-00084
+2026-12-07,logística · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"12,950.94",out,USD,SV-202612-00085
+2026-12-07,Ingreso canal Microsoft · ref 84927,Revenue,,"23,065.24",in,USD,SV-202612-00255
+2026-12-07,Ingreso canal Microsoft · ref 24867,Revenue,,"77,291.16",in,USD,SV-202612-00274
+2026-12-07,agua · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"40,676.98",out,USD,SV-202612-00275
+2026-12-07,Ingreso canal Microsoft · ref 60225,Revenue,,"7,681.30",in,USD,SV-202612-00303
+2026-12-07,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"261,138.83",out,USD,SV-202612-00380
+2026-12-08,Ingreso canal Microsoft · ref 60254,Revenue,,"73,200.11",in,USD,SV-202612-00031
+2026-12-08,compute · Impresos del Valle,Cloud,Impresos del Valle,"379,658.46",out,USD,SV-202612-00147
+2026-12-08,auditoría · Aerolíneas Centroamericanas,auditoría,Aerolíneas Centroamericanas,"50,216.52",out,USD,SV-202612-00214
+2026-12-08,infra cloud · AWS Marketplace Reseller,infra cloud,AWS Marketplace Reseller,"87,436.77",out,USD,SV-202612-00234
+2026-12-08,electricidad · Bufete Istmo & Asociados,electricidad,Bufete Istmo & Asociados,"71,488.22",out,USD,SV-202612-00253
+2026-12-08,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"70,814.40",out,USD,SV-202612-00322
+2026-12-09,cargas sociales · Oficinas Corporativas del Istmo,cargas sociales,Oficinas Corporativas del Istmo,"282,385.94",out,USD,SV-202612-00068
+2026-12-09,per diem · Catering La Ceiba,per diem,Catering La Ceiba,"81,057.51",out,USD,SV-202612-00204
+2026-12-09,Ingreso canal Microsoft · ref 16082,Revenue,,"64,885.33",in,USD,SV-202612-00205
+2026-12-09,ads · Catering La Ceiba,Marketing,Catering La Ceiba,"93,670.54",out,USD,SV-202612-00287

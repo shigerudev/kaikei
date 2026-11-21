@@ -1,0 +1,521 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (Q),Signo,Moneda,Referencia
+2026-09-01,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"2,014,690.32",out,GTQ,GT-202609-00029
+2026-09-01,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"724,183.94",out,GTQ,GT-202609-00145
+2026-09-01,bodega · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"322,413.89",out,GTQ,GT-202609-00167
+2026-09-01,ads · Agencia Brújula Media,ads,Agencia Brújula Media,"313,982.93",out,GTQ,GT-202609-00180
+2026-09-01,hoteles · Catering La Ceiba,hoteles,Catering La Ceiba,"669,914.77",out,GTQ,GT-202609-00195
+2026-09-01,beneficios · Energía del Pacífico,Payroll,Energía del Pacífico,"24,779.29",out,GTQ,GT-202609-00350
+2026-09-01,transporte last-mile · Energía del Pacífico,Deliveries,Energía del Pacífico,"99,077.23",out,GTQ,GT-202609-00359
+2026-09-02,logística · Seguros Volcán,Deliveries,Seguros Volcán,"465,938.29",out,GTQ,GT-202609-00056
+2026-09-02,transporte last-mile · Transportes Rápidos,transporte last-mile,Transportes Rápidos,"274,526.27",out,GTQ,GT-202609-00265
+2026-09-02,compute · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"882,866.24",out,GTQ,GT-202609-00382
+2026-09-03,Ingreso canal Apple · ref 34452,Revenue,,"185,713.82",in,GTQ,GT-202609-00079
+2026-09-03,electricidad · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"415,183.71",out,GTQ,GT-202609-00281
+2026-09-03,per diem · LogiCentro CA,per diem,LogiCentro CA,"624,144.45",out,GTQ,GT-202609-00393
+2026-09-03,Ingreso canal Apple · ref 95735,Revenue,,"147,062.72",in,GTQ,GT-202609-00449
+2026-09-04,vuelos · LogiCentro CA,Travel,LogiCentro CA,"221,495.18",out,GTQ,GT-202609-00088
+2026-09-04,infra cloud · Energía del Pacífico,Cloud,Energía del Pacífico,"916,636.56",out,GTQ,GT-202609-00126
+2026-09-04,vuelos · Energía del Pacífico,Travel,Energía del Pacífico,"698,057.45",out,GTQ,GT-202609-00210
+2026-09-04,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"73,539.86",out,GTQ,GT-202609-00245
+2026-09-04,storage · Transportes Rápidos,Cloud,Transportes Rápidos,"548,292.67",out,GTQ,GT-202609-00309
+2026-09-04,Ingreso canal Apple · ref 81687,Revenue,,"325,775.21",in,GTQ,GT-202609-00407
+2026-09-04,electricidad · Aerolíneas Centroamericanas,electricidad,Aerolíneas Centroamericanas,"730,029.02",out,GTQ,GT-202609-00417
+2026-09-04,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"684,046.68",out,GTQ,GT-202609-00480
+2026-09-04,compute · Seguros Volcán,Cloud,Seguros Volcán,"1,265,381.81",out,GTQ,GT-202609-00500
+2026-09-05,eventos · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"270,463.04",out,GTQ,GT-202609-00009
+2026-09-05,infra cloud · Catering La Ceiba,Cloud,Catering La Ceiba,"1,265,677.67",out,GTQ,GT-202609-00184
+2026-09-05,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"67,140.17",out,GTQ,GT-202609-00185
+2026-09-05,internet · LogiCentro CA,Utilities,LogiCentro CA,"244,234.36",out,GTQ,GT-202609-00355
+2026-09-06,ads · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"202,118.09",out,GTQ,GT-202609-00010
+2026-09-06,cargas sociales · Seguros Volcán,Payroll,Seguros Volcán,"3,021,999.42",out,GTQ,GT-202609-00133
+2026-09-06,brand · Energía del Pacífico,brand,Energía del Pacífico,"617,053.00",out,GTQ,GT-202609-00220
+2026-09-06,coworking · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"61,490.08",out,GTQ,GT-202609-00413
+2026-09-06,Ingreso canal Apple · ref 20546,Revenue,,"520,864.93",in,GTQ,GT-202609-00494
+2026-09-06,hoteles · Datacenter Istmo,hoteles,Datacenter Istmo,"662,896.72",out,GTQ,GT-202609-00501
+2026-09-07,Ingreso canal Apple · ref 35283,Revenue,,"524,086.67",in,GTQ,GT-202609-00074
+2026-09-07,brand · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"223,731.27",out,GTQ,GT-202609-00083
+2026-09-07,Ingreso canal Apple · ref 66598,Revenue,,"162,086.09",in,GTQ,GT-202609-00172
+2026-09-07,nómina · Agencia Brújula Media,Payroll,Agencia Brújula Media,"1,653,040.77",out,GTQ,GT-202609-00276
+2026-09-08,Ingreso canal Apple · ref 88699,Revenue,,"14,429.72",in,GTQ,GT-202609-00019
+2026-09-08,internet · Oficinas Corporativas del Istmo,internet,Oficinas Corporativas del Istmo,"397,528.65",out,GTQ,GT-202609-00252
+2026-09-08,legal · LogiCentro CA,legal,LogiCentro CA,"160,587.16",out,GTQ,GT-202609-00302
+2026-09-08,Ingreso canal Apple · ref 36728,Revenue,,"493,185.09",in,GTQ,GT-202609-00402
+2026-09-08,Ingreso canal Apple · ref 99015,Revenue,,"733,284.70",in,GTQ,GT-202609-00453
+2026-09-09,vuelos · Impresos del Valle,vuelos,Impresos del Valle,"46,125.43",out,GTQ,GT-202609-00073
+2026-09-09,coworking · AWS Marketplace Reseller,coworking,AWS Marketplace Reseller,"740,027.57",out,GTQ,GT-202609-00096
+2026-09-09,beneficios · Energía del Pacífico,Payroll,Energía del Pacífico,"1,805,871.90",out,GTQ,GT-202609-00423
+2026-09-09,infra cloud · Seguros Volcán,Cloud,Seguros Volcán,"2,053,314.49",out,GTQ,GT-202609-00493
+2026-09-10,alquiler HQ · Impresos del Valle,Rent,Impresos del Valle,"53,739.54",out,GTQ,GT-202609-00098
+2026-09-10,brand · Bufete Istmo & Asociados,brand,Bufete Istmo & Asociados,"291,125.15",out,GTQ,GT-202609-00152
+2026-09-10,legal · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"354,381.09",out,GTQ,GT-202609-00156
+2026-09-10,hoteles · Seguros Volcán,Travel,Seguros Volcán,"423,727.19",out,GTQ,GT-202609-00191
+2026-09-10,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"307,746.81",out,GTQ,GT-202609-00326
+2026-09-10,brand · Aerolíneas Centroamericanas,brand,Aerolíneas Centroamericanas,"532,190.43",out,GTQ,GT-202609-00387
+2026-09-10,brand · Oficinas Corporativas del Istmo,brand,Oficinas Corporativas del Istmo,"680,142.88",out,GTQ,GT-202609-00394
+2026-09-11,beneficios · Datacenter Istmo,Payroll,Datacenter Istmo,"1,316,778.96",out,GTQ,GT-202609-00151
+2026-09-11,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"51,364.75",out,GTQ,GT-202609-00170
+2026-09-11,nómina · Transportes Rápidos,nómina,Transportes Rápidos,"1,364,665.12",out,GTQ,GT-202609-00175
+2026-09-11,eventos · Impresos del Valle,eventos,Impresos del Valle,"239,855.76",out,GTQ,GT-202609-00346
+2026-09-11,per diem · Catering La Ceiba,per diem,Catering La Ceiba,"603,442.74",out,GTQ,GT-202609-00511
+2026-09-12,Ingreso canal Apple · ref 60627,Revenue,,"80,835.19",in,GTQ,GT-202609-00106
+2026-09-12,hoteles · Seguros Volcán,Travel,Seguros Volcán,"564,721.88",out,GTQ,GT-202609-00236
+2026-09-12,Ingreso canal Apple · ref 32349,Revenue,,"740,253.96",in,GTQ,GT-202609-00275
+2026-09-12,legal · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"191,469.71",out,GTQ,GT-202609-00333
+2026-09-12,coworking · LogiCentro CA,coworking,LogiCentro CA,"165,510.85",out,GTQ,GT-202609-00369
+2026-09-12,ads · Catering La Ceiba,ads,Catering La Ceiba,"630,106.93",out,GTQ,GT-202609-00476
+2026-09-13,coworking · LogiCentro CA,coworking,LogiCentro CA,"24,436.15",out,GTQ,GT-202609-00070
+2026-09-13,coworking · Impresos del Valle,Rent,Impresos del Valle,"423,644.20",out,GTQ,GT-202609-00099
+2026-09-13,entregas · Agencia Brújula Media,entregas,Agencia Brújula Media,"224,146.34",out,GTQ,GT-202609-00128
+2026-09-13,eventos · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"561,073.59",out,GTQ,GT-202609-00158
+2026-09-13,nómina · AWS Marketplace Reseller,nómina,AWS Marketplace Reseller,"1,173,867.35",out,GTQ,GT-202609-00248
+2026-09-13,eventos · Seguros Volcán,Marketing,Seguros Volcán,"48,749.72",out,GTQ,GT-202609-00313
+2026-09-14,alquiler HQ · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"367,010.52",out,GTQ,GT-202609-00004
+2026-09-14,per diem · Seguros Volcán,per diem,Seguros Volcán,"564,751.60",out,GTQ,GT-202609-00118
+2026-09-14,agua · Transportes Rápidos,Utilities,Transportes Rápidos,"478,687.69",out,GTQ,GT-202609-00130
+2026-09-14,hoteles · Transportes Rápidos,Travel,Transportes Rápidos,"50,255.42",out,GTQ,GT-202609-00274
+2026-09-14,nómina · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"388,117.65",out,GTQ,GT-202609-00319
+2026-09-14,hoteles · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"188,021.49",out,GTQ,GT-202609-00452
+2026-09-14,bodega · Oficinas Corporativas del Istmo,bodega,Oficinas Corporativas del Istmo,"683,787.31",out,GTQ,GT-202609-00502
+2026-09-15,Ingreso canal Apple · ref 86876,Revenue,,"307,162.91",in,GTQ,GT-202609-00129
+2026-09-15,logística · LogiCentro CA,Deliveries,LogiCentro CA,"115,488.17",out,GTQ,GT-202609-00197
+2026-09-15,infra cloud · Transportes Rápidos,Cloud,Transportes Rápidos,"1,392,053.01",out,GTQ,GT-202609-00509
+2026-09-16,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"240,052.78",out,GTQ,GT-202609-00007
+2026-09-16,Ingreso canal Apple · ref 65527,Revenue,,"569,196.72",in,GTQ,GT-202609-00016
+2026-09-16,internet · Agencia Brújula Media,Utilities,Agencia Brújula Media,"18,468.12",out,GTQ,GT-202609-00081
+2026-09-16,Ingreso canal Apple · ref 59520,Revenue,,"951,296.92",in,GTQ,GT-202609-00113
+2026-09-16,electricidad · Energía del Pacífico,Utilities,Energía del Pacífico,"11,966.72",out,GTQ,GT-202609-00154
+2026-09-16,coworking · Datacenter Istmo,Rent,Datacenter Istmo,"633,023.43",out,GTQ,GT-202609-00352
+2026-09-16,Ingreso canal Apple · ref 86683,Revenue,,"485,768.95",in,GTQ,GT-202609-00422
+2026-09-16,consultoría · AWS Marketplace Reseller,consultoría,AWS Marketplace Reseller,"119,242.69",out,GTQ,GT-202609-00427
+2026-09-16,Ingreso canal Apple · ref 39813,Revenue,,"1,383,477.90",in,GTQ,GT-202609-00446
+2026-09-16,legal · Seguros Volcán,ProfessionalServices,Seguros Volcán,"296,811.22",out,GTQ,GT-202609-00448
+2026-09-16,bodega · Transportes Rápidos,bodega,Transportes Rápidos,"376,592.05",out,GTQ,GT-202609-00470
+2026-09-17,electricidad · Impresos del Valle,Utilities,Impresos del Valle,"346,871.27",out,GTQ,GT-202609-00176
+2026-09-18,auditoría · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"610,333.75",out,GTQ,GT-202609-00085
+2026-09-18,Ingreso canal Apple · ref 11146,Revenue,,"321,277.14",in,GTQ,GT-202609-00389
+2026-09-19,transporte last-mile · Aerolíneas Centroamericanas,transporte last-mile,Aerolíneas Centroamericanas,"62,415.38",out,GTQ,GT-202609-00177
+2026-09-19,eventos · Agencia Brújula Media,eventos,Agencia Brújula Media,"438,124.54",out,GTQ,GT-202609-00183
+2026-09-19,bodega · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"233,819.55",out,GTQ,GT-202609-00392
+2026-09-19,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"32,873.87",out,GTQ,GT-202609-00498
+2026-09-20,ads · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"29,361.89",out,GTQ,GT-202609-00059
+2026-09-20,bodega · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"579,386.78",out,GTQ,GT-202609-00123
+2026-09-20,alquiler HQ · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"381,810.12",out,GTQ,GT-202609-00194
+2026-09-20,Ingreso canal Apple · ref 55616,Revenue,,"395,844.77",in,GTQ,GT-202609-00512
+2026-09-21,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"514,761.92",out,GTQ,GT-202609-00179
+2026-09-22,brand · Bufete Istmo & Asociados,brand,Bufete Istmo & Asociados,"478,717.39",out,GTQ,GT-202609-00035
+2026-09-22,legal · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"427,836.11",out,GTQ,GT-202609-00285
+2026-09-22,internet · LogiCentro CA,Utilities,LogiCentro CA,"339,286.89",out,GTQ,GT-202609-00297
+2026-09-22,bodega · Transportes Rápidos,Rent,Transportes Rápidos,"310,277.23",out,GTQ,GT-202609-00318
+2026-09-22,coworking · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"533,023.97",out,GTQ,GT-202609-00329
+2026-09-22,legal · Transportes Rápidos,legal,Transportes Rápidos,"298,074.39",out,GTQ,GT-202609-00433
+2026-09-22,coworking · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"89,949.13",out,GTQ,GT-202609-00495
+2026-09-23,Ingreso canal Apple · ref 19127,Revenue,,"145,801.32",in,GTQ,GT-202609-00055
+2026-09-23,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"348,493.95",out,GTQ,GT-202609-00117
+2026-09-23,infra cloud · Datacenter Istmo,Cloud,Datacenter Istmo,"85,314.35",out,GTQ,GT-202609-00429
+2026-09-23,logística · LogiCentro CA,Deliveries,LogiCentro CA,"168,957.52",out,GTQ,GT-202609-00475
+2026-09-24,Ingreso canal Apple · ref 31389,Revenue,,"276,396.31",in,GTQ,GT-202609-00132
+2026-09-24,vuelos · Transportes Rápidos,Travel,Transportes Rápidos,"522,806.19",out,GTQ,GT-202609-00320
+2026-09-25,ads · AWS Marketplace Reseller,ads,AWS Marketplace Reseller,"520,894.97",out,GTQ,GT-202609-00071
+2026-09-25,auditoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"119,741.11",out,GTQ,GT-202609-00227
+2026-09-25,brand · Catering La Ceiba,brand,Catering La Ceiba,"672,487.45",out,GTQ,GT-202609-00254
+2026-09-25,coworking · Impresos del Valle,Rent,Impresos del Valle,"6,834.49",out,GTQ,GT-202609-00258
+2026-09-25,alquiler HQ · Oficinas Corporativas del Istmo,alquiler HQ,Oficinas Corporativas del Istmo,"165,005.90",out,GTQ,GT-202609-00375
+2026-09-25,vuelos · Energía del Pacífico,vuelos,Energía del Pacífico,"549,550.51",out,GTQ,GT-202609-00445
+2026-09-25,auditoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"663,688.79",out,GTQ,GT-202609-00468
+2026-09-25,beneficios · Aerolíneas Centroamericanas,beneficios,Aerolíneas Centroamericanas,"2,626,861.70",out,GTQ,GT-202609-00516
+2026-09-26,Ingreso canal Apple · ref 63275,Revenue,,"307,914.34",in,GTQ,GT-202609-00100
+2026-09-26,Ingreso canal Apple · ref 12026,Revenue,,"500,112.60",in,GTQ,GT-202609-00125
+2026-09-26,agua · Impresos del Valle,Utilities,Impresos del Valle,"637,312.07",out,GTQ,GT-202609-00206
+2026-09-26,alquiler HQ · Agencia Brújula Media,alquiler HQ,Agencia Brújula Media,"637,003.97",out,GTQ,GT-202609-00299
+2026-09-26,eventos · Datacenter Istmo,Marketing,Datacenter Istmo,"241,055.96",out,GTQ,GT-202609-00310
+2026-09-26,vuelos · Datacenter Istmo,vuelos,Datacenter Istmo,"281,792.27",out,GTQ,GT-202609-00490
+2026-09-27,hoteles · Aerolíneas Centroamericanas,hoteles,Aerolíneas Centroamericanas,"103,462.58",out,GTQ,GT-202609-00001
+2026-09-27,legal · Seguros Volcán,legal,Seguros Volcán,"610,387.78",out,GTQ,GT-202609-00037
+2026-09-27,logística · Catering La Ceiba,Deliveries,Catering La Ceiba,"448,413.85",out,GTQ,GT-202609-00062
+2026-09-27,electricidad · LogiCentro CA,Utilities,LogiCentro CA,"693,435.27",out,GTQ,GT-202609-00120
+2026-09-27,nómina · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"1,338,553.64",out,GTQ,GT-202609-00207
+2026-09-27,beneficios · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"491,224.01",out,GTQ,GT-202609-00211
+2026-09-27,Ingreso canal Apple · ref 48466,Revenue,,"1,702,258.14",in,GTQ,GT-202609-00348
+2026-09-27,compute · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"1,264,745.91",out,GTQ,GT-202609-00520
+2026-09-28,internet · AWS Marketplace Reseller,internet,AWS Marketplace Reseller,"683,038.20",out,GTQ,GT-202609-00028
+2026-09-28,nómina · LogiCentro CA,Payroll,LogiCentro CA,"906,084.90",out,GTQ,GT-202609-00052
+2026-09-28,electricidad · Oficinas Corporativas del Istmo,electricidad,Oficinas Corporativas del Istmo,"354,363.62",out,GTQ,GT-202609-00157
+2026-09-28,infra cloud · Transportes Rápidos,infra cloud,Transportes Rápidos,"302,879.16",out,GTQ,GT-202609-00187
+2026-09-28,beneficios · AWS Marketplace Reseller,beneficios,AWS Marketplace Reseller,"1,661,019.21",out,GTQ,GT-202609-00231
+2026-09-28,Ingreso canal Apple · ref 46810,Revenue,,"1,170,177.24",in,GTQ,GT-202609-00354
+2026-09-28,entregas · Datacenter Istmo,entregas,Datacenter Istmo,"430,280.18",out,GTQ,GT-202609-00406
+2026-09-28,cargas sociales · Impresos del Valle,Payroll,Impresos del Valle,"903,886.26",out,GTQ,GT-202609-00515
+2026-09-29,logística · Oficinas Corporativas del Istmo,logística,Oficinas Corporativas del Istmo,"67,415.70",out,GTQ,GT-202609-00058
+2026-09-29,bodega · LogiCentro CA,Rent,LogiCentro CA,"239,196.17",out,GTQ,GT-202609-00196
+2026-09-29,agua · Transportes Rápidos,Utilities,Transportes Rápidos,"400,395.92",out,GTQ,GT-202609-00381
+2026-09-29,hoteles · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"708,039.63",out,GTQ,GT-202609-00418
+2026-09-29,logística · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"227,718.22",out,GTQ,GT-202609-00424
+2026-09-30,nómina · Agencia Brújula Media,Payroll,Agencia Brújula Media,"507,821.43",out,GTQ,GT-202609-00038
+2026-09-30,per diem · LogiCentro CA,Travel,LogiCentro CA,"505,016.67",out,GTQ,GT-202609-00222
+2026-10-01,brand · Energía del Pacífico,Marketing,Energía del Pacífico,"627,656.19",out,GTQ,GT-202610-00053
+2026-10-01,transporte last-mile · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"374,676.40",out,GTQ,GT-202610-00111
+2026-10-01,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"632,334.07",out,GTQ,GT-202610-00204
+2026-10-01,ads · Catering La Ceiba,Marketing,Catering La Ceiba,"502,483.66",out,GTQ,GT-202610-00215
+2026-10-01,compute · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"1,591,381.15",out,GTQ,GT-202610-00349
+2026-10-02,beneficios · Aerolíneas Centroamericanas,beneficios,Aerolíneas Centroamericanas,"1,768,101.90",out,GTQ,GT-202610-00012
+2026-10-02,nómina · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"3,055,013.68",out,GTQ,GT-202610-00054
+2026-10-02,legal · Energía del Pacífico,legal,Energía del Pacífico,"415,539.66",out,GTQ,GT-202610-00237
+2026-10-02,Ingreso canal Apple · ref 20608,Revenue,,"609,326.68",in,GTQ,GT-202610-00272
+2026-10-03,cargas sociales · Datacenter Istmo,Payroll,Datacenter Istmo,"2,707,462.44",out,GTQ,GT-202610-00023
+2026-10-03,Ingreso canal Apple · ref 16425,Revenue,,"657,895.76",in,GTQ,GT-202610-00193
+2026-10-03,entregas · Datacenter Istmo,entregas,Datacenter Istmo,"319,767.80",out,GTQ,GT-202610-00223
+2026-10-03,auditoría · Datacenter Istmo,auditoría,Datacenter Istmo,"211,099.95",out,GTQ,GT-202610-00261
+2026-10-03,internet · Aerolíneas Centroamericanas,internet,Aerolíneas Centroamericanas,"447,083.90",out,GTQ,GT-202610-00288
+2026-10-03,legal · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"247,508.42",out,GTQ,GT-202610-00362
+2026-10-04,nómina · LogiCentro CA,Payroll,LogiCentro CA,"871,895.76",out,GTQ,GT-202610-00060
+2026-10-04,brand · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"341,282.94",out,GTQ,GT-202610-00279
+2026-10-04,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"407,598.79",out,GTQ,GT-202610-00440
+2026-10-04,transporte last-mile · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"201,114.07",out,GTQ,GT-202610-00481
+2026-10-04,ads · Transportes Rápidos,Marketing,Transportes Rápidos,"733,646.91",out,GTQ,GT-202610-00507
+2026-10-04,nómina · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"1,047,866.70",out,GTQ,GT-202610-00508
+2026-10-05,logística · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"597,550.45",out,GTQ,GT-202610-00063
+2026-10-05,hoteles · Impresos del Valle,hoteles,Impresos del Valle,"314,371.79",out,GTQ,GT-202610-00076
+2026-10-05,logística · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"225,234.48",out,GTQ,GT-202610-00089
+2026-10-05,agua · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"246,517.07",out,GTQ,GT-202610-00213
+2026-10-05,entregas · Aerolíneas Centroamericanas,entregas,Aerolíneas Centroamericanas,"182,165.86",out,GTQ,GT-202610-00234
+2026-10-05,infra cloud · Energía del Pacífico,Cloud,Energía del Pacífico,"2,289,989.98",out,GTQ,GT-202610-00321
+2026-10-05,alquiler HQ · LogiCentro CA,Rent,LogiCentro CA,"363,141.60",out,GTQ,GT-202610-00377
+2026-10-05,cargas sociales · LogiCentro CA,Payroll,LogiCentro CA,"3,060,873.96",out,GTQ,GT-202610-00380
+2026-10-05,Ingreso canal Apple · ref 22502,Revenue,,"568,653.07",in,GTQ,GT-202610-00473
+2026-10-05,eventos · Transportes Rápidos,Marketing,Transportes Rápidos,"545,593.56",out,GTQ,GT-202610-00484
+2026-10-06,Ingreso canal Apple · ref 98419,Revenue,,"358,652.95",in,GTQ,GT-202610-00031
+2026-10-06,per diem · Transportes Rápidos,per diem,Transportes Rápidos,"394,066.01",out,GTQ,GT-202610-00080
+2026-10-06,Ingreso canal Apple · ref 67895,Revenue,,"151,099.30",in,GTQ,GT-202610-00280
+2026-10-06,per diem · Aerolíneas Centroamericanas,per diem,Aerolíneas Centroamericanas,"369,741.81",out,GTQ,GT-202610-00284
+2026-10-06,auditoría · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"586,982.57",out,GTQ,GT-202610-00404
+2026-10-07,brand · LogiCentro CA,Marketing,LogiCentro CA,"481,002.84",out,GTQ,GT-202610-00166
+2026-10-07,legal · Seguros Volcán,legal,Seguros Volcán,"41,791.46",out,GTQ,GT-202610-00253
+2026-10-07,vuelos · Catering La Ceiba,vuelos,Catering La Ceiba,"704,174.67",out,GTQ,GT-202610-00351
+2026-10-07,Ingreso canal Apple · ref 76696,Revenue,,"212,864.07",in,GTQ,GT-202610-00420
+2026-10-07,infra cloud · Catering La Ceiba,infra cloud,Catering La Ceiba,"1,449,088.51",out,GTQ,GT-202610-00454
+2026-10-08,vuelos · Impresos del Valle,Travel,Impresos del Valle,"356,684.56",out,GTQ,GT-202610-00066
+2026-10-08,Ingreso canal Apple · ref 16570,Revenue,,"139,630.32",in,GTQ,GT-202610-00228
+2026-10-08,Ingreso canal Apple · ref 25028,Revenue,,"440,795.10",in,GTQ,GT-202610-00241
+2026-10-08,infra cloud · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"1,217,957.21",out,GTQ,GT-202610-00266
+2026-10-08,infra cloud · Seguros Volcán,Cloud,Seguros Volcán,"204,643.47",out,GTQ,GT-202610-00356
+2026-10-08,Ingreso canal Apple · ref 52895,Revenue,,"413,929.19",in,GTQ,GT-202610-00457
+2026-10-09,storage · Datacenter Istmo,storage,Datacenter Istmo,"697,643.80",out,GTQ,GT-202610-00030
+2026-10-09,ads · Energía del Pacífico,Marketing,Energía del Pacífico,"529,948.31",out,GTQ,GT-202610-00235
+2026-10-10,beneficios · Catering La Ceiba,Payroll,Catering La Ceiba,"48,586.62",out,GTQ,GT-202610-00044
+2026-10-10,logística · Catering La Ceiba,logística,Catering La Ceiba,"413,473.13",out,GTQ,GT-202610-00361
+2026-10-10,compute · LogiCentro CA,compute,LogiCentro CA,"29,055.77",out,GTQ,GT-202610-00483
+2026-10-10,electricidad · Datacenter Istmo,Utilities,Datacenter Istmo,"240,845.53",out,GTQ,GT-202610-00491
+2026-10-11,entregas · Bufete Istmo & Asociados,entregas,Bufete Istmo & Asociados,"402,002.83",out,GTQ,GT-202610-00022
+2026-10-11,compute · Impresos del Valle,Cloud,Impresos del Valle,"207,819.51",out,GTQ,GT-202610-00324
+2026-10-11,agua · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"530,404.50",out,GTQ,GT-202610-00332
+2026-10-11,eventos · LogiCentro CA,eventos,LogiCentro CA,"714,158.81",out,GTQ,GT-202610-00379
+2026-10-11,ads · Seguros Volcán,Marketing,Seguros Volcán,"162,208.13",out,GTQ,GT-202610-00425
+2026-10-11,auditoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"222,711.82",out,GTQ,GT-202610-00455
+2026-10-11,entregas · Seguros Volcán,Deliveries,Seguros Volcán,"728,032.53",out,GTQ,GT-202610-00471
+2026-10-12,ads · Impresos del Valle,Marketing,Impresos del Valle,"253,550.60",out,GTQ,GT-202610-00061
+2026-10-12,beneficios · Impresos del Valle,beneficios,Impresos del Valle,"430,352.10",out,GTQ,GT-202610-00239
+2026-10-12,entregas · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"708,002.64",out,GTQ,GT-202610-00331
+2026-10-12,beneficios · LogiCentro CA,Payroll,LogiCentro CA,"2,307,338.41",out,GTQ,GT-202610-00383
+2026-10-13,storage · Energía del Pacífico,Cloud,Energía del Pacífico,"1,729,454.82",out,GTQ,GT-202610-00046
+2026-10-13,brand · Bufete Istmo & Asociados,brand,Bufete Istmo & Asociados,"486,362.99",out,GTQ,GT-202610-00153
+2026-10-13,consultoría · LogiCentro CA,ProfessionalServices,LogiCentro CA,"667,347.58",out,GTQ,GT-202610-00242
+2026-10-13,transporte last-mile · Seguros Volcán,Deliveries,Seguros Volcán,"523,889.60",out,GTQ,GT-202610-00282
+2026-10-13,electricidad · Energía del Pacífico,Utilities,Energía del Pacífico,"360,112.66",out,GTQ,GT-202610-00290
+2026-10-13,logística · Transportes Rápidos,Deliveries,Transportes Rápidos,"611,649.08",out,GTQ,GT-202610-00295
+2026-10-14,Ingreso canal Apple · ref 20075,Revenue,,"301,968.35",in,GTQ,GT-202610-00269
+2026-10-14,compute · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"1,201,511.85",out,GTQ,GT-202610-00305
+2026-10-14,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"1,558,609.21",out,GTQ,GT-202610-00385
+2026-10-15,ads · Energía del Pacífico,Marketing,Energía del Pacífico,"17,010.03",out,GTQ,GT-202610-00147
+2026-10-15,bodega · Seguros Volcán,Rent,Seguros Volcán,"343,455.19",out,GTQ,GT-202610-00257
+2026-10-15,infra cloud · Bufete Istmo & Asociados,infra cloud,Bufete Istmo & Asociados,"167,039.83",out,GTQ,GT-202610-00416
+2026-10-15,ads · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"711,982.41",out,GTQ,GT-202610-00513
+2026-10-15,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"405,343.39",out,GTQ,GT-202610-00519
+2026-10-16,Ingreso canal Apple · ref 39092,Revenue,,"63,568.04",in,GTQ,GT-202610-00093
+2026-10-16,electricidad · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"482,229.05",out,GTQ,GT-202610-00142
+2026-10-17,Ingreso canal Apple · ref 63265,Revenue,,"662,164.94",in,GTQ,GT-202610-00182
+2026-10-17,nómina · Energía del Pacífico,Payroll,Energía del Pacífico,"1,862,917.52",out,GTQ,GT-202610-00243
+2026-10-17,nómina · Impresos del Valle,Payroll,Impresos del Valle,"798,606.40",out,GTQ,GT-202610-00286
+2026-10-17,auditoría · LogiCentro CA,auditoría,LogiCentro CA,"185,249.89",out,GTQ,GT-202610-00347
+2026-10-17,Ingreso canal Apple · ref 35489,Revenue,,"57,014.40",in,GTQ,GT-202610-00435
+2026-10-18,beneficios · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"562,568.23",out,GTQ,GT-202610-00135
+2026-10-18,compute · Transportes Rápidos,compute,Transportes Rápidos,"2,022,441.26",out,GTQ,GT-202610-00138
+2026-10-18,infra cloud · LogiCentro CA,infra cloud,LogiCentro CA,"2,289,684.21",out,GTQ,GT-202610-00141
+2026-10-18,per diem · Seguros Volcán,Travel,Seguros Volcán,"425,310.75",out,GTQ,GT-202610-00268
+2026-10-18,eventos · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"52,988.01",out,GTQ,GT-202610-00366
+2026-10-18,internet · Transportes Rápidos,Utilities,Transportes Rápidos,"728,914.11",out,GTQ,GT-202610-00518
+2026-10-19,cargas sociales · Impresos del Valle,Payroll,Impresos del Valle,"378,877.55",out,GTQ,GT-202610-00251
+2026-10-19,nómina · Catering La Ceiba,Payroll,Catering La Ceiba,"1,940,923.10",out,GTQ,GT-202610-00307
+2026-10-19,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"248,684.88",out,GTQ,GT-202610-00396
+2026-10-20,agua · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"10,353.49",out,GTQ,GT-202610-00149
+2026-10-20,storage · LogiCentro CA,Cloud,LogiCentro CA,"199,232.57",out,GTQ,GT-202610-00256
+2026-10-20,entregas · Transportes Rápidos,entregas,Transportes Rápidos,"184,274.77",out,GTQ,GT-202610-00464
+2026-10-20,Ingreso canal Apple · ref 55530,Revenue,,"81,007.36",in,GTQ,GT-202610-00496
+2026-10-20,cargas sociales · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"1,040,300.58",out,GTQ,GT-202610-00497
+2026-10-21,agua · Transportes Rápidos,Utilities,Transportes Rápidos,"77,570.52",out,GTQ,GT-202610-00026
+2026-10-21,compute · Transportes Rápidos,Cloud,Transportes Rápidos,"84,905.99",out,GTQ,GT-202610-00027
+2026-10-21,auditoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"453,626.86",out,GTQ,GT-202610-00107
+2026-10-21,infra cloud · Impresos del Valle,infra cloud,Impresos del Valle,"94,622.62",out,GTQ,GT-202610-00109
+2026-10-21,infra cloud · Datacenter Istmo,infra cloud,Datacenter Istmo,"149,634.25",out,GTQ,GT-202610-00249
+2026-10-21,agua · Oficinas Corporativas del Istmo,agua,Oficinas Corporativas del Istmo,"489,182.08",out,GTQ,GT-202610-00289
+2026-10-21,beneficios · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"2,318,722.95",out,GTQ,GT-202610-00336
+2026-10-21,per diem · AWS Marketplace Reseller,per diem,AWS Marketplace Reseller,"104,411.59",out,GTQ,GT-202610-00443
+2026-10-21,beneficios · Agencia Brújula Media,Payroll,Agencia Brújula Media,"1,513,071.50",out,GTQ,GT-202610-00479
+2026-10-22,beneficios · Impresos del Valle,Payroll,Impresos del Valle,"1,071,170.88",out,GTQ,GT-202610-00103
+2026-10-22,Ingreso canal Apple · ref 38914,Revenue,,"205,005.65",in,GTQ,GT-202610-00246
+2026-10-22,bodega · Energía del Pacífico,bodega,Energía del Pacífico,"467,707.12",out,GTQ,GT-202610-00298
+2026-10-23,internet · Agencia Brújula Media,internet,Agencia Brújula Media,"148,554.37",out,GTQ,GT-202610-00064
+2026-10-23,nómina · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"274,347.56",out,GTQ,GT-202610-00119
+2026-10-23,auditoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"543,993.31",out,GTQ,GT-202610-00124
+2026-10-23,alquiler HQ · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"200,753.32",out,GTQ,GT-202610-00230
+2026-10-23,Ingreso canal Apple · ref 98162,Revenue,,"542,582.35",in,GTQ,GT-202610-00344
+2026-10-23,brand · Datacenter Istmo,brand,Datacenter Istmo,"488,731.42",out,GTQ,GT-202610-00376
+2026-10-23,logística · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"704,120.32",out,GTQ,GT-202610-00414
+2026-10-23,logística · Seguros Volcán,Deliveries,Seguros Volcán,"719,381.48",out,GTQ,GT-202610-00461
+2026-10-24,storage · Impresos del Valle,storage,Impresos del Valle,"81,914.70",out,GTQ,GT-202610-00136
+2026-10-24,internet · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"15,179.33",out,GTQ,GT-202610-00140
+2026-10-24,cargas sociales · Agencia Brújula Media,Payroll,Agencia Brújula Media,"1,605,885.74",out,GTQ,GT-202610-00159
+2026-10-24,vuelos · Seguros Volcán,Travel,Seguros Volcán,"627,853.52",out,GTQ,GT-202610-00192
+2026-10-24,coworking · Impresos del Valle,coworking,Impresos del Valle,"529,213.21",out,GTQ,GT-202610-00357
+2026-10-25,consultoría · Energía del Pacífico,consultoría,Energía del Pacífico,"220,487.07",out,GTQ,GT-202610-00017
+2026-10-25,cargas sociales · LogiCentro CA,Payroll,LogiCentro CA,"1,957,242.19",out,GTQ,GT-202610-00048
+2026-10-25,Ingreso canal Apple · ref 78015,Revenue,,"1,957,439.95",in,GTQ,GT-202610-00144
+2026-10-25,bodega · Catering La Ceiba,bodega,Catering La Ceiba,"361,701.15",out,GTQ,GT-202610-00203
+2026-10-25,bodega · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"717,469.28",out,GTQ,GT-202610-00368
+2026-10-25,internet · Seguros Volcán,Utilities,Seguros Volcán,"646,107.51",out,GTQ,GT-202610-00488
+2026-10-26,brand · LogiCentro CA,Marketing,LogiCentro CA,"618,079.92",out,GTQ,GT-202610-00069
+2026-10-26,alquiler HQ · Oficinas Corporativas del Istmo,alquiler HQ,Oficinas Corporativas del Istmo,"366,686.52",out,GTQ,GT-202610-00072
+2026-10-26,cargas sociales · Datacenter Istmo,Payroll,Datacenter Istmo,"1,208,178.27",out,GTQ,GT-202610-00115
+2026-10-26,logística · Seguros Volcán,logística,Seguros Volcán,"18,465.68",out,GTQ,GT-202610-00225
+2026-10-26,coworking · Impresos del Valle,Rent,Impresos del Valle,"684,880.39",out,GTQ,GT-202610-00244
+2026-10-26,per diem · Impresos del Valle,Travel,Impresos del Valle,"248,232.27",out,GTQ,GT-202610-00304
+2026-10-26,Ingreso canal Apple · ref 23219,Revenue,,"2,989,917.74",in,GTQ,GT-202610-00339
+2026-10-26,Ingreso canal Apple · ref 25252,Revenue,,"335,885.00",in,GTQ,GT-202610-00430
+2026-10-26,per diem · Energía del Pacífico,Travel,Energía del Pacífico,"629,618.14",out,GTQ,GT-202610-00485
+2026-10-27,ads · Catering La Ceiba,Marketing,Catering La Ceiba,"20,220.86",out,GTQ,GT-202610-00008
+2026-10-27,auditoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"91,700.62",out,GTQ,GT-202610-00082
+2026-10-27,vuelos · Transportes Rápidos,Travel,Transportes Rápidos,"522,031.17",out,GTQ,GT-202610-00190
+2026-10-27,per diem · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"436,212.08",out,GTQ,GT-202610-00458
+2026-10-27,hoteles · Impresos del Valle,hoteles,Impresos del Valle,"422,679.13",out,GTQ,GT-202610-00469
+2026-10-28,eventos · Agencia Brújula Media,eventos,Agencia Brújula Media,"555,127.75",out,GTQ,GT-202610-00002
+2026-10-28,infra cloud · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"808,950.27",out,GTQ,GT-202610-00267
+2026-10-28,logística · Energía del Pacífico,logística,Energía del Pacífico,"69,076.23",out,GTQ,GT-202610-00353
+2026-10-28,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"183,275.80",out,GTQ,GT-202610-00365
+2026-10-28,Ingreso canal Apple · ref 56671,Revenue,,"726,586.71",in,GTQ,GT-202610-00482
+2026-10-29,eventos · Catering La Ceiba,Marketing,Catering La Ceiba,"217,657.25",out,GTQ,GT-202610-00306
+2026-10-29,ads · LogiCentro CA,ads,LogiCentro CA,"562,670.86",out,GTQ,GT-202610-00367
+2026-10-29,Ingreso canal Apple · ref 77333,Revenue,,"64,586.05",in,GTQ,GT-202610-00374
+2026-10-29,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"3,189,273.60",out,GTQ,GT-202610-00390
+2026-10-29,Ingreso canal Apple · ref 18220,Revenue,,"583,062.80",in,GTQ,GT-202610-00419
+2026-10-30,storage · Transportes Rápidos,storage,Transportes Rápidos,"2,210,077.48",out,GTQ,GT-202610-00255
+2026-10-30,electricidad · Transportes Rápidos,Utilities,Transportes Rápidos,"720,577.30",out,GTQ,GT-202610-00291
+2026-10-31,Ingreso canal Apple · ref 66667,Revenue,,"1,347,257.26",in,GTQ,GT-202610-00360
+2026-11-01,logística · Bufete Istmo & Asociados,logística,Bufete Istmo & Asociados,"38,020.00",out,GTQ,GT-202611-00005
+2026-11-01,legal · Agencia Brújula Media,legal,Agencia Brújula Media,"384,244.11",out,GTQ,GT-202611-00045
+2026-11-01,consultoría · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"520,602.95",out,GTQ,GT-202611-00108
+2026-11-01,beneficios · Seguros Volcán,beneficios,Seguros Volcán,"1,242,432.70",out,GTQ,GT-202611-00296
+2026-11-01,infra cloud · Energía del Pacífico,infra cloud,Energía del Pacífico,"2,797,089.95",out,GTQ,GT-202611-00327
+2026-11-01,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"660,044.54",out,GTQ,GT-202611-00409
+2026-11-02,agua · Impresos del Valle,Utilities,Impresos del Valle,"505,269.88",out,GTQ,GT-202611-00036
+2026-11-02,per diem · Oficinas Corporativas del Istmo,per diem,Oficinas Corporativas del Istmo,"247,799.50",out,GTQ,GT-202611-00041
+2026-11-02,beneficios · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"839,911.40",out,GTQ,GT-202611-00057
+2026-11-02,alquiler HQ · Bufete Istmo & Asociados,Rent,Bufete Istmo & Asociados,"440,413.04",out,GTQ,GT-202611-00178
+2026-11-02,hoteles · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"600,003.57",out,GTQ,GT-202611-00232
+2026-11-02,auditoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"571,771.82",out,GTQ,GT-202611-00278
+2026-11-02,cargas sociales · Impresos del Valle,Payroll,Impresos del Valle,"321,938.06",out,GTQ,GT-202611-00308
+2026-11-03,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"195,493.74",out,GTQ,GT-202611-00011
+2026-11-03,consultoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"360,389.41",out,GTQ,GT-202611-00049
+2026-11-03,legal · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"540,612.19",out,GTQ,GT-202611-00131
+2026-11-03,nómina · Seguros Volcán,Payroll,Seguros Volcán,"943,970.18",out,GTQ,GT-202611-00217
+2026-11-03,coworking · Energía del Pacífico,coworking,Energía del Pacífico,"308,305.08",out,GTQ,GT-202611-00293
+2026-11-03,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"577,431.72",out,GTQ,GT-202611-00316
+2026-11-03,Ingreso canal Apple · ref 47555,Revenue,,"329,994.62",in,GTQ,GT-202611-00437
+2026-11-03,compute · AWS Marketplace Reseller,compute,AWS Marketplace Reseller,"597,965.27",out,GTQ,GT-202611-00487
+2026-11-03,Ingreso canal Apple · ref 98486,Revenue,,"297,337.74",in,GTQ,GT-202611-00492
+2026-11-04,entregas · Oficinas Corporativas del Istmo,entregas,Oficinas Corporativas del Istmo,"735,495.80",out,GTQ,GT-202611-00068
+2026-11-04,cargas sociales · Energía del Pacífico,cargas sociales,Energía del Pacífico,"590,822.10",out,GTQ,GT-202611-00091
+2026-11-04,Ingreso canal Apple · ref 31681,Revenue,,"36,935.45",in,GTQ,GT-202611-00200
+2026-11-04,Ingreso canal Apple · ref 41371,Revenue,,"407,404.68",in,GTQ,GT-202611-00221
+2026-11-04,logística · Datacenter Istmo,logística,Datacenter Istmo,"472,097.84",out,GTQ,GT-202611-00250
+2026-11-04,storage · LogiCentro CA,Cloud,LogiCentro CA,"1,255,837.74",out,GTQ,GT-202611-00401
+2026-11-04,electricidad · Oficinas Corporativas del Istmo,electricidad,Oficinas Corporativas del Istmo,"12,719.98",out,GTQ,GT-202611-00459
+2026-11-05,infra cloud · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"456,962.97",out,GTQ,GT-202611-00025
+2026-11-05,Ingreso canal Apple · ref 59501,Revenue,,"552,595.58",in,GTQ,GT-202611-00092
+2026-11-05,agua · Seguros Volcán,agua,Seguros Volcán,"574,940.55",out,GTQ,GT-202611-00428
+2026-11-05,alquiler HQ · Seguros Volcán,alquiler HQ,Seguros Volcán,"685,309.61",out,GTQ,GT-202611-00432
+2026-11-06,eventos · Transportes Rápidos,eventos,Transportes Rápidos,"518,607.05",out,GTQ,GT-202611-00121
+2026-11-06,internet · Bufete Istmo & Asociados,internet,Bufete Istmo & Asociados,"321,948.04",out,GTQ,GT-202611-00122
+2026-11-06,ads · Transportes Rápidos,ads,Transportes Rápidos,"490,606.79",out,GTQ,GT-202611-00292
+2026-11-06,bodega · Seguros Volcán,Rent,Seguros Volcán,"178,202.91",out,GTQ,GT-202611-00314
+2026-11-06,logística · Bufete Istmo & Asociados,logística,Bufete Istmo & Asociados,"81,052.35",out,GTQ,GT-202611-00398
+2026-11-07,ads · Impresos del Valle,Marketing,Impresos del Valle,"662,038.31",out,GTQ,GT-202611-00078
+2026-11-07,electricidad · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"60,248.28",out,GTQ,GT-202611-00384
+2026-11-07,consultoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"375,430.19",out,GTQ,GT-202611-00441
+2026-11-08,auditoría · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"603,701.06",out,GTQ,GT-202611-00148
+2026-11-08,consultoría · Datacenter Istmo,ProfessionalServices,Datacenter Istmo,"221,059.91",out,GTQ,GT-202611-00506
+2026-11-09,entregas · LogiCentro CA,Deliveries,LogiCentro CA,"112,508.02",out,GTQ,GT-202611-00006
+2026-11-09,per diem · Seguros Volcán,Travel,Seguros Volcán,"372,649.09",out,GTQ,GT-202611-00134
+2026-11-09,legal · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"601,972.80",out,GTQ,GT-202611-00263
+2026-11-09,infra cloud · Impresos del Valle,Cloud,Impresos del Valle,"537,072.99",out,GTQ,GT-202611-00311
+2026-11-09,cargas sociales · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"905,101.30",out,GTQ,GT-202611-00342
+2026-11-09,per diem · Transportes Rápidos,per diem,Transportes Rápidos,"239,410.59",out,GTQ,GT-202611-00371
+2026-11-09,bodega · Catering La Ceiba,Rent,Catering La Ceiba,"568,141.67",out,GTQ,GT-202611-00444
+2026-11-09,per diem · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"24,298.86",out,GTQ,GT-202611-00478
+2026-11-10,logística · Seguros Volcán,logística,Seguros Volcán,"675,387.26",out,GTQ,GT-202611-00013
+2026-11-10,ads · Impresos del Valle,Marketing,Impresos del Valle,"649,438.74",out,GTQ,GT-202611-00101
+2026-11-10,Ingreso canal Apple · ref 29522,Revenue,,"1,528,857.31",in,GTQ,GT-202611-00114
+2026-11-10,entregas · Aerolíneas Centroamericanas,entregas,Aerolíneas Centroamericanas,"645,795.72",out,GTQ,GT-202611-00168
+2026-11-10,per diem · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"314,890.34",out,GTQ,GT-202611-00173
+2026-11-10,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"177,359.08",out,GTQ,GT-202611-00188
+2026-11-10,infra cloud · Energía del Pacífico,Cloud,Energía del Pacífico,"2,169,875.15",out,GTQ,GT-202611-00510
+2026-11-11,eventos · Agencia Brújula Media,Marketing,Agencia Brújula Media,"378,506.33",out,GTQ,GT-202611-00112
+2026-11-11,agua · LogiCentro CA,Utilities,LogiCentro CA,"501,851.20",out,GTQ,GT-202611-00322
+2026-11-11,Ingreso canal Apple · ref 74629,Revenue,,"685,113.30",in,GTQ,GT-202611-00442
+2026-11-12,per diem · LogiCentro CA,Travel,LogiCentro CA,"146,059.83",out,GTQ,GT-202611-00018
+2026-11-12,Ingreso canal Apple · ref 26250,Revenue,,"408,972.53",in,GTQ,GT-202611-00040
+2026-11-12,Ingreso canal Apple · ref 11126,Revenue,,"713,307.34",in,GTQ,GT-202611-00047
+2026-11-12,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"754,031.99",out,GTQ,GT-202611-00084
+2026-11-12,alquiler HQ · Transportes Rápidos,Rent,Transportes Rápidos,"527,754.22",out,GTQ,GT-202611-00199
+2026-11-12,Ingreso canal Apple · ref 44885,Revenue,,"192,496.01",in,GTQ,GT-202611-00338
+2026-11-13,ads · Aerolíneas Centroamericanas,ads,Aerolíneas Centroamericanas,"505,343.21",out,GTQ,GT-202611-00086
+2026-11-13,auditoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"562,450.59",out,GTQ,GT-202611-00436
+2026-11-14,entregas · Energía del Pacífico,Deliveries,Energía del Pacífico,"38,833.32",out,GTQ,GT-202611-00024
+2026-11-14,vuelos · Catering La Ceiba,Travel,Catering La Ceiba,"196,750.55",out,GTQ,GT-202611-00065
+2026-11-14,alquiler HQ · Energía del Pacífico,Rent,Energía del Pacífico,"230,225.46",out,GTQ,GT-202611-00214
+2026-11-14,beneficios · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"1,770,650.80",out,GTQ,GT-202611-00273
+2026-11-14,bodega · Impresos del Valle,bodega,Impresos del Valle,"265,026.00",out,GTQ,GT-202611-00405
+2026-11-14,eventos · Seguros Volcán,Marketing,Seguros Volcán,"49,637.70",out,GTQ,GT-202611-00447
+2026-11-14,legal · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"536,361.84",out,GTQ,GT-202611-00477
+2026-11-15,Ingreso canal Apple · ref 97097,Revenue,,"380,093.50",in,GTQ,GT-202611-00105
+2026-11-15,Ingreso canal Apple · ref 39600,Revenue,,"613,361.33",in,GTQ,GT-202611-00209
+2026-11-15,nómina · AWS Marketplace Reseller,nómina,AWS Marketplace Reseller,"1,234,926.27",out,GTQ,GT-202611-00323
+2026-11-15,nómina · LogiCentro CA,nómina,LogiCentro CA,"1,593,408.20",out,GTQ,GT-202611-00386
+2026-11-16,logística · Agencia Brújula Media,logística,Agencia Brújula Media,"124,760.76",out,GTQ,GT-202611-00216
+2026-11-16,nómina · Transportes Rápidos,nómina,Transportes Rápidos,"1,814,925.85",out,GTQ,GT-202611-00238
+2026-11-16,Ingreso canal Apple · ref 33710,Revenue,,"589,913.50",in,GTQ,GT-202611-00262
+2026-11-16,eventos · Energía del Pacífico,eventos,Energía del Pacífico,"660,191.46",out,GTQ,GT-202611-00270
+2026-11-16,brand · LogiCentro CA,brand,LogiCentro CA,"294,713.94",out,GTQ,GT-202611-00271
+2026-11-16,coworking · Transportes Rápidos,coworking,Transportes Rápidos,"633,683.75",out,GTQ,GT-202611-00411
+2026-11-16,legal · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"185,821.66",out,GTQ,GT-202611-00474
+2026-11-16,entregas · Impresos del Valle,entregas,Impresos del Valle,"450,921.79",out,GTQ,GT-202611-00503
+2026-11-16,logística · Energía del Pacífico,Deliveries,Energía del Pacífico,"22,757.54",out,GTQ,GT-202611-00514
+2026-11-17,hoteles · Catering La Ceiba,hoteles,Catering La Ceiba,"283,468.08",out,GTQ,GT-202611-00067
+2026-11-17,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"453,358.01",out,GTQ,GT-202611-00146
+2026-11-17,coworking · AWS Marketplace Reseller,coworking,AWS Marketplace Reseller,"107,565.49",out,GTQ,GT-202611-00283
+2026-11-17,electricidad · Bufete Istmo & Asociados,electricidad,Bufete Istmo & Asociados,"8,036.05",out,GTQ,GT-202611-00317
+2026-11-17,ads · Seguros Volcán,ads,Seguros Volcán,"421,122.41",out,GTQ,GT-202611-00438
+2026-11-17,vuelos · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"323,523.88",out,GTQ,GT-202611-00486
+2026-11-18,per diem · Transportes Rápidos,per diem,Transportes Rápidos,"68,420.00",out,GTQ,GT-202611-00104
+2026-11-18,eventos · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"582,215.73",out,GTQ,GT-202611-00143
+2026-11-18,nómina · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"1,199,212.35",out,GTQ,GT-202611-00160
+2026-11-18,coworking · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"395,320.43",out,GTQ,GT-202611-00260
+2026-11-18,per diem · Agencia Brújula Media,Travel,Agencia Brújula Media,"384,711.82",out,GTQ,GT-202611-00300
+2026-11-19,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"350,065.31",out,GTQ,GT-202611-00164
+2026-11-19,nómina · Datacenter Istmo,Payroll,Datacenter Istmo,"1,556,428.66",out,GTQ,GT-202611-00388
+2026-11-20,Ingreso canal Apple · ref 85831,Revenue,,"63,831.78",in,GTQ,GT-202611-00205
+2026-11-20,infra cloud · Seguros Volcán,Cloud,Seguros Volcán,"2,031,213.99",out,GTQ,GT-202611-00340
+2026-11-20,Ingreso canal Apple · ref 27636,Revenue,,"127,594.31",in,GTQ,GT-202611-00373
+2026-11-20,Ingreso canal Apple · ref 15849,Revenue,,"649,668.95",in,GTQ,GT-202611-00460
+2026-11-21,cargas sociales · Transportes Rápidos,Payroll,Transportes Rápidos,"1,092,572.22",out,GTQ,GT-202611-00039
+2026-11-21,nómina · Seguros Volcán,Payroll,Seguros Volcán,"1,417,381.18",out,GTQ,GT-202611-00095
+2026-11-21,consultoría · AWS Marketplace Reseller,consultoría,AWS Marketplace Reseller,"142,556.52",out,GTQ,GT-202611-00102
+2026-11-21,Ingreso canal Apple · ref 39941,Revenue,,"2,221,410.87",in,GTQ,GT-202611-00229
+2026-11-21,consultoría · Datacenter Istmo,ProfessionalServices,Datacenter Istmo,"484,384.07",out,GTQ,GT-202611-00421
+2026-11-21,per diem · Impresos del Valle,per diem,Impresos del Valle,"362,395.77",out,GTQ,GT-202611-00472
+2026-11-22,Ingreso canal Apple · ref 99917,Revenue,,"736,391.47",in,GTQ,GT-202611-00043
+2026-11-22,beneficios · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"1,544,715.51",out,GTQ,GT-202611-00218
+2026-11-22,auditoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"52,619.98",out,GTQ,GT-202611-00330
+2026-11-22,compute · Transportes Rápidos,compute,Transportes Rápidos,"1,657,012.44",out,GTQ,GT-202611-00335
+2026-11-22,entregas · LogiCentro CA,Deliveries,LogiCentro CA,"412,069.87",out,GTQ,GT-202611-00372
+2026-11-22,Ingreso canal Apple · ref 23296,Revenue,,"740,683.00",in,GTQ,GT-202611-00431
+2026-11-22,alquiler HQ · Impresos del Valle,alquiler HQ,Impresos del Valle,"76,989.46",out,GTQ,GT-202611-00456
+2026-11-23,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"461,909.88",out,GTQ,GT-202611-00150
+2026-11-23,Ingreso canal Apple · ref 27509,Revenue,,"397,059.81",in,GTQ,GT-202611-00201
+2026-11-23,eventos · Seguros Volcán,Marketing,Seguros Volcán,"617,536.11",out,GTQ,GT-202611-00341
+2026-11-23,agua · Agencia Brújula Media,Utilities,Agencia Brújula Media,"177,280.35",out,GTQ,GT-202611-00465
+2026-11-23,beneficios · Energía del Pacífico,beneficios,Energía del Pacífico,"1,758,075.87",out,GTQ,GT-202611-00467
+2026-11-24,internet · LogiCentro CA,Utilities,LogiCentro CA,"51,568.13",out,GTQ,GT-202611-00042
+2026-11-24,hoteles · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"192,319.42",out,GTQ,GT-202611-00075
+2026-11-24,ads · Datacenter Istmo,Marketing,Datacenter Istmo,"557,440.61",out,GTQ,GT-202611-00181
+2026-11-24,alquiler HQ · Impresos del Valle,alquiler HQ,Impresos del Valle,"262,849.21",out,GTQ,GT-202611-00505
+2026-11-25,bodega · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"459,190.88",out,GTQ,GT-202611-00015
+2026-11-25,eventos · Datacenter Istmo,Marketing,Datacenter Istmo,"353,249.70",out,GTQ,GT-202611-00277
+2026-11-25,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"125,710.18",out,GTQ,GT-202611-00410
+2026-11-25,alquiler HQ · Agencia Brújula Media,Rent,Agencia Brújula Media,"522,117.14",out,GTQ,GT-202611-00489
+2026-11-25,electricidad · Catering La Ceiba,Utilities,Catering La Ceiba,"115,529.47",out,GTQ,GT-202611-00504
+2026-11-26,Ingreso canal Apple · ref 96818,Revenue,,"195,968.00",in,GTQ,GT-202611-00003
+2026-11-26,Ingreso canal Apple · ref 65348,Revenue,,"347,073.09",in,GTQ,GT-202611-00094
+2026-11-26,per diem · Impresos del Valle,Travel,Impresos del Valle,"119,677.57",out,GTQ,GT-202611-00247
+2026-11-26,beneficios · Impresos del Valle,Payroll,Impresos del Valle,"487,022.77",out,GTQ,GT-202611-00294
+2026-11-26,Ingreso canal Apple · ref 18078,Revenue,,"575,415.86",in,GTQ,GT-202611-00391
+2026-11-26,electricidad · LogiCentro CA,Utilities,LogiCentro CA,"206,177.10",out,GTQ,GT-202611-00412
+2026-11-26,Ingreso canal Apple · ref 52333,Revenue,,"711,481.81",in,GTQ,GT-202611-00439
+2026-11-27,infra cloud · AWS Marketplace Reseller,infra cloud,AWS Marketplace Reseller,"536,944.38",out,GTQ,GT-202611-00097
+2026-11-28,alquiler HQ · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"205,132.57",out,GTQ,GT-202611-00032
+2026-11-28,consultoría · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"544,757.86",out,GTQ,GT-202611-00034
+2026-11-28,Ingreso canal Apple · ref 46660,Revenue,,"639,336.27",in,GTQ,GT-202611-00137
+2026-11-28,auditoría · LogiCentro CA,ProfessionalServices,LogiCentro CA,"721,945.86",out,GTQ,GT-202611-00212
+2026-11-28,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"740,382.44",out,GTQ,GT-202611-00325
+2026-11-28,storage · Datacenter Istmo,Cloud,Datacenter Istmo,"1,069,866.13",out,GTQ,GT-202611-00358
+2026-11-28,electricidad · Energía del Pacífico,electricidad,Energía del Pacífico,"493,763.29",out,GTQ,GT-202611-00499
+2026-11-28,beneficios · Aerolíneas Centroamericanas,beneficios,Aerolíneas Centroamericanas,"2,374,486.34",out,GTQ,GT-202611-00517
+2026-11-29,Ingreso canal Apple · ref 25045,Revenue,,"251,200.52",in,GTQ,GT-202611-00077
+2026-11-29,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"695,517.46",out,GTQ,GT-202611-00208
+2026-11-29,compute · Seguros Volcán,Cloud,Seguros Volcán,"1,676,997.13",out,GTQ,GT-202611-00259
+2026-11-29,coworking · Catering La Ceiba,Rent,Catering La Ceiba,"323,732.38",out,GTQ,GT-202611-00312
+2026-11-30,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"736,849.56",out,GTQ,GT-202611-00224
+2026-11-30,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"68,012.56",out,GTQ,GT-202611-00343
+2026-11-30,Ingreso canal Apple · ref 69323,Revenue,,"189,377.03",in,GTQ,GT-202611-00370
+2026-12-01,alquiler HQ · Impresos del Valle,Rent,Impresos del Valle,"17,345.24",out,GTQ,GT-202612-00127
+2026-12-01,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"279,080.82",out,GTQ,GT-202612-00162
+2026-12-01,hoteles · Bufete Istmo & Asociados,hoteles,Bufete Istmo & Asociados,"8,183.09",out,GTQ,GT-202612-00226
+2026-12-01,Ingreso canal Apple · ref 94492,Revenue,,"683,477.66",in,GTQ,GT-202612-00233
+2026-12-01,consultoría · Energía del Pacífico,consultoría,Energía del Pacífico,"589,670.49",out,GTQ,GT-202612-00397
+2026-12-01,entregas · Energía del Pacífico,entregas,Energía del Pacífico,"72,038.80",out,GTQ,GT-202612-00408
+2026-12-01,storage · Datacenter Istmo,storage,Datacenter Istmo,"246,422.05",out,GTQ,GT-202612-00450
+2026-12-01,nómina · Impresos del Valle,Payroll,Impresos del Valle,"1,036,420.15",out,GTQ,GT-202612-00451
+2026-12-02,storage · Datacenter Istmo,Cloud,Datacenter Istmo,"903,126.05",out,GTQ,GT-202612-00050
+2026-12-02,auditoría · Impresos del Valle,auditoría,Impresos del Valle,"574,967.84",out,GTQ,GT-202612-00163
+2026-12-02,auditoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"217,879.64",out,GTQ,GT-202612-00174
+2026-12-02,logística · Impresos del Valle,Deliveries,Impresos del Valle,"611,358.74",out,GTQ,GT-202612-00378
+2026-12-02,cargas sociales · Energía del Pacífico,Payroll,Energía del Pacífico,"562,859.01",out,GTQ,GT-202612-00403
+2026-12-02,transporte last-mile · Seguros Volcán,Deliveries,Seguros Volcán,"225,876.79",out,GTQ,GT-202612-00463
+2026-12-03,infra cloud · Impresos del Valle,Cloud,Impresos del Valle,"1,193,642.06",out,GTQ,GT-202612-00020
+2026-12-03,ads · Impresos del Valle,Marketing,Impresos del Valle,"88,673.04",out,GTQ,GT-202612-00087
+2026-12-03,electricidad · LogiCentro CA,Utilities,LogiCentro CA,"246,062.48",out,GTQ,GT-202612-00169
+2026-12-03,Ingreso canal Apple · ref 23540,Revenue,,"2,113,756.22",in,GTQ,GT-202612-00219
+2026-12-03,consultoría · Energía del Pacífico,consultoría,Energía del Pacífico,"522,320.23",out,GTQ,GT-202612-00399
+2026-12-04,Ingreso canal Apple · ref 45987,Revenue,,"191,001.61",in,GTQ,GT-202612-00033
+2026-12-04,infra cloud · Seguros Volcán,Cloud,Seguros Volcán,"752,869.11",out,GTQ,GT-202612-00051
+2026-12-04,transporte last-mile · Datacenter Istmo,Deliveries,Datacenter Istmo,"281,840.32",out,GTQ,GT-202612-00198
+2026-12-04,coworking · Datacenter Istmo,coworking,Datacenter Istmo,"500,797.34",out,GTQ,GT-202612-00364
+2026-12-04,Ingreso canal Apple · ref 83519,Revenue,,"1,739,721.63",in,GTQ,GT-202612-00426
+2026-12-04,ads · Agencia Brújula Media,ads,Agencia Brújula Media,"203,104.14",out,GTQ,GT-202612-00466
+2026-12-05,entregas · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"114,498.31",out,GTQ,GT-202612-00139
+2026-12-05,agua · Datacenter Istmo,Utilities,Datacenter Istmo,"507,724.02",out,GTQ,GT-202612-00155
+2026-12-05,transporte last-mile · Catering La Ceiba,Deliveries,Catering La Ceiba,"159,254.86",out,GTQ,GT-202612-00171
+2026-12-05,entregas · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"689,312.88",out,GTQ,GT-202612-00186
+2026-12-05,hoteles · Transportes Rápidos,hoteles,Transportes Rápidos,"420,087.49",out,GTQ,GT-202612-00189
+2026-12-05,coworking · Energía del Pacífico,coworking,Energía del Pacífico,"363,648.57",out,GTQ,GT-202612-00334
+2026-12-05,hoteles · Datacenter Istmo,Travel,Datacenter Istmo,"451,988.47",out,GTQ,GT-202612-00363
+2026-12-05,beneficios · Oficinas Corporativas del Istmo,beneficios,Oficinas Corporativas del Istmo,"693,009.99",out,GTQ,GT-202612-00395
+2026-12-05,Ingreso canal Apple · ref 90192,Revenue,,"40,347.61",in,GTQ,GT-202612-00415
+2026-12-06,electricidad · Energía del Pacífico,Utilities,Energía del Pacífico,"648,937.99",out,GTQ,GT-202612-00090
+2026-12-06,Ingreso canal Apple · ref 71676,Revenue,,"165,424.44",in,GTQ,GT-202612-00110
+2026-12-06,nómina · Agencia Brújula Media,Payroll,Agencia Brújula Media,"214,369.81",out,GTQ,GT-202612-00240
+2026-12-06,cargas sociales · Datacenter Istmo,Payroll,Datacenter Istmo,"1,551,750.53",out,GTQ,GT-202612-00287
+2026-12-06,storage · Seguros Volcán,Cloud,Seguros Volcán,"2,292,762.41",out,GTQ,GT-202612-00303
+2026-12-06,entregas · Transportes Rápidos,entregas,Transportes Rápidos,"737,028.30",out,GTQ,GT-202612-00337
+2026-12-07,Ingreso canal Apple · ref 32966,Revenue,,"946,768.91",in,GTQ,GT-202612-00014
+2026-12-07,logística · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"614,292.89",out,GTQ,GT-202612-00021
+2026-12-07,Ingreso canal Apple · ref 29242,Revenue,,"344,984.68",in,GTQ,GT-202612-00202
+2026-12-07,logística · Catering La Ceiba,Deliveries,Catering La Ceiba,"341,033.71",out,GTQ,GT-202612-00264
+2026-12-07,ads · LogiCentro CA,ads,LogiCentro CA,"728,369.68",out,GTQ,GT-202612-00345
+2026-12-07,bodega · Impresos del Valle,Rent,Impresos del Valle,"462,720.91",out,GTQ,GT-202612-00434
+2026-12-08,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"283,980.84",out,GTQ,GT-202612-00116
+2026-12-08,Ingreso canal Apple · ref 51965,Revenue,,"1,522,017.06",in,GTQ,GT-202612-00400
+2026-12-09,entregas · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"129,388.01",out,GTQ,GT-202612-00161
+2026-12-09,electricidad · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"396,139.49",out,GTQ,GT-202612-00165
+2026-12-09,ads · Seguros Volcán,ads,Seguros Volcán,"434,649.90",out,GTQ,GT-202612-00301
+2026-12-09,coworking · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"429,658.78",out,GTQ,GT-202612-00315
+2026-12-09,bodega · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"194,150.93",out,GTQ,GT-202612-00328
+2026-12-09,Ingreso canal Apple · ref 20216,Revenue,,"250,798.27",in,GTQ,GT-202612-00462

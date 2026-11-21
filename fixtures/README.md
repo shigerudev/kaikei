@@ -13,3 +13,15 @@ Expected figures live in [`golden.json`](./golden.json), hand-computed and never
 | `adversarial_actuals.csv` | OK (Hugo) | Test-only: injection text in a description cell + unresolvable header `Imp. neto` (AC13) |
 
 Headers are intentionally non-standard: `Fecha`, `Concepto`, `Rubro`, `Monto (Q)`.
+
+## CA mega packs (`fixtures/ca-mega/`)
+
+Large fictional enterprise sets — **one global brand subsidiary per Central American country** — for demos and load tests. Regenerate with:
+
+```bash
+python3 -m venv .venv-fixtures && source .venv-fixtures/bin/activate
+pip install pandas openpyxl reportlab
+python scripts/generate_ca_mega_fixtures.py
+```
+
+See [`ca-mega/README.md`](./ca-mega/README.md) and `ca-mega/INDEX.json`. Each pack has CSV (budget/actuals/delta/adversarial), Excel workbook, and matching bill PDFs.

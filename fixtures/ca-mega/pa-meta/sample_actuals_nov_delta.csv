@@ -1,0 +1,5 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (B/.),Signo,Moneda,Referencia
+2026-11-18,entregas · Transportes Rápidos · Meta,entregas,Transportes Rápidos,600.00,out,PAB,PA-NEW-600
+2026-09-01,alquiler HQ · Impresos del Valle,Rent,Impresos del Valle,"37,192.97",out,PAB,PA-202609-00008
+2026-09-01,hoteles · AWS Marketplace Reseller,hoteles,AWS Marketplace Reseller,"23,717.14",out,PAB,PA-202609-00328
+2026-11-19,fila dañada para parse_error,Deliveries,N/A,"B/. 1,2O0",out,PAB,PA-BAD-001

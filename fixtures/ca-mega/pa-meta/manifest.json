@@ -1,0 +1,120 @@
+{
+  "company": {
+    "code": "pa-meta",
+    "country": "PA",
+    "country_name": "Panamá",
+    "currency": "PAB",
+    "currency_symbol": "B/.",
+    "company": "Meta Platforms Panamá, S.A.",
+    "brand": "Meta",
+    "city": "Panamá",
+    "tax_id": "PA-RUC-155712345-2-2026"
+  },
+  "files": {
+    "budget_csv": "budget_fy2026_q4.csv",
+    "actuals_seed_csv": "actuals_seed.csv",
+    "delta_csv": "sample_actuals_nov_delta.csv",
+    "adversarial_csv": "adversarial_actuals.csv",
+    "excel_pack": "pa-meta_pack.xlsx",
+    "bills_dir": "bills/"
+  },
+  "counts": {
+    "budget_rows": 32,
+    "actual_rows": 520,
+    "delta_rows": 4,
+    "bills": 10
+  },
+  "bills": [
+    {
+      "file": "PA-FAC-2026-0001.pdf",
+      "supplier": "Datacenter Istmo",
+      "date": "2026-10-29",
+      "currency": "PAB",
+      "total_minor": 9435324,
+      "matches_referencia": "PA-202610-00117",
+      "concept": "entregas · Datacenter Istmo"
+    },
+    {
+      "file": "PA-FAC-2026-0002.pdf",
+      "supplier": "Transportes Rápidos",
+      "date": "2026-10-19",
+      "currency": "PAB",
+      "total_minor": 28685867,
+      "matches_referencia": "PA-202610-00002",
+      "concept": "cargas sociales · Transportes Rápidos"
+    },
+    {
+      "file": "PA-FAC-2026-0003.pdf",
+      "supplier": "Catering La Ceiba",
+      "date": "2026-09-29",
+      "currency": "PAB",
+      "total_minor": 4526924,
+      "matches_referencia": "PA-202609-00122",
+      "concept": "coworking · Catering La Ceiba"
+    },
+    {
+      "file": "PA-FAC-2026-0004.pdf",
+      "supplier": "AWS Marketplace Reseller",
+      "date": "2026-11-16",
+      "currency": "PAB",
+      "total_minor": 9813808,
+      "matches_referencia": "PA-202611-00173",
+      "concept": "beneficios · AWS Marketplace Reseller"
+    },
+    {
+      "file": "PA-FAC-2026-0005.pdf",
+      "supplier": "LogiCentro CA",
+      "date": "2026-12-06",
+      "currency": "PAB",
+      "total_minor": 3904686,
+      "matches_referencia": "PA-202612-00292",
+      "concept": "legal · LogiCentro CA"
+    },
+    {
+      "file": "PA-FAC-2026-0006.pdf",
+      "supplier": "Seguros Volcán",
+      "date": "2026-12-06",
+      "currency": "PAB",
+      "total_minor": 1501450,
+      "matches_referencia": "PA-202612-00430",
+      "concept": "eventos · Seguros Volcán"
+    },
+    {
+      "file": "PA-FAC-2026-0007.pdf",
+      "supplier": "AWS Marketplace Reseller",
+      "date": "2026-11-09",
+      "currency": "PAB",
+      "total_minor": 3723981,
+      "matches_referencia": "PA-202611-00016",
+      "concept": "consultoría · AWS Marketplace Reseller"
+    },
+    {
+      "file": "PA-FAC-2026-0008.pdf",
+      "supplier": "Aerolíneas Centroamericanas",
+      "date": "2026-09-22",
+      "currency": "PAB",
+      "total_minor": 1514190,
+      "matches_referencia": "PA-202609-00022",
+      "concept": "cargas sociales · Aerolíneas Centroamericanas"
+    },
+    {
+      "file": "PA-FAC-2026-0009.pdf",
+      "supplier": "Catering La Ceiba",
+      "date": "2026-10-10",
+      "currency": "PAB",
+      "total_minor": 4214950,
+      "matches_referencia": "PA-202610-00060",
+      "concept": "agua · Catering La Ceiba"
+    },
+    {
+      "file": "PA-FAC-2026-0010.pdf",
+      "supplier": "Catering La Ceiba",
+      "date": "2026-11-18",
+      "currency": "PAB",
+      "total_minor": 5238247,
+      "matches_referencia": "PA-202611-00118",
+      "concept": "ads · Catering La Ceiba"
+    }
+  ],
+  "disclaimer": "Fictional demo data for Kaikei. Not real company filings."
+}

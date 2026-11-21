@@ -1,0 +1,5 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (₡),Signo,Moneda,Referencia
+2026-11-18,entregas · Transportes Rápidos · Google,entregas,Transportes Rápidos,"306,000.00",out,CRC,CR-NEW-600
+2026-09-01,alquiler HQ · Energía del Pacífico,alquiler HQ,Energía del Pacífico,"45,399,381.95",out,CRC,CR-202609-00118
+2026-09-01,consultoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"47,442,901.44",out,CRC,CR-202609-00467
+2026-11-19,fila dañada para parse_error,Deliveries,N/A,"₡ 1,2O0",out,CRC,CR-BAD-001

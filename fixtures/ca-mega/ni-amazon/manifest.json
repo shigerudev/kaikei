@@ -1,0 +1,120 @@
+{
+  "company": {
+    "code": "ni-amazon",
+    "country": "NI",
+    "country_name": "Nicaragua",
+    "currency": "NIO",
+    "currency_symbol": "C$",
+    "company": "Amazon Logistics Nicaragua, S.A.",
+    "brand": "Amazon",
+    "city": "Managua",
+    "tax_id": "NI-RUC-J0310000012345"
+  },
+  "files": {
+    "budget_csv": "budget_fy2026_q4.csv",
+    "actuals_seed_csv": "actuals_seed.csv",
+    "delta_csv": "sample_actuals_nov_delta.csv",
+    "adversarial_csv": "adversarial_actuals.csv",
+    "excel_pack": "ni-amazon_pack.xlsx",
+    "bills_dir": "bills/"
+  },
+  "counts": {
+    "budget_rows": 32,
+    "actual_rows": 520,
+    "delta_rows": 4,
+    "bills": 10
+  },
+  "bills": [
+    {
+      "file": "NI-FAC-2026-0001.pdf",
+      "supplier": "Seguros Volcán",
+      "date": "2026-10-28",
+      "currency": "NIO",
+      "total_minor": 1128897043,
+      "matches_referencia": "NI-202610-00221",
+      "concept": "compute · Seguros Volcán"
+    },
+    {
+      "file": "NI-FAC-2026-0002.pdf",
+      "supplier": "Bufete Istmo & Asociados",
+      "date": "2026-11-05",
+      "currency": "NIO",
+      "total_minor": 683279433,
+      "matches_referencia": "NI-202611-00035",
+      "concept": "cargas sociales · Bufete Istmo & Asociados"
+    },
+    {
+      "file": "NI-FAC-2026-0003.pdf",
+      "supplier": "Bufete Istmo & Asociados",
+      "date": "2026-10-25",
+      "currency": "NIO",
+      "total_minor": 308624206,
+      "matches_referencia": "NI-202610-00040",
+      "concept": "per diem · Bufete Istmo & Asociados"
+    },
+    {
+      "file": "NI-FAC-2026-0004.pdf",
+      "supplier": "Oficinas Corporativas del Istmo",
+      "date": "2026-10-07",
+      "currency": "NIO",
+      "total_minor": 228858987,
+      "matches_referencia": "NI-202610-00405",
+      "concept": "brand · Oficinas Corporativas del Istmo"
+    },
+    {
+      "file": "NI-FAC-2026-0005.pdf",
+      "supplier": "Agencia Brújula Media",
+      "date": "2026-11-07",
+      "currency": "NIO",
+      "total_minor": 443177413,
+      "matches_referencia": "NI-202611-00294",
+      "concept": "cargas sociales · Agencia Brújula Media"
+    },
+    {
+      "file": "NI-FAC-2026-0006.pdf",
+      "supplier": "LogiCentro CA",
+      "date": "2026-09-11",
+      "currency": "NIO",
+      "total_minor": 161148074,
+      "matches_referencia": "NI-202609-00380",
+      "concept": "internet · LogiCentro CA"
+    },
+    {
+      "file": "NI-FAC-2026-0007.pdf",
+      "supplier": "Catering La Ceiba",
+      "date": "2026-11-18",
+      "currency": "NIO",
+      "total_minor": 154197632,
+      "matches_referencia": "NI-202611-00103",
+      "concept": "eventos · Catering La Ceiba"
+    },
+    {
+      "file": "NI-FAC-2026-0008.pdf",
+      "supplier": "Aerolíneas Centroamericanas",
+      "date": "2026-11-19",
+      "currency": "NIO",
+      "total_minor": 2447563,
+      "matches_referencia": "NI-202611-00289",
+      "concept": "consultoría · Aerolíneas Centroamericanas"
+    },
+    {
+      "file": "NI-FAC-2026-0009.pdf",
+      "supplier": "Bufete Istmo & Asociados",
+      "date": "2026-10-13",
+      "currency": "NIO",
+      "total_minor": 309015695,
+      "matches_referencia": "NI-202610-00014",
+      "concept": "logística · Bufete Istmo & Asociados"
+    },
+    {
+      "file": "NI-FAC-2026-0010.pdf",
+      "supplier": "Aerolíneas Centroamericanas",
+      "date": "2026-09-14",
+      "currency": "NIO",
+      "total_minor": 271843557,
+      "matches_referencia": "NI-202609-00085",
+      "concept": "entregas · Aerolíneas Centroamericanas"
+    }
+  ],
+  "disclaimer": "Fictional demo data for Kaikei. Not real company filings."
+}
