@@ -48,6 +48,32 @@ Work only in your task's lane. Need a change in another lane: leave a `TODO(<own
 
 ## Stack notes
 Next.js 16 (Cache Components), React 19, Drizzle on Neon (`neon-serverless` Pool for transactions), Vercel Blob, AI SDK 7 via AI Gateway (`generateText({ output: Output.object({ schema }) })`), `mcp-handler` 2.x with full `z.object(...)` tool schemas, Zod 4.
+# GitHub: how to update `main`
+
+`main` is branch-protected on GitHub (`allow_force_pushes=false`, `allow_deletions=false`, `enforce_admins=true`).
+
+**Do**
+- Sync first: `git checkout main && git pull origin main`
+- Prefer a feature branch + PR for shared / risky work:
+  ```bash
+  git checkout -b yourname/short-topic
+  # …commits…
+  git push -u origin HEAD
+  gh pr create --base main
+  ```
+- Merge the PR (or, for small solo fixes, a normal non-force push to `main` is still allowed):
+  ```bash
+  git checkout main && git pull
+  # …commits…
+  git push origin main
+  ```
+
+**Do not**
+- `git push --force` / `--force-with-lease` to `main` (blocked for everyone, including admins)
+- Delete `main`
+- Rewrite shared history on `main`
+
+If `main` and your branch diverge, rebase or merge your branch onto an up-to-date `main`, then open/update the PR — never force-push `main` to “fix” it.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
