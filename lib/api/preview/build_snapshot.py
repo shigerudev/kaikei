@@ -89,13 +89,13 @@ def resolve_partner(raw: str | None) -> str | None:
 
 REVENUE_ACCTS = {"REV_SALES", "REV_IC", "INTEREST_INC_IC"}
 ACCOUNT_NAMES = {
-    "REV_SALES": "Sales", "REV_IC": "Intercompany sales & fees", "COGS": "Cost of sales", "COGS_IC": "Intercompany purchases",
-    "SALARIES": "Salaries", "RENT": "Rent", "MARKETING": "Marketing", "DEPRECIATION": "Depreciation",
-    "MGMT_FEE_IC": "Management fees (IC)", "OTHER_OPEX": "Other operating expenses", "INTEREST_INC_IC": "Interest income (IC)",
-    "INTEREST_EXP": "Interest expense", "INTEREST_EXP_IC": "Interest expense (IC)", "INCOME_TAX": "Income tax",
-    "CASH": "Cash", "AR": "Receivables", "AR_IC": "Receivables (IC)", "INVENTORY": "Inventory", "PPE": "Property, plant & equipment",
-    "LOAN_IC_REC": "Loan receivable (IC)", "AP": "Payables", "AP_IC": "Payables (IC)", "ST_DEBT": "Short-term debt",
-    "LT_DEBT": "Long-term debt", "LOAN_IC_PAY": "Loan payable (IC)", "EQUITY": "Equity",
+    "REV_SALES": "Ventas", "REV_IC": "Ventas y cargos intercompañía", "COGS": "Costo de ventas", "COGS_IC": "Compras intercompañía",
+    "SALARIES": "Salarios", "RENT": "Arrendamientos", "MARKETING": "Mercadeo", "DEPRECIATION": "Depreciación",
+    "MGMT_FEE_IC": "Honorarios de gestión (IC)", "OTHER_OPEX": "Otros gastos operativos", "INTEREST_INC_IC": "Ingresos por intereses (IC)",
+    "INTEREST_EXP": "Gastos por intereses", "INTEREST_EXP_IC": "Gastos por intereses (IC)", "INCOME_TAX": "Impuesto sobre la renta",
+    "CASH": "Efectivo", "AR": "Cuentas por cobrar", "AR_IC": "Cuentas por cobrar (IC)", "INVENTORY": "Inventarios", "PPE": "Propiedad, planta y equipo",
+    "LOAN_IC_REC": "Préstamo por cobrar (IC)", "AP": "Cuentas por pagar", "AP_IC": "Cuentas por pagar (IC)", "ST_DEBT": "Deuda a corto plazo",
+    "LT_DEBT": "Deuda a largo plazo", "LOAN_IC_PAY": "Préstamo por pagar (IC)", "EQUITY": "Patrimonio",
 }
 MONTHS_ES = {m: i + 1 for i, m in enumerate(["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"])}
 MONTHS_EN = {m: i + 1 for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"])}
@@ -291,11 +291,11 @@ live = [r for r in records if r["id"] not in held_back and FUNC_CCY[r["company_i
 # ── Intercompany matching ────────────────────────────────────────────────────
 
 PAIRS = [  # (flow, seller acct, buyer acct)
-    ("Product sales", "REV_IC", "COGS_IC"),
-    ("Management fees", "REV_IC", "MGMT_FEE_IC"),
-    ("Loan interest", "INTEREST_INC_IC", "INTEREST_EXP_IC"),
-    ("Receivables / payables", "AR_IC", "AP_IC"),
-    ("Intercompany loan", "LOAN_IC_REC", "LOAN_IC_PAY"),
+    ("Ventas de producto", "REV_IC", "COGS_IC"),
+    ("Honorarios de gestión", "REV_IC", "MGMT_FEE_IC"),
+    ("Intereses de préstamo", "INTEREST_INC_IC", "INTEREST_EXP_IC"),
+    ("Cuentas por cobrar / pagar", "AR_IC", "AP_IC"),
+    ("Préstamo intercompañía", "LOAN_IC_REC", "LOAN_IC_PAY"),
 ]
 side_index = defaultdict(list)
 for r in live:
@@ -311,9 +311,9 @@ for r in live:
     for flow, sell, buy in PAIRS:
         if r["group_account"] != sell:
             continue
-        if flow == "Product sales" and r["company_id"] != "EMP2":
+        if flow == "Ventas de producto" and r["company_id"] != "EMP2":
             continue
-        if flow == "Management fees" and r["company_id"] != "EMP6":
+        if flow == "Honorarios de gestión" and r["company_id"] != "EMP6":
             continue
         key = (r["company_id"], r["partner_company_id"], r["period"], flow)
         if key in seen:
@@ -333,7 +333,7 @@ for r in live:
         if status == "MATCHED":
             jid += 1
             amt = r["amount_group"]
-            stmt_bs = flow in ("Receivables / payables", "Intercompany loan")
+            stmt_bs = flow in ("Cuentas por cobrar / pagar", "Préstamo intercompañía")
             j = {
                 "id": f"ELIM-{jid:04d}", "match_group_id": mg["id"], "rule_id": "IC-ELIM-01", "rule_version": "1.0.0", "currency": "USD",
                 "period": r["period"], "flow": flow,
@@ -354,14 +354,14 @@ for r in live:
 
 PL_LINES = ["REV_SALES", "REV_IC", "COGS", "COGS_IC", "SALARIES", "RENT", "MARKETING", "DEPRECIATION", "MGMT_FEE_IC", "OTHER_OPEX", "INTEREST_INC_IC", "INTEREST_EXP", "INTEREST_EXP_IC", "INCOME_TAX"]
 PL_LAYOUT = [
-    ("REVENUE", "Revenue", [("+", "REV_SALES"), ("+", "REV_IC")]),
-    ("COST_OF_SALES", "Cost of sales", [("+", "COGS"), ("+", "COGS_IC")]),
-    ("GROSS_PROFIT", "Gross profit", [("+", "REVENUE"), ("-", "COST_OF_SALES")]),
-    ("OPEX", "Operating expenses", [("+", a) for a in ["SALARIES", "RENT", "MARKETING", "DEPRECIATION", "MGMT_FEE_IC", "OTHER_OPEX"]]),
-    ("OPERATING_PROFIT", "Operating profit", [("+", "GROSS_PROFIT"), ("-", "OPEX")]),
-    ("NET_FINANCE", "Net finance result", [("+", "INTEREST_INC_IC"), ("-", "INTEREST_EXP"), ("-", "INTEREST_EXP_IC")]),
-    ("PROFIT_BEFORE_TAX", "Profit before tax", [("+", "OPERATING_PROFIT"), ("+", "NET_FINANCE")]),
-    ("NET_PROFIT", "Net profit", [("+", "PROFIT_BEFORE_TAX"), ("-", "INCOME_TAX")]),
+    ("REVENUE", "Ingresos", [("+", "REV_SALES"), ("+", "REV_IC")]),
+    ("COST_OF_SALES", "Costo de ventas total", [("+", "COGS"), ("+", "COGS_IC")]),
+    ("GROSS_PROFIT", "Utilidad bruta", [("+", "REVENUE"), ("-", "COST_OF_SALES")]),
+    ("OPEX", "Gastos operativos", [("+", a) for a in ["SALARIES", "RENT", "MARKETING", "DEPRECIATION", "MGMT_FEE_IC", "OTHER_OPEX"]]),
+    ("OPERATING_PROFIT", "Utilidad operativa", [("+", "GROSS_PROFIT"), ("-", "OPEX")]),
+    ("NET_FINANCE", "Resultado financiero neto", [("+", "INTEREST_INC_IC"), ("-", "INTEREST_EXP"), ("-", "INTEREST_EXP_IC")]),
+    ("PROFIT_BEFORE_TAX", "Utilidad antes de impuestos", [("+", "OPERATING_PROFIT"), ("+", "NET_FINANCE")]),
+    ("NET_PROFIT", "Utilidad neta", [("+", "PROFIT_BEFORE_TAX"), ("-", "INCOME_TAX")]),
 ]
 PL_ORDER = [
     ("REV_SALES", "line"), ("REV_IC", "line"), ("REVENUE", "subtotal"),
@@ -372,9 +372,9 @@ PL_ORDER = [
     ("PROFIT_BEFORE_TAX", "total"), ("INCOME_TAX", "line"), ("NET_PROFIT", "total"),
 ]
 BS_LAYOUT = [
-    ("TOTAL_ASSETS", "Total assets", [("+", a) for a in ["CASH", "AR", "AR_IC", "INVENTORY", "PPE", "LOAN_IC_REC"]]),
-    ("TOTAL_LIABILITIES", "Total liabilities", [("+", a) for a in ["AP", "AP_IC", "ST_DEBT", "LT_DEBT", "LOAN_IC_PAY"]]),
-    ("TOTAL_LIAB_EQUITY", "Total liabilities & equity", [("+", "TOTAL_LIABILITIES"), ("+", "EQUITY")]),
+    ("TOTAL_ASSETS", "Total activos", [("+", a) for a in ["CASH", "AR", "AR_IC", "INVENTORY", "PPE", "LOAN_IC_REC"]]),
+    ("TOTAL_LIABILITIES", "Total pasivos", [("+", a) for a in ["AP", "AP_IC", "ST_DEBT", "LT_DEBT", "LOAN_IC_PAY"]]),
+    ("TOTAL_LIAB_EQUITY", "Total pasivos y patrimonio", [("+", "TOTAL_LIABILITIES"), ("+", "EQUITY")]),
 ]
 BS_ORDER = [
     ("CASH", "line"), ("AR", "line"), ("AR_IC", "line"), ("INVENTORY", "line"), ("PPE", "line"), ("LOAN_IC_REC", "line"), ("TOTAL_ASSETS", "total"),
@@ -398,7 +398,7 @@ def build(period_label, statement, in_scope, layout, order):
     adj = defaultdict(D)
     adj_js = defaultdict(list)
     for j in journals:
-        if not in_scope(j["period"]) or ((j["flow"] in ("Receivables / payables", "Intercompany loan")) != (statement == "BS")):
+        if not in_scope(j["period"]) or ((j["flow"] in ("Cuentas por cobrar / pagar", "Préstamo intercompañía")) != (statement == "BS")):
             continue
         for ln in j["lines"]:
             acct = ln["group_account"]
@@ -473,17 +473,17 @@ for m in range(2, 13):
 # ── Findings (verbatim from the answer key) ───────────────────────────────────
 
 RULE = {
-    "duplicate_row": ("VAL-006", "WARNING", "Duplicate record"),
-    "intercompany_mismatch": ("VAL-008", "WARNING", "Intercompany amount mismatch"),
-    "subtotal_mismatch": ("VAL-010", "BLOCKER", "Subtotal ≠ components"),
-    "sign_error": ("VAL-019", "WARNING", "Sign against normal balance"),
-    "missing_period": ("VAL-020", "WARNING", "Missing month"),
-    "wrong_currency": ("VAL-021", "BLOCKER", "Currency ≠ entity currency"),
-    "unmapped_account": ("VAL-003", "BLOCKER", "Unmapped account"),
-    "intercompany_one_sided": ("VAL-007", "WARNING", "Intercompany one-sided"),
-    "number_format": ("VAL-022", "WARNING", "Number format vs file locale"),
-    "balance_not_balanced": ("VAL-023", "BLOCKER", "Balance sheet doesn't balance"),
-    "fx_assumption_conflict": ("VAL-024", "INFO", "Local FX assumption ignored"),
+    "duplicate_row": ("VAL-006", "WARNING", "Registro duplicado"),
+    "intercompany_mismatch": ("VAL-008", "WARNING", "Diferencia intercompañía"),
+    "subtotal_mismatch": ("VAL-010", "BLOCKER", "Subtotal ≠ componentes"),
+    "sign_error": ("VAL-019", "WARNING", "Signo contrario al saldo normal"),
+    "missing_period": ("VAL-020", "WARNING", "Mes faltante"),
+    "wrong_currency": ("VAL-021", "BLOCKER", "Moneda ≠ moneda de la entidad"),
+    "unmapped_account": ("VAL-003", "BLOCKER", "Cuenta sin mapear"),
+    "intercompany_one_sided": ("VAL-007", "WARNING", "Intercompañía sin contraparte"),
+    "number_format": ("VAL-022", "WARNING", "Formato numérico vs. archivo"),
+    "balance_not_balanced": ("VAL-023", "BLOCKER", "Balance no cuadra"),
+    "fx_assumption_conflict": ("VAL-024", "INFO", "Tipo de cambio local ignorado"),
 }
 AMOUNTS = {
     "E02": {"expected": "427500.0000", "observed": "472500.0000", "difference": "45000.0000", "currency": "GTQ"},
@@ -525,7 +525,7 @@ for mg in matches:
         mg["finding_id"] = "FIND-E02"
         next(f for f in findings if f["id"] == "FIND-E02")["match_group_id"] = mg["id"]
     if mg["status"] == "ONE_SIDED" and mg["seller"]["company_id"] == "EMP6" and mg["seller"]["record_id"]:
-        if mg["period"] == "2027-12" and mg["flow"] == "Management fees":
+        if mg["period"] == "2027-12" and mg["flow"] == "Honorarios de gestión":
             mg["finding_id"] = "FIND-E08"
             next(f for f in findings if f["id"] == "FIND-E08")["match_group_id"] = mg["id"]
 
@@ -561,7 +561,7 @@ counts = {
 
 snapshot = {
     "$comment": "UI preview snapshot generated by lib/api/preview/build_snapshot.py from fixtures/grupo-ag. Not golden data; not engine output.",
-    "group": {"id": "grupo-ag", "name": "Grupo AG", "reporting_currency": "USD", "scenario": "BUDGET_2027"},
+    "group": {"id": "demo", "name": "Grupo de ejemplo", "reporting_currency": "USD", "scenario": "BUDGET_2027"},
     "companies": [{"id": e["entity"], "name": e["name"], "country": e["country"], "functional_currency": e["currency"], "ownership_pct": e["ownership_pct"], "consolidation_method": "FULL", "aliases": e["aliases"].split("|"), "filename": e["file"], "format": e["format"]} for e in entities],
     "rate_set": {"id": "FX-BUDGET-2027-V1", "version": "1", "rates": list(RATES.values())},
     "parameters": params,

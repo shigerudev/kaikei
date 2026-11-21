@@ -18,12 +18,12 @@ async function run<T>(fn: () => Promise<T>): Promise<Result<T>> {
     return { ok: true, data };
   } catch (err) {
     console.error("[action]", err);
-    return { ok: false, error: err instanceof Error ? err.message : "Something went wrong." };
+    return { ok: false, error: err instanceof Error ? err.message : "Algo salió mal." };
   }
 }
 
 const MAX_BYTES = 20 * 1024 * 1024;
-const ACTOR = "Reviewer";
+const ACTOR = "Revisor";
 
 export async function searchAction(group: string, q: string): Promise<SearchHit[]> {
   return api.search(group, q.slice(0, 100));
@@ -31,10 +31,10 @@ export async function searchAction(group: string, q: string): Promise<SearchHit[
 
 export async function uploadAction(group: string, form: FormData) {
   const files = form.getAll("file").filter((f): f is File => f instanceof File);
-  if (!files.length) return { ok: false as const, error: "Choose at least one file." };
+  if (!files.length) return { ok: false as const, error: "Elige al menos un archivo." };
   const bad = files.find((f) => !/\.(csv|xlsx)$/i.test(f.name));
-  if (bad) return { ok: false as const, error: `${bad.name} isn't a CSV or XLSX file.` };
-  if (files.some((f) => f.size > MAX_BYTES)) return { ok: false as const, error: "Files must be under 20 MB." };
+  if (bad) return { ok: false as const, error: `${bad.name} no es un archivo CSV o XLSX.` };
+  if (files.some((f) => f.size > MAX_BYTES)) return { ok: false as const, error: "Los archivos deben pesar menos de 20 MB." };
   return run(async () => {
     const out = [];
     for (const f of files) out.push(await api.uploadFile(group, f));
@@ -44,7 +44,7 @@ export async function uploadAction(group: string, form: FormData) {
 
 /** Preview only: feed the six fixture packs through the same upload path. */
 export async function loadSamplePacksAction(group: string) {
-  if (api.dataSource() !== "preview") return { ok: false as const, error: "Sample packs are only available in preview." };
+  if (api.dataSource() !== "preview") return { ok: false as const, error: "Los paquetes de ejemplo solo están en el espacio de ejemplo." };
   return run(async () => {
     const companies = await api.getCompanies(group);
     for (const c of companies) {
@@ -60,11 +60,11 @@ export async function approveMappingAction(group: string, companyId: string) {
 }
 
 export async function startRunAction(group: string, reason: string): Promise<Result<Run>> {
-  return run(() => api.startRun(group, reason.trim() || "Manual rerun"));
+  return run(() => api.startRun(group, reason.trim() || "Reejecución manual"));
 }
 
 export async function decideAction(findingId: string, action: FindingDecision["action"], reason: string): Promise<Result<Run>> {
-  if (!reason.trim()) return { ok: false, error: "Add a reason so the decision is auditable." };
+  if (!reason.trim()) return { ok: false, error: "Agrega un motivo para que la decisión sea auditable." };
   return run(() => api.decideFinding(findingId, action, reason, ACTOR));
 }
 
@@ -74,4 +74,12 @@ export async function publishAction(runId: string): Promise<Result<Run>> {
 
 export async function resetPreviewAction(mode: "full" | "empty") {
   return run(() => api.resetPreview(mode));
+}
+
+/** Sign out of the platform: clears the shared session cookie and returns to the marketing login. */
+export async function logOutAction() {
+  const { cookies } = await import("next/headers");
+  const { redirect } = await import("next/navigation");
+  (await cookies()).delete("kaikei_session");
+  redirect("/login");
 }

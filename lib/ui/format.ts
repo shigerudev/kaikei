@@ -3,12 +3,12 @@
  * Decimal amounts arrive as strings from the API; rounding here is display-only (half-even at the
  * reporting boundary, MANIFESTO §4.2) and never feeds back into a figure.
  */
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const MONTHS_LONG = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const MONTHS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const MONTHS_LONG = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
-/** "2027" → "FY 2027"; "2027-03" → "Mar 2027" (or "March 2027"). */
+/** "2027" → "Año 2027"; "2027-03" → "mar 2027" (o "marzo 2027"). */
 export function formatPeriod(period: string, long = false) {
-  if (/^\d{4}$/.test(period)) return `FY ${period}`;
+  if (/^\d{4}$/.test(period)) return `Año ${period}`;
   const [y, m] = period.split("-");
   return `${(long ? MONTHS_LONG : MONTHS)[Number(m) - 1] ?? m} ${y}`;
 }

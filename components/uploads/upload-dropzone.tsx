@@ -20,13 +20,13 @@ export function UploadDropzone({ group, preview }: { group: string; preview: boo
     start(async () => {
       const res = await uploadAction(group, form);
       if (!res.ok) {
-        toast.error("Upload failed", { description: res.error });
+        toast.error("No se pudo subir", { description: res.error });
         return;
       }
       const repeats = res.data.filter((r) => r.alreadyImported);
       const fresh = res.data.filter((r) => !r.alreadyImported);
-      if (fresh.length) toast.success(`${fresh.length} pack${fresh.length === 1 ? "" : "s"} uploaded`, { description: fresh.map((r) => r.company_id).join(", ") + " · review and approve each mapping" });
-      if (repeats.length) toast(`${repeats.length} already imported`, { description: "Same SHA-256 as the stored original. Nothing changed." });
+      if (fresh.length) toast.success(`${fresh.length} paquete${fresh.length === 1 ? "" : "s"} subido${fresh.length === 1 ? "" : "s"}`, { description: fresh.map((r) => r.company_id).join(", ") + " · revisa y aprueba cada mapeo" });
+      if (repeats.length) toast(`${repeats.length} ya importado${repeats.length === 1 ? "" : "s"}`, { description: "Mismo SHA-256 que el original guardado. No cambió nada." });
     });
   };
 
@@ -54,14 +54,14 @@ export function UploadDropzone({ group, preview }: { group: string; preview: boo
           {pending ? <Loader2Icon className="size-5 animate-spin text-muted-foreground" /> : <UploadCloudIcon className="size-5 text-muted-foreground" />}
         </span>
         <span className="space-y-1">
-          <span className="block font-medium">{pending ? "Storing originals and parsing…" : "Drop company packs here, or click to choose"}</span>
-          <span className="block text-sm text-muted-foreground">CSV or XLSX · several at once · originals are kept byte for byte</span>
+          <span className="block font-medium">{pending ? "Guardando originales y leyendo…" : "Suelta aquí los paquetes de las empresas o haz clic para elegir"}</span>
+          <span className="block text-sm text-muted-foreground">CSV o XLSX · varios a la vez · los originales se guardan byte a byte</span>
         </span>
       </button>
       <input ref={inputRef} type="file" multiple accept=".csv,.xlsx,text/csv" className="sr-only" onChange={(e) => send(e.target.files)} />
       {preview && (
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-          <span>Preview mode:</span>
+          <span>Espacio de ejemplo:</span>
           <Button
             variant="outline"
             size="xs"
@@ -70,11 +70,11 @@ export function UploadDropzone({ group, preview }: { group: string; preview: boo
               start(async () => {
                 const res = await loadSamplePacksAction(group);
                 if (!res.ok) toast.error(res.error);
-                else toast.success("Six Grupo AG packs loaded", { description: "Review and approve each mapping." });
+                else toast.success("Seis paquetes de ejemplo cargados", { description: "Revisa y aprueba cada mapeo." });
               })
             }
           >
-            <FileStackIcon /> Load the six fixture packs
+            <FileStackIcon /> Cargar los seis paquetes de ejemplo
           </Button>
         </div>
       )}

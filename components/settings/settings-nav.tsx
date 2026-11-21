@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useSelectedLayoutSegment } from "next/navigation";
 import { gPath, SETTINGS_SECTIONS } from "@/lib/ui/nav";
 
-export function SettingsNav({ group, active }: { group: string; active: string }) {
+/** Section nav, kept mounted by the settings layout; active state comes from the URL segment. */
+export function SettingsNav({ group }: { group: string }) {
+  const active = useSelectedLayoutSegment() ?? "entities";
   return (
     <nav aria-label="Settings sections" className="-mx-1 flex gap-1 overflow-x-auto md:mx-0 md:flex-col">
       {SETTINGS_SECTIONS.map((s) => {

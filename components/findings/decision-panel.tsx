@@ -23,52 +23,52 @@ export function DecisionPanel({ group, finding }: { group: string; finding: Find
 
   const decide = (action: "RESOLVE" | "ACCEPT_RISK" | "REOPEN") =>
     start(async () => {
-      const res = await decideAction(finding.id, action, action === "REOPEN" ? reason || "Reopened for review" : reason);
+      const res = await decideAction(finding.id, action, action === "REOPEN" ? reason || "Reabierto para revisión" : reason);
       if (!res.ok) {
-        toast.error("Decision not saved", { description: res.error });
+        toast.error("No se guardó la decisión", { description: res.error });
         return;
       }
       setReason("");
-      toast.success(action === "RESOLVE" ? "Marked resolved" : action === "ACCEPT_RISK" ? "Risk accepted" : "Reopened", {
-        description: `New run #${res.data.number} · ${res.data.counts.blockers_open} blocker(s) left`,
+      toast.success(action === "RESOLVE" ? "Marcado como resuelto" : action === "ACCEPT_RISK" ? "Riesgo aceptado" : "Reabierto", {
+        description: `Nueva ejecución #${res.data.number} · quedan ${res.data.counts.blockers_open} bloqueante(s)`,
       });
     });
 
   return (
     <section className="space-y-3 rounded-xl border p-4">
-      <h3 className="text-sm font-medium">Decision</h3>
+      <h3 className="text-sm font-medium">Decisión</h3>
       {open ? (
         <>
           <div className="space-y-1.5">
             <Label htmlFor={`reason-${finding.id}`} className="text-xs text-muted-foreground">
-              Reason (recorded with your decision)
+              Motivo (queda registrado con tu decisión)
             </Label>
             <Textarea
               id={`reason-${finding.id}`}
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              placeholder={finding.severity === "BLOCKER" ? "e.g. Corrected source uploaded by AG Panamá" : "e.g. Confirmed with the company controller"}
+              placeholder={finding.severity === "BLOCKER" ? "p. ej. La empresa subió el archivo corregido" : "p. ej. Confirmado con el contralor de la empresa"}
               rows={2}
               className="resize-none text-sm"
             />
           </div>
           <div className="flex flex-wrap gap-2">
             <Button size="sm" variant="brand" disabled={pending || !reason.trim()} onClick={() => decide("RESOLVE")}>
-              {pending ? <Loader2Icon className="animate-spin" /> : <CheckIcon />} Resolve
+              {pending ? <Loader2Icon className="animate-spin" /> : <CheckIcon />} Resolver
             </Button>
             <Button size="sm" variant="outline" disabled={pending || !reason.trim()} onClick={() => decide("ACCEPT_RISK")}>
-              <ShieldAlertIcon /> Accept risk
+              <ShieldAlertIcon /> Aceptar riesgo
             </Button>
           </div>
           <p className="text-xs text-muted-foreground">
-            Either choice creates a new run. {finding.severity === "BLOCKER" ? "Publishing stays blocked until every blocker is resolved or accepted." : "Warnings don't block publishing."}
+            Cualquier opción crea una nueva ejecución. {finding.severity === "BLOCKER" ? "La publicación sigue bloqueada hasta resolver o aceptar cada bloqueante." : "Las advertencias no bloquean la publicación."}
           </p>
         </>
       ) : (
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-sm text-muted-foreground">This finding is {finding.status.replace("_", " ").toLowerCase()}.</p>
+          <p className="text-sm text-muted-foreground">Este hallazgo ya tiene una decisión.</p>
           <Button size="sm" variant="ghost" disabled={pending} onClick={() => decide("REOPEN")}>
-            <RotateCcwIcon /> Reopen
+            <RotateCcwIcon /> Reabrir
           </Button>
         </div>
       )}
@@ -76,10 +76,10 @@ export function DecisionPanel({ group, finding }: { group: string; finding: Find
         <ol className="space-y-2 border-t pt-3">
           {[...finding.decisions].reverse().map((d, i) => (
             <li key={i} className="text-xs">
-              <span className="font-medium">{d.action === "RESOLVE" ? "Resolved" : d.action === "ACCEPT_RISK" ? "Accepted risk" : "Reopened"}</span>
+              <span className="font-medium">{d.action === "RESOLVE" ? "Resuelto" : d.action === "ACCEPT_RISK" ? "Riesgo aceptado" : "Reabierto"}</span>
               <span className="text-muted-foreground">
                 {" "}
-                by {d.actor} · {formatStamp(d.at)} ·{" "}
+                por {d.actor} · {formatStamp(d.at)} ·{" "}
                 <Link href={gPath(group, `/runs/${d.resulting_run_id}`)} className="underline underline-offset-2">
                   {d.resulting_run_id}
                 </Link>

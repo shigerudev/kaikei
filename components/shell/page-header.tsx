@@ -79,11 +79,11 @@ export function PageHeader({
             <TooltipTrigger asChild>
               <span className="hidden items-center gap-1.5 rounded-full border border-dashed px-2 py-0.5 text-[11px] text-muted-foreground xl:inline-flex">
                 <span className="size-1.5 rounded-full bg-warning" />
-                Preview data
+                Datos de ejemplo
               </span>
             </TooltipTrigger>
             <TooltipContent className="max-w-64">
-              Built from the Grupo AG fixture pack until the engine API is connected. Findings and locations come from the answer key; figures are not golden numbers.
+              Espacio de ejemplo generado con paquetes de muestra hasta conectar el motor. Los hallazgos y ubicaciones son reales; las cifras no son de referencia.
             </TooltipContent>
           </Tooltip>
         )}
@@ -91,12 +91,12 @@ export function PageHeader({
           <Tooltip>
             <TooltipTrigger asChild>
               <Link href={gPath(group, `/runs/${run.id}`)} className="hidden items-center gap-2 rounded-md px-1.5 py-1 text-xs text-muted-foreground transition-colors hover:bg-muted sm:inline-flex">
-                <span className="num">Run #{run.number}</span>
+                <span className="num">Ejecución #{run.number}</span>
                 <RunStatusBadge status={run.status} />
               </Link>
             </TooltipTrigger>
             <TooltipContent>
-              Fingerprint <span className="font-mono">{shortHash(run.fingerprint)}</span> · {formatStamp(run.created_at)}
+              Huella <span className="font-mono">{shortHash(run.fingerprint)}</span> · {formatStamp(run.created_at)}
             </TooltipContent>
           </Tooltip>
         )}

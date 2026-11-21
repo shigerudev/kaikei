@@ -6,20 +6,20 @@ export type NavKey = "dashboard" | "uploads" | "runs" | "findings" | "intercompa
 export type NavItem = { key: NavKey; label: string; path: string; shortcut: string; keywords: string[]; section: "main" | "footer" };
 
 export const NAV: NavItem[] = [
-  { key: "dashboard", label: "Dashboard", path: "", shortcut: "D", keywords: ["consolidated", "p&l", "balance", "overview", "facts"], section: "main" },
-  { key: "uploads", label: "Uploads", path: "/uploads", shortcut: "U", keywords: ["files", "packs", "mapping", "import", "ingest"], section: "main" },
-  { key: "runs", label: "Runs", path: "/runs", shortcut: "R", keywords: ["consolidation", "fingerprint", "publish", "stages"], section: "main" },
-  { key: "findings", label: "Findings", path: "/findings", shortcut: "F", keywords: ["errors", "validation", "blockers", "warnings"], section: "main" },
-  { key: "intercompany", label: "Intercompany", path: "/intercompany", shortcut: "I", keywords: ["ic", "eliminations", "journals", "matches", "reconciliation"], section: "main" },
-  { key: "settings", label: "Group settings", path: "/settings/entities", shortcut: "S", keywords: ["configuration", "entities", "rates", "fx", "aliases", "parameters"], section: "footer" },
+  { key: "dashboard", label: "Panel", path: "", shortcut: "D", keywords: ["consolidated", "p&l", "balance", "overview", "facts"], section: "main" },
+  { key: "uploads", label: "Cargas", path: "/uploads", shortcut: "U", keywords: ["files", "packs", "mapping", "import", "ingest"], section: "main" },
+  { key: "runs", label: "Ejecuciones", path: "/runs", shortcut: "R", keywords: ["consolidation", "fingerprint", "publish", "stages"], section: "main" },
+  { key: "findings", label: "Hallazgos", path: "/findings", shortcut: "F", keywords: ["errors", "validation", "blockers", "warnings"], section: "main" },
+  { key: "intercompany", label: "Intercompañía", path: "/intercompany", shortcut: "I", keywords: ["ic", "eliminations", "journals", "matches", "reconciliation"], section: "main" },
+  { key: "settings", label: "Configuración", path: "/settings/entities", shortcut: "S", keywords: ["configuration", "entities", "rates", "fx", "aliases", "parameters"], section: "footer" },
 ];
 
 export const SETTINGS_SECTIONS = [
-  { key: "entities", label: "Entities", description: "Companies, functional currencies, ownership and counterparty aliases" },
-  { key: "rates", label: "Exchange rates", description: "The group's single, versioned rate set" },
-  { key: "parameters", label: "Parameters", description: "Reporting currency, IC tolerance, WACC and tax rates" },
-  { key: "appearance", label: "Appearance", description: "Theme" },
-  { key: "danger", label: "Preview data", description: "Reset the in-memory preview" },
+  { key: "entities", label: "Entidades", description: "Empresas, monedas funcionales, participación y alias de contraparte" },
+  { key: "rates", label: "Tipos de cambio", description: "El juego único y versionado de tasas del grupo" },
+  { key: "parameters", label: "Parámetros", description: "Moneda de reporte, tolerancia IC, WACC y tasas de impuesto" },
+  { key: "appearance", label: "Apariencia", description: "Tema" },
+  { key: "danger", label: "Datos de ejemplo", description: "Restablecer el espacio de ejemplo" },
 ] as const;
 
 export type SettingsSection = (typeof SETTINGS_SECTIONS)[number]["key"];

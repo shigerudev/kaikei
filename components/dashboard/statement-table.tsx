@@ -17,7 +17,7 @@ export function StatementTable({ group, rows, companies, byCompany, excluded = [
     <div className="overflow-x-auto rounded-xl border">
       <div className={byCompany ? "min-w-[1080px]" : "min-w-[600px]"}>
         <div style={grid} className="sticky top-0 grid items-end gap-3 border-b bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground">
-          <span>Group account</span>
+          <span>Cuenta del grupo</span>
           {byCompany &&
             companies.map((c) => (
               <span key={c.id} className="text-right">
@@ -25,9 +25,9 @@ export function StatementTable({ group, rows, companies, byCompany, excluded = [
                 <span className={`block truncate ${excluded.includes(c.id) ? "line-through decoration-negative/60" : ""}`}>{c.name.replace(/^AG /, "")}</span>
               </span>
             ))}
-          <span className="text-right">{byCompany ? "Σ contributions" : "Contributions"}</span>
-          <span className="text-right">Eliminations</span>
-          <span className="text-right text-foreground">Consolidated</span>
+          <span className="text-right">{byCompany ? "Σ aportes" : "Aportes"}</span>
+          <span className="text-right">Eliminaciones</span>
+          <span className="text-right text-foreground">Consolidado</span>
         </div>
         {rows.map((r, i) => {
           const line = r.kind === "line";

@@ -18,7 +18,7 @@ import {
 import { useTheme } from "next-themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import * as React from "react";
-import { searchAction } from "@/app/g/[group]/actions";
+import { openTour } from "@/components/onboarding-tour";
 import { NavIcon } from "@/components/shell/nav-icon";
 import {
   CommandDialog,
@@ -62,7 +62,7 @@ const isTyping = (e: KeyboardEvent) => {
 };
 
 const KIND_ICON = { company: BuildingIcon, account: SigmaIcon, finding: FlagIcon, file: FileSpreadsheetIcon, run: PlayIcon } as const;
-const KIND_LABEL = { finding: "Findings", account: "Accounts", company: "Companies", file: "Files", run: "Runs" } as const;
+const KIND_LABEL = { finding: "Hallazgos", account: "Cuentas", company: "Empresas", file: "Archivos", run: "Ejecuciones" } as const;
 const KIND_ORDER: SearchHit["kind"][] = ["finding", "account", "company", "file", "run"];
 
 /** Move through the period options (display order) — `]` next, `[` previous. */
@@ -159,7 +159,10 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
     let cancelled = false;
     const t = setTimeout(async () => {
       setLoading(true);
-      const hits = await searchAction(group, q).catch(() => [] as SearchHit[]);
+      const hits = await fetch(`/g/${group}/search?q=${encodeURIComponent(q)}`, { headers: { accept: "application/json" } })
+        .then((r) => (r.ok ? (r.json() as Promise<{ results: SearchHit[] }>) : { results: [] }))
+        .then((d) => d.results)
+        .catch(() => [] as SearchHit[]);
       if (!cancelled) {
         setResults(hits);
         setLoading(false);
@@ -186,13 +189,13 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
   return (
     <CommandMenuContext.Provider value={ctx}>
       {children}
-      <CommandDialog open={open} onOpenChange={onOpenChange} title="Command menu" description="Search findings, accounts and companies, jump to a screen or run an action.">
-        <CommandInput placeholder="Search findings (E02), accounts, companies… or type a command" value={query} onValueChange={setQuery} />
+      <CommandDialog open={open} onOpenChange={onOpenChange} title="Menú de comandos" description="Busca hallazgos, cuentas y empresas, ve a una pantalla o ejecuta una acción.">
+        <CommandInput placeholder="Busca hallazgos (E02), cuentas, empresas… o escribe un comando" value={query} onValueChange={setQuery} />
         <CommandList className="max-h-[min(440px,60vh)]">
-          <CommandEmpty>{loading ? "Searching…" : "No results."}</CommandEmpty>
+          <CommandEmpty>{loading ? "Buscando…" : "Sin resultados."}</CommandEmpty>
 
           {query.trim().length < 2 && recents.length > 0 && (
-            <CommandGroup heading="Recent">
+            <CommandGroup heading="Recientes">
               {recents.map((r) => (
                 <Hit key={`recent-${r.id}`} r={r} onSelect={() => openHit(r)} recent />
               ))}
@@ -209,19 +212,22 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
 
           {grouped.length > 0 && <CommandSeparator />}
 
-          <CommandGroup heading="Actions">
+          <CommandGroup heading="Acciones">
             <CommandItem value="upload packs files import ingest" onSelect={() => go(gPath(group, "/uploads"))}>
-              <UploadIcon /> Upload company packs
+              <UploadIcon /> Subir paquetes de empresas
             </CommandItem>
             <CommandItem value="start new run rerun consolidation" onSelect={() => go(gPath(group, "/runs?start=1"))}>
-              <PlayIcon /> Start a run
+              <PlayIcon /> Nueva ejecución
             </CommandItem>
             <CommandItem value="open blockers findings severity" onSelect={() => go(gPath(group, "/findings?severity=BLOCKER"))}>
-              <FlagIcon /> Show open blockers
+              <FlagIcon /> Ver bloqueantes abiertos
+            </CommandItem>
+            <CommandItem value="tutorial onboarding ayuda recorrido" onSelect={() => { setOpen(false); openTour(); }}>
+              <PlayIcon /> Ver tutorial
             </CommandItem>
           </CommandGroup>
 
-          <CommandGroup heading="Go to">
+          <CommandGroup heading="Ir a">
             {NAV.map((n) => (
               <CommandItem key={n.key} value={`${n.label} ${n.keywords.join(" ")}`} onSelect={() => go(gPath(group, n.path))}>
                 <NavIcon nav={n.key} />
@@ -231,13 +237,13 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
             ))}
             {SETTINGS_SECTIONS.filter((s) => s.key !== "entities").map((s) => (
               <CommandItem key={s.key} value={`settings ${s.label} ${s.description}`} onSelect={() => go(gPath(group, `/settings/${s.key}`))}>
-                <ArrowRightIcon /> Settings › {s.label}
+                <ArrowRightIcon /> Configuración › {s.label}
               </CommandItem>
             ))}
           </CommandGroup>
 
           {periods.length > 0 && (
-            <CommandGroup heading="Dashboard period">
+            <CommandGroup heading="Periodo del panel">
               {periods.map((p) => (
                 <CommandItem
                   key={p}
@@ -249,32 +255,32 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
                 >
                   <CalendarIcon />
                   {formatPeriod(p, true)}
-                  {p === currentPeriod && <span className="ml-auto text-xs text-muted-foreground">Current</span>}
+                  {p === currentPeriod && <span className="ml-auto text-xs text-muted-foreground">Actual</span>}
                 </CommandItem>
               ))}
             </CommandGroup>
           )}
 
-          <CommandGroup heading="Theme">
+          <CommandGroup heading="Tema">
             <CommandItem value="theme light mode" onSelect={() => { setTheme("light"); setOpen(false); }}>
-              <SunIcon /> Light theme
+              <SunIcon /> Tema claro
             </CommandItem>
             <CommandItem value="theme dark mode" onSelect={() => { setTheme("dark"); setOpen(false); }}>
-              <MoonIcon /> Dark theme
+              <MoonIcon /> Tema oscuro
             </CommandItem>
             <CommandItem value="theme system auto" onSelect={() => { setTheme("system"); setOpen(false); }}>
-              <MonitorIcon /> System theme
+              <MonitorIcon /> Tema del sistema
             </CommandItem>
             <CommandItem value="reset preview data" onSelect={() => go(gPath(group, "/settings/danger"))}>
-              <RotateCcwIcon /> Reset preview data…
+              <RotateCcwIcon /> Restablecer datos de ejemplo…
             </CommandItem>
           </CommandGroup>
         </CommandList>
         <div className="flex items-center gap-3 border-t px-3 py-2 text-[11px] text-muted-foreground">
-          <span><kbd className="font-sans">↑↓</kbd> navigate</span>
-          <span><kbd className="font-sans">↵</kbd> open</span>
-          <span><kbd className="font-sans">esc</kbd> close</span>
-          <span className="ml-auto hidden sm:inline">G then a letter jumps anywhere</span>
+          <span><kbd className="font-sans">↑↓</kbd> navegar</span>
+          <span><kbd className="font-sans">↵</kbd> abrir</span>
+          <span><kbd className="font-sans">esc</kbd> cerrar</span>
+          <span className="ml-auto hidden sm:inline">G y una letra para saltar</span>
         </div>
       </CommandDialog>
     </CommandMenuContext.Provider>

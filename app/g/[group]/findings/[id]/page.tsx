@@ -8,7 +8,7 @@ import { loadFinding } from "@/components/findings/load-finding";
 import { dataSource } from "@/lib/api";
 import { gPath } from "@/lib/ui/nav";
 
-export const metadata = { title: "Finding" };
+export const metadata = { title: "Hallazgo" };
 
 /** Finding detail as a full page (direct links); from the list it opens as a sheet. */
 export default async function FindingPage({ params }: PageProps<"/g/[group]/findings/[id]">) {
@@ -19,7 +19,7 @@ export default async function FindingPage({ params }: PageProps<"/g/[group]/find
     <>
       <PageHeader
         group={group}
-        crumbs={[{ label: "Findings", href: gPath(group, "/findings") }, { label: data ? `${data.finding.reference ?? data.finding.rule_id} · ${data.finding.title}` : "Finding" }]}
+        crumbs={[{ label: "Hallazgos", href: gPath(group, "/findings") }, { label: data ? `${data.finding.reference ?? data.finding.rule_id} · ${data.finding.title}` : "Hallazgo" }]}
         run={data?.run}
         preview={dataSource() === "preview"}
       />
@@ -27,9 +27,9 @@ export default async function FindingPage({ params }: PageProps<"/g/[group]/find
         {!result.ok ? (
           result.node
         ) : !data ? (
-          <EmptyState icon={SearchXIcon} title="Finding not found" description="It may belong to another run.">
+          <EmptyState icon={SearchXIcon} title="Hallazgo no encontrado" description="Puede pertenecer a otra ejecución.">
             <Button variant="outline" size="sm" asChild>
-              <Link href={gPath(group, "/findings")}>All findings</Link>
+              <Link href={gPath(group, "/findings")}>Todos los hallazgos</Link>
             </Button>
           </EmptyState>
         ) : (
