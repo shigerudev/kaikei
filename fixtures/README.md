@@ -10,6 +10,6 @@ Expected figures live in [`golden.json`](./golden.json), hand-computed and never
 | `sample_budget_dec.csv` | TODO | December budget lines (tests the Budget type; doesn't touch November) |
 | `bill_transportes_rapidos.pdf` | TODO | Text-based PDF, 2026-11-18, total Q600.00, GTQ |
 | `bill_no_match.pdf` | TODO | Second PDF with no good candidate → stays `uncertain_match` (AC7) |
-| `adversarial_actuals.csv` | TODO | Test-only: injection text in a description cell + unresolvable header `Imp. neto` (AC13) |
+| `adversarial_actuals.csv` | OK (Hugo) | Test-only: injection text in a description cell + unresolvable header `Imp. neto` (AC13) |
 
 Headers are intentionally non-standard: `Fecha`, `Concepto`, `Rubro`, `Monto (Q)`.
