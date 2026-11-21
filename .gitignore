@@ -48,3 +48,4 @@ engine/.venv/
 *.py[cod]
 .pytest_cache/
 uv.lock
+.ruff_cache/
