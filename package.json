@@ -9,7 +9,8 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "fixtures:check": "tsx scripts/check-grupo-ag.ts",
-    "test:mcp": "tsx --test lib/mcp/*.test.ts"
+    "test:mcp": "tsx --test lib/mcp/*.test.ts",
+    "mcp:parity": "tsx scripts/mcp-parity.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.4.0",
