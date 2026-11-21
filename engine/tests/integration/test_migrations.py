@@ -35,7 +35,10 @@ def migrated(monkeypatch):
 
 def _seed(conn) -> tuple[uuid.UUID, uuid.UUID]:
     gid = conn.execute(
-        text("INSERT INTO groups (name, reporting_currency) VALUES ('g', 'USD') RETURNING id")
+        text(
+            "INSERT INTO groups (name, slug, reporting_currency) "
+            "VALUES ('g', 'g', 'USD') RETURNING id"
+        )
     ).scalar_one()
     fid = conn.execute(
         text(

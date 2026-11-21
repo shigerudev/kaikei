@@ -25,7 +25,13 @@ export type SourceRef = {
   note?: string | null;
 };
 
-export type Group = { id: string; name: string; reporting_currency: string; scenario: string };
+export type Group = {
+  id: string;
+  slug?: string;
+  name: string;
+  reporting_currency: string;
+  scenario: string;
+};
 
 export type Company = {
   id: string;

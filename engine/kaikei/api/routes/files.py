@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import uuid
 from typing import Annotated, Literal
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
@@ -15,9 +14,8 @@ from sqlalchemy.orm import Session
 from kaikei.api.deps import get_session, get_store
 from kaikei.application import latest_run
 from kaikei.application import sources as pipeline_sources
-from kaikei.application.group_config import GroupMeta
+from kaikei.application.group_config import GroupMeta, is_uuid
 from kaikei.application.group_config import get_group as get_configured_group
-from kaikei.application.presentation import companies_out, group_out
 from kaikei.application.uploads import (
     MAX_UPLOAD_BYTES,
     UploadError,
@@ -31,18 +29,15 @@ router = APIRouter(prefix="/api/v1", tags=["files"])
 
 
 def _configured_group(group_id: str) -> GroupMeta | None:
-    """The in-memory pipeline's group when the UI addresses it by slug (e.g. `grupo-ag`).
+    """Pipeline packs are still keyed by slug until Phase 2 reads stored originals.
 
-    The DB-backed upload vertical keys groups by UUID; every pipeline route keys them by
-    slug. A UUID stays on the DB path; a configured slug is served by the pipeline, so the
-    UI can use one group id on all 18 routes. An unknown slug falls through to the DB path,
-    which answers 404.
+    UUID group ids go to the DB upload path. D5: lookup is slug-or-UUID via get_group;
+    this only chooses which store the bytes live in.
+    TODO(Antonio): one upload path once runs read object storage (Phase 2).
     """
-    try:
-        uuid.UUID(group_id)
-    except (ValueError, AttributeError, TypeError):
-        return get_configured_group(group_id)
-    return None
+    if is_uuid(group_id):
+        return None
+    return get_configured_group(group_id)
 
 
 def _json(payload: object, status_code: int = 200) -> JSONResponse:
@@ -69,25 +64,6 @@ class SourceFileOut(BaseModel):
 class UploadOut(BaseModel):
     file: SourceFileOut
     alreadyImported: bool  # noqa: N815  (UI contract)
-
-
-class GroupOut(BaseModel):
-    id: str
-    name: str
-    reporting_currency: str
-    scenario: str
-
-
-class CompanyOut(BaseModel):
-    id: str
-    name: str
-    country: str
-    functional_currency: str
-    ownership_pct: str
-    consolidation_method: Literal["FULL"]
-    aliases: list[str]
-    filename: str
-    format: str
 
 
 def _file_out(f: models.SourceFile, session: Session) -> SourceFileOut:
@@ -176,65 +152,3 @@ def get_file(file_id: str, session: Annotated[Session, Depends(get_session)]) ->
     if row is None:
         raise HTTPException(404, f"file {file_id!r} not found")
     return _file_out(row, session)
-
-
-@router.get("/groups/{group_id}", response_model=GroupOut)
-def get_group(group_id: str, session: Annotated[Session, Depends(get_session)]) -> GroupOut:
-    configured = _configured_group(group_id)
-    if configured is not None:
-        return _json(group_out(configured))
-    try:
-        gid = parse_group_id(group_id)
-    except UploadError as err:
-        raise _http(err) from err
-    group = session.get(models.Group, gid)
-    if group is None:
-        raise HTTPException(404, f"group {group_id!r} not found")
-    scenario = session.scalar(
-        select(models.Scenario.code)
-        .where(models.Scenario.group_id == gid)
-        .order_by(models.Scenario.code)
-    )
-    return GroupOut(
-        id=str(group.id),
-        name=group.name,
-        reporting_currency=group.reporting_currency,
-        scenario=scenario or "",
-    )
-
-
-@router.get("/groups/{group_id}/companies", response_model=list[CompanyOut])
-def list_companies(
-    group_id: str, session: Annotated[Session, Depends(get_session)]
-) -> list[CompanyOut]:
-    configured = _configured_group(group_id)
-    if configured is not None:
-        return _json(companies_out(configured.id))
-    try:
-        gid = parse_group_id(group_id)
-    except UploadError as err:
-        raise _http(err) from err
-    if session.get(models.Group, gid) is None:
-        raise HTTPException(404, f"group {group_id!r} not found")
-    companies = session.scalars(
-        select(models.Company).where(models.Company.group_id == gid).order_by(models.Company.name)
-    ).all()
-    aliases: dict[object, list[str]] = {}
-    for a in session.scalars(
-        select(models.CompanyAlias).where(models.CompanyAlias.group_id == gid)
-    ):
-        aliases.setdefault(a.company_id, []).append(a.alias)
-    return [
-        CompanyOut(
-            id=str(c.id),
-            name=c.name,
-            country=c.country or "",
-            functional_currency=c.functional_currency,
-            ownership_pct=str(c.ownership_pct),
-            consolidation_method="FULL",
-            aliases=sorted(aliases.get(c.id, [])),
-            filename="",  # not in the schema yet; report to owner
-            format="",
-        )
-        for c in companies
-    ]

@@ -12,7 +12,7 @@ from fastapi import APIRouter, HTTPException, Query
 from kaikei.api.deps import group_or_404
 from kaikei.application import decide_finding
 from kaikei.application.contracts import DecisionRequest, RunOut
-from kaikei.application.group_config import DEFAULT_GROUP_ID
+from kaikei.application.group_config import default_group_id
 from kaikei.application.presentation import run_out
 
 router = APIRouter(prefix="/api/v1", tags=["findings"])
@@ -22,10 +22,10 @@ router = APIRouter(prefix="/api/v1", tags=["findings"])
 def decide(
     finding_id: str,
     body: DecisionRequest,
-    group_id: str = Query(default=DEFAULT_GROUP_ID),
+    group_id: str | None = Query(default=None),
 ) -> RunOut:
     """Record the decision and return the new run it produced."""
-    group = group_or_404(group_id)
+    group = group_or_404(group_id or default_group_id() or "")
     try:
         record = decide_finding(
             finding_id,

@@ -76,10 +76,16 @@ def registry(group_id: str) -> Registry:
 
     from kaikei.application.pipeline import _INGEST
 
-    group = group_config.GROUPS[group_id]
+    group = group_config.get_group(group_id)
+    if group is None:
+        _REGISTRY[group_id] = Registry()
+        return _REGISTRY[group_id]
+    root = group_config.pack_dir(group_id)
     reg = Registry()
     for company in group_config.load_companies(group_id):
-        path = group_config.data_dir(group) / company.entity.file
+        if root is None or not company.entity.file:
+            continue
+        path = root / company.entity.file
         if not path.is_file():
             continue  # no pack on disk: the file is MISSING, reported as such below
         data = path.read_bytes()
@@ -160,24 +166,16 @@ def company_of_file(group_id: str, file_identifier: str) -> str | None:
 
 def account_mapping(group_id: str, company_id: str) -> list[AccountMappingOut]:
     """The company's reviewer-confirmed account mapping, exactly as the engine reads it."""
-    import csv
-
-    group = group_config.GROUPS[group_id]
-    path = group_config.data_dir(group) / group.mapping_version
-    if not path.is_file():
-        return []
-    with path.open(newline="", encoding="utf-8") as fh:
-        return [
-            AccountMappingOut(
-                local_code=(row.get("local_account") or "").strip(),
-                local_name=(row.get("local_name") or "").strip(),
-                group_account=(row.get("group_account") or "").strip(),
-                type=(row.get("type") or "").strip(),
-                partner=(row.get("counterparty") or "").strip() or None,
-            )
-            for row in csv.DictReader(fh)
-            if (row.get("entity") or "").strip() == company_id
-        ]
+    return [
+        AccountMappingOut(
+            local_code=entry.local_code,
+            local_name=entry.local_name,
+            group_account=entry.group_account,
+            type=entry.account_type,
+            partner=entry.counterparty,
+        )
+        for entry in group_config.mapping_entries(group_id, company_id)
+    ]
 
 
 def preview(group_id: str, file_identifier: str, record: RunRecord | None) -> FilePreviewOut | None:
@@ -235,7 +233,9 @@ def upload(group_id: str, filename: str, data: bytes) -> UploadResultOut:
     """
     reg = registry(group_id)
     sha256 = hashlib.sha256(data).hexdigest()
-    group = group_config.GROUPS[group_id]
+    group = group_config.get_group(group_id)
+    if group is None:
+        raise UnknownUploadError(f"group {group_id!r} is not configured")
 
     by_hash = next((f for f in reg.files.values() if f.sha256 == sha256), None)
     if by_hash is not None:
@@ -275,7 +275,8 @@ def approve_mapping(group_id: str, company_id: str) -> SourceFileOut:
     if stored is None:
         raise KeyError(company_id)
     stored.status = "MAPPING_APPROVED"
-    stored.mapping_version = group_config.GROUPS[group_id].mapping_version
+    group = group_config.get_group(group_id)
+    stored.mapping_version = group.mapping_version if group else None
     return _stored_out(group_id, stored)
 
 

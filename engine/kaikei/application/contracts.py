@@ -55,9 +55,52 @@ class SourceRefOut(Contract):
 
 class GroupOut(Contract):
     id: str
+    slug: str
     name: str
     reporting_currency: str
     scenario: str
+
+
+class CreateGroupRequest(Contract):
+    name: str = Field(min_length=1)
+    reporting_currency: str
+    slug: str | None = None
+    scenario: str | None = None
+    fiscal_year: str | None = None
+
+
+class CreateCompanyRequest(Contract):
+    name: str = Field(min_length=1)
+    country: str
+    functional_currency: str
+    ownership_pct: str
+    aliases: list[str] = []
+    code: str | None = None
+
+
+class CreateFxRateIn(Contract):
+    from_ccy: str
+    to_ccy: str
+    period: str
+    rate_type: Literal["average", "closing"]
+    rate: str
+    units_per_usd: str | None = None
+    source: str = ""
+    applies_to: str = ""
+
+
+class CreateRateSetRequest(Contract):
+    name: str | None = None
+    rates: list[CreateFxRateIn]
+
+
+class GroupAccountOut(Contract):
+    code: str
+    name: str
+    statement: StatementName
+    account_type: str
+    normal_balance: str
+    ic_eligible: bool
 
 
 class CompanyOut(Contract):
