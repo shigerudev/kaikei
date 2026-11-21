@@ -43,3 +43,5 @@ next-env.d.ts
 
 .certs/
 .venv-fixtures/
+engine/.venv/
+uv.lock
