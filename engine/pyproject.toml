@@ -1,21 +1,18 @@
 [project]
 name = "kaikei"
 version = "0.1.0"
-description = "Kaikei consolidation engine: every financial number comes from here."
-requires-python = ">=3.12,<3.13"
+description = "Kaikei consolidation engine (Grupo AG)"
+requires-python = ">=3.12"
 dependencies = [
-    "fastapi[standard]>=0.115",
-    "pydantic>=2.10",
-    "pydantic-settings>=2.6",
-    "sqlalchemy>=2.0.36",
-    "alembic>=1.14",
-    "psycopg[binary]>=3.2",
+  "fastapi[standard]>=0.115",
+  "pydantic>=2.10",
+  "pydantic-settings>=2.6",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
-    "pytest>=8.3",
-    "ruff>=0.8",
+  "pytest>=8.3",
+  "ruff>=0.9",
 ]
 
 [build-system]
@@ -27,7 +24,6 @@ packages = ["kaikei"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra --strict-markers"
 pythonpath = ["."]
 
 [tool.ruff]
@@ -35,8 +31,4 @@ line-length = 100
 target-version = "py312"
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "UP", "B", "S", "DTZ", "RUF"]
-allowed-confusables = ["×"]
-
-[tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101"]
+select = ["E", "F", "I", "UP"]

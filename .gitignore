@@ -43,10 +43,9 @@ next-env.d.ts
 
 .certs/
 .venv-fixtures/
-
-# python engine (engine/uv.lock is committed: reproducible installs)
+engine/.venv/
 **/__pycache__/
 *.py[cod]
-.venv/
 .pytest_cache/
+uv.lock
 .ruff_cache/

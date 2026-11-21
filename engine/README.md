@@ -16,6 +16,6 @@ Phase 0 slice (Antonio): FastAPI app (`kaikei/main.py`, `GET /health`), settings
 
 ```bash
 cd engine
-uv sync
+uv sync --extra dev
 uv run ruff check . && uv run ruff format --check . && uv run pytest
 ```

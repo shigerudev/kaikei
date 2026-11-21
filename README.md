@@ -26,7 +26,7 @@ curl -fsS http://127.0.0.1:8000/health
 npm install && npm run dev
 ```
 
-Postgres publishes no port; it is reachable only from the compose network. The engine is published on `127.0.0.1:8000` with hot reload from `engine/`. Run migrations inside it: `docker compose exec engine uv run alembic upgrade head`. Engine tests run on the host: `cd engine && uv sync && uv run pytest`.
+Postgres publishes no port; it is reachable only from the compose network. The engine is published on `127.0.0.1:8000` with hot reload from `engine/`. Run migrations inside it: `docker compose exec engine uv run alembic upgrade head`. Engine tests run on the host: `cd engine && uv sync --extra dev && uv run pytest`.
 
 ## Checks
 
