@@ -51,6 +51,7 @@ A group finance reviewer who receives one budget pack per company and must publi
 | **Publication gates** | A run is `DRAFT`, `BLOCKED` or `PUBLISHED`. An open BLOCKER prevents publishing the affected scope. A draft preview is always labelled as such |
 | **Inspector** | Click any consolidated number → contributions per company → FX rate used → matches and journals → findings → source file, row and cell with the raw value |
 | **Reruns** | The same inputs and versions give the same totals. Fixing a source or approving an exception creates a new run. Published runs are never overwritten |
+| **MCP (read-only)** | AI clients (Claude / ChatGPT / Grok) connect over MCP to **published** runs only. Tools return engine figures, findings and lineage with source refs. No mutations; AI never invents a number |
 
 ### Strong additions (P1, if time allows)
 - **ROIC, ROCE, EVA:** the fixture pack includes a balance sheet, WACC and tax rates, so these are computable. Show the formula, inputs and periods. Show `INSUFFICIENT_DATA` rather than inventing an input.
@@ -62,11 +63,11 @@ A group finance reviewer who receives one budget pack per company and must publi
 ### What waits (roadmap, in order)
 1. Non-controlling interests, partial ownership, acquisitions/disposals, investment consolidation.
 2. Unrealized intercompany profit in inventory or fixed assets; dividends; FX differences on intragroup monetary items.
-3. Read-only AI access to published runs over MCP (the former Grok/Claude/ChatGPT goal), returning engine figures with source refs.
-4. AI-assisted mapping suggestions with explainable confidence and reviewer approval.
-5. Accounts and sign-in with **Better Auth** in the Next.js app. The engine verifies its JWTs (JWKS) and scopes every query to the user's group (PLAN.md §17).
-6. Multiple hierarchies and subgroups; approval workflows; SSO/RBAC; multi-tenancy; background workers.
-7. ERP/Drive/S3 connectors; incremental reprocessing.
+3. AI-assisted mapping suggestions with explainable confidence and reviewer approval.
+4. Accounts and sign-in with **Better Auth** in the Next.js app. The engine verifies its JWTs (JWKS) and scopes every query to the user's group (PLAN.md §17).
+5. Multiple hierarchies and subgroups; approval workflows; SSO/RBAC; multi-tenancy; background workers.
+6. ERP/Drive/S3 connectors; incremental reprocessing.
+7. PDF bill evidence matching (owner-workspace leftover; not required for the consolidation track demo).
 
 **Never claimed:** certified IFRS statutory reporting. This is management/budget consolidation (PLAN.md §0).
 
@@ -211,12 +212,28 @@ Every mutation validates versioned references. `run_id` identifies a whole repor
 
 The Next.js app talks only to this API. It never computes a financial number.
 
+### 4.4.1 MCP contract (read-only, MVP)
+
+MCP tools are a thin, **read-only** surface over the same engine API. They exist so Claude / ChatGPT / Grok can answer questions about a **published** consolidation run without inventing figures.
+
+| Rule | Detail |
+|---|---|
+| Scope | Only `PUBLISHED` runs (or an explicit draft flagged as non-publishable preview) |
+| Figures | Always from the engine (`/facts`, `/findings`, `/reconciliations`, `/lineage`). The tool layer never computes money |
+| Mutations | None. No publish, approve, upload or mapping tools |
+| Auth | Per-group token (or equivalent) on the MCP route; never a shared global key in client prompts |
+| Copy | Bilingual ES/EN tool descriptions; answers quote decimal strings + source refs |
+| Offline | With no model connected, the REST API and UI still pass acceptance |
+
+Minimum tool set (names finalised by Antonio + Hugo at scaffold): run status · facts for a period · findings · IC reconciliations · fact lineage (source cell).
+
 ### 4.5 AI rules
 
-1. AI is optional. With AI switched off, every flow works: mapping is reviewed by hand, and explanations come from deterministic templates.
-2. The model receives **read-only, verified structured facts**: computed figures, components and source refs. It returns structured output only, gets no tools, and can't change arithmetic, create an adjustment or invent a cause.
+1. AI is optional. With AI switched off, every flow works: mapping is reviewed by hand, explanations come from deterministic templates, and MCP simply isn't connected.
+2. The model receives **read-only, verified structured facts**: computed figures, components and source refs. It returns structured output only, gets no mutating tools, and can't change arithmetic, create an adjustment or invent a cause.
 3. File content is quoted data, never instructions.
 4. Anything AI-suggested (a mapping, a narration) is labelled as such and needs reviewer approval before it affects a run.
+5. MCP answers must cite the engine payload (amount as decimal string + source ref). If the engine has no figure, the tool says so — it does not estimate.
 
 ---
 
@@ -230,7 +247,7 @@ The Next.js app talks only to this API. It never computes a financial number.
 | D2 | **Backend = Python (FastAPI + Pydantic, SQLAlchemy + Alembic, `Decimal`, openpyxl/pandas); UI = Next.js + TypeScript** | TypeScript full-stack on Vercel (old C3) | Data handling and parsing are easier in Python, which matters for six formats and exact decimals |
 | D3 | **Money = `Decimal` + `NUMERIC`** | `bigint` minor units | FX translation and rates need fractional precision; Decimal keeps it exact |
 | D4 | **Publication gates and immutable runs** | "No publish gates, live figures" (old C7) | A group budget is published and defended, unlike a live owner view |
-| D5 | **PDF bill evidence and the MCP endpoint leave the MVP** (MCP → roadmap §2, item 3) | Owner-workspace features | Not in the track's deliverables; time goes to consolidation |
+| D5 | **PDF bill evidence leaves the MVP**; **MCP stays in MVP** as a read-only layer over published runs (see §2 ships + §4.4.1) | Earlier draft that parked MCP on the roadmap | Team will demo AI clients against consolidation figures; PDF matching is not required for the track |
 | D6 | **CSV and XLSX ingestion** | CSV only (old C6) | Fixtures are CSV; the organizers' data may be Excel |
 
 ### 5.2 Carried over (still true)
@@ -248,7 +265,7 @@ Is the data transaction-level or summary balances? Is there a group chart of acc
 
 1. **Ownership:** `companies.ownership_pct` and `consolidation_method` are stored now (all 100%, full consolidation). NCI and the equity method add rules, not schema changes.
 2. **Unrealized profit:** needs inventory data. It is flagged as out of scope until then, never ignored silently.
-3. **MCP / AI clients:** a read-only layer over `consolidated_facts` and `/lineage` of **published** runs. Answers quote engine numbers and source refs.
+3. **MCP (MVP):** already specified in §4.4.1 — read-only tools over published runs. Later: more tools (variances/KPIs) and tighter auth once Better Auth lands.
 4. **Scale:** a worker per `run_id` and chunked extraction. Lineage stays relational (PLAN.md §10.2).
 
 ---
