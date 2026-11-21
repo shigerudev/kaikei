@@ -14,6 +14,10 @@ Expected figures live in [`golden.json`](./golden.json), hand-computed and never
 
 Headers are intentionally non-standard: `Fecha`, `Concepto`, `Rubro`, `Monto (Q)`.
 
+## Consolidation track set
+
+[`grupo-ag/`](./grupo-ag/README.md): six-company, three-currency, six-format group pack with 13 planted errors for the multi-company consolidation track. Verified by `npm run fixtures:check`.
+
 ## CA mega packs (`fixtures/ca-mega/`)
 
 Large fictional enterprise sets — **one global brand subsidiary per Central American country** — for demos and load tests. Regenerate with:

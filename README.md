@@ -1,71 +1,40 @@
 # Kaikei
 
-> Every number opens down to the row. If we can't trace it, we don't show it.
+> From six isolated budgets to one consolidated, explainable result: one reporting currency, no double counting, validated errors, and evidence traced all the way to the original cell.
 
-Owner workspace: CSV budget/actual intake → variance dashboard with drilldown to the raw row and the bill PDF → the same figures over a read-only MCP endpoint for Grok / Claude / ChatGPT.
+Multi-company budget consolidation for the Grupo AG track. It takes six company budget packs in three currencies, normalizes them, catches the planted errors, translates them to USD, eliminates intercompany flows with balanced journals, and publishes consolidated figures that drill down to the source file, row and cell.
 
 - **What & why:** [`docs/MANIFESTO.md`](docs/MANIFESTO.md) (wins any conflict)
+- **Detailed financial rules:** [`docs/PLAN.md`](docs/PLAN.md)
 - **Plan, owners, acceptance:** [`docs/SCOPE_AND_TASKS.md`](docs/SCOPE_AND_TASKS.md)
+- **Agent rules:** [`AGENTS.md`](AGENTS.md)
+
+## Layout
+
+| Part | Where | Stack |
+|---|---|---|
+| Engine + API (all financial logic) | `engine/` | Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2 + Alembic, `Decimal`, PostgreSQL |
+| UI (renders API results only) | `app/`, `components/`, `lib/api/` | Next.js 16, React 19, Tailwind + shadcn/ui, TS client generated from the engine's OpenAPI |
+| Build data | `fixtures/grupo-ag/` | Six packs, group config, rate table, answer keys |
 
 ## Quick start
 
 ```bash
-npm install
-cp .env.example .env        # or: vercel env pull .env
-cp .env .env.local          # Next reads .env.local; scripts read .env
-npm run db:migrate          # applies lib/db/migrations
-npm run seed                # sample workspace (once implemented)
-npm run dev
+cp .env.example .env
+docker compose up -d postgres
+cd engine && uv sync && uv run alembic upgrade head && uv run fastapi dev kaikei/main.py
+# another terminal, repo root:
+npm install && npm run dev
 ```
 
-| Script | Does |
+## Checks
+
+| Command | Does |
 |---|---|
-| `npm run dev` / `build` / `start` | Next.js |
-| `npm run typecheck` / `lint` | `next typegen && tsc --noEmit` / ESLint |
-| `npm run db:generate` | New migration from `lib/db/schema.ts` |
-| `npm run db:migrate` / `db:studio` | Apply migrations / browse DB |
-| `npm run seed` | `scripts/seed-sample.ts` |
-| `npm run acceptance` | `scripts/acceptance.ts` (AC1–AC7) |
+| `cd engine && uv run pytest` | Engine unit + integration tests |
+| `cd engine && uv run pytest tests/acceptance` | AC1–AC12 on the fixture pack (SCOPE §5.2) |
+| `cd engine && uv run ruff check . && uv run ruff format --check .` | Lint + format |
+| `npm run typecheck && npm run lint && npm run build` | UI |
+| `npm run fixtures:check` | Fixture pack integrity: 13/13 planted errors, no unplanted defects |
 
-## Where things live
-
-| Contract / module | File | Owner |
-|---|---|---|
-| K1 DB schema | `lib/db/schema.ts` + `lib/db/migrations/` | Jose |
-| K2 Mapping, K4 Extraction, K5 Match, K8 AI envelope | `lib/types.ts` | Hugo |
-| K3 Metrics API (single source of figures) | `lib/metrics/index.ts` (types in `lib/types.ts`) | Jose |
-| K6 MCP tools | `lib/mcp/tools.ts`, route `app/api/mcp/[token]/route.ts` | Antonio + Hugo |
-| K7 Fixtures + golden numbers | `fixtures/` | Jordi |
-| Ingest (store, parse, fingerprint, apply) | `lib/ingest/` | Jose |
-| Column mapping (heuristics + LLM fallback) | `lib/mapping/` | Hugo |
-| PDF extract + match | `lib/documents/` | Hugo |
-| AI wrapper `suggest()` | `lib/ai/suggest.ts` | Hugo |
-| Flag rules + review API | `lib/flags/`, `app/api/w/[ws]/flags/` | Deyane |
-| Screens | `app/(marketing)/`, `app/w/[ws]/…` | Jordi |
-
-Open work is marked with `notImplemented("…", "<owner>")` and `TODO(<owner>)`:
-
-```bash
-grep -rn "notImplemented(\|TODO(" app lib scripts
-```
-
-## Routes
-
-| URL | Screen |
-|---|---|
-| `/` | 1 Landing / Trial |
-| `/w/<ws>?period=YYYY-MM` | 2 Overview |
-| `/w/<ws>/import` | 3 Import wizard |
-| `/w/<ws>/figure/<period>/<category>/<currency>` | 4 Figure drilldown |
-| `/w/<ws>/transactions/<id>` | 5 Transaction (MCP deep-link target) |
-| `/w/<ws>/documents/<id>` | 6 Document review |
-| `/w/<ws>/review` | 7 Review queue |
-| `/w/<ws>/connect` | Connect AI |
-| `/api/mcp/<mcp_token>` | MCP (Streamable HTTP, read-only) |
-
-## Stack notes
-
-- **Next.js 16** with Cache Components on. Workspace pages stream inside the `<Suspense>` in `app/w/[ws]/layout.tsx`. **Never add `"use cache"` to figures**, because they must match `as_of`.
-- **DB:** Neon Postgres via Drizzle (`drizzle-orm/neon-serverless` Pool, so `applyImport` can use a transaction). Money is `bigint` minor units; it crosses JSON as decimal strings.
-- **MCP:** `mcp-handler` 2.x + `@modelcontextprotocol/server` 2.x. Tools take full `z.object(...)` schemas.
-- **AI:** LangChain + LangSmith (`ChatOpenAI.withStructuredOutput`). Only through `lib/ai/suggest()`. `AI_ENABLED=false` keeps the full manual path.
+The engine scaffold, compose file and Python commands land in Phase 0 (SCOPE §3). The TypeScript backend that used to live in `lib/` is retired; its history is under the `pre-python` tag.

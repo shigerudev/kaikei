@@ -1,0 +1,128 @@
+# AG España S.L. - Presupuesto 2027
+# Tipo de cambio presupuesto EUR/USD 1,05
+Ejercicio;Mes;Cuenta;Descripción;Importe (€);Escenario;Sociedad contraparte
+2027;1;700;Ventas de mercaderías;378.000,00;Presupuesto;
+2027;1;600;Compras de mercaderías;162.000,00;Presupuesto;
+2027;1;640;Sueldos y salarios;85.500,00;Presupuesto;
+2027;1;621;Arrendamientos y cánones;16.200,00;Presupuesto;
+2027;1;627;Publicidad y propaganda;10.800,00;Presupuesto;
+2027;1;681;Amortización del inmovilizado;9.000,00;Presupuesto;
+2027;1;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;1;662;Intereses de deudas;4.050,00;Presupuesto;
+2027;1;630;Impuesto sobre beneficios;18.900,00;Presupuesto;
+2027;2;700;Ventas de mercaderías;357.000,00;Presupuesto;
+2027;2;600;Compras de mercaderías;153.000,00;Presupuesto;
+2027;2;640;Sueldos y salarios;80.750,00;Presupuesto;
+2027;2;621;Arrendamientos y cánones;15.300,00;Presupuesto;
+2027;2;627;Publicidad y propaganda;10.200,00;Presupuesto;
+2027;2;681;Amortización del inmovilizado;8.500,00;Presupuesto;
+2027;2;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;2;662;Intereses de deudas;3.820,00;Presupuesto;
+2027;2;630;Impuesto sobre beneficios;17.850,00;Presupuesto;
+2027;3;700;Ventas de mercaderías;399.000,00;Presupuesto;
+2027;3;600;Compras de mercaderías;171.000,00;Presupuesto;
+2027;3;640;Sueldos y salarios;90.250,00;Presupuesto;
+2027;3;621;Arrendamientos y cánones;17.100,00;Presupuesto;
+2027;3;627;Publicidad y propaganda;11.400,00;Presupuesto;
+2027;3;681;Amortización del inmovilizado;9.500,00;Presupuesto;
+2027;3;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;3;662;Intereses de deudas;4.280,00;Presupuesto;
+2027;3;630;Impuesto sobre beneficios;19.950,00;Presupuesto;
+2027;4;700;Ventas de mercaderías;420.000,00;Presupuesto;
+2027;4;600;Compras de mercaderías;180.000,00;Presupuesto;
+2027;4;640;Sueldos y salarios;95.000,00;Presupuesto;
+2027;4;621;Arrendamientos y cánones;18.000,00;Presupuesto;
+2027;4;627;Publicidad y propaganda;12.000,00;Presupuesto;
+2027;4;681;Amortización del inmovilizado;10.000,00;Presupuesto;
+2027;4;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;4;662;Intereses de deudas;4.500,00;Presupuesto;
+2027;4;630;Impuesto sobre beneficios;21.000,00;Presupuesto;
+2027;5;700;Ventas de mercaderías;420.000,00;Presupuesto;
+2027;5;600;Compras de mercaderías;180.000,00;Presupuesto;
+2027;5;640;Sueldos y salarios;95.000,00;Presupuesto;
+2027;5;621;Arrendamientos y cánones;18.000,00;Presupuesto;
+2027;5;627;Publicidad y propaganda;12.000,00;Presupuesto;
+2027;5;681;Amortización del inmovilizado;10.000,00;Presupuesto;
+2027;5;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;5;662;Intereses de deudas;4.500,00;Presupuesto;
+2027;5;630;Impuesto sobre beneficios;21.000,00;Presupuesto;
+2027;6;700;Ventas de mercaderías;399.000,00;Presupuesto;
+2027;6;600;Compras de mercaderías;171.000,00;Presupuesto;
+2027;6;640;Sueldos y salarios;90.250,00;Presupuesto;
+2027;6;621;Arrendamientos y cánones;17.100,00;Presupuesto;
+2027;6;627;Publicidad y propaganda;11.400,00;Presupuesto;
+2027;6;681;Amortización del inmovilizado;9.500,00;Presupuesto;
+2027;6;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;6;662;Intereses de deudas;4.280,00;Presupuesto;
+2027;6;630;Impuesto sobre beneficios;19.950,00;Presupuesto;
+2027;7;700;Ventas de mercaderías;420.000,00;Presupuesto;
+2027;7;600;Compras de mercaderías;180.000,00;Presupuesto;
+2027;7;640;Sueldos y salarios;95.000,00;Presupuesto;
+2027;7;621;Arrendamientos y cánones;18.000,00;Presupuesto;
+2027;7;627;Publicidad y propaganda;12.000,00;Presupuesto;
+2027;7;681;Amortización del inmovilizado;10.000,00;Presupuesto;
+2027;7;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;7;662;Intereses de deudas;4.500,00;Presupuesto;
+2027;7;630;Impuesto sobre beneficios;21.000,00;Presupuesto;
+2027;8;700;Ventas de mercaderías;420.000,00;Presupuesto;
+2027;8;600;Compras de mercaderías;180.000,00;Presupuesto;
+2027;8;640;Sueldos y salarios;95.000,00;Presupuesto;
+2027;8;621;Arrendamientos y cánones;18.000,00;Presupuesto;
+2027;8;627;Publicidad y propaganda;12.000,00;Presupuesto;
+2027;8;681;Amortización del inmovilizado;10.000,00;Presupuesto;
+2027;8;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;8;662;Intereses de deudas;4.500,00;Presupuesto;
+2027;8;630;Impuesto sobre beneficios;21.000,00;Presupuesto;
+2027;9;700;Ventas de mercaderías;399.000,00;Presupuesto;
+2027;9;600;Compras de mercaderías;171.000,00;Presupuesto;
+2027;9;640;Sueldos y salarios;90.250,00;Presupuesto;
+2027;9;621;Arrendamientos y cánones;17.100,00;Presupuesto;
+2027;9;627;Publicidad y propaganda;11400.00;Presupuesto;
+2027;9;681;Amortización del inmovilizado;9.500,00;Presupuesto;
+2027;9;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;9;662;Intereses de deudas;4.280,00;Presupuesto;
+2027;9;630;Impuesto sobre beneficios;19.950,00;Presupuesto;
+2027;10;700;Ventas de mercaderías;441.000,00;Presupuesto;
+2027;10;600;Compras de mercaderías;189.000,00;Presupuesto;
+2027;10;640;Sueldos y salarios;99.750,00;Presupuesto;
+2027;10;621;Arrendamientos y cánones;18.900,00;Presupuesto;
+2027;10;627;Publicidad y propaganda;12.600,00;Presupuesto;
+2027;10;681;Amortización del inmovilizado;10.500,00;Presupuesto;
+2027;10;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;10;662;Intereses de deudas;4.720,00;Presupuesto;
+2027;10;630;Impuesto sobre beneficios;22.050,00;Presupuesto;
+2027;11;700;Ventas de mercaderías;483.000,00;Presupuesto;
+2027;11;600;Compras de mercaderías;207.000,00;Presupuesto;
+2027;11;640;Sueldos y salarios;109.250,00;Presupuesto;
+2027;11;621;Arrendamientos y cánones;20.700,00;Presupuesto;
+2027;11;627;Publicidad y propaganda;13.800,00;Presupuesto;
+2027;11;681;Amortización del inmovilizado;11.500,00;Presupuesto;
+2027;11;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;11;662;Intereses de deudas;5.180,00;Presupuesto;
+2027;11;630;Impuesto sobre beneficios;24.150,00;Presupuesto;
+2027;12;700;Ventas de mercaderías;546.000,00;Presupuesto;
+2027;12;600;Compras de mercaderías;234.000,00;Presupuesto;
+2027;12;640;Sueldos y salarios;123.500,00;Presupuesto;
+2027;12;621;Arrendamientos y cánones;23.400,00;Presupuesto;
+2027;12;627;Publicidad y propaganda;15.600,00;Presupuesto;
+2027;12;681;Amortización del inmovilizado;13.000,00;Presupuesto;
+2027;12;623;Servicios de gestión AG Holding;13.888,89;Presupuesto;AG HOLDING
+2027;12;662;Intereses de deudas;5.850,00;Presupuesto;
+2027;12;630;Impuesto sobre beneficios;27.300,00;Presupuesto;
+2026;;700;Ventas de mercaderías;4.980.360,00;Real;
+2026;;600;Compras de mercaderías;2.025.540,00;Real;
+2026;;640;Sueldos y salarios;1.241.460,00;Real;
+2026;;621;Arrendamientos y cánones;235.220,00;Real;
+2026;;627;Publicidad y propaganda;148.100,00;Real;
+2026;;681;Amortización del inmovilizado;121.000,00;Real;
+2026;;623;Servicios de gestión AG Holding;180.000,00;Real;AG HOLDING
+2026;;662;Intereses de deudas;55.000,00;Real;
+2026;;630;Impuesto sobre beneficios;274.430,00;Real;
+2027;12;570;Tesorería;350.000,00;Balance;
+2027;12;430;Clientes;520.000,00;Balance;
+2027;12;300;Existencias;410.000,00;Balance;
+2027;12;210;Inmovilizado material;900.000,00;Balance;
+2027;12;400;Proveedores;380.000,00;Balance;
+2027;12;520;Deudas a corto plazo con entidades de crédito;150.000,00;Balance;
+2027;12;170;Deudas a largo plazo con entidades de crédito;500.000,00;Balance;
+2027;12;100;Capital y reservas;1.100.000,00;Balance;
