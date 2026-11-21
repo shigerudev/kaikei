@@ -1,0 +1,120 @@
+{
+  "company": {
+    "code": "gt-apple",
+    "country": "GT",
+    "country_name": "Guatemala",
+    "currency": "GTQ",
+    "currency_symbol": "Q",
+    "company": "Apple Operations Centroamérica, S.A.",
+    "brand": "Apple",
+    "city": "Guatemala City",
+    "tax_id": "GT-CF-88442211"
+  },
+  "files": {
+    "budget_csv": "budget_fy2026_q4.csv",
+    "actuals_seed_csv": "actuals_seed.csv",
+    "delta_csv": "sample_actuals_nov_delta.csv",
+    "adversarial_csv": "adversarial_actuals.csv",
+    "excel_pack": "gt-apple_pack.xlsx",
+    "bills_dir": "bills/"
+  },
+  "counts": {
+    "budget_rows": 32,
+    "actual_rows": 520,
+    "delta_rows": 4,
+    "bills": 10
+  },
+  "bills": [
+    {
+      "file": "GT-FAC-2026-0001.pdf",
+      "supplier": "Transportes Rápidos",
+      "date": "2026-11-09",
+      "currency": "GTQ",
+      "total_minor": 23941059,
+      "matches_referencia": "GT-202611-00371",
+      "concept": "per diem · Transportes Rápidos"
+    },
+    {
+      "file": "GT-FAC-2026-0002.pdf",
+      "supplier": "Bufete Istmo & Asociados",
+      "date": "2026-12-01",
+      "currency": "GTQ",
+      "total_minor": 27908082,
+      "matches_referencia": "GT-202612-00162",
+      "concept": "internet · Bufete Istmo & Asociados"
+    },
+    {
+      "file": "GT-FAC-2026-0003.pdf",
+      "supplier": "Impresos del Valle",
+      "date": "2026-12-03",
+      "currency": "GTQ",
+      "total_minor": 8867304,
+      "matches_referencia": "GT-202612-00087",
+      "concept": "ads · Impresos del Valle"
+    },
+    {
+      "file": "GT-FAC-2026-0004.pdf",
+      "supplier": "Seguros Volcán",
+      "date": "2026-09-09",
+      "currency": "GTQ",
+      "total_minor": 205331449,
+      "matches_referencia": "GT-202609-00493",
+      "concept": "infra cloud · Seguros Volcán"
+    },
+    {
+      "file": "GT-FAC-2026-0005.pdf",
+      "supplier": "Bufete Istmo & Asociados",
+      "date": "2026-11-28",
+      "currency": "GTQ",
+      "total_minor": 54475786,
+      "matches_referencia": "GT-202611-00034",
+      "concept": "consultoría · Bufete Istmo & Asociados"
+    },
+    {
+      "file": "GT-FAC-2026-0006.pdf",
+      "supplier": "Impresos del Valle",
+      "date": "2026-11-26",
+      "currency": "GTQ",
+      "total_minor": 48702277,
+      "matches_referencia": "GT-202611-00294",
+      "concept": "beneficios · Impresos del Valle"
+    },
+    {
+      "file": "GT-FAC-2026-0007.pdf",
+      "supplier": "LogiCentro CA",
+      "date": "2026-12-07",
+      "currency": "GTQ",
+      "total_minor": 72836968,
+      "matches_referencia": "GT-202612-00345",
+      "concept": "ads · LogiCentro CA"
+    },
+    {
+      "file": "GT-FAC-2026-0008.pdf",
+      "supplier": "Catering La Ceiba",
+      "date": "2026-09-12",
+      "currency": "GTQ",
+      "total_minor": 63010693,
+      "matches_referencia": "GT-202609-00476",
+      "concept": "ads · Catering La Ceiba"
+    },
+    {
+      "file": "GT-FAC-2026-0009.pdf",
+      "supplier": "Oficinas Corporativas del Istmo",
+      "date": "2026-11-17",
+      "currency": "GTQ",
+      "total_minor": 32352388,
+      "matches_referencia": "GT-202611-00486",
+      "concept": "vuelos · Oficinas Corporativas del Istmo"
+    },
+    {
+      "file": "GT-FAC-2026-0010.pdf",
+      "supplier": "Catering La Ceiba",
+      "date": "2026-11-17",
+      "currency": "GTQ",
+      "total_minor": 28346808,
+      "matches_referencia": "GT-202611-00067",
+      "concept": "hoteles · Catering La Ceiba"
+    }
+  ],
+  "disclaimer": "Fictional demo data for Kaikei. Not real company filings."
+}

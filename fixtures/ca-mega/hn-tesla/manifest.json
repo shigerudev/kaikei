@@ -1,0 +1,120 @@
+{
+  "company": {
+    "code": "hn-tesla",
+    "country": "HN",
+    "country_name": "Honduras",
+    "currency": "HNL",
+    "currency_symbol": "L",
+    "company": "Tesla Energía Honduras, S.A. de C.V.",
+    "brand": "Tesla",
+    "city": "Tegucigalpa",
+    "tax_id": "HN-RTN-08011999001234"
+  },
+  "files": {
+    "budget_csv": "budget_fy2026_q4.csv",
+    "actuals_seed_csv": "actuals_seed.csv",
+    "delta_csv": "sample_actuals_nov_delta.csv",
+    "adversarial_csv": "adversarial_actuals.csv",
+    "excel_pack": "hn-tesla_pack.xlsx",
+    "bills_dir": "bills/"
+  },
+  "counts": {
+    "budget_rows": 32,
+    "actual_rows": 520,
+    "delta_rows": 4,
+    "bills": 10
+  },
+  "bills": [
+    {
+      "file": "HN-FAC-2026-0001.pdf",
+      "supplier": "Bufete Istmo & Asociados",
+      "date": "2026-10-06",
+      "currency": "HNL",
+      "total_minor": 51372812,
+      "matches_referencia": "HN-202610-00020",
+      "concept": "alquiler HQ · Bufete Istmo & Asociados"
+    },
+    {
+      "file": "HN-FAC-2026-0002.pdf",
+      "supplier": "Seguros Volcán",
+      "date": "2026-11-15",
+      "currency": "HNL",
+      "total_minor": 143171570,
+      "matches_referencia": "HN-202611-00173",
+      "concept": "agua · Seguros Volcán"
+    },
+    {
+      "file": "HN-FAC-2026-0003.pdf",
+      "supplier": "Aerolíneas Centroamericanas",
+      "date": "2026-09-03",
+      "currency": "HNL",
+      "total_minor": 194759461,
+      "matches_referencia": "HN-202609-00125",
+      "concept": "logística · Aerolíneas Centroamericanas"
+    },
+    {
+      "file": "HN-FAC-2026-0004.pdf",
+      "supplier": "Transportes Rápidos",
+      "date": "2026-12-01",
+      "currency": "HNL",
+      "total_minor": 103713632,
+      "matches_referencia": "HN-202612-00186",
+      "concept": "internet · Transportes Rápidos"
+    },
+    {
+      "file": "HN-FAC-2026-0005.pdf",
+      "supplier": "Datacenter Istmo",
+      "date": "2026-10-07",
+      "currency": "HNL",
+      "total_minor": 28445961,
+      "matches_referencia": "HN-202610-00156",
+      "concept": "ads · Datacenter Istmo"
+    },
+    {
+      "file": "HN-FAC-2026-0006.pdf",
+      "supplier": "Transportes Rápidos",
+      "date": "2026-09-14",
+      "currency": "HNL",
+      "total_minor": 114090972,
+      "matches_referencia": "HN-202609-00410",
+      "concept": "logística · Transportes Rápidos"
+    },
+    {
+      "file": "HN-FAC-2026-0007.pdf",
+      "supplier": "AWS Marketplace Reseller",
+      "date": "2026-10-08",
+      "currency": "HNL",
+      "total_minor": 74258212,
+      "matches_referencia": "HN-202610-00211",
+      "concept": "legal · AWS Marketplace Reseller"
+    },
+    {
+      "file": "HN-FAC-2026-0008.pdf",
+      "supplier": "Agencia Brújula Media",
+      "date": "2026-11-18",
+      "currency": "HNL",
+      "total_minor": 197138032,
+      "matches_referencia": "HN-202611-00268",
+      "concept": "nómina · Agencia Brújula Media"
+    },
+    {
+      "file": "HN-FAC-2026-0009.pdf",
+      "supplier": "AWS Marketplace Reseller",
+      "date": "2026-11-10",
+      "currency": "HNL",
+      "total_minor": 208177701,
+      "matches_referencia": "HN-202611-00161",
+      "concept": "entregas · AWS Marketplace Reseller"
+    },
+    {
+      "file": "HN-FAC-2026-0010.pdf",
+      "supplier": "AWS Marketplace Reseller",
+      "date": "2026-09-27",
+      "currency": "HNL",
+      "total_minor": 125814283,
+      "matches_referencia": "HN-202609-00473",
+      "concept": "legal · AWS Marketplace Reseller"
+    }
+  ],
+  "disclaimer": "Fictional demo data for Kaikei. Not real company filings."
+}

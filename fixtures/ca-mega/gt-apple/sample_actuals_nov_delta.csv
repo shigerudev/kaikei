@@ -1,0 +1,5 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (Q),Signo,Moneda,Referencia
+2026-11-18,entregas · Transportes Rápidos · Apple,entregas,Transportes Rápidos,"4,680.00",out,GTQ,GT-NEW-600
+2026-09-01,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"2,014,690.32",out,GTQ,GT-202609-00029
+2026-09-01,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"724,183.94",out,GTQ,GT-202609-00145
+2026-11-19,fila dañada para parse_error,Deliveries,N/A,"Q 1,2O0",out,GTQ,GT-BAD-001

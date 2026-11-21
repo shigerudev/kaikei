@@ -1,0 +1,137 @@
+periodo,codigo,cuenta,tipo,moneda,valor,contraparte,escenario
+2027-01,40-01,Ventas netas,resultado,USD,279000.00,,presupuesto
+2027-01,50-01,Costo de ventas,resultado,USD,108000.00,,presupuesto
+2027-01,50-02,Compras a AG Manufactura Guatemala,resultado,USD,22500.00,AGM-GT,presupuesto
+2027-01,60-01,Salarios,resultado,USD,46800.00,,presupuesto
+2027-01,60-02,Arrendamiento,resultado,USD,9900.00,,presupuesto
+2027-01,60-03,Mercadeo,resultado,USD,8100.00,,presupuesto
+2027-01,60-04,Depreciación,resultado,USD,5400.00,,presupuesto
+2027-01,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-01,70-01,Gastos financieros,resultado,USD,2250.00,,presupuesto
+2027-01,80-01,Impuesto sobre la renta,resultado,USD,8550.00,,presupuesto
+2027-02,40-01,Ventas netas,resultado,USD,263500.00,,presupuesto
+2027-02,50-01,Costo de ventas,resultado,USD,102000.00,,presupuesto
+2027-02,50-02,Compras a AG Manufactura Guatemala,resultado,USD,21250.00,AGM-GT,presupuesto
+2027-02,60-01,Salarios,resultado,USD,44200.00,,presupuesto
+2027-02,60-02,Arrendamiento,resultado,USD,9350.00,,presupuesto
+2027-02,60-03,Mercadeo,resultado,USD,7650.00,,presupuesto
+2027-02,60-04,Depreciación,resultado,USD,5100.00,,presupuesto
+2027-02,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-02,70-01,Gastos financieros,resultado,USD,2120.00,,presupuesto
+2027-02,80-01,Impuesto sobre la renta,resultado,USD,8080.00,,presupuesto
+2027-03,40-01,Ventas netas,resultado,USD,294500.00,,presupuesto
+2027-03,50-01,Costo de ventas,resultado,USD,114000.00,,presupuesto
+2027-03,50-02,Compras a AG Manufactura Guatemala,resultado,USD,23750.00,AGM-GT,presupuesto
+2027-03,60-01,Salarios,resultado,USD,49400.00,,presupuesto
+2027-03,60-02,Arrendamiento,resultado,USD,10450.00,,presupuesto
+2027-03,60-03,Mercadeo,resultado,USD,8550.00,,presupuesto
+2027-03,60-04,Depreciación,resultado,USD,5700.00,,presupuesto
+2027-03,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-03,70-01,Gastos financieros,resultado,USD,2380.00,,presupuesto
+2027-03,80-01,Impuesto sobre la renta,resultado,USD,9020.00,,presupuesto
+2027-04,40-01,Ventas netas,resultado,USD,310000.00,,presupuesto
+2027-04,50-01,Costo de ventas,resultado,USD,120000.00,,presupuesto
+2027-04,50-02,Compras a AG Manufactura Guatemala,resultado,USD,25000.00,AGM-GT,presupuesto
+2027-04,60-01,Salarios,resultado,USD,52000.00,,presupuesto
+2027-04,60-02,Arrendamiento,resultado,USD,11000.00,,presupuesto
+2027-04,60-03,Mercadeo,resultado,USD,9000.00,,presupuesto
+2027-04,60-04,Depreciación,resultado,USD,6000.00,,presupuesto
+2027-04,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-04,70-01,Gastos financieros,resultado,USD,2500.00,,presupuesto
+2027-04,80-01,Impuesto sobre la renta,resultado,USD,9500.00,,presupuesto
+2027-05,40-01,Ventas netas,resultado,USD,310000.00,,presupuesto
+2027-05,50-01,Costo de ventas,resultado,USD,120000.00,,presupuesto
+2027-05,50-02,Compras a AG Manufactura Guatemala,resultado,USD,25000.00,AGM-GT,presupuesto
+2027-05,60-01,Salarios,resultado,USD,52000.00,,presupuesto
+2027-05,60-02,Arrendamiento,resultado,USD,11000.00,,presupuesto
+2027-05,60-03,Mercadeo,resultado,USD,9000.00,,presupuesto
+2027-05,60-04,Depreciación,resultado,USD,6000.00,,presupuesto
+2027-05,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-05,70-01,Gastos financieros,resultado,USD,2500.00,,presupuesto
+2027-05,80-01,Impuesto sobre la renta,resultado,USD,9500.00,,presupuesto
+2027-06,40-01,Ventas netas,resultado,USD,294500.00,,presupuesto
+2027-06,50-01,Costo de ventas,resultado,USD,114000.00,,presupuesto
+2027-06,50-02,Compras a AG Manufactura Guatemala,resultado,USD,23750.00,AGM-GT,presupuesto
+2027-06,60-01,Salarios,resultado,USD,49400.00,,presupuesto
+2027-06,60-02,Arrendamiento,resultado,USD,10450.00,,presupuesto
+2027-06,60-03,Mercadeo,resultado,USD,8550.00,,presupuesto
+2027-06,60-04,Depreciación,resultado,USD,5700.00,,presupuesto
+2027-06,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-06,70-01,Gastos financieros,resultado,USD,2380.00,,presupuesto
+2027-06,80-01,Impuesto sobre la renta,resultado,USD,9020.00,,presupuesto
+2027-07,40-01,Ventas netas,resultado,USD,310000.00,,presupuesto
+2027-07,50-01,Costo de ventas,resultado,USD,120000.00,,presupuesto
+2027-07,50-02,Compras a AG Manufactura Guatemala,resultado,USD,25000.00,AGM-GT,presupuesto
+2027-07,60-01,Salarios,resultado,USD,52000.00,,presupuesto
+2027-07,60-02,Arrendamiento,resultado,USD,11000.00,,presupuesto
+2027-07,60-04,Depreciación,resultado,USD,6000.00,,presupuesto
+2027-07,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-07,70-01,Gastos financieros,resultado,USD,2500.00,,presupuesto
+2027-07,80-01,Impuesto sobre la renta,resultado,USD,9500.00,,presupuesto
+2027-08,40-01,Ventas netas,resultado,USD,-310000.00,,presupuesto
+2027-08,50-01,Costo de ventas,resultado,USD,120000.00,,presupuesto
+2027-08,50-02,Compras a AG Manufactura Guatemala,resultado,USD,25000.00,AGM-GT,presupuesto
+2027-08,60-01,Salarios,resultado,USD,52000.00,,presupuesto
+2027-08,60-02,Arrendamiento,resultado,USD,11000.00,,presupuesto
+2027-08,60-03,Mercadeo,resultado,USD,9000.00,,presupuesto
+2027-08,60-04,Depreciación,resultado,USD,6000.00,,presupuesto
+2027-08,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-08,70-01,Gastos financieros,resultado,USD,2500.00,,presupuesto
+2027-08,80-01,Impuesto sobre la renta,resultado,USD,9500.00,,presupuesto
+2027-09,40-01,Ventas netas,resultado,USD,294500.00,,presupuesto
+2027-09,50-01,Costo de ventas,resultado,USD,114000.00,,presupuesto
+2027-09,50-02,Compras a AG Manufactura Guatemala,resultado,USD,23750.00,AGM-GT,presupuesto
+2027-09,60-01,Salarios,resultado,USD,49400.00,,presupuesto
+2027-09,60-02,Arrendamiento,resultado,USD,10450.00,,presupuesto
+2027-09,60-03,Mercadeo,resultado,USD,8550.00,,presupuesto
+2027-09,60-04,Depreciación,resultado,USD,5700.00,,presupuesto
+2027-09,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-09,70-01,Gastos financieros,resultado,USD,2380.00,,presupuesto
+2027-09,80-01,Impuesto sobre la renta,resultado,USD,9020.00,,presupuesto
+2027-10,40-01,Ventas netas,resultado,USD,325500.00,,presupuesto
+2027-10,50-01,Costo de ventas,resultado,USD,126000.00,,presupuesto
+2027-10,50-02,Compras a AG Manufactura Guatemala,resultado,USD,26250.00,AGM-GT,presupuesto
+2027-10,60-01,Salarios,resultado,USD,54600.00,,presupuesto
+2027-10,60-02,Arrendamiento,resultado,USD,11550.00,,presupuesto
+2027-10,60-03,Mercadeo,resultado,USD,9450.00,,presupuesto
+2027-10,60-04,Depreciación,resultado,USD,6300.00,,presupuesto
+2027-10,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-10,70-01,Gastos financieros,resultado,USD,2620.00,,presupuesto
+2027-10,80-01,Impuesto sobre la renta,resultado,USD,9980.00,,presupuesto
+2027-11,40-01,Ventas netas,resultado,USD,356500.00,,presupuesto
+2027-11,50-01,Costo de ventas,resultado,USD,138000.00,,presupuesto
+2027-11,50-02,Compras a AG Manufactura Guatemala,resultado,USD,28750.00,AGM-GT,presupuesto
+2027-11,60-01,Salarios,resultado,USD,59800.00,,presupuesto
+2027-11,60-02,Arrendamiento,resultado,USD,12650.00,,presupuesto
+2027-11,60-03,Mercadeo,resultado,USD,10350.00,,presupuesto
+2027-11,60-04,Depreciación,resultado,USD,6900.00,,presupuesto
+2027-11,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-11,70-01,Gastos financieros,resultado,USD,2880.00,,presupuesto
+2027-11,80-01,Impuesto sobre la renta,resultado,USD,10920.00,,presupuesto
+2027-12,40-01,Ventas netas,resultado,USD,403000.00,,presupuesto
+2027-12,50-01,Costo de ventas,resultado,USD,156000.00,,presupuesto
+2027-12,50-02,Compras a AG Manufactura Guatemala,resultado,USD,32500.00,AGM-GT,presupuesto
+2027-12,60-01,Salarios,resultado,USD,67600.00,,presupuesto
+2027-12,60-02,Arrendamiento,resultado,USD,14300.00,,presupuesto
+2027-12,60-03,Mercadeo,resultado,USD,11700.00,,presupuesto
+2027-12,60-04,Depreciación,resultado,USD,7800.00,,presupuesto
+2027-12,60-05,Fee administrativo casa matriz,resultado,USD,15000.00,AG-HOLD,presupuesto
+2027-12,70-01,Gastos financieros,resultado,USD,3250.00,,presupuesto
+2027-12,80-01,Impuesto sobre la renta,resultado,USD,12350.00,,presupuesto
+2026,40-01,Ventas netas,resultado,USD,3901040.00,,real
+2026,50-01,Costo de ventas,resultado,USD,1350360.00,,real
+2026,50-02,Compras a AG Manufactura Guatemala,resultado,USD,321600.00,AGM-GT,real
+2026,60-01,Salarios,resultado,USD,616620.00,,real
+2026,60-02,Arrendamiento,resultado,USD,122450.00,,real
+2026,60-03,Mercadeo,resultado,USD,92910.00,,real
+2026,60-04,Depreciación,resultado,USD,75500.00,,real
+2026,60-05,Fee administrativo casa matriz,resultado,USD,165600.00,AG-HOLD,real
+2026,70-01,Gastos financieros,resultado,USD,28750.00,,real
+2026,80-01,Impuesto sobre la renta,resultado,USD,108040.00,,real
+2027-12,10-01,Caja y bancos,balance,USD,180000.00,,presupuesto
+2027-12,11-01,Cuentas por cobrar,balance,USD,350000.00,,presupuesto
+2027-12,12-01,Inventario,balance,USD,290000.00,,presupuesto
+2027-12,15-01,Propiedad y equipo,balance,USD,600000.00,,presupuesto
+2027-12,21-01,Proveedores,balance,USD,240000.00,,presupuesto
+2027-12,25-01,Préstamo largo plazo,balance,USD,400000.00,,presupuesto
+2027-12,31-01,Patrimonio,balance,USD,780000.00,,presupuesto

@@ -1,0 +1,7 @@
+entity,name,country,currency,file,format,ownership_pct,aliases
+EMP1,AG Distribución,GT,GTQ,01_AG_Distribucion_GT.csv,"long; comma; Spanish month labels (ene-2027); numeric codes; Escenario column; trailing note row",100,AG Distribución|AG Distribucion GT|EMP1
+EMP2,AG Manufactura,GT,GTQ,02_AG_Manufactura_GT.csv,"wide (months as columns); no account codes; section headers + hardcoded subtotals; three stacked blocks (budget / balance / actual 2026)",100,AG Manufactura|AGM-GT|EMP2
+EMP3,AG El Salvador,SV,USD,03_AG_ElSalvador.csv,"long; comma; dot decimal; YYYY-MM periods; P&L and balance in one file",100,AG El Salvador|EMP3
+EMP4,AG Panamá,PA,USD,04_AG_Panama.csv,"long; amounts as quoted text with thousands separators; expenses in parentheses; dd/mm/yyyy dates",100,AG Panamá|AG Panama|EMP4
+EMP5,AG España,ES,EUR,05_AG_Espana.csv,"semicolon; decimal comma (1.234,56); 2 preamble lines before header; Spanish PGC codes",100,AG España|AG Espana|EMP5
+EMP6,AG Holding,PA,USD,06_AG_Holding.csv,"English GL; Debit / Credit columns instead of signed amounts; dd-Mon-yyyy month-end dates",100,AG Holding|AG HOLDING|Holding|AG-HOLD|EMP6

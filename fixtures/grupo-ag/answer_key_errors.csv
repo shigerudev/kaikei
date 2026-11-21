@@ -1,0 +1,14 @@
+id,entity,file,location,error_type,detail,expected_behavior
+E01,EMP1,01_AG_Distribucion_GT.csv,line 52,duplicate_row,"6301 Publicidad may-2027 appears twice (lines 51 and 52, 60,000 GTQ each)","flag duplicate, count once"
+E02,EMP1+EMP2,01_AG_Distribucion_GT.csv,line 26,intercompany_mismatch,"Compras a AG Manufactura mar-2027 = 472,500 GTQ; AG Manufactura reports 427,500 GTQ (02_AG_Manufactura_GT.csv line 4, column Mar; digits transposed)","flag pair, do not eliminate silently"
+E03,EMP2,02_AG_Manufactura_GT.csv,"line 15, column Jun",subtotal_mismatch,"Total costos y gastos Jun shows 1,859,750; components (lines 8-14) sum to 1,809,750 (+50,000). Knock-on: Utilidad antes de impuestos Jun (line 16) and Total (column Total) inherit the wrong subtotal","recompute from components, flag subtotal"
+E04,EMP3,03_AG_ElSalvador.csv,line 71,sign_error,"Ventas netas 2027-08 = -310,000.00 (negative revenue)",flag reversed sign
+E05,EMP3,03_AG_ElSalvador.csv,no row for periodo=2027-07 codigo=60-03,missing_period,Mercadeo has no July 2027 value (11 of 12 months),"flag missing month, do not assume zero silently"
+E06,EMP4,04_AG_Panama.csv,line 32,wrong_currency,"Alquiler de bodegas abr-2027 entered as 108,500.00 GTQ in a USD entity (equals 14,000 USD)",flag currency not matching entity
+E07,EMP4,04_AG_Panama.csv,line 101,unmapped_account,"Account 9.9.99 'Otros varios' (3,200 USD, nov-2027) not in Panamá chart of accounts","flag unmapped, never drop silently"
+E08,EMP4+EMP6,04_AG_Panama.csv,no row for 31/12/2027 código=6.1.05,intercompany_one_sided,"AG Holding bills Dec management fee 15,000 USD to AG Panamá (06_AG_Holding.csv line 114); Panamá has no matching December expense","flag unmatched intercompany, do not eliminate"
+E09,EMP5,05_AG_Espana.csv,line 80,number_format,"Publicidad sep-2027 written '11400.00' (dot decimal) in a comma-decimal file; naive parse reads 1,140,000","detect locale mismatch, parse as 11,400.00 or flag"
+E10,EMP5,05_AG_Espana.csv,lines 121-128 (Escenario=Balance),balance_not_balanced,"Assets 2.180.000 € vs liabilities + equity 2.130.000 € (gap 50.000 €)","flag entity, block from consolidated balance or show gap"
+E11a,EMP1,01_AG_Distribucion_GT.csv,line 155,fx_assumption_conflict,States 7.70 GTQ/USD; other GT entity uses 7.85; group table defines 7.75,"ignore local rates, use group table, report conflict"
+E11b,EMP2,02_AG_Manufactura_GT.csv,line 19,fx_assumption_conflict,States 7.85 GTQ/USD (EMP1 says 7.70; group table 7.75),"ignore local rates, use group table, report conflict"
+E11c,EMP5,05_AG_Espana.csv,line 2,fx_assumption_conflict,"Preamble states EUR/USD 1,05; group table defines 1,08","ignore local rate, use group table, report conflict"
