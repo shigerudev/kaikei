@@ -103,7 +103,7 @@ export function OnboardingForm({ t }: { t: T }) {
   return (
     <form action={formAction} className="flex flex-col gap-5" noValidate>
       <LangInput />
-      <Field name="group" label={t.group} placeholder="Grupo AG" autoComplete="organization" state={state} required />
+      <Field name="group" label={t.group} placeholder="Mi grupo" autoComplete="organization" state={state} required />
       <div className="grid grid-cols-[minmax(0,1fr)] gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor={currencyId} className="t-small font-semibold">

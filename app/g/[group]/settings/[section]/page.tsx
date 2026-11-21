@@ -1,13 +1,11 @@
 import { notFound } from "next/navigation";
 import { CompanyTag } from "@/components/badges";
 import { ResetPreview, SettingRow, ThemeSetting } from "@/components/settings/settings-forms";
-import { SettingsNav } from "@/components/settings/settings-nav";
-import { PageBody, PageHeader, PageTitle } from "@/components/shell/page-header";
 import { load } from "@/components/states";
 import { dataSource, getCompanies, getGroup, getParameters, getRateSet } from "@/lib/api";
-import { gPath, SETTINGS_SECTIONS } from "@/lib/ui/nav";
+import { SETTINGS_SECTIONS } from "@/lib/ui/nav";
 
-export const metadata = { title: "Group settings" };
+export const metadata = { title: "Configuración" };
 
 /** Screen 1: group configuration — entities, rate set, parameters (read from the engine), plus UI prefs. */
 export default async function SettingsPage({ params }: PageProps<"/g/[group]/settings/[section]">) {
@@ -17,22 +15,13 @@ export default async function SettingsPage({ params }: PageProps<"/g/[group]/set
   const preview = dataSource() === "preview";
 
   return (
-    <>
-      <PageHeader group={group} crumbs={[{ label: "Group settings", href: gPath(group, "/settings/entities") }, { label: meta.label }]} preview={preview} />
-      <PageBody className="max-w-6xl">
-        <PageTitle title="Group settings" description="Configuration is data, not code: companies, aliases, rates and rules are versioned inputs to every run." />
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[180px_minmax(0,1fr)]">
-          <SettingsNav group={group} active={section} />
-          <section className="min-w-0 space-y-4">
-            <div className="space-y-1">
-              <h2 className="text-base font-medium">{meta.label}</h2>
-              <p className="text-sm text-muted-foreground">{meta.description}</p>
-            </div>
-            <Section section={meta.key} group={group} preview={preview} />
-          </section>
-        </div>
-      </PageBody>
-    </>
+    <section className="enter min-w-0 space-y-4">
+      <div className="space-y-1">
+        <h2 className="text-base font-medium">{meta.label}</h2>
+        <p className="text-sm text-muted-foreground">{meta.description}</p>
+      </div>
+      <Section section={meta.key} group={group} preview={preview} />
+    </section>
   );
 }
 
@@ -46,11 +35,11 @@ async function Section({ section, group, preview }: { section: string; group: st
           <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
               <tr>
-                <th className="px-4 py-2 text-left font-medium">Company</th>
-                <th className="px-3 py-2 text-left font-medium">Country</th>
-                <th className="px-3 py-2 text-left font-medium">Currency</th>
-                <th className="px-3 py-2 text-right font-medium">Ownership</th>
-                <th className="px-4 py-2 text-left font-medium">Counterparty aliases</th>
+                <th className="px-4 py-2 text-left font-medium">Empresa</th>
+                <th className="px-3 py-2 text-left font-medium">País</th>
+                <th className="px-3 py-2 text-left font-medium">Moneda</th>
+                <th className="px-3 py-2 text-right font-medium">Participación</th>
+                <th className="px-4 py-2 text-left font-medium">Alias de contraparte</th>
               </tr>
             </thead>
             <tbody>
@@ -59,7 +48,7 @@ async function Section({ section, group, preview }: { section: string; group: st
                   <td className="px-4 py-3"><CompanyTag id={c.id} name={c.name} /></td>
                   <td className="px-3 py-3 text-muted-foreground">{c.country}</td>
                   <td className="px-3 py-3 font-mono text-xs">{c.functional_currency}</td>
-                  <td className="num px-3 py-3 text-right">{c.ownership_pct}% · full</td>
+                  <td className="num px-3 py-3 text-right">{c.ownership_pct}% · total</td>
                   <td className="px-4 py-3">
                     <span className="flex flex-wrap gap-1">
                       {c.aliases.map((a) => (
@@ -80,25 +69,25 @@ async function Section({ section, group, preview }: { section: string; group: st
       return (
         <div className="space-y-2">
           <p className="text-sm text-muted-foreground">
-            Rate set <span className="font-mono text-xs text-foreground">{res.data.id}</span> · P&amp;L uses the period average, the balance sheet the closing rate. Local FX notes in files are reported and ignored.
+            Juego de tasas <span className="font-mono text-xs text-foreground">{res.data.id}</span> · resultados usan el promedio del periodo; el balance, la tasa de cierre. Las notas de tipo de cambio locales se reportan e ignoran.
           </p>
           <div className="overflow-x-auto rounded-xl border">
             <table className="w-full min-w-[640px] text-sm">
               <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
                 <tr>
-                  <th className="px-4 py-2 text-left font-medium">Currency</th>
-                  <th className="px-3 py-2 text-left font-medium">Type</th>
-                  <th className="px-3 py-2 text-left font-medium">Period</th>
-                  <th className="px-3 py-2 text-right font-medium">Units per USD</th>
-                  <th className="px-3 py-2 text-right font-medium">USD per unit</th>
-                  <th className="px-4 py-2 text-left font-medium">Applies to</th>
+                  <th className="px-4 py-2 text-left font-medium">Moneda</th>
+                  <th className="px-3 py-2 text-left font-medium">Tipo</th>
+                  <th className="px-3 py-2 text-left font-medium">Periodo</th>
+                  <th className="px-3 py-2 text-right font-medium">Unidades por USD</th>
+                  <th className="px-3 py-2 text-right font-medium">USD por unidad</th>
+                  <th className="px-4 py-2 text-left font-medium">Aplica a</th>
                 </tr>
               </thead>
               <tbody>
                 {res.data.rates.map((r) => (
                   <tr key={r.id} className="border-b border-border/60 last:border-b-0">
                     <td className="px-4 py-2.5 font-mono text-xs">{r.from_ccy}</td>
-                    <td className="px-3 py-2.5 capitalize">{r.rate_type}</td>
+                    <td className="px-3 py-2.5">{r.rate_type === "average" ? "Promedio" : "Cierre"}</td>
                     <td className="px-3 py-2.5 text-muted-foreground">{r.period}</td>
                     <td className="num px-3 py-2.5 text-right">{r.units_per_usd}</td>
                     <td className="num px-3 py-2.5 text-right text-muted-foreground">{r.rate}</td>
@@ -128,22 +117,22 @@ async function Section({ section, group, preview }: { section: string; group: st
     }
     case "appearance":
       return (
-        <SettingRow label="Theme" help="System follows your device setting.">
+        <SettingRow label="Tema" help="Sistema sigue la configuración de tu dispositivo.">
           <ThemeSetting />
         </SettingRow>
       );
     case "danger":
       return preview ? (
         <div className="rounded-xl border border-destructive/30 px-5">
-          <SettingRow label="Restore the sample run" help="Six approved packs and run #1, as generated from the fixture pack.">
+          <SettingRow label="Restaurar el ejemplo" help="Seis paquetes aprobados y la ejecución #1.">
             <ResetPreview group={group} mode="full" />
           </SettingRow>
-          <SettingRow label="Start from empty uploads" help="Clears everything so the demo can begin at the first upload.">
+          <SettingRow label="Empezar sin cargas" help="Borra todo para empezar desde la primera carga.">
             <ResetPreview group={group} mode="empty" />
           </SettingRow>
         </div>
       ) : (
-        <p className="text-sm text-muted-foreground">Connected to the engine. Data is managed there; nothing to reset here.</p>
+        <p className="text-sm text-muted-foreground">Conectado al motor. Los datos se administran allí; no hay nada que restablecer.</p>
       );
     default:
       return null;

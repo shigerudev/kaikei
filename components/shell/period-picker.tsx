@@ -30,14 +30,14 @@ export function PeriodPicker({ value, options }: { value: string; options: strin
     <div className="flex items-center" data-pending={pending || undefined}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="ghost" size="icon-sm" className="max-sm:hidden" disabled={!older} onClick={() => older && set(older)} aria-label="Previous period">
+          <Button variant="ghost" size="icon-sm" className="max-sm:hidden" disabled={!older} onClick={() => older && set(older)} aria-label="Periodo anterior">
             <ChevronLeftIcon />
           </Button>
         </TooltipTrigger>
-        <TooltipContent>Previous period <Kbd>[</Kbd></TooltipContent>
+        <TooltipContent>Periodo anterior <Kbd>[</Kbd></TooltipContent>
       </Tooltip>
       <Select value={value} onValueChange={set}>
-        <SelectTrigger size="sm" className="h-7 min-w-24 border-none sm:min-w-28 bg-transparent px-2 text-sm font-medium shadow-none hover:bg-muted data-[pending]:opacity-60 dark:bg-transparent" aria-label="Period">
+        <SelectTrigger size="sm" className="h-7 min-w-24 border-none sm:min-w-28 bg-transparent px-2 text-sm font-medium shadow-none hover:bg-muted data-[pending]:opacity-60 dark:bg-transparent" aria-label="Periodo">
           <SelectValue>{formatPeriod(value)}</SelectValue>
         </SelectTrigger>
         <SelectContent align="end">
@@ -50,11 +50,11 @@ export function PeriodPicker({ value, options }: { value: string; options: strin
       </Select>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="ghost" size="icon-sm" className="max-sm:hidden" disabled={!newer} onClick={() => newer && set(newer)} aria-label="Next period">
+          <Button variant="ghost" size="icon-sm" className="max-sm:hidden" disabled={!newer} onClick={() => newer && set(newer)} aria-label="Periodo siguiente">
             <ChevronRightIcon />
           </Button>
         </TooltipTrigger>
-        <TooltipContent>Next period <Kbd>]</Kbd></TooltipContent>
+        <TooltipContent>Periodo siguiente <Kbd>]</Kbd></TooltipContent>
       </Tooltip>
     </div>
   );

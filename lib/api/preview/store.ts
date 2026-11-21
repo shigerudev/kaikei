@@ -61,7 +61,7 @@ function fresh(mode: "full" | "empty" = "full"): State {
     runs: [],
     seq: 0,
   };
-  if (mode === "full") createRun(s, null, "Initial run on the six packs", "2026-11-21T15:20:00.000Z");
+  if (mode === "full") createRun(s, null, "Ejecución inicial con los seis paquetes", "2026-11-21T15:20:00.000Z");
   return s;
 }
 
@@ -98,13 +98,13 @@ function stages(open: Finding[]): RunStage[] {
   const warn = (rule: string[]) => by(rule).length > 0;
   const st = (rule: string[]): RunStage["status"] => (blocked(rule) ? "blocked" : warn(rule) ? "warning" : "done");
   return [
-    { key: "ingest", label: "Ingest", status: "done", detail: `6 files stored with SHA-256 · ${c.records} rows extracted with their cells` },
-    { key: "normalize", label: "Normalize", status: st(["VAL-003"]), detail: `${c.records - c.held_back} canonical records · mapping MAP-V1` },
-    { key: "validate", label: "Validate", status: st(["VAL-006", "VAL-010", "VAL-019", "VAL-020", "VAL-021", "VAL-022", "VAL-023", "VAL-024"]), detail: `${open.length} open findings · ${open.filter((f) => f.severity === "BLOCKER").length} blockers` },
-    { key: "translate", label: "Translate", status: "done", detail: `${c.translated} records to USD · rate set FX-BUDGET-2027-V1` },
-    { key: "match", label: "Match IC", status: st(["VAL-007", "VAL-008"]), detail: `${c.matched} matched · ${c.mismatched} mismatch · ${c.one_sided} one-sided` },
-    { key: "eliminate", label: "Eliminate", status: "done", detail: `${c.journals} balanced journals` },
-    { key: "aggregate", label: "Aggregate", status: open.some((f) => f.severity === "BLOCKER") ? "blocked" : "done", detail: "Facts = contributions + adjustments" },
+    { key: "ingest", label: "Ingesta", status: "done", detail: `6 archivos guardados con SHA-256 · ${c.records} filas extraídas con su celda` },
+    { key: "normalize", label: "Normalización", status: st(["VAL-003"]), detail: `${c.records - c.held_back} registros canónicos · mapeo MAP-V1` },
+    { key: "validate", label: "Validación", status: st(["VAL-006", "VAL-010", "VAL-019", "VAL-020", "VAL-021", "VAL-022", "VAL-023", "VAL-024"]), detail: `${open.length} hallazgos abiertos · ${open.filter((f) => f.severity === "BLOCKER").length} bloqueantes` },
+    { key: "translate", label: "Conversión", status: "done", detail: `${c.translated} registros a USD · tasas FX-BUDGET-2027-V1` },
+    { key: "match", label: "Conciliación IC", status: st(["VAL-007", "VAL-008"]), detail: `${c.matched} conciliados · ${c.mismatched} con diferencia · ${c.one_sided} sin contraparte` },
+    { key: "eliminate", label: "Eliminación", status: "done", detail: `${c.journals} asientos balanceados` },
+    { key: "aggregate", label: "Consolidación", status: open.some((f) => f.severity === "BLOCKER") ? "blocked" : "done", detail: "Cifras = aportes + ajustes" },
   ];
 }
 
@@ -207,10 +207,10 @@ export function search(q: string): SearchHit[] {
   const base = `/g/${PREVIEW_GROUP}`;
   const out: SearchHit[] = [];
   for (const c of snap.companies) if (has(`${c.id} ${c.name} ${c.aliases.join(" ")} ${c.country}`)) out.push({ kind: "company", id: c.id, title: `${c.name}`, subtitle: `${c.id} · ${c.country} · ${c.functional_currency}`, href: `${base}/uploads/${c.id}` });
-  for (const r of snap.facts["2027"]!) if (has(`${r.name} ${r.group_account}`)) out.push({ kind: "account", id: r.id, title: r.name, subtitle: `${r.group_account} · FY 2027`, href: r.kind === "line" ? `${base}/inspector/${r.id}` : `${base}?period=2027` });
+  for (const r of snap.facts["2027"]!) if (has(`${r.name} ${r.group_account}`)) out.push({ kind: "account", id: r.id, title: r.name, subtitle: `${r.group_account} · Año 2027`, href: r.kind === "line" ? `${base}/inspector/${r.id}` : `${base}?period=2027` });
   for (const f of currentFindings(state())) if (has(`${f.reference} ${f.rule_id} ${f.title} ${f.reason} ${f.company_ids.join(" ")}`)) out.push({ kind: "finding", id: f.id, title: `${f.reference} · ${f.title}`, subtitle: `${f.rule_id} · ${f.severity} · ${f.status.replace("_", " ").toLowerCase()}`, href: `${base}/findings/${f.id}` });
-  for (const f of state().files) if (f.status !== "MISSING" && has(f.filename)) out.push({ kind: "file", id: f.id, title: f.filename, subtitle: `${f.company_id} · ${f.records ?? 0} records`, href: `${base}/uploads/${f.company_id}` });
-  for (const r of state().runs) if (has(`${r.id} run ${r.number} ${r.status}`)) out.push({ kind: "run", id: r.id, title: `Run #${r.number}`, subtitle: `${r.status.replace(/_/g, " ").toLowerCase()} · ${r.fingerprint.slice(0, 10)}`, href: `${base}/runs/${r.id}` });
+  for (const f of state().files) if (f.status !== "MISSING" && has(f.filename)) out.push({ kind: "file", id: f.id, title: f.filename, subtitle: `${f.company_id} · ${f.records ?? 0} registros`, href: `${base}/uploads/${f.company_id}` });
+  for (const r of state().runs) if (has(`${r.id} run ${r.number} ${r.status}`)) out.push({ kind: "run", id: r.id, title: `Ejecución #${r.number}`, subtitle: `${r.status.replace(/_/g, " ").toLowerCase()} · ${r.fingerprint.slice(0, 10)}`, href: `${base}/runs/${r.id}` });
   return out.slice(0, 24);
 }
 
@@ -220,7 +220,7 @@ export function upload(filename: string, bytes: ArrayBuffer): { file: SourceFile
   const s = state();
   const sha = createHash("sha256").update(new Uint8Array(bytes)).digest("hex");
   const known = snap.files.find((f) => f.sha256 === sha) ?? snap.files.find((f) => f.filename === filename);
-  if (!known) throw new Error("In preview, only the six Grupo AG fixture packs can be parsed. Connect the engine to upload other files.");
+  if (!known) throw new Error("En el espacio de ejemplo solo se pueden leer los seis paquetes de muestra. Conecta el motor para subir otros archivos.");
   const current = s.files.find((f) => f.company_id === known.company_id)!;
   if (current.sha256 === sha && current.status !== "MISSING") return { file: current, alreadyImported: true };
   Object.assign(current, { ...known, sha256: sha, status: "UPLOADED", uploaded_at: new Date().toISOString(), mapping_version: null });
@@ -229,7 +229,7 @@ export function upload(filename: string, bytes: ArrayBuffer): { file: SourceFile
 
 export function approveMapping(companyId: string) {
   const f = state().files.find((x) => x.company_id === companyId);
-  if (!f || f.status === "MISSING") throw new Error("Upload this company's pack first.");
+  if (!f || f.status === "MISSING") throw new Error("Primero sube el paquete de esta empresa.");
   f.status = "MAPPING_APPROVED";
   f.mapping_version = "MAP-V1";
 }
@@ -237,7 +237,7 @@ export function approveMapping(companyId: string) {
 export function startRun(reason: string) {
   const s = state();
   const missing = s.files.filter((f) => f.status !== "MAPPING_APPROVED");
-  if (missing.length) throw new Error(`Approve the mapping for ${missing.map((f) => f.company_id).join(", ")} first.`);
+  if (missing.length) throw new Error(`Primero aprueba el mapeo de ${missing.map((f) => f.company_id).join(", ")}.`);
   const parent = s.runs[0]?.id ?? null;
   return createRun(s, parent, reason);
 }
@@ -245,12 +245,12 @@ export function startRun(reason: string) {
 export function decide(findingId: string, action: FindingDecision["action"], reason: string, actor: string) {
   const s = state();
   const st = s.findings.get(findingId);
-  if (!st) throw new Error("Finding not found.");
-  if (!reason.trim()) throw new Error("A reason is required.");
+  if (!st) throw new Error("Hallazgo no encontrado.");
+  if (!reason.trim()) throw new Error("Se requiere un motivo.");
   st.status = action === "RESOLVE" ? "RESOLVED" : action === "ACCEPT_RISK" ? "ACCEPTED_RISK" : "OPEN";
   const parent = s.runs[0]?.id ?? null;
   const ref = snap.findings.find((f) => f.id === findingId)?.reference ?? findingId;
-  const verb = action === "RESOLVE" ? "Resolved" : action === "ACCEPT_RISK" ? "Accepted" : "Reopened";
+  const verb = action === "RESOLVE" ? "Resuelto" : action === "ACCEPT_RISK" ? "Aceptado" : "Reabierto";
   const nextRun = createRun(s, parent, `${verb} ${ref}: ${reason.trim()}`);
   st.decisions.push({ action, reason: reason.trim(), actor, at: nextRun.created_at, resulting_run_id: nextRun.id });
   return nextRun;
@@ -259,9 +259,9 @@ export function decide(findingId: string, action: FindingDecision["action"], rea
 export function publish(runId: string) {
   const s = state();
   const r = s.runs.find((x) => x.id === runId);
-  if (!r) throw new Error("Run not found.");
-  if (r !== s.runs[0]) throw new Error("Only the latest run can be published.");
-  if (r.counts.blockers_open > 0) throw new Error(`${r.counts.blockers_open} blocker(s) still open. Resolve or accept them first.`);
+  if (!r) throw new Error("Ejecución no encontrada.");
+  if (r !== s.runs[0]) throw new Error("Solo se puede publicar la ejecución más reciente.");
+  if (r.counts.blockers_open > 0) throw new Error(`Aún hay ${r.counts.blockers_open} bloqueante(s) abierto(s). Resuélvelos o acéptalos primero.`);
   r.status = "PUBLISHED";
   return r;
 }

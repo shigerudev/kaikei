@@ -7,7 +7,7 @@ export const SITE = {
   url: "https://kaikei.io",
   version: "v0.2.0",
   /** Where a signed-in user lands. Only the sample group exists until the engine can create groups. */
-  appHome: "/g/grupo-ag",
+  appHome: "/app",
   mcpUrl: "https://kaikei.io/api/mcp/",
 } as const;
 

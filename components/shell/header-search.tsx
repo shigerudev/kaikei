@@ -8,9 +8,9 @@ import { Kbd } from "@/components/ui/kbd";
 export function HeaderSearch() {
   const { open } = useCommandMenu();
   return (
-    <Button variant="outline" size="sm" onClick={open} className="h-7 gap-2 pr-1.5 pl-2 text-muted-foreground" aria-label="Search (⌘K)">
+    <Button variant="outline" size="sm" onClick={open} className="h-7 gap-2 pr-1.5 pl-2 text-muted-foreground" aria-label="Buscar (⌘K)">
       <SearchIcon />
-      <span className="hidden md:inline">Search</span>
+      <span className="hidden md:inline">Buscar</span>
       <Kbd className="hidden md:inline-flex">⌘K</Kbd>
     </Button>
   );

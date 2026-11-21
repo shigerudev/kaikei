@@ -14,7 +14,7 @@ export function RunBanner({ group, run, blockers }: { group: string; run: Run; b
       <div className="flex items-center gap-3 rounded-xl border border-brand/30 bg-brand-subtle/50 px-4 py-3 text-sm">
         <ShieldCheckIcon className="size-4 shrink-0 text-brand" />
         <p className="flex-1">
-          <span className="font-medium">Published.</span> <span className="text-muted-foreground">Run #{run.number} is frozen. Changes create a new run.</span>
+          <span className="font-medium">Publicada.</span> <span className="text-muted-foreground">La ejecución #{run.number} está congelada. Los cambios crean una nueva ejecución.</span>
         </p>
       </div>
     );
@@ -23,9 +23,9 @@ export function RunBanner({ group, run, blockers }: { group: string; run: Run; b
       <div className="flex flex-col gap-3 rounded-xl border border-negative/25 bg-negative/[0.06] px-4 py-3 text-sm sm:flex-row sm:items-center">
         <OctagonXIcon className="hidden size-4 shrink-0 text-negative sm:block" />
         <p className="flex-1">
-          <span className="font-medium">Draft — not publishable.</span>{" "}
+          <span className="font-medium">Borrador — no publicable.</span>{" "}
           <span className="text-muted-foreground">
-            {blockers.length} blocker{blockers.length === 1 ? "" : "s"} open:{" "}
+            {blockers.length} bloqueante{blockers.length === 1 ? "" : "s"} abierto{blockers.length === 1 ? "" : "s"}:{" "}
             {blockers.map((b, i) => (
               <span key={b.id}>
                 <Link href={gPath(group, `/findings/${b.id}`)} className="font-medium text-foreground underline decoration-border underline-offset-2 hover:decoration-foreground">
@@ -34,7 +34,7 @@ export function RunBanner({ group, run, blockers }: { group: string; run: Run; b
                 {i < blockers.length - 1 ? ", " : ""}
               </span>
             ))}
-            . Figures below are a labelled preview of this draft.
+            . Las cifras de abajo son una vista previa de este borrador.
           </span>
         </p>
         <PublishButton runId={run.id} blockers={blockers.length} published={false} />
@@ -44,7 +44,7 @@ export function RunBanner({ group, run, blockers }: { group: string; run: Run; b
     <div className="flex flex-col gap-3 rounded-xl border px-4 py-3 text-sm sm:flex-row sm:items-center">
       <SendIcon className="hidden size-4 shrink-0 text-brand sm:block" />
       <p className="flex-1">
-        <span className="font-medium">Ready for review.</span> <span className="text-muted-foreground">No blockers open. Publishing freezes run #{run.number}.</span>
+        <span className="font-medium">Lista para revisión.</span> <span className="text-muted-foreground">Sin bloqueantes. Publicar congela la ejecución #{run.number}.</span>
       </p>
       <PublishButton runId={run.id} blockers={0} published={false} />
     </div>

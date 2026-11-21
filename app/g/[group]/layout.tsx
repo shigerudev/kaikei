@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { CommandMenuProvider } from "@/components/command/command-menu";
+import { OnboardingTour } from "@/components/onboarding-tour";
 import { AppSidebar } from "@/components/shell/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -43,7 +44,7 @@ async function GroupShell({ children, sheet, params }: { children: React.ReactNo
         <AppSidebar
           group={group}
           groupName={info.name}
-          subtitle={`${companies.length} companies · ${info.reporting_currency}`}
+          subtitle={`${companies.length} empresas · ${info.reporting_currency}`}
           companies={companies}
           openFindings={open.length}
           openBlockers={open.filter((f) => f.severity === "BLOCKER").length}
@@ -51,6 +52,7 @@ async function GroupShell({ children, sheet, params }: { children: React.ReactNo
         />
         <SidebarInset className="min-w-0">{children}</SidebarInset>
         {sheet}
+        <OnboardingTour group={group} />
       </CommandMenuProvider>
     </SidebarProvider>
   );

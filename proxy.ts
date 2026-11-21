@@ -7,7 +7,7 @@ import { type NextRequest, NextResponse } from "next/server";
  * TODO(Antonio): the cookie is a placeholder (unsigned); swap for Better Auth sessions (MANIFESTO roadmap).
  */
 const COOKIE = "kaikei_session";
-const APP_HOME = "/g/grupo-ag";
+const APP_HOME = "/app";
 const PROD_LOGIN = "https://kaikei.io/login";
 
 function hasSession(req: NextRequest) {
@@ -36,7 +36,7 @@ export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const authed = hasSession(req);
 
-  if (pathname.startsWith("/g/") || pathname === "/g") {
+  if (pathname.startsWith("/g/") || pathname === "/g" || pathname === "/app") {
     return authed ? NextResponse.next() : NextResponse.redirect(loginUrl(req));
   }
 
@@ -49,5 +49,5 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/g/:path*", "/login", "/en/login"],
+  matcher: ["/g/:path*", "/app", "/login", "/en/login"],
 };

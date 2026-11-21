@@ -14,7 +14,7 @@ import { formatAmount, formatCompact, formatPeriod } from "@/lib/ui/format";
 import { gPath } from "@/lib/ui/nav";
 import { PERIODS, resolvePeriod } from "@/lib/ui/periods";
 
-export const metadata = { title: "Dashboard" };
+export const metadata = { title: "Panel" };
 
 /** Screen 5: consolidated dashboard — before/after eliminations, publication badge, every line traceable. */
 export default async function DashboardPage({ params, searchParams }: PageProps<"/g/[group]">) {
@@ -33,7 +33,7 @@ export default async function DashboardPage({ params, searchParams }: PageProps<
   });
 
   const header = (run?: Parameters<typeof PageHeader>[0]["run"]) => (
-    <PageHeader group={group} crumbs={[{ label: "Dashboard" }]} period={statement === "PL" ? { value: period, options: PERIODS } : undefined} run={run} preview={preview} />
+    <PageHeader group={group} crumbs={[{ label: "Panel" }]} period={statement === "PL" ? { value: period, options: PERIODS } : undefined} run={run} preview={preview} />
   );
 
   if (!result.ok)
@@ -51,11 +51,11 @@ export default async function DashboardPage({ params, searchParams }: PageProps<
       <>
         {header(run)}
         <PageBody>
-          <PageTitle title="Consolidated budget" description={`${info?.name} · ${companies.length} companies · ${info?.reporting_currency}`} />
-          <EmptyState icon={PlayIcon} title="No consolidation run yet" description="Upload the six company packs, approve each mapping, then start the first run.">
+          <PageTitle title="Presupuesto consolidado" description={`${info?.name} · ${companies.length} empresas · ${info?.reporting_currency}`} />
+          <EmptyState icon={PlayIcon} title="Aún no hay ejecuciones" description="Sube el paquete de cada empresa, aprueba su mapeo y lanza la primera ejecución.">
             <Button variant="brand" size="sm" asChild>
               <Link href={gPath(group, "/uploads")}>
-                <UploadIcon /> Go to uploads
+                <UploadIcon /> Ir a cargas
               </Link>
             </Button>
           </EmptyState>
@@ -70,16 +70,16 @@ export default async function DashboardPage({ params, searchParams }: PageProps<
   const kpis =
     statement === "PL"
       ? [
-          { label: "Revenue", r: row("REVENUE"), hint: "After eliminations" },
-          { label: "Operating profit", r: row("OPERATING_PROFIT"), hint: "Group, all companies" },
-          { label: "Net profit", r: row("NET_PROFIT"), hint: "After tax" },
-          { label: "Eliminated revenue", r: row("REVENUE"), hint: "Intercompany sales & fees removed", adj: true },
+          { label: "Ingresos", r: row("REVENUE"), hint: "Después de eliminaciones" },
+          { label: "Utilidad operativa", r: row("OPERATING_PROFIT"), hint: "Grupo, todas las empresas" },
+          { label: "Utilidad neta", r: row("NET_PROFIT"), hint: "Después de impuestos" },
+          { label: "Ingresos eliminados", r: row("REVENUE"), hint: "Ventas y cargos intercompañía", adj: true },
         ]
       : [
-          { label: "Total assets", r: row("TOTAL_ASSETS"), hint: "Closing rate 31 Dec 2027" },
-          { label: "Total liabilities", r: row("TOTAL_LIABILITIES"), hint: "After IC eliminations" },
-          { label: "Equity", r: row("EQUITY"), hint: "Group" },
-          { label: "Eliminated balances", r: row("TOTAL_ASSETS"), hint: "IC receivables & loans", adj: true },
+          { label: "Total activos", r: row("TOTAL_ASSETS"), hint: "Tasa de cierre 31 dic 2027" },
+          { label: "Total pasivos", r: row("TOTAL_LIABILITIES"), hint: "Después de eliminaciones IC" },
+          { label: "Patrimonio", r: row("EQUITY"), hint: "Grupo" },
+          { label: "Saldos eliminados", r: row("TOTAL_ASSETS"), hint: "Cuentas y préstamos IC", adj: true },
         ];
   const excluded = statement === "BS" ? facts.rows[0]?.blocked_companies ?? [] : [];
 
@@ -88,12 +88,12 @@ export default async function DashboardPage({ params, searchParams }: PageProps<
       {header(run)}
       <PageBody className="max-w-7xl">
         <PageTitle
-          title={statement === "PL" ? `Consolidated income statement` : "Consolidated balance sheet"}
-          description={`${info?.name} · ${statement === "PL" ? formatPeriod(period, true) : "31 December 2027"} · ${facts.currency} · run #${run.number}`}
+          title={statement === "PL" ? "Estado de resultados consolidado" : "Balance general consolidado"}
+          description={`${info?.name} · ${statement === "PL" ? formatPeriod(period, true) : "31 de diciembre de 2027"} · ${facts.currency} · ejecución #${run.number}`}
         >
           <Button variant="outline" size="sm" asChild>
             <Link href={gPath(group, "/findings")}>
-              <FlagIcon className={blockers.length ? "text-negative" : undefined} /> {open.length} open findings
+              <FlagIcon className={blockers.length ? "text-negative" : undefined} /> {open.length} hallazgos abiertos
             </Link>
           </Button>
           <StartRunButton group={group} />
@@ -112,7 +112,7 @@ export default async function DashboardPage({ params, searchParams }: PageProps<
               <p className="mt-0.5 text-xs text-muted-foreground">
                 {k.hint}
                 {k.r && !k.adj && k.r.adjustments_total && !/^-?0*\.?0*$/.test(k.r.adjustments_total) && (
-                  <span className="hidden xl:inline"> · before {formatCompact(k.r.contributions_total, "USD")}</span>
+                  <span className="hidden xl:inline"> · antes {formatCompact(k.r.contributions_total, "USD")}</span>
                 )}
               </p>
             </div>
@@ -121,8 +121,8 @@ export default async function DashboardPage({ params, searchParams }: PageProps<
 
         {excluded.length > 0 && (
           <p className="rounded-lg border border-dashed px-3 py-2 text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">{excluded.join(", ")} excluded from the consolidated balance.</span> Its balance sheet doesn&apos;t balance (
-            <Link href={gPath(group, "/findings/FIND-E10")} className="underline underline-offset-2">E10</Link>, €50,000 gap). Shown struck through by company; never silently netted.
+            <span className="font-medium text-foreground">{excluded.join(", ")} excluida del balance consolidado.</span> Su balance no cuadra (
+            <Link href={gPath(group, "/findings/FIND-E10")} className="underline underline-offset-2">E10</Link>, diferencia de €50,000). Se muestra tachada por empresa; nunca se compensa en silencio.
           </p>
         )}
 
@@ -130,8 +130,8 @@ export default async function DashboardPage({ params, searchParams }: PageProps<
           <StatementControls statement={statement} byCompany={byCompany} />
           <StatementTable group={group} rows={facts.rows} companies={companies} byCompany={byCompany} excluded={excluded} />
           <p className="text-xs text-muted-foreground">
-            Amounts in {facts.currency}, rounded half-even for display. Consolidated = Σ translated contributions + Σ eliminations. Open any line to trace it to the source cell.
-            {statement === "PL" && <> Total revenue before eliminations: ${formatAmount(row("REVENUE")?.contributions_total ?? "0")}.</>}
+            Montos en {facts.currency}, redondeados para mostrar. Consolidado = Σ aportes convertidos + Σ eliminaciones. Abre cualquier línea para rastrearla hasta su celda de origen.
+            {statement === "PL" && <> Ingresos antes de eliminaciones: ${formatAmount(row("REVENUE")?.contributions_total ?? "0")}.</>}
           </p>
         </div>
       </PageBody>
