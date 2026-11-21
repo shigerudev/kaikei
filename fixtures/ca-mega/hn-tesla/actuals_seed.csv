@@ -1,0 +1,521 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (L),Signo,Moneda,Referencia
+2026-09-01,Ingreso canal Tesla · ref 94790,Revenue,,"167,373.96",in,HNL,HN-202609-00030
+2026-09-01,Ingreso canal Tesla · ref 25769,Revenue,,"171,775.72",in,HNL,HN-202609-00163
+2026-09-01,alquiler HQ · Energía del Pacífico,Rent,Energía del Pacífico,"1,606,130.80",out,HNL,HN-202609-00232
+2026-09-01,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"1,653,022.41",out,HNL,HN-202609-00373
+2026-09-01,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"2,310,841.59",out,HNL,HN-202609-00494
+2026-09-02,Ingreso canal Tesla · ref 19147,Revenue,,"169,171.29",in,HNL,HN-202609-00017
+2026-09-02,Ingreso canal Tesla · ref 94402,Revenue,,"563,653.31",in,HNL,HN-202609-00088
+2026-09-02,hoteles · Impresos del Valle,Travel,Impresos del Valle,"552,751.90",out,HNL,HN-202609-00379
+2026-09-03,alquiler HQ · Seguros Volcán,alquiler HQ,Seguros Volcán,"2,090,411.85",out,HNL,HN-202609-00098
+2026-09-03,logística · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"1,947,594.61",out,HNL,HN-202609-00125
+2026-09-03,electricidad · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"1,695,360.37",out,HNL,HN-202609-00145
+2026-09-03,ads · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"276,240.52",out,HNL,HN-202609-00230
+2026-09-03,logística · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"672,198.43",out,HNL,HN-202609-00244
+2026-09-03,ads · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"1,099,900.54",out,HNL,HN-202609-00292
+2026-09-03,consultoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"462,414.53",out,HNL,HN-202609-00293
+2026-09-03,Ingreso canal Tesla · ref 69291,Revenue,,"151,081.60",in,HNL,HN-202609-00392
+2026-09-03,storage · Datacenter Istmo,storage,Datacenter Istmo,"1,513,054.37",out,HNL,HN-202609-00468
+2026-09-04,Ingreso canal Tesla · ref 92483,Revenue,,"2,094,969.46",in,HNL,HN-202609-00093
+2026-09-04,electricidad · Agencia Brújula Media,electricidad,Agencia Brújula Media,"1,144,547.86",out,HNL,HN-202609-00123
+2026-09-04,nómina · Agencia Brújula Media,Payroll,Agencia Brújula Media,"726,392.47",out,HNL,HN-202609-00202
+2026-09-05,infra cloud · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"3,690,602.60",out,HNL,HN-202609-00003
+2026-09-05,nómina · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"7,199,246.93",out,HNL,HN-202609-00335
+2026-09-05,Ingreso canal Tesla · ref 43376,Revenue,,"497,920.13",in,HNL,HN-202609-00413
+2026-09-05,agua · Catering La Ceiba,agua,Catering La Ceiba,"1,168,378.58",out,HNL,HN-202609-00515
+2026-09-06,Ingreso canal Tesla · ref 63535,Revenue,,"356,035.87",in,HNL,HN-202609-00039
+2026-09-06,per diem · Oficinas Corporativas del Istmo,per diem,Oficinas Corporativas del Istmo,"2,061,421.43",out,HNL,HN-202609-00121
+2026-09-06,cargas sociales · Energía del Pacífico,cargas sociales,Energía del Pacífico,"5,297,789.08",out,HNL,HN-202609-00219
+2026-09-06,electricidad · Impresos del Valle,Utilities,Impresos del Valle,"2,067,858.24",out,HNL,HN-202609-00320
+2026-09-06,per diem · Oficinas Corporativas del Istmo,per diem,Oficinas Corporativas del Istmo,"1,184,657.50",out,HNL,HN-202609-00490
+2026-09-06,Ingreso canal Tesla · ref 17810,Revenue,,"1,576,152.20",in,HNL,HN-202609-00502
+2026-09-07,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"1,343,444.13",out,HNL,HN-202609-00044
+2026-09-07,agua · Datacenter Istmo,agua,Datacenter Istmo,"1,398,267.59",out,HNL,HN-202609-00074
+2026-09-07,Ingreso canal Tesla · ref 44974,Revenue,,"1,278,893.85",in,HNL,HN-202609-00128
+2026-09-07,Ingreso canal Tesla · ref 77938,Revenue,,"3,919,540.59",in,HNL,HN-202609-00169
+2026-09-07,nómina · Energía del Pacífico,nómina,Energía del Pacífico,"1,710,039.10",out,HNL,HN-202609-00251
+2026-09-07,entregas · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"1,633,554.40",out,HNL,HN-202609-00262
+2026-09-07,internet · Impresos del Valle,Utilities,Impresos del Valle,"2,148,156.67",out,HNL,HN-202609-00310
+2026-09-07,bodega · Datacenter Istmo,bodega,Datacenter Istmo,"1,540,092.36",out,HNL,HN-202609-00344
+2026-09-07,entregas · Aerolíneas Centroamericanas,entregas,Aerolíneas Centroamericanas,"1,837,264.47",out,HNL,HN-202609-00352
+2026-09-07,per diem · Impresos del Valle,per diem,Impresos del Valle,"1,959,552.60",out,HNL,HN-202609-00401
+2026-09-07,ads · Energía del Pacífico,Marketing,Energía del Pacífico,"1,679,403.66",out,HNL,HN-202609-00460
+2026-09-08,auditoría · Datacenter Istmo,ProfessionalServices,Datacenter Istmo,"780,150.85",out,HNL,HN-202609-00153
+2026-09-08,agua · Seguros Volcán,agua,Seguros Volcán,"1,403,966.83",out,HNL,HN-202609-00282
+2026-09-08,eventos · Aerolíneas Centroamericanas,eventos,Aerolíneas Centroamericanas,"842,196.35",out,HNL,HN-202609-00324
+2026-09-08,agua · Agencia Brújula Media,Utilities,Agencia Brújula Media,"1,846,890.11",out,HNL,HN-202609-00376
+2026-09-09,vuelos · Transportes Rápidos,Travel,Transportes Rápidos,"654,160.75",out,HNL,HN-202609-00013
+2026-09-09,storage · LogiCentro CA,Cloud,LogiCentro CA,"2,032,985.53",out,HNL,HN-202609-00033
+2026-09-09,infra cloud · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"2,913,771.62",out,HNL,HN-202609-00143
+2026-09-09,auditoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"1,666,648.79",out,HNL,HN-202609-00195
+2026-09-09,beneficios · Transportes Rápidos,beneficios,Transportes Rápidos,"2,404,581.04",out,HNL,HN-202609-00237
+2026-09-09,nómina · Datacenter Istmo,nómina,Datacenter Istmo,"6,629,874.45",out,HNL,HN-202609-00375
+2026-09-10,internet · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"831,813.62",out,HNL,HN-202609-00023
+2026-09-10,per diem · Bufete Istmo & Asociados,per diem,Bufete Istmo & Asociados,"1,809,601.51",out,HNL,HN-202609-00157
+2026-09-10,vuelos · Catering La Ceiba,vuelos,Catering La Ceiba,"1,668,574.32",out,HNL,HN-202609-00437
+2026-09-11,Ingreso canal Tesla · ref 86448,Revenue,,"370,807.68",in,HNL,HN-202609-00011
+2026-09-11,infra cloud · Agencia Brújula Media,Cloud,Agencia Brújula Media,"7,170,441.81",out,HNL,HN-202609-00062
+2026-09-11,compute · Catering La Ceiba,Cloud,Catering La Ceiba,"3,206,118.10",out,HNL,HN-202609-00103
+2026-09-11,storage · Datacenter Istmo,Cloud,Datacenter Istmo,"5,265,241.14",out,HNL,HN-202609-00247
+2026-09-11,logística · Datacenter Istmo,logística,Datacenter Istmo,"545,630.03",out,HNL,HN-202609-00255
+2026-09-12,per diem · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"1,713,997.29",out,HNL,HN-202609-00028
+2026-09-12,compute · Energía del Pacífico,compute,Energía del Pacífico,"1,236,379.25",out,HNL,HN-202609-00188
+2026-09-12,infra cloud · Impresos del Valle,Cloud,Impresos del Valle,"7,360,309.83",out,HNL,HN-202609-00190
+2026-09-12,consultoría · Datacenter Istmo,consultoría,Datacenter Istmo,"574,676.47",out,HNL,HN-202609-00226
+2026-09-12,consultoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"972,959.43",out,HNL,HN-202609-00487
+2026-09-13,Ingreso canal Tesla · ref 85028,Revenue,,"5,515,963.89",in,HNL,HN-202609-00035
+2026-09-13,coworking · Datacenter Istmo,Rent,Datacenter Istmo,"1,427,099.92",out,HNL,HN-202609-00217
+2026-09-13,entregas · Energía del Pacífico,Deliveries,Energía del Pacífico,"1,953,164.41",out,HNL,HN-202609-00390
+2026-09-13,hoteles · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"1,632,105.50",out,HNL,HN-202609-00399
+2026-09-14,beneficios · Seguros Volcán,beneficios,Seguros Volcán,"2,336,327.38",out,HNL,HN-202609-00002
+2026-09-14,Ingreso canal Tesla · ref 26441,Revenue,,"7,370,254.26",in,HNL,HN-202609-00316
+2026-09-14,logística · Transportes Rápidos,Deliveries,Transportes Rápidos,"1,140,909.72",out,HNL,HN-202609-00410
+2026-09-15,hoteles · Energía del Pacífico,hoteles,Energía del Pacífico,"1,980,441.71",out,HNL,HN-202609-00154
+2026-09-15,compute · Datacenter Istmo,compute,Datacenter Istmo,"8,633,332.56",out,HNL,HN-202609-00353
+2026-09-15,bodega · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"2,061,484.58",out,HNL,HN-202609-00396
+2026-09-15,storage · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"1,864,266.72",out,HNL,HN-202609-00436
+2026-09-16,compute · Energía del Pacífico,Cloud,Energía del Pacífico,"5,884,284.98",out,HNL,HN-202609-00005
+2026-09-16,entregas · Energía del Pacífico,Deliveries,Energía del Pacífico,"1,060,796.54",out,HNL,HN-202609-00082
+2026-09-16,alquiler HQ · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"308,892.17",out,HNL,HN-202609-00112
+2026-09-16,eventos · Impresos del Valle,eventos,Impresos del Valle,"341,008.32",out,HNL,HN-202609-00135
+2026-09-16,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"126,741.26",out,HNL,HN-202609-00443
+2026-09-16,Ingreso canal Tesla · ref 18587,Revenue,,"1,597,593.56",in,HNL,HN-202609-00449
+2026-09-16,entregas · LogiCentro CA,Deliveries,LogiCentro CA,"1,742,344.61",out,HNL,HN-202609-00478
+2026-09-16,logística · Oficinas Corporativas del Istmo,logística,Oficinas Corporativas del Istmo,"822,926.01",out,HNL,HN-202609-00514
+2026-09-17,coworking · Catering La Ceiba,coworking,Catering La Ceiba,"1,416,096.74",out,HNL,HN-202609-00019
+2026-09-17,ads · Impresos del Valle,ads,Impresos del Valle,"383,653.16",out,HNL,HN-202609-00054
+2026-09-17,agua · Bufete Istmo & Asociados,agua,Bufete Istmo & Asociados,"795,672.96",out,HNL,HN-202609-00061
+2026-09-17,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"867,347.12",out,HNL,HN-202609-00077
+2026-09-17,logística · Impresos del Valle,logística,Impresos del Valle,"1,842,009.58",out,HNL,HN-202609-00260
+2026-09-17,Ingreso canal Tesla · ref 64235,Revenue,,"1,606,421.42",in,HNL,HN-202609-00300
+2026-09-17,Ingreso canal Tesla · ref 76653,Revenue,,"1,507,000.86",in,HNL,HN-202609-00374
+2026-09-17,per diem · Aerolíneas Centroamericanas,per diem,Aerolíneas Centroamericanas,"1,196,910.42",out,HNL,HN-202609-00426
+2026-09-18,storage · Energía del Pacífico,Cloud,Energía del Pacífico,"476,702.54",out,HNL,HN-202609-00102
+2026-09-18,beneficios · Datacenter Istmo,beneficios,Datacenter Istmo,"2,347,379.53",out,HNL,HN-202609-00216
+2026-09-18,compute · Energía del Pacífico,Cloud,Energía del Pacífico,"5,862,893.62",out,HNL,HN-202609-00334
+2026-09-18,vuelos · Seguros Volcán,Travel,Seguros Volcán,"646,188.50",out,HNL,HN-202609-00338
+2026-09-18,entregas · Catering La Ceiba,Deliveries,Catering La Ceiba,"1,204,173.69",out,HNL,HN-202609-00362
+2026-09-19,ads · Agencia Brújula Media,ads,Agencia Brújula Media,"957,671.37",out,HNL,HN-202609-00137
+2026-09-19,agua · Catering La Ceiba,Utilities,Catering La Ceiba,"1,772,745.03",out,HNL,HN-202609-00150
+2026-09-19,auditoría · Impresos del Valle,ProfessionalServices,Impresos del Valle,"1,684,319.85",out,HNL,HN-202609-00333
+2026-09-19,Ingreso canal Tesla · ref 10155,Revenue,,"1,046,190.15",in,HNL,HN-202609-00405
+2026-09-19,Ingreso canal Tesla · ref 13408,Revenue,,"10,455,508.67",in,HNL,HN-202609-00425
+2026-09-19,internet · Agencia Brújula Media,internet,Agencia Brújula Media,"1,442,836.86",out,HNL,HN-202609-00441
+2026-09-19,Ingreso canal Tesla · ref 33740,Revenue,,"2,013,466.76",in,HNL,HN-202609-00505
+2026-09-20,legal · LogiCentro CA,ProfessionalServices,LogiCentro CA,"2,142,076.58",out,HNL,HN-202609-00091
+2026-09-20,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"15,320.32",out,HNL,HN-202609-00181
+2026-09-20,compute · Seguros Volcán,Cloud,Seguros Volcán,"8,409,798.37",out,HNL,HN-202609-00317
+2026-09-20,cargas sociales · Transportes Rápidos,cargas sociales,Transportes Rápidos,"241,991.91",out,HNL,HN-202609-00359
+2026-09-20,entregas · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"791,452.49",out,HNL,HN-202609-00435
+2026-09-22,agua · Catering La Ceiba,Utilities,Catering La Ceiba,"1,162,323.24",out,HNL,HN-202609-00381
+2026-09-23,agua · Seguros Volcán,Utilities,Seguros Volcán,"1,028,127.07",out,HNL,HN-202609-00322
+2026-09-23,infra cloud · Transportes Rápidos,Cloud,Transportes Rápidos,"1,633,532.34",out,HNL,HN-202609-00371
+2026-09-23,infra cloud · Bufete Istmo & Asociados,infra cloud,Bufete Istmo & Asociados,"3,736,846.40",out,HNL,HN-202609-00500
+2026-09-24,eventos · Agencia Brújula Media,eventos,Agencia Brújula Media,"1,316,002.36",out,HNL,HN-202609-00052
+2026-09-24,eventos · Seguros Volcán,Marketing,Seguros Volcán,"1,226,468.95",out,HNL,HN-202609-00120
+2026-09-24,Ingreso canal Tesla · ref 85938,Revenue,,"1,944,770.15",in,HNL,HN-202609-00377
+2026-09-25,consultoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"1,915,867.95",out,HNL,HN-202609-00042
+2026-09-25,per diem · Agencia Brújula Media,Travel,Agencia Brújula Media,"755,786.34",out,HNL,HN-202609-00045
+2026-09-25,internet · Catering La Ceiba,Utilities,Catering La Ceiba,"1,555,619.96",out,HNL,HN-202609-00100
+2026-09-25,Ingreso canal Tesla · ref 24077,Revenue,,"1,406,034.91",in,HNL,HN-202609-00372
+2026-09-25,agua · Transportes Rápidos,Utilities,Transportes Rápidos,"1,790,867.75",out,HNL,HN-202609-00389
+2026-09-25,internet · Seguros Volcán,Utilities,Seguros Volcán,"1,760,709.32",out,HNL,HN-202609-00445
+2026-09-25,transporte last-mile · AWS Marketplace Reseller,transporte last-mile,AWS Marketplace Reseller,"1,017,426.98",out,HNL,HN-202609-00455
+2026-09-26,entregas · Transportes Rápidos,entregas,Transportes Rápidos,"561,728.50",out,HNL,HN-202609-00040
+2026-09-26,compute · Catering La Ceiba,compute,Catering La Ceiba,"6,227,155.76",out,HNL,HN-202609-00200
+2026-09-27,auditoría · Datacenter Istmo,ProfessionalServices,Datacenter Istmo,"1,355,385.61",out,HNL,HN-202609-00240
+2026-09-27,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"1,258,142.83",out,HNL,HN-202609-00473
+2026-09-28,Ingreso canal Tesla · ref 34491,Revenue,,"3,230,038.76",in,HNL,HN-202609-00279
+2026-09-29,infra cloud · Transportes Rápidos,infra cloud,Transportes Rápidos,"7,489,755.44",out,HNL,HN-202609-00070
+2026-09-29,Ingreso canal Tesla · ref 31764,Revenue,,"490,168.72",in,HNL,HN-202609-00134
+2026-09-29,ads · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"961,142.51",out,HNL,HN-202609-00273
+2026-09-29,Ingreso canal Tesla · ref 19578,Revenue,,"1,018,212.86",in,HNL,HN-202609-00417
+2026-09-29,auditoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"1,316,985.77",out,HNL,HN-202609-00429
+2026-09-30,Ingreso canal Tesla · ref 35097,Revenue,,"1,771,103.40",in,HNL,HN-202609-00227
+2026-09-30,storage · Catering La Ceiba,storage,Catering La Ceiba,"5,997,909.90",out,HNL,HN-202609-00304
+2026-09-30,cargas sociales · Seguros Volcán,Payroll,Seguros Volcán,"7,467,297.27",out,HNL,HN-202609-00513
+2026-10-01,nómina · Impresos del Valle,Payroll,Impresos del Valle,"2,688,428.45",out,HNL,HN-202610-00284
+2026-10-01,coworking · Seguros Volcán,coworking,Seguros Volcán,"2,167,194.83",out,HNL,HN-202610-00285
+2026-10-01,auditoría · Bufete Istmo & Asociados,auditoría,Bufete Istmo & Asociados,"1,139,564.22",out,HNL,HN-202610-00325
+2026-10-01,beneficios · LogiCentro CA,beneficios,LogiCentro CA,"2,353,564.82",out,HNL,HN-202610-00480
+2026-10-01,hoteles · Energía del Pacífico,Travel,Energía del Pacífico,"1,587,545.78",out,HNL,HN-202610-00485
+2026-10-01,agua · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"1,428,762.49",out,HNL,HN-202610-00492
+2026-10-02,Ingreso canal Tesla · ref 69460,Revenue,,"1,105,492.78",in,HNL,HN-202610-00146
+2026-10-02,ads · Transportes Rápidos,ads,Transportes Rápidos,"574,392.72",out,HNL,HN-202610-00348
+2026-10-03,cargas sociales · Impresos del Valle,cargas sociales,Impresos del Valle,"3,991,027.93",out,HNL,HN-202610-00332
+2026-10-03,entregas · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"1,060,382.45",out,HNL,HN-202610-00349
+2026-10-03,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"342,011.00",out,HNL,HN-202610-00440
+2026-10-04,hoteles · Transportes Rápidos,hoteles,Transportes Rápidos,"1,949,644.70",out,HNL,HN-202610-00036
+2026-10-04,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"172,831.71",out,HNL,HN-202610-00046
+2026-10-04,Ingreso canal Tesla · ref 88706,Revenue,,"354,207.30",in,HNL,HN-202610-00058
+2026-10-04,Ingreso canal Tesla · ref 18904,Revenue,,"1,040,665.45",in,HNL,HN-202610-00160
+2026-10-04,internet · Transportes Rápidos,Utilities,Transportes Rápidos,"1,641,933.93",out,HNL,HN-202610-00277
+2026-10-04,legal · LogiCentro CA,ProfessionalServices,LogiCentro CA,"433,387.68",out,HNL,HN-202610-00341
+2026-10-05,infra cloud · Agencia Brújula Media,infra cloud,Agencia Brújula Media,"10,112,160.90",out,HNL,HN-202610-00059
+2026-10-05,consultoría · Transportes Rápidos,consultoría,Transportes Rápidos,"446,414.10",out,HNL,HN-202610-00235
+2026-10-05,compute · Transportes Rápidos,Cloud,Transportes Rápidos,"3,952,252.86",out,HNL,HN-202610-00296
+2026-10-05,Ingreso canal Tesla · ref 19514,Revenue,,"1,899,850.99",in,HNL,HN-202610-00412
+2026-10-05,alquiler HQ · LogiCentro CA,Rent,LogiCentro CA,"758,512.31",out,HNL,HN-202610-00418
+2026-10-05,entregas · Datacenter Istmo,Deliveries,Datacenter Istmo,"1,880,007.41",out,HNL,HN-202610-00517
+2026-10-06,hoteles · LogiCentro CA,hoteles,LogiCentro CA,"1,477,648.36",out,HNL,HN-202610-00012
+2026-10-06,alquiler HQ · Bufete Istmo & Asociados,Rent,Bufete Istmo & Asociados,"513,728.12",out,HNL,HN-202610-00020
+2026-10-06,transporte last-mile · Energía del Pacífico,transporte last-mile,Energía del Pacífico,"1,250,848.21",out,HNL,HN-202610-00022
+2026-10-06,cargas sociales · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"1,151,858.64",out,HNL,HN-202610-00254
+2026-10-06,alquiler HQ · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"1,240,867.61",out,HNL,HN-202610-00369
+2026-10-06,bodega · Bufete Istmo & Asociados,bodega,Bufete Istmo & Asociados,"2,321,129.32",out,HNL,HN-202610-00402
+2026-10-07,consultoría · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"1,811,647.88",out,HNL,HN-202610-00104
+2026-10-07,ads · Datacenter Istmo,Marketing,Datacenter Istmo,"284,459.61",out,HNL,HN-202610-00156
+2026-10-07,brand · Agencia Brújula Media,Marketing,Agencia Brújula Media,"1,766,883.51",out,HNL,HN-202610-00171
+2026-10-07,per diem · Datacenter Istmo,Travel,Datacenter Istmo,"623,377.17",out,HNL,HN-202610-00203
+2026-10-07,ads · Energía del Pacífico,Marketing,Energía del Pacífico,"1,768,347.73",out,HNL,HN-202610-00209
+2026-10-07,nómina · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"8,909,941.22",out,HNL,HN-202610-00474
+2026-10-08,consultoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"526,145.12",out,HNL,HN-202610-00064
+2026-10-08,Ingreso canal Tesla · ref 44856,Revenue,,"1,988,597.99",in,HNL,HN-202610-00204
+2026-10-08,Ingreso canal Tesla · ref 91534,Revenue,,"674,209.72",in,HNL,HN-202610-00206
+2026-10-08,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"742,582.12",out,HNL,HN-202610-00211
+2026-10-08,infra cloud · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"619,221.37",out,HNL,HN-202610-00309
+2026-10-08,storage · Impresos del Valle,Cloud,Impresos del Valle,"3,801,625.16",out,HNL,HN-202610-00323
+2026-10-08,nómina · Seguros Volcán,Payroll,Seguros Volcán,"10,475,606.44",out,HNL,HN-202610-00501
+2026-10-09,electricidad · Transportes Rápidos,electricidad,Transportes Rápidos,"1,262,347.45",out,HNL,HN-202610-00119
+2026-10-09,coworking · Seguros Volcán,coworking,Seguros Volcán,"846,488.43",out,HNL,HN-202610-00174
+2026-10-09,auditoría · Bufete Istmo & Asociados,auditoría,Bufete Istmo & Asociados,"1,839,233.79",out,HNL,HN-202610-00319
+2026-10-09,logística · Seguros Volcán,Deliveries,Seguros Volcán,"377,174.24",out,HNL,HN-202610-00337
+2026-10-10,consultoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"28,259.67",out,HNL,HN-202610-00038
+2026-10-10,storage · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"7,982,408.81",out,HNL,HN-202610-00387
+2026-10-10,Ingreso canal Tesla · ref 72467,Revenue,,"4,017,753.27",in,HNL,HN-202610-00496
+2026-10-11,transporte last-mile · Catering La Ceiba,transporte last-mile,Catering La Ceiba,"26,342.86",out,HNL,HN-202610-00006
+2026-10-11,bodega · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"274,598.86",out,HNL,HN-202610-00111
+2026-10-11,Ingreso canal Tesla · ref 60869,Revenue,,"6,788,739.66",in,HNL,HN-202610-00124
+2026-10-11,agua · Catering La Ceiba,Utilities,Catering La Ceiba,"705,343.84",out,HNL,HN-202610-00152
+2026-10-11,Ingreso canal Tesla · ref 40325,Revenue,,"827,264.64",in,HNL,HN-202610-00294
+2026-10-11,agua · Datacenter Istmo,agua,Datacenter Istmo,"1,847,083.33",out,HNL,HN-202610-00361
+2026-10-12,per diem · Impresos del Valle,Travel,Impresos del Valle,"898,238.83",out,HNL,HN-202610-00076
+2026-10-12,Ingreso canal Tesla · ref 62509,Revenue,,"8,279,427.06",in,HNL,HN-202610-00084
+2026-10-12,compute · Impresos del Valle,compute,Impresos del Valle,"2,284,705.73",out,HNL,HN-202610-00090
+2026-10-12,entregas · Impresos del Valle,entregas,Impresos del Valle,"2,036,388.84",out,HNL,HN-202610-00270
+2026-10-12,agua · Seguros Volcán,Utilities,Seguros Volcán,"1,769,081.57",out,HNL,HN-202610-00275
+2026-10-12,Ingreso canal Tesla · ref 71764,Revenue,,"938,028.91",in,HNL,HN-202610-00471
+2026-10-13,alquiler HQ · Energía del Pacífico,alquiler HQ,Energía del Pacífico,"2,085,663.67",out,HNL,HN-202610-00009
+2026-10-13,vuelos · Impresos del Valle,Travel,Impresos del Valle,"421,684.21",out,HNL,HN-202610-00031
+2026-10-13,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"709,187.92",out,HNL,HN-202610-00238
+2026-10-13,hoteles · Transportes Rápidos,Travel,Transportes Rápidos,"835,180.97",out,HNL,HN-202610-00249
+2026-10-13,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"542,622.03",out,HNL,HN-202610-00472
+2026-10-14,brand · Datacenter Istmo,Marketing,Datacenter Istmo,"1,772,625.01",out,HNL,HN-202610-00057
+2026-10-14,transporte last-mile · Impresos del Valle,Deliveries,Impresos del Valle,"178,168.25",out,HNL,HN-202610-00493
+2026-10-15,beneficios · Datacenter Istmo,Payroll,Datacenter Istmo,"3,437,201.36",out,HNL,HN-202610-00073
+2026-10-15,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"1,342,793.19",out,HNL,HN-202610-00290
+2026-10-15,ads · AWS Marketplace Reseller,ads,AWS Marketplace Reseller,"1,634,381.71",out,HNL,HN-202610-00508
+2026-10-16,electricidad · Impresos del Valle,Utilities,Impresos del Valle,"1,918,248.62",out,HNL,HN-202610-00175
+2026-10-16,transporte last-mile · LogiCentro CA,transporte last-mile,LogiCentro CA,"1,141,210.83",out,HNL,HN-202610-00274
+2026-10-16,compute · LogiCentro CA,Cloud,LogiCentro CA,"6,505,797.49",out,HNL,HN-202610-00301
+2026-10-16,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"1,522,696.74",out,HNL,HN-202610-00302
+2026-10-16,alquiler HQ · Agencia Brújula Media,Rent,Agencia Brújula Media,"2,194,988.61",out,HNL,HN-202610-00343
+2026-10-16,Ingreso canal Tesla · ref 86939,Revenue,,"534,537.93",in,HNL,HN-202610-00457
+2026-10-16,alquiler HQ · Catering La Ceiba,alquiler HQ,Catering La Ceiba,"1,068,066.34",out,HNL,HN-202610-00466
+2026-10-16,agua · Catering La Ceiba,Utilities,Catering La Ceiba,"442,783.50",out,HNL,HN-202610-00479
+2026-10-17,coworking · Seguros Volcán,Rent,Seguros Volcán,"1,857,420.10",out,HNL,HN-202610-00055
+2026-10-17,hoteles · Agencia Brújula Media,hoteles,Agencia Brújula Media,"945,408.55",out,HNL,HN-202610-00065
+2026-10-17,per diem · Bufete Istmo & Asociados,per diem,Bufete Istmo & Asociados,"745,559.14",out,HNL,HN-202610-00131
+2026-10-17,alquiler HQ · Seguros Volcán,Rent,Seguros Volcán,"828,488.42",out,HNL,HN-202610-00303
+2026-10-17,electricidad · Energía del Pacífico,Utilities,Energía del Pacífico,"407,044.18",out,HNL,HN-202610-00354
+2026-10-18,electricidad · Aerolíneas Centroamericanas,electricidad,Aerolíneas Centroamericanas,"231,614.76",out,HNL,HN-202610-00136
+2026-10-18,hoteles · Energía del Pacífico,hoteles,Energía del Pacífico,"2,247,257.33",out,HNL,HN-202610-00142
+2026-10-18,transporte last-mile · Impresos del Valle,transporte last-mile,Impresos del Valle,"28,173.39",out,HNL,HN-202610-00336
+2026-10-18,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"1,610,278.83",out,HNL,HN-202610-00430
+2026-10-19,consultoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"1,578,044.69",out,HNL,HN-202610-00041
+2026-10-19,infra cloud · Energía del Pacífico,infra cloud,Energía del Pacífico,"4,677,632.80",out,HNL,HN-202610-00497
+2026-10-19,Ingreso canal Tesla · ref 85971,Revenue,,"2,080,116.63",in,HNL,HN-202610-00520
+2026-10-20,per diem · Agencia Brújula Media,per diem,Agencia Brújula Media,"634,576.37",out,HNL,HN-202610-00034
+2026-10-20,Ingreso canal Tesla · ref 33664,Revenue,,"1,522,883.05",in,HNL,HN-202610-00071
+2026-10-20,ads · Datacenter Istmo,Marketing,Datacenter Istmo,"1,494,861.87",out,HNL,HN-202610-00081
+2026-10-20,electricidad · LogiCentro CA,electricidad,LogiCentro CA,"2,209,318.22",out,HNL,HN-202610-00106
+2026-10-20,legal · Datacenter Istmo,legal,Datacenter Istmo,"1,718,731.24",out,HNL,HN-202610-00159
+2026-10-20,agua · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"1,473,088.02",out,HNL,HN-202610-00177
+2026-10-20,transporte last-mile · Energía del Pacífico,Deliveries,Energía del Pacífico,"1,296,024.98",out,HNL,HN-202610-00210
+2026-10-20,coworking · Transportes Rápidos,coworking,Transportes Rápidos,"2,288,983.39",out,HNL,HN-202610-00271
+2026-10-20,Ingreso canal Tesla · ref 63666,Revenue,,"3,577,152.41",in,HNL,HN-202610-00313
+2026-10-21,Ingreso canal Tesla · ref 21181,Revenue,,"4,937,546.55",in,HNL,HN-202610-00228
+2026-10-21,Ingreso canal Tesla · ref 36810,Revenue,,"2,223,771.87",in,HNL,HN-202610-00406
+2026-10-21,Ingreso canal Tesla · ref 83935,Revenue,,"1,256,829.10",in,HNL,HN-202610-00470
+2026-10-21,internet · Agencia Brújula Media,Utilities,Agencia Brújula Media,"452,867.75",out,HNL,HN-202610-00509
+2026-10-21,electricidad · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"1,059,389.32",out,HNL,HN-202610-00516
+2026-10-22,vuelos · Transportes Rápidos,Travel,Transportes Rápidos,"2,224,070.40",out,HNL,HN-202610-00051
+2026-10-22,Ingreso canal Tesla · ref 49297,Revenue,,"1,786,568.68",in,HNL,HN-202610-00101
+2026-10-22,alquiler HQ · Seguros Volcán,Rent,Seguros Volcán,"80,487.87",out,HNL,HN-202610-00225
+2026-10-22,agua · Energía del Pacífico,Utilities,Energía del Pacífico,"1,006,028.25",out,HNL,HN-202610-00407
+2026-10-23,per diem · Datacenter Istmo,Travel,Datacenter Istmo,"1,536,320.37",out,HNL,HN-202610-00099
+2026-10-23,Ingreso canal Tesla · ref 59793,Revenue,,"8,966,043.34",in,HNL,HN-202610-00151
+2026-10-23,ads · Agencia Brújula Media,Marketing,Agencia Brújula Media,"399,548.49",out,HNL,HN-202610-00411
+2026-10-23,alquiler HQ · Bufete Istmo & Asociados,Rent,Bufete Istmo & Asociados,"306,216.99",out,HNL,HN-202610-00507
+2026-10-23,infra cloud · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"72,790.72",out,HNL,HN-202610-00512
+2026-10-24,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"515,426.41",out,HNL,HN-202610-00032
+2026-10-24,eventos · Energía del Pacífico,eventos,Energía del Pacífico,"291,705.08",out,HNL,HN-202610-00122
+2026-10-24,eventos · Catering La Ceiba,Marketing,Catering La Ceiba,"2,268,426.42",out,HNL,HN-202610-00197
+2026-10-24,Ingreso canal Tesla · ref 21011,Revenue,,"721,157.76",in,HNL,HN-202610-00212
+2026-10-24,entregas · Seguros Volcán,entregas,Seguros Volcán,"2,136,071.06",out,HNL,HN-202610-00267
+2026-10-24,Ingreso canal Tesla · ref 66951,Revenue,,"5,792,577.30",in,HNL,HN-202610-00278
+2026-10-24,Ingreso canal Tesla · ref 22834,Revenue,,"634,035.32",in,HNL,HN-202610-00446
+2026-10-25,Ingreso canal Tesla · ref 62555,Revenue,,"2,151,963.48",in,HNL,HN-202610-00194
+2026-10-25,nómina · Energía del Pacífico,Payroll,Energía del Pacífico,"2,367,926.14",out,HNL,HN-202610-00223
+2026-10-25,internet · Datacenter Istmo,Utilities,Datacenter Istmo,"2,275,147.04",out,HNL,HN-202610-00388
+2026-10-25,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"2,181,345.60",out,HNL,HN-202610-00414
+2026-10-25,logística · Catering La Ceiba,Deliveries,Catering La Ceiba,"358,452.61",out,HNL,HN-202610-00428
+2026-10-25,per diem · AWS Marketplace Reseller,Travel,AWS Marketplace Reseller,"780,957.76",out,HNL,HN-202610-00511
+2026-10-26,alquiler HQ · Agencia Brújula Media,Rent,Agencia Brújula Media,"1,663,592.91",out,HNL,HN-202610-00053
+2026-10-26,agua · Datacenter Istmo,agua,Datacenter Istmo,"1,445,225.38",out,HNL,HN-202610-00096
+2026-10-26,transporte last-mile · Transportes Rápidos,Deliveries,Transportes Rápidos,"2,060,342.93",out,HNL,HN-202610-00118
+2026-10-26,nómina · Transportes Rápidos,Payroll,Transportes Rápidos,"11,479,000.69",out,HNL,HN-202610-00306
+2026-10-26,storage · Agencia Brújula Media,storage,Agencia Brújula Media,"2,040,067.97",out,HNL,HN-202610-00318
+2026-10-26,transporte last-mile · Datacenter Istmo,transporte last-mile,Datacenter Istmo,"1,156,688.34",out,HNL,HN-202610-00467
+2026-10-27,ads · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"83,802.97",out,HNL,HN-202610-00078
+2026-10-27,electricidad · Catering La Ceiba,Utilities,Catering La Ceiba,"1,901,515.39",out,HNL,HN-202610-00108
+2026-10-27,agua · Transportes Rápidos,Utilities,Transportes Rápidos,"1,203,146.24",out,HNL,HN-202610-00140
+2026-10-27,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"4,459,101.33",out,HNL,HN-202610-00311
+2026-10-27,bodega · AWS Marketplace Reseller,bodega,AWS Marketplace Reseller,"872,189.64",out,HNL,HN-202610-00498
+2026-10-28,legal · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"831,501.29",out,HNL,HN-202610-00024
+2026-10-28,Ingreso canal Tesla · ref 77889,Revenue,,"3,634,093.85",in,HNL,HN-202610-00089
+2026-10-28,brand · Agencia Brújula Media,Marketing,Agencia Brújula Media,"369,635.16",out,HNL,HN-202610-00183
+2026-10-29,Ingreso canal Tesla · ref 80163,Revenue,,"1,838,436.94",in,HNL,HN-202610-00025
+2026-10-29,per diem · Bufete Istmo & Asociados,per diem,Bufete Istmo & Asociados,"2,300,434.12",out,HNL,HN-202610-00048
+2026-10-29,Ingreso canal Tesla · ref 60856,Revenue,,"339,642.13",in,HNL,HN-202610-00246
+2026-10-29,auditoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"1,741,482.01",out,HNL,HN-202610-00340
+2026-10-29,compute · Agencia Brújula Media,Cloud,Agencia Brújula Media,"289,672.24",out,HNL,HN-202610-00397
+2026-10-29,legal · LogiCentro CA,legal,LogiCentro CA,"727,674.68",out,HNL,HN-202610-00408
+2026-10-29,consultoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"116,429.20",out,HNL,HN-202610-00424
+2026-10-30,alquiler HQ · Bufete Istmo & Asociados,alquiler HQ,Bufete Istmo & Asociados,"2,331,294.01",out,HNL,HN-202610-00321
+2026-10-30,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"871,879.61",out,HNL,HN-202610-00327
+2026-10-30,Ingreso canal Tesla · ref 86855,Revenue,,"159,445.18",in,HNL,HN-202610-00329
+2026-10-30,beneficios · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"1,270,990.91",out,HNL,HN-202610-00350
+2026-10-30,hoteles · Catering La Ceiba,Travel,Catering La Ceiba,"860,561.06",out,HNL,HN-202610-00400
+2026-10-31,coworking · Transportes Rápidos,coworking,Transportes Rápidos,"575,147.37",out,HNL,HN-202610-00050
+2026-10-31,entregas · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"2,300,407.62",out,HNL,HN-202610-00127
+2026-10-31,vuelos · Catering La Ceiba,Travel,Catering La Ceiba,"38,441.65",out,HNL,HN-202610-00269
+2026-10-31,hoteles · AWS Marketplace Reseller,hoteles,AWS Marketplace Reseller,"1,353,939.53",out,HNL,HN-202610-00461
+2026-10-31,storage · LogiCentro CA,storage,LogiCentro CA,"7,765,284.07",out,HNL,HN-202610-00469
+2026-11-01,entregas · Oficinas Corporativas del Istmo,entregas,Oficinas Corporativas del Istmo,"645,597.98",out,HNL,HN-202611-00129
+2026-11-01,bodega · LogiCentro CA,Rent,LogiCentro CA,"254,067.00",out,HNL,HN-202611-00130
+2026-11-01,bodega · Catering La Ceiba,Rent,Catering La Ceiba,"1,866,163.73",out,HNL,HN-202611-00236
+2026-11-01,infra cloud · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"2,812,330.09",out,HNL,HN-202611-00307
+2026-11-01,hoteles · Transportes Rápidos,hoteles,Transportes Rápidos,"1,373,397.14",out,HNL,HN-202611-00422
+2026-11-01,consultoría · Datacenter Istmo,consultoría,Datacenter Istmo,"751,515.51",out,HNL,HN-202611-00464
+2026-11-02,brand · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"2,311,988.72",out,HNL,HN-202611-00004
+2026-11-02,bodega · LogiCentro CA,bodega,LogiCentro CA,"936,009.60",out,HNL,HN-202611-00063
+2026-11-02,Ingreso canal Tesla · ref 73143,Revenue,,"1,614,962.26",in,HNL,HN-202611-00067
+2026-11-02,eventos · Datacenter Istmo,Marketing,Datacenter Istmo,"1,391,648.17",out,HNL,HN-202611-00072
+2026-11-02,logística · Datacenter Istmo,Deliveries,Datacenter Istmo,"2,027,468.42",out,HNL,HN-202611-00187
+2026-11-02,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"2,208,513.35",out,HNL,HN-202611-00256
+2026-11-02,storage · Catering La Ceiba,Cloud,Catering La Ceiba,"5,733,117.99",out,HNL,HN-202611-00432
+2026-11-03,bodega · Datacenter Istmo,Rent,Datacenter Istmo,"1,586,004.64",out,HNL,HN-202611-00001
+2026-11-03,Ingreso canal Tesla · ref 33327,Revenue,,"1,578,157.07",in,HNL,HN-202611-00155
+2026-11-03,compute · Impresos del Valle,compute,Impresos del Valle,"2,991,830.20",out,HNL,HN-202611-00264
+2026-11-03,compute · Energía del Pacífico,Cloud,Energía del Pacífico,"3,160,904.88",out,HNL,HN-202611-00339
+2026-11-03,infra cloud · LogiCentro CA,infra cloud,LogiCentro CA,"2,518,687.61",out,HNL,HN-202611-00347
+2026-11-03,Ingreso canal Tesla · ref 77653,Revenue,,"384,381.67",in,HNL,HN-202611-00393
+2026-11-04,eventos · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"739,938.86",out,HNL,HN-202611-00018
+2026-11-04,coworking · Datacenter Istmo,Rent,Datacenter Istmo,"850,684.48",out,HNL,HN-202611-00097
+2026-11-04,bodega · Catering La Ceiba,Rent,Catering La Ceiba,"2,003,893.39",out,HNL,HN-202611-00107
+2026-11-04,consultoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"1,005,391.49",out,HNL,HN-202611-00201
+2026-11-04,logística · Impresos del Valle,logística,Impresos del Valle,"163,403.92",out,HNL,HN-202611-00214
+2026-11-04,entregas · Transportes Rápidos,entregas,Transportes Rápidos,"1,878,416.03",out,HNL,HN-202611-00242
+2026-11-04,coworking · Seguros Volcán,Rent,Seguros Volcán,"130,994.83",out,HNL,HN-202611-00330
+2026-11-04,eventos · Seguros Volcán,Marketing,Seguros Volcán,"1,825,585.92",out,HNL,HN-202611-00450
+2026-11-04,Ingreso canal Tesla · ref 78342,Revenue,,"3,934,546.62",in,HNL,HN-202611-00458
+2026-11-04,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"10,537,638.19",out,HNL,HN-202611-00489
+2026-11-05,hoteles · Datacenter Istmo,hoteles,Datacenter Istmo,"194,683.79",out,HNL,HN-202611-00115
+2026-11-05,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"2,210,168.35",out,HNL,HN-202611-00331
+2026-11-05,entregas · Energía del Pacífico,Deliveries,Energía del Pacífico,"111,564.64",out,HNL,HN-202611-00419
+2026-11-05,eventos · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"517,151.61",out,HNL,HN-202611-00420
+2026-11-05,brand · Energía del Pacífico,brand,Energía del Pacífico,"1,849,860.79",out,HNL,HN-202611-00451
+2026-11-05,Ingreso canal Tesla · ref 30068,Revenue,,"10,111,573.30",in,HNL,HN-202611-00504
+2026-11-05,beneficios · Energía del Pacífico,Payroll,Energía del Pacífico,"8,690,391.18",out,HNL,HN-202611-00519
+2026-11-06,Ingreso canal Tesla · ref 46624,Revenue,,"2,173,296.26",in,HNL,HN-202611-00043
+2026-11-06,cargas sociales · Agencia Brújula Media,cargas sociales,Agencia Brújula Media,"5,423,374.61",out,HNL,HN-202611-00193
+2026-11-06,coworking · Datacenter Istmo,coworking,Datacenter Istmo,"1,835,549.68",out,HNL,HN-202611-00229
+2026-11-06,legal · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"1,117,108.96",out,HNL,HN-202611-00263
+2026-11-06,consultoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"574,093.29",out,HNL,HN-202611-00283
+2026-11-06,bodega · LogiCentro CA,bodega,LogiCentro CA,"2,338,811.30",out,HNL,HN-202611-00358
+2026-11-06,brand · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"1,794,120.61",out,HNL,HN-202611-00368
+2026-11-06,electricidad · LogiCentro CA,electricidad,LogiCentro CA,"742,599.20",out,HNL,HN-202611-00385
+2026-11-06,bodega · Bufete Istmo & Asociados,bodega,Bufete Istmo & Asociados,"671,611.76",out,HNL,HN-202611-00444
+2026-11-07,Ingreso canal Tesla · ref 99270,Revenue,,"1,835,839.89",in,HNL,HN-202611-00133
+2026-11-07,electricidad · Datacenter Istmo,Utilities,Datacenter Istmo,"2,040,971.80",out,HNL,HN-202611-00149
+2026-11-07,cargas sociales · Impresos del Valle,Payroll,Impresos del Valle,"8,872,077.07",out,HNL,HN-202611-00355
+2026-11-08,Ingreso canal Tesla · ref 40774,Revenue,,"1,368,680.37",in,HNL,HN-202611-00021
+2026-11-08,Ingreso canal Tesla · ref 62335,Revenue,,"8,790,574.90",in,HNL,HN-202611-00075
+2026-11-08,legal · LogiCentro CA,ProfessionalServices,LogiCentro CA,"2,005,552.64",out,HNL,HN-202611-00315
+2026-11-08,Ingreso canal Tesla · ref 89821,Revenue,,"1,040,404.07",in,HNL,HN-202611-00442
+2026-11-09,beneficios · Catering La Ceiba,beneficios,Catering La Ceiba,"6,527,460.37",out,HNL,HN-202611-00069
+2026-11-09,nómina · LogiCentro CA,Payroll,LogiCentro CA,"4,619,500.64",out,HNL,HN-202611-00113
+2026-11-09,bodega · Datacenter Istmo,Rent,Datacenter Istmo,"2,044,220.66",out,HNL,HN-202611-00258
+2026-11-09,Ingreso canal Tesla · ref 31747,Revenue,,"2,146,821.42",in,HNL,HN-202611-00398
+2026-11-09,agua · AWS Marketplace Reseller,agua,AWS Marketplace Reseller,"2,067,583.38",out,HNL,HN-202611-00434
+2026-11-09,nómina · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"2,005,824.10",out,HNL,HN-202611-00484
+2026-11-10,entregas · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"2,081,777.01",out,HNL,HN-202611-00161
+2026-11-10,transporte last-mile · AWS Marketplace Reseller,transporte last-mile,AWS Marketplace Reseller,"1,035,756.72",out,HNL,HN-202611-00184
+2026-11-10,Ingreso canal Tesla · ref 15403,Revenue,,"293,789.72",in,HNL,HN-202611-00208
+2026-11-10,legal · Agencia Brújula Media,legal,Agencia Brújula Media,"1,191,553.01",out,HNL,HN-202611-00286
+2026-11-10,Ingreso canal Tesla · ref 11198,Revenue,,"545,955.49",in,HNL,HN-202611-00416
+2026-11-10,ads · Datacenter Istmo,Marketing,Datacenter Istmo,"1,264,891.15",out,HNL,HN-202611-00439
+2026-11-11,hoteles · Bufete Istmo & Asociados,hoteles,Bufete Istmo & Asociados,"1,509,511.54",out,HNL,HN-202611-00126
+2026-11-11,hoteles · LogiCentro CA,Travel,LogiCentro CA,"2,011,428.88",out,HNL,HN-202611-00139
+2026-11-11,Ingreso canal Tesla · ref 83084,Revenue,,"1,025,109.36",in,HNL,HN-202611-00231
+2026-11-11,Ingreso canal Tesla · ref 46702,Revenue,,"577,130.46",in,HNL,HN-202611-00288
+2026-11-11,nómina · Agencia Brújula Media,nómina,Agencia Brújula Media,"4,111,706.95",out,HNL,HN-202611-00360
+2026-11-11,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"1,644,646.30",out,HNL,HN-202611-00506
+2026-11-12,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"994,522.02",out,HNL,HN-202611-00008
+2026-11-12,auditoría · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"1,440,252.56",out,HNL,HN-202611-00026
+2026-11-12,Ingreso canal Tesla · ref 45153,Revenue,,"722,982.42",in,HNL,HN-202611-00037
+2026-11-12,legal · Impresos del Valle,ProfessionalServices,Impresos del Valle,"1,014,998.74",out,HNL,HN-202611-00220
+2026-11-12,Ingreso canal Tesla · ref 64176,Revenue,,"1,673,986.61",in,HNL,HN-202611-00221
+2026-11-12,Ingreso canal Tesla · ref 10407,Revenue,,"2,314,997.46",in,HNL,HN-202611-00342
+2026-11-12,compute · Impresos del Valle,Cloud,Impresos del Valle,"5,232,858.22",out,HNL,HN-202611-00433
+2026-11-13,Ingreso canal Tesla · ref 41773,Revenue,,"1,897,145.72",in,HNL,HN-202611-00068
+2026-11-13,auditoría · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"1,052,999.36",out,HNL,HN-202611-00116
+2026-11-13,alquiler HQ · LogiCentro CA,Rent,LogiCentro CA,"1,876,990.50",out,HNL,HN-202611-00370
+2026-11-13,auditoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"1,443,359.66",out,HNL,HN-202611-00391
+2026-11-15,entregas · Agencia Brújula Media,entregas,Agencia Brújula Media,"1,838,606.10",out,HNL,HN-202611-00014
+2026-11-15,electricidad · AWS Marketplace Reseller,electricidad,AWS Marketplace Reseller,"1,065,685.41",out,HNL,HN-202611-00047
+2026-11-15,beneficios · Energía del Pacífico,Payroll,Energía del Pacífico,"949,823.99",out,HNL,HN-202611-00086
+2026-11-15,agua · Seguros Volcán,Utilities,Seguros Volcán,"1,431,715.70",out,HNL,HN-202611-00173
+2026-11-15,nómina · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"5,193,016.12",out,HNL,HN-202611-00257
+2026-11-15,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"2,053,073.06",out,HNL,HN-202611-00395
+2026-11-15,entregas · Datacenter Istmo,entregas,Datacenter Istmo,"288,847.53",out,HNL,HN-202611-00447
+2026-11-16,logística · Catering La Ceiba,logística,Catering La Ceiba,"2,199,980.06",out,HNL,HN-202611-00092
+2026-11-16,entregas · LogiCentro CA,Deliveries,LogiCentro CA,"1,695,424.98",out,HNL,HN-202611-00094
+2026-11-16,storage · LogiCentro CA,Cloud,LogiCentro CA,"841,912.31",out,HNL,HN-202611-00114
+2026-11-16,storage · Seguros Volcán,storage,Seguros Volcán,"5,769,066.10",out,HNL,HN-202611-00222
+2026-11-16,Ingreso canal Tesla · ref 34202,Revenue,,"4,980,340.97",in,HNL,HN-202611-00382
+2026-11-17,beneficios · Catering La Ceiba,beneficios,Catering La Ceiba,"1,713,378.21",out,HNL,HN-202611-00007
+2026-11-17,compute · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"7,042,993.67",out,HNL,HN-202611-00308
+2026-11-17,legal · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"1,477,740.78",out,HNL,HN-202611-00364
+2026-11-17,per diem · Impresos del Valle,Travel,Impresos del Valle,"1,056,835.45",out,HNL,HN-202611-00380
+2026-11-17,internet · Impresos del Valle,internet,Impresos del Valle,"1,106,003.64",out,HNL,HN-202611-00427
+2026-11-17,storage · Oficinas Corporativas del Istmo,storage,Oficinas Corporativas del Istmo,"6,454,472.76",out,HNL,HN-202611-00462
+2026-11-18,compute · Seguros Volcán,compute,Seguros Volcán,"3,533,323.48",out,HNL,HN-202611-00259
+2026-11-18,nómina · Agencia Brújula Media,Payroll,Agencia Brújula Media,"1,971,380.32",out,HNL,HN-202611-00268
+2026-11-18,eventos · Transportes Rápidos,Marketing,Transportes Rápidos,"2,305,913.88",out,HNL,HN-202611-00298
+2026-11-18,legal · AWS Marketplace Reseller,legal,AWS Marketplace Reseller,"2,254,253.72",out,HNL,HN-202611-00452
+2026-11-19,storage · Seguros Volcán,Cloud,Seguros Volcán,"4,991,904.22",out,HNL,HN-202611-00027
+2026-11-19,legal · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"1,527,097.40",out,HNL,HN-202611-00049
+2026-11-19,Ingreso canal Tesla · ref 33501,Revenue,,"1,485,200.70",in,HNL,HN-202611-00083
+2026-11-19,alquiler HQ · LogiCentro CA,alquiler HQ,LogiCentro CA,"919,576.25",out,HNL,HN-202611-00148
+2026-11-20,Ingreso canal Tesla · ref 18605,Revenue,,"3,462,495.38",in,HNL,HN-202611-00060
+2026-11-20,hoteles · Catering La Ceiba,hoteles,Catering La Ceiba,"1,490,057.62",out,HNL,HN-202611-00205
+2026-11-20,beneficios · Catering La Ceiba,Payroll,Catering La Ceiba,"1,129,357.45",out,HNL,HN-202611-00207
+2026-11-20,electricidad · Datacenter Istmo,Utilities,Datacenter Istmo,"15,353.69",out,HNL,HN-202611-00280
+2026-11-20,consultoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"1,392,058.14",out,HNL,HN-202611-00378
+2026-11-20,logística · Energía del Pacífico,Deliveries,Energía del Pacífico,"341,133.77",out,HNL,HN-202611-00481
+2026-11-21,beneficios · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"4,628,353.68",out,HNL,HN-202611-00080
+2026-11-21,agua · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"401,094.07",out,HNL,HN-202611-00109
+2026-11-21,internet · Seguros Volcán,Utilities,Seguros Volcán,"2,276,363.93",out,HNL,HN-202611-00178
+2026-11-21,vuelos · Catering La Ceiba,vuelos,Catering La Ceiba,"1,207,273.31",out,HNL,HN-202611-00328
+2026-11-21,nómina · Seguros Volcán,Payroll,Seguros Volcán,"4,640,455.04",out,HNL,HN-202611-00363
+2026-11-21,auditoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"491,459.66",out,HNL,HN-202611-00475
+2026-11-22,internet · Catering La Ceiba,internet,Catering La Ceiba,"738,542.95",out,HNL,HN-202611-00167
+2026-11-22,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"5,439,484.17",out,HNL,HN-202611-00170
+2026-11-22,agua · Agencia Brújula Media,Utilities,Agencia Brújula Media,"2,325,481.86",out,HNL,HN-202611-00182
+2026-11-22,Ingreso canal Tesla · ref 55023,Revenue,,"9,595,038.37",in,HNL,HN-202611-00213
+2026-11-22,infra cloud · Energía del Pacífico,Cloud,Energía del Pacífico,"7,593,866.53",out,HNL,HN-202611-00384
+2026-11-22,brand · AWS Marketplace Reseller,brand,AWS Marketplace Reseller,"1,734,935.25",out,HNL,HN-202611-00421
+2026-11-22,Ingreso canal Tesla · ref 67392,Revenue,,"5,619,242.72",in,HNL,HN-202611-00510
+2026-11-23,Ingreso canal Tesla · ref 22303,Revenue,,"1,870,099.08",in,HNL,HN-202611-00015
+2026-11-23,infra cloud · Transportes Rápidos,infra cloud,Transportes Rápidos,"7,078,347.26",out,HNL,HN-202611-00185
+2026-11-23,legal · Seguros Volcán,ProfessionalServices,Seguros Volcán,"1,033,115.46",out,HNL,HN-202611-00191
+2026-11-23,infra cloud · LogiCentro CA,Cloud,LogiCentro CA,"3,686,370.55",out,HNL,HN-202611-00233
+2026-11-23,nómina · Impresos del Valle,nómina,Impresos del Valle,"3,076,565.48",out,HNL,HN-202611-00463
+2026-11-23,electricidad · Seguros Volcán,Utilities,Seguros Volcán,"1,521,154.08",out,HNL,HN-202611-00518
+2026-11-24,agua · LogiCentro CA,Utilities,LogiCentro CA,"983,547.10",out,HNL,HN-202611-00189
+2026-11-24,alquiler HQ · Seguros Volcán,Rent,Seguros Volcán,"450,652.66",out,HNL,HN-202611-00218
+2026-11-24,storage · Transportes Rápidos,storage,Transportes Rápidos,"8,138,340.14",out,HNL,HN-202611-00276
+2026-11-24,brand · Aerolíneas Centroamericanas,brand,Aerolíneas Centroamericanas,"1,947,859.30",out,HNL,HN-202611-00299
+2026-11-24,Ingreso canal Tesla · ref 64115,Revenue,,"35,402.90",in,HNL,HN-202611-00403
+2026-11-24,Ingreso canal Tesla · ref 71228,Revenue,,"1,655,864.98",in,HNL,HN-202611-00482
+2026-11-25,Ingreso canal Tesla · ref 34966,Revenue,,"3,817,678.15",in,HNL,HN-202611-00010
+2026-11-25,Ingreso canal Tesla · ref 39485,Revenue,,"227,800.35",in,HNL,HN-202611-00158
+2026-11-25,beneficios · LogiCentro CA,Payroll,LogiCentro CA,"3,235,744.80",out,HNL,HN-202611-00179
+2026-11-25,consultoría · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"1,303,012.91",out,HNL,HN-202611-00241
+2026-11-25,compute · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"2,469,940.16",out,HNL,HN-202611-00295
+2026-11-25,brand · Transportes Rápidos,Marketing,Transportes Rápidos,"641,803.80",out,HNL,HN-202611-00477
+2026-11-26,Ingreso canal Tesla · ref 14985,Revenue,,"213,293.43",in,HNL,HN-202611-00016
+2026-11-26,hoteles · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"2,239,918.82",out,HNL,HN-202611-00056
+2026-11-26,nómina · Oficinas Corporativas del Istmo,nómina,Oficinas Corporativas del Istmo,"408,600.36",out,HNL,HN-202611-00248
+2026-11-26,bodega · Seguros Volcán,Rent,Seguros Volcán,"1,157,666.81",out,HNL,HN-202611-00394
+2026-11-26,compute · Oficinas Corporativas del Istmo,compute,Oficinas Corporativas del Istmo,"4,123,433.77",out,HNL,HN-202611-00459
+2026-11-27,Ingreso canal Tesla · ref 87137,Revenue,,"211,679.73",in,HNL,HN-202611-00105
+2026-11-27,Ingreso canal Tesla · ref 72131,Revenue,,"800,005.71",in,HNL,HN-202611-00199
+2026-11-27,consultoría · Bufete Istmo & Asociados,consultoría,Bufete Istmo & Asociados,"119,522.91",out,HNL,HN-202611-00245
+2026-11-27,electricidad · Catering La Ceiba,Utilities,Catering La Ceiba,"343,530.94",out,HNL,HN-202611-00265
+2026-11-27,alquiler HQ · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"1,990,450.97",out,HNL,HN-202611-00367
+2026-11-27,auditoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"1,209,243.94",out,HNL,HN-202611-00476
+2026-11-27,auditoría · Energía del Pacífico,auditoría,Energía del Pacífico,"836,345.22",out,HNL,HN-202611-00503
+2026-11-28,eventos · Oficinas Corporativas del Istmo,eventos,Oficinas Corporativas del Istmo,"709,757.73",out,HNL,HN-202611-00176
+2026-11-28,consultoría · AWS Marketplace Reseller,consultoría,AWS Marketplace Reseller,"418,734.90",out,HNL,HN-202611-00243
+2026-11-28,cargas sociales · Impresos del Valle,cargas sociales,Impresos del Valle,"9,915,734.69",out,HNL,HN-202611-00291
+2026-11-28,vuelos · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"1,588,761.60",out,HNL,HN-202611-00326
+2026-11-28,logística · Aerolíneas Centroamericanas,logística,Aerolíneas Centroamericanas,"1,402,443.20",out,HNL,HN-202611-00404
+2026-11-29,eventos · Impresos del Valle,Marketing,Impresos del Valle,"1,213,703.54",out,HNL,HN-202611-00198
+2026-11-29,compute · Oficinas Corporativas del Istmo,compute,Oficinas Corporativas del Istmo,"5,504,173.87",out,HNL,HN-202611-00250
+2026-11-29,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"1,588,857.98",out,HNL,HN-202611-00305
+2026-11-29,consultoría · Agencia Brújula Media,consultoría,Agencia Brújula Media,"661,278.03",out,HNL,HN-202611-00386
+2026-11-30,infra cloud · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"10,140,128.33",out,HNL,HN-202611-00029
+2026-11-30,consultoría · Agencia Brújula Media,consultoría,Agencia Brújula Media,"711,534.97",out,HNL,HN-202611-00087
+2026-11-30,legal · Aerolíneas Centroamericanas,legal,Aerolíneas Centroamericanas,"2,129,483.88",out,HNL,HN-202611-00141
+2026-11-30,beneficios · Oficinas Corporativas del Istmo,beneficios,Oficinas Corporativas del Istmo,"3,848,742.71",out,HNL,HN-202611-00166
+2026-11-30,Ingreso canal Tesla · ref 67856,Revenue,,"4,419,257.19",in,HNL,HN-202611-00272
+2026-11-30,beneficios · Seguros Volcán,beneficios,Seguros Volcán,"3,463,675.94",out,HNL,HN-202611-00312
+2026-11-30,storage · Agencia Brújula Media,Cloud,Agencia Brújula Media,"4,262,819.99",out,HNL,HN-202611-00448
+2026-12-01,beneficios · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"4,404,288.97",out,HNL,HN-202612-00147
+2026-12-01,legal · LogiCentro CA,ProfessionalServices,LogiCentro CA,"854,448.91",out,HNL,HN-202612-00164
+2026-12-01,internet · Transportes Rápidos,internet,Transportes Rápidos,"1,037,136.32",out,HNL,HN-202612-00186
+2026-12-01,Ingreso canal Tesla · ref 57703,Revenue,,"1,584,814.49",in,HNL,HN-202612-00356
+2026-12-01,coworking · Bufete Istmo & Asociados,Rent,Bufete Istmo & Asociados,"314,681.75",out,HNL,HN-202612-00365
+2026-12-01,brand · Datacenter Istmo,Marketing,Datacenter Istmo,"807,767.22",out,HNL,HN-202612-00423
+2026-12-01,internet · Energía del Pacífico,internet,Energía del Pacífico,"1,976,975.32",out,HNL,HN-202612-00491
+2026-12-02,transporte last-mile · Catering La Ceiba,Deliveries,Catering La Ceiba,"200,684.26",out,HNL,HN-202612-00224
+2026-12-02,alquiler HQ · Impresos del Valle,Rent,Impresos del Valle,"2,297,339.37",out,HNL,HN-202612-00239
+2026-12-02,internet · Datacenter Istmo,Utilities,Datacenter Istmo,"325,801.54",out,HNL,HN-202612-00287
+2026-12-02,alquiler HQ · LogiCentro CA,alquiler HQ,LogiCentro CA,"2,231,907.62",out,HNL,HN-202612-00345
+2026-12-02,legal · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"1,900,379.98",out,HNL,HN-202612-00351
+2026-12-02,nómina · Oficinas Corporativas del Istmo,nómina,Oficinas Corporativas del Istmo,"2,345,470.30",out,HNL,HN-202612-00465
+2026-12-03,Ingreso canal Tesla · ref 48367,Revenue,,"1,206,979.49",in,HNL,HN-202612-00066
+2026-12-03,electricidad · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"1,310,497.04",out,HNL,HN-202612-00117
+2026-12-03,cargas sociales · Agencia Brújula Media,cargas sociales,Agencia Brújula Media,"4,861,080.96",out,HNL,HN-202612-00144
+2026-12-03,storage · Impresos del Valle,Cloud,Impresos del Valle,"3,255,284.99",out,HNL,HN-202612-00261
+2026-12-03,entregas · Energía del Pacífico,entregas,Energía del Pacífico,"2,007,226.04",out,HNL,HN-202612-00346
+2026-12-03,logística · Energía del Pacífico,Deliveries,Energía del Pacífico,"1,566,478.65",out,HNL,HN-202612-00366
+2026-12-03,hoteles · Transportes Rápidos,Travel,Transportes Rápidos,"1,944,051.04",out,HNL,HN-202612-00456
+2026-12-03,hoteles · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"1,345,688.19",out,HNL,HN-202612-00483
+2026-12-03,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"1,648,973.72",out,HNL,HN-202612-00499
+2026-12-04,ads · Aerolíneas Centroamericanas,ads,Aerolíneas Centroamericanas,"1,756,658.48",out,HNL,HN-202612-00095
+2026-12-04,coworking · AWS Marketplace Reseller,coworking,AWS Marketplace Reseller,"1,581,569.03",out,HNL,HN-202612-00132
+2026-12-04,ads · Impresos del Valle,ads,Impresos del Valle,"1,570,641.93",out,HNL,HN-202612-00172
+2026-12-04,logística · Transportes Rápidos,logística,Transportes Rápidos,"337,753.21",out,HNL,HN-202612-00266
+2026-12-04,agua · Impresos del Valle,agua,Impresos del Valle,"1,069,701.75",out,HNL,HN-202612-00383
+2026-12-04,ads · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"1,313,640.92",out,HNL,HN-202612-00415
+2026-12-04,agua · Oficinas Corporativas del Istmo,agua,Oficinas Corporativas del Istmo,"1,825,727.08",out,HNL,HN-202612-00438
+2026-12-04,hoteles · Impresos del Valle,hoteles,Impresos del Valle,"1,844,244.85",out,HNL,HN-202612-00454
+2026-12-04,eventos · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"1,940,986.71",out,HNL,HN-202612-00486
+2026-12-05,vuelos · Impresos del Valle,vuelos,Impresos del Valle,"1,650,035.20",out,HNL,HN-202612-00252
+2026-12-05,compute · Datacenter Istmo,compute,Datacenter Istmo,"4,361,644.42",out,HNL,HN-202612-00495
+2026-12-06,compute · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"9,558,107.81",out,HNL,HN-202612-00085
+2026-12-06,auditoría · Energía del Pacífico,auditoría,Energía del Pacífico,"2,242,311.25",out,HNL,HN-202612-00234
+2026-12-06,transporte last-mile · LogiCentro CA,Deliveries,LogiCentro CA,"634,122.26",out,HNL,HN-202612-00281
+2026-12-06,eventos · Seguros Volcán,Marketing,Seguros Volcán,"375,172.15",out,HNL,HN-202612-00314
+2026-12-06,consultoría · Aerolíneas Centroamericanas,consultoría,Aerolíneas Centroamericanas,"1,646,543.32",out,HNL,HN-202612-00488
+2026-12-07,Ingreso canal Tesla · ref 66635,Revenue,,"7,610,642.75",in,HNL,HN-202612-00138
+2026-12-07,legal · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"1,217,425.65",out,HNL,HN-202612-00215
+2026-12-07,compute · Energía del Pacífico,Cloud,Energía del Pacífico,"4,702,579.56",out,HNL,HN-202612-00289
+2026-12-08,Ingreso canal Tesla · ref 88225,Revenue,,"512,728.69",in,HNL,HN-202612-00079
+2026-12-08,per diem · Catering La Ceiba,Travel,Catering La Ceiba,"1,207,220.08",out,HNL,HN-202612-00110
+2026-12-08,logística · AWS Marketplace Reseller,logística,AWS Marketplace Reseller,"1,008,061.25",out,HNL,HN-202612-00162
+2026-12-08,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"32,257.32",out,HNL,HN-202612-00180
+2026-12-08,vuelos · Seguros Volcán,Travel,Seguros Volcán,"45,386.61",out,HNL,HN-202612-00253
+2026-12-08,Ingreso canal Tesla · ref 24196,Revenue,,"416,171.82",in,HNL,HN-202612-00297
+2026-12-08,nómina · Oficinas Corporativas del Istmo,nómina,Oficinas Corporativas del Istmo,"445,275.95",out,HNL,HN-202612-00431
+2026-12-09,alquiler HQ · Transportes Rápidos,alquiler HQ,Transportes Rápidos,"919,888.00",out,HNL,HN-202612-00165
+2026-12-09,Ingreso canal Tesla · ref 89370,Revenue,,"2,826,237.84",in,HNL,HN-202612-00168
+2026-12-09,bodega · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"2,116,103.01",out,HNL,HN-202612-00192
+2026-12-09,bodega · Bufete Istmo & Asociados,bodega,Bufete Istmo & Asociados,"518,315.66",out,HNL,HN-202612-00196
+2026-12-09,Ingreso canal Tesla · ref 82049,Revenue,,"487,167.08",in,HNL,HN-202612-00357
+2026-12-09,hoteles · Agencia Brújula Media,hoteles,Agencia Brújula Media,"1,056,986.46",out,HNL,HN-202612-00409
+2026-12-09,coworking · Transportes Rápidos,coworking,Transportes Rápidos,"2,106,327.14",out,HNL,HN-202612-00453

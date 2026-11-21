@@ -1,0 +1,521 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (C$),Signo,Moneda,Referencia
+2026-09-01,auditoría · Catering La Ceiba,auditoría,Catering La Ceiba,"3,068,251.76",out,NIO,NI-202609-00002
+2026-09-01,Ingreso canal Amazon · ref 30187,Revenue,,"5,925,509.25",in,NIO,NI-202609-00322
+2026-09-01,Ingreso canal Amazon · ref 60346,Revenue,,"4,825,340.30",in,NIO,NI-202609-00325
+2026-09-02,coworking · LogiCentro CA,Rent,LogiCentro CA,"3,391,966.89",out,NIO,NI-202609-00027
+2026-09-02,alquiler HQ · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"511,268.49",out,NIO,NI-202609-00179
+2026-09-02,Ingreso canal Amazon · ref 52444,Revenue,,"3,080,209.37",in,NIO,NI-202609-00227
+2026-09-02,per diem · Seguros Volcán,per diem,Seguros Volcán,"2,412,284.67",out,NIO,NI-202609-00236
+2026-09-02,storage · LogiCentro CA,Cloud,LogiCentro CA,"4,344,157.16",out,NIO,NI-202609-00277
+2026-09-02,logística · Datacenter Istmo,logística,Datacenter Istmo,"1,612,473.79",out,NIO,NI-202609-00311
+2026-09-03,storage · Catering La Ceiba,Cloud,Catering La Ceiba,"11,693,993.37",out,NIO,NI-202609-00019
+2026-09-03,internet · LogiCentro CA,internet,LogiCentro CA,"382,207.94",out,NIO,NI-202609-00074
+2026-09-03,consultoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"1,262,679.25",out,NIO,NI-202609-00114
+2026-09-03,infra cloud · LogiCentro CA,infra cloud,LogiCentro CA,"6,056,208.58",out,NIO,NI-202609-00411
+2026-09-03,entregas · Transportes Rápidos,Deliveries,Transportes Rápidos,"2,121,750.01",out,NIO,NI-202609-00497
+2026-09-04,eventos · AWS Marketplace Reseller,eventos,AWS Marketplace Reseller,"1,649,472.52",out,NIO,NI-202609-00022
+2026-09-04,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"1,126,910.87",out,NIO,NI-202609-00215
+2026-09-04,internet · LogiCentro CA,Utilities,LogiCentro CA,"449,005.90",out,NIO,NI-202609-00269
+2026-09-04,ads · Datacenter Istmo,Marketing,Datacenter Istmo,"2,813,047.53",out,NIO,NI-202609-00408
+2026-09-04,Ingreso canal Amazon · ref 98028,Revenue,,"3,211,856.50",in,NIO,NI-202609-00439
+2026-09-05,coworking · Seguros Volcán,coworking,Seguros Volcán,"1,556,623.66",out,NIO,NI-202609-00072
+2026-09-05,consultoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"2,774,633.71",out,NIO,NI-202609-00138
+2026-09-05,nómina · Datacenter Istmo,Payroll,Datacenter Istmo,"4,141,245.10",out,NIO,NI-202609-00253
+2026-09-05,hoteles · Impresos del Valle,hoteles,Impresos del Valle,"3,162,882.71",out,NIO,NI-202609-00455
+2026-09-06,alquiler HQ · Agencia Brújula Media,alquiler HQ,Agencia Brújula Media,"2,056,390.82",out,NIO,NI-202609-00005
+2026-09-06,compute · LogiCentro CA,compute,LogiCentro CA,"6,148,481.52",out,NIO,NI-202609-00135
+2026-09-06,coworking · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"1,931,901.50",out,NIO,NI-202609-00224
+2026-09-06,nómina · Impresos del Valle,Payroll,Impresos del Valle,"963,937.88",out,NIO,NI-202609-00344
+2026-09-07,electricidad · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"2,532,381.76",out,NIO,NI-202609-00160
+2026-09-07,alquiler HQ · Energía del Pacífico,alquiler HQ,Energía del Pacífico,"1,284,203.75",out,NIO,NI-202609-00410
+2026-09-07,agua · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"1,834,207.73",out,NIO,NI-202609-00493
+2026-09-07,Ingreso canal Amazon · ref 26421,Revenue,,"2,928,069.01",in,NIO,NI-202609-00495
+2026-09-08,electricidad · Energía del Pacífico,electricidad,Energía del Pacífico,"2,211,022.40",out,NIO,NI-202609-00007
+2026-09-08,entregas · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"913,802.39",out,NIO,NI-202609-00082
+2026-09-08,alquiler HQ · Datacenter Istmo,Rent,Datacenter Istmo,"2,273,008.48",out,NIO,NI-202609-00142
+2026-09-08,Ingreso canal Amazon · ref 88898,Revenue,,"279,065.96",in,NIO,NI-202609-00440
+2026-09-09,infra cloud · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"7,235,565.55",out,NIO,NI-202609-00024
+2026-09-09,Ingreso canal Amazon · ref 98349,Revenue,,"464,354.04",in,NIO,NI-202609-00120
+2026-09-09,Ingreso canal Amazon · ref 53421,Revenue,,"646,388.39",in,NIO,NI-202609-00354
+2026-09-09,Ingreso canal Amazon · ref 74069,Revenue,,"932,752.61",in,NIO,NI-202609-00390
+2026-09-10,bodega · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"562,973.99",out,NIO,NI-202609-00038
+2026-09-10,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"2,452,467.16",out,NIO,NI-202609-00084
+2026-09-10,Ingreso canal Amazon · ref 26065,Revenue,,"2,400,616.42",in,NIO,NI-202609-00192
+2026-09-10,infra cloud · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"4,039,890.07",out,NIO,NI-202609-00268
+2026-09-10,infra cloud · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"15,626,601.70",out,NIO,NI-202609-00343
+2026-09-10,consultoría · Agencia Brújula Media,consultoría,Agencia Brújula Media,"3,411,825.44",out,NIO,NI-202609-00381
+2026-09-10,nómina · LogiCentro CA,Payroll,LogiCentro CA,"255,058.55",out,NIO,NI-202609-00393
+2026-09-10,internet · Agencia Brújula Media,Utilities,Agencia Brújula Media,"1,652,706.44",out,NIO,NI-202609-00441
+2026-09-10,transporte last-mile · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"1,213,264.06",out,NIO,NI-202609-00501
+2026-09-10,brand · Datacenter Istmo,brand,Datacenter Istmo,"3,291,728.42",out,NIO,NI-202609-00507
+2026-09-11,consultoría · LogiCentro CA,ProfessionalServices,LogiCentro CA,"2,463,346.06",out,NIO,NI-202609-00047
+2026-09-11,infra cloud · Catering La Ceiba,Cloud,Catering La Ceiba,"4,764,377.67",out,NIO,NI-202609-00226
+2026-09-11,Ingreso canal Amazon · ref 99999,Revenue,,"3,215,883.37",in,NIO,NI-202609-00366
+2026-09-11,internet · LogiCentro CA,internet,LogiCentro CA,"1,611,480.74",out,NIO,NI-202609-00380
+2026-09-12,hoteles · Transportes Rápidos,hoteles,Transportes Rápidos,"1,100,688.79",out,NIO,NI-202609-00064
+2026-09-12,internet · Agencia Brújula Media,internet,Agencia Brújula Media,"591,625.14",out,NIO,NI-202609-00180
+2026-09-12,Ingreso canal Amazon · ref 10404,Revenue,,"1,598,640.94",in,NIO,NI-202609-00218
+2026-09-12,Ingreso canal Amazon · ref 62654,Revenue,,"1,070,652.61",in,NIO,NI-202609-00284
+2026-09-12,bodega · Datacenter Istmo,Rent,Datacenter Istmo,"201,654.50",out,NIO,NI-202609-00374
+2026-09-12,auditoría · Oficinas Corporativas del Istmo,ProfessionalServices,Oficinas Corporativas del Istmo,"2,638,539.56",out,NIO,NI-202609-00426
+2026-09-12,entregas · Impresos del Valle,Deliveries,Impresos del Valle,"914,724.50",out,NIO,NI-202609-00443
+2026-09-13,vuelos · Transportes Rápidos,Travel,Transportes Rápidos,"3,320,837.90",out,NIO,NI-202609-00295
+2026-09-13,brand · Energía del Pacífico,brand,Energía del Pacífico,"1,661,352.83",out,NIO,NI-202609-00305
+2026-09-13,per diem · Agencia Brújula Media,Travel,Agencia Brújula Media,"2,165,632.43",out,NIO,NI-202609-00500
+2026-09-14,bodega · Catering La Ceiba,Rent,Catering La Ceiba,"1,335,465.19",out,NIO,NI-202609-00044
+2026-09-14,entregas · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"2,718,435.57",out,NIO,NI-202609-00085
+2026-09-14,bodega · Oficinas Corporativas del Istmo,bodega,Oficinas Corporativas del Istmo,"2,381,940.68",out,NIO,NI-202609-00415
+2026-09-14,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"1,160,674.34",out,NIO,NI-202609-00427
+2026-09-14,cargas sociales · Aerolíneas Centroamericanas,cargas sociales,Aerolíneas Centroamericanas,"3,639,628.32",out,NIO,NI-202609-00518
+2026-09-15,eventos · Seguros Volcán,eventos,Seguros Volcán,"3,238,249.52",out,NIO,NI-202609-00096
+2026-09-15,nómina · LogiCentro CA,Payroll,LogiCentro CA,"4,804,749.59",out,NIO,NI-202609-00186
+2026-09-15,electricidad · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"1,221,631.95",out,NIO,NI-202609-00274
+2026-09-15,bodega · Oficinas Corporativas del Istmo,bodega,Oficinas Corporativas del Istmo,"3,152,480.38",out,NIO,NI-202609-00348
+2026-09-15,alquiler HQ · LogiCentro CA,alquiler HQ,LogiCentro CA,"3,287,014.26",out,NIO,NI-202609-00480
+2026-09-15,Ingreso canal Amazon · ref 59289,Revenue,,"1,507,320.77",in,NIO,NI-202609-00516
+2026-09-16,cargas sociales · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"5,088,049.09",out,NIO,NI-202609-00320
+2026-09-16,consultoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"883,966.88",out,NIO,NI-202609-00394
+2026-09-17,legal · LogiCentro CA,ProfessionalServices,LogiCentro CA,"1,853,732.08",out,NIO,NI-202609-00066
+2026-09-17,coworking · Datacenter Istmo,Rent,Datacenter Istmo,"2,020,691.16",out,NIO,NI-202609-00121
+2026-09-17,internet · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"3,028,159.13",out,NIO,NI-202609-00130
+2026-09-17,Ingreso canal Amazon · ref 63718,Revenue,,"1,387,295.22",in,NIO,NI-202609-00349
+2026-09-17,ads · Datacenter Istmo,ads,Datacenter Istmo,"2,267,489.65",out,NIO,NI-202609-00456
+2026-09-18,auditoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"400,976.94",out,NIO,NI-202609-00031
+2026-09-18,legal · Catering La Ceiba,ProfessionalServices,Catering La Ceiba,"637,095.11",out,NIO,NI-202609-00129
+2026-09-18,Ingreso canal Amazon · ref 80048,Revenue,,"943,449.71",in,NIO,NI-202609-00245
+2026-09-18,infra cloud · Datacenter Istmo,infra cloud,Datacenter Istmo,"7,252,443.52",out,NIO,NI-202609-00248
+2026-09-18,Ingreso canal Amazon · ref 81235,Revenue,,"3,002,274.05",in,NIO,NI-202609-00286
+2026-09-18,beneficios · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"3,005,270.53",out,NIO,NI-202609-00502
+2026-09-19,transporte last-mile · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"2,689,209.83",out,NIO,NI-202609-00098
+2026-09-19,cargas sociales · AWS Marketplace Reseller,cargas sociales,AWS Marketplace Reseller,"136,730.92",out,NIO,NI-202609-00328
+2026-09-19,hoteles · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"428,453.24",out,NIO,NI-202609-00451
+2026-09-20,electricidad · Seguros Volcán,Utilities,Seguros Volcán,"1,984,578.64",out,NIO,NI-202609-00070
+2026-09-20,ads · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"419,042.17",out,NIO,NI-202609-00125
+2026-09-20,bodega · Impresos del Valle,Rent,Impresos del Valle,"1,606,448.59",out,NIO,NI-202609-00126
+2026-09-20,transporte last-mile · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"3,139,935.19",out,NIO,NI-202609-00131
+2026-09-20,storage · Transportes Rápidos,storage,Transportes Rápidos,"3,461,542.03",out,NIO,NI-202609-00255
+2026-09-20,Ingreso canal Amazon · ref 16563,Revenue,,"8,941,949.49",in,NIO,NI-202609-00395
+2026-09-21,storage · Catering La Ceiba,Cloud,Catering La Ceiba,"7,772,720.64",out,NIO,NI-202609-00034
+2026-09-21,cargas sociales · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"5,801,419.57",out,NIO,NI-202609-00144
+2026-09-21,hoteles · Catering La Ceiba,hoteles,Catering La Ceiba,"437,581.98",out,NIO,NI-202609-00220
+2026-09-22,vuelos · Transportes Rápidos,Travel,Transportes Rápidos,"723,581.41",out,NIO,NI-202609-00122
+2026-09-22,nómina · Energía del Pacífico,Payroll,Energía del Pacífico,"10,101,122.51",out,NIO,NI-202609-00203
+2026-09-22,eventos · Seguros Volcán,Marketing,Seguros Volcán,"2,260,442.78",out,NIO,NI-202609-00205
+2026-09-22,Ingreso canal Amazon · ref 82796,Revenue,,"4,197,531.85",in,NIO,NI-202609-00206
+2026-09-22,agua · Bufete Istmo & Asociados,agua,Bufete Istmo & Asociados,"1,085,213.73",out,NIO,NI-202609-00219
+2026-09-22,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"2,444,098.03",out,NIO,NI-202609-00234
+2026-09-22,auditoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"409,248.76",out,NIO,NI-202609-00292
+2026-09-22,hoteles · Datacenter Istmo,hoteles,Datacenter Istmo,"923,827.78",out,NIO,NI-202609-00308
+2026-09-22,entregas · Datacenter Istmo,Deliveries,Datacenter Istmo,"3,098,990.56",out,NIO,NI-202609-00359
+2026-09-23,Ingreso canal Amazon · ref 33911,Revenue,,"35,559.75",in,NIO,NI-202609-00011
+2026-09-23,eventos · Catering La Ceiba,Marketing,Catering La Ceiba,"2,543,838.00",out,NIO,NI-202609-00048
+2026-09-23,infra cloud · Impresos del Valle,Cloud,Impresos del Valle,"5,435,485.25",out,NIO,NI-202609-00092
+2026-09-23,Ingreso canal Amazon · ref 50327,Revenue,,"1,473,864.15",in,NIO,NI-202609-00136
+2026-09-23,Ingreso canal Amazon · ref 16166,Revenue,,"1,566,097.80",in,NIO,NI-202609-00139
+2026-09-24,vuelos · Seguros Volcán,vuelos,Seguros Volcán,"3,061,483.70",out,NIO,NI-202609-00004
+2026-09-24,Ingreso canal Amazon · ref 10710,Revenue,,"124,111.84",in,NIO,NI-202609-00021
+2026-09-24,bodega · Bufete Istmo & Asociados,bodega,Bufete Istmo & Asociados,"3,263,200.71",out,NIO,NI-202609-00281
+2026-09-24,infra cloud · Impresos del Valle,infra cloud,Impresos del Valle,"4,891,578.86",out,NIO,NI-202609-00450
+2026-09-25,Ingreso canal Amazon · ref 86538,Revenue,,"594,651.99",in,NIO,NI-202609-00057
+2026-09-25,nómina · Seguros Volcán,nómina,Seguros Volcán,"5,020,054.87",out,NIO,NI-202609-00327
+2026-09-25,storage · Bufete Istmo & Asociados,storage,Bufete Istmo & Asociados,"11,309,997.81",out,NIO,NI-202609-00404
+2026-09-25,cargas sociales · Transportes Rápidos,cargas sociales,Transportes Rápidos,"3,123,027.68",out,NIO,NI-202609-00428
+2026-09-25,eventos · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"2,615,742.70",out,NIO,NI-202609-00498
+2026-09-26,hoteles · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"2,172,209.59",out,NIO,NI-202609-00088
+2026-09-26,per diem · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"319,190.70",out,NIO,NI-202609-00271
+2026-09-26,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"2,713,328.42",out,NIO,NI-202609-00347
+2026-09-26,consultoría · Aerolíneas Centroamericanas,consultoría,Aerolíneas Centroamericanas,"1,561,308.34",out,NIO,NI-202609-00392
+2026-09-26,internet · Catering La Ceiba,internet,Catering La Ceiba,"1,976,373.05",out,NIO,NI-202609-00482
+2026-09-27,electricidad · Bufete Istmo & Asociados,electricidad,Bufete Istmo & Asociados,"3,162,623.01",out,NIO,NI-202609-00095
+2026-09-27,eventos · Agencia Brújula Media,Marketing,Agencia Brújula Media,"302,948.90",out,NIO,NI-202609-00166
+2026-09-27,Ingreso canal Amazon · ref 49183,Revenue,,"377,222.51",in,NIO,NI-202609-00444
+2026-09-27,eventos · Seguros Volcán,eventos,Seguros Volcán,"2,003,065.57",out,NIO,NI-202609-00488
+2026-09-28,logística · Impresos del Valle,Deliveries,Impresos del Valle,"2,707,256.89",out,NIO,NI-202609-00052
+2026-09-28,Ingreso canal Amazon · ref 75733,Revenue,,"926,259.71",in,NIO,NI-202609-00167
+2026-09-28,consultoría · LogiCentro CA,ProfessionalServices,LogiCentro CA,"1,578,547.67",out,NIO,NI-202609-00396
+2026-09-29,electricidad · Catering La Ceiba,Utilities,Catering La Ceiba,"614,928.09",out,NIO,NI-202609-00028
+2026-09-29,compute · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"1,337,705.40",out,NIO,NI-202609-00101
+2026-09-29,agua · Impresos del Valle,agua,Impresos del Valle,"2,616,561.15",out,NIO,NI-202609-00177
+2026-09-29,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"2,456,383.28",out,NIO,NI-202609-00267
+2026-09-29,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"2,556,665.45",out,NIO,NI-202609-00314
+2026-09-29,Ingreso canal Amazon · ref 21064,Revenue,,"15,936,391.77",in,NIO,NI-202609-00389
+2026-09-29,entregas · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"3,016,270.57",out,NIO,NI-202609-00459
+2026-09-30,coworking · Seguros Volcán,Rent,Seguros Volcán,"1,370,547.04",out,NIO,NI-202609-00077
+2026-09-30,vuelos · Datacenter Istmo,Travel,Datacenter Istmo,"2,806,138.81",out,NIO,NI-202609-00132
+2026-09-30,Ingreso canal Amazon · ref 71907,Revenue,,"579,287.63",in,NIO,NI-202609-00257
+2026-09-30,alquiler HQ · Agencia Brújula Media,Rent,Agencia Brújula Media,"1,775,207.93",out,NIO,NI-202609-00340
+2026-09-30,alquiler HQ · Oficinas Corporativas del Istmo,alquiler HQ,Oficinas Corporativas del Istmo,"1,639,357.32",out,NIO,NI-202609-00357
+2026-09-30,beneficios · Oficinas Corporativas del Istmo,Payroll,Oficinas Corporativas del Istmo,"11,850,308.88",out,NIO,NI-202609-00398
+2026-09-30,vuelos · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"537,714.88",out,NIO,NI-202609-00470
+2026-10-01,bodega · Seguros Volcán,bodega,Seguros Volcán,"633,445.91",out,NIO,NI-202610-00464
+2026-10-02,vuelos · Impresos del Valle,Travel,Impresos del Valle,"2,211,112.98",out,NIO,NI-202610-00483
+2026-10-03,Ingreso canal Amazon · ref 45921,Revenue,,"1,937,498.89",in,NIO,NI-202610-00030
+2026-10-03,bodega · Datacenter Istmo,Rent,Datacenter Istmo,"597,936.25",out,NIO,NI-202610-00093
+2026-10-03,ads · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"987,955.90",out,NIO,NI-202610-00174
+2026-10-04,nómina · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"7,170,581.94",out,NIO,NI-202610-00107
+2026-10-04,infra cloud · Catering La Ceiba,infra cloud,Catering La Ceiba,"613,517.45",out,NIO,NI-202610-00124
+2026-10-04,nómina · Energía del Pacífico,nómina,Energía del Pacífico,"3,145,612.43",out,NIO,NI-202610-00291
+2026-10-04,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"1,268,735.82",out,NIO,NI-202610-00332
+2026-10-04,consultoría · Impresos del Valle,ProfessionalServices,Impresos del Valle,"1,978,119.91",out,NIO,NI-202610-00433
+2026-10-04,infra cloud · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"7,142,270.02",out,NIO,NI-202610-00434
+2026-10-04,infra cloud · Datacenter Istmo,Cloud,Datacenter Istmo,"9,233,988.60",out,NIO,NI-202610-00445
+2026-10-04,alquiler HQ · Agencia Brújula Media,Rent,Agencia Brújula Media,"138,104.40",out,NIO,NI-202610-00517
+2026-10-04,nómina · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"5,466,827.74",out,NIO,NI-202610-00520
+2026-10-05,bodega · Energía del Pacífico,bodega,Energía del Pacífico,"953,353.96",out,NIO,NI-202610-00106
+2026-10-05,Ingreso canal Amazon · ref 33886,Revenue,,"6,804,276.01",in,NIO,NI-202610-00151
+2026-10-05,legal · Energía del Pacífico,legal,Energía del Pacífico,"2,392,841.76",out,NIO,NI-202610-00446
+2026-10-05,beneficios · Impresos del Valle,beneficios,Impresos del Valle,"948,840.95",out,NIO,NI-202610-00452
+2026-10-05,alquiler HQ · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"3,364,161.86",out,NIO,NI-202610-00462
+2026-10-05,electricidad · LogiCentro CA,Utilities,LogiCentro CA,"906,809.51",out,NIO,NI-202610-00486
+2026-10-06,logística · Catering La Ceiba,Deliveries,Catering La Ceiba,"713,323.45",out,NIO,NI-202610-00013
+2026-10-06,Ingreso canal Amazon · ref 90290,Revenue,,"2,653,698.15",in,NIO,NI-202610-00023
+2026-10-06,Ingreso canal Amazon · ref 64710,Revenue,,"3,060,001.09",in,NIO,NI-202610-00111
+2026-10-06,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"1,462,566.84",out,NIO,NI-202610-00148
+2026-10-06,ads · Energía del Pacífico,Marketing,Energía del Pacífico,"774,243.00",out,NIO,NI-202610-00184
+2026-10-06,entregas · Impresos del Valle,entregas,Impresos del Valle,"2,957,917.72",out,NIO,NI-202610-00246
+2026-10-06,Ingreso canal Amazon · ref 89705,Revenue,,"1,708,340.15",in,NIO,NI-202610-00419
+2026-10-06,beneficios · Transportes Rápidos,Payroll,Transportes Rápidos,"2,854,339.38",out,NIO,NI-202610-00432
+2026-10-06,hoteles · Seguros Volcán,hoteles,Seguros Volcán,"2,389,066.67",out,NIO,NI-202610-00475
+2026-10-07,per diem · Datacenter Istmo,per diem,Datacenter Istmo,"2,594,001.58",out,NIO,NI-202610-00283
+2026-10-07,brand · Seguros Volcán,brand,Seguros Volcán,"3,421,868.84",out,NIO,NI-202610-00331
+2026-10-07,nómina · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"430,272.69",out,NIO,NI-202610-00355
+2026-10-07,brand · Oficinas Corporativas del Istmo,brand,Oficinas Corporativas del Istmo,"2,288,589.87",out,NIO,NI-202610-00405
+2026-10-07,auditoría · Oficinas Corporativas del Istmo,auditoría,Oficinas Corporativas del Istmo,"2,094,221.66",out,NIO,NI-202610-00422
+2026-10-08,ads · LogiCentro CA,ads,LogiCentro CA,"3,104,243.36",out,NIO,NI-202610-00046
+2026-10-08,beneficios · AWS Marketplace Reseller,Payroll,AWS Marketplace Reseller,"1,201,137.51",out,NIO,NI-202610-00109
+2026-10-08,consultoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"378,225.53",out,NIO,NI-202610-00266
+2026-10-08,storage · Energía del Pacífico,storage,Energía del Pacífico,"3,851,817.58",out,NIO,NI-202610-00362
+2026-10-08,entregas · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"148,668.28",out,NIO,NI-202610-00383
+2026-10-08,brand · Catering La Ceiba,Marketing,Catering La Ceiba,"505,294.92",out,NIO,NI-202610-00449
+2026-10-09,electricidad · Catering La Ceiba,Utilities,Catering La Ceiba,"2,841,772.37",out,NIO,NI-202610-00143
+2026-10-09,bodega · Catering La Ceiba,Rent,Catering La Ceiba,"1,790,837.90",out,NIO,NI-202610-00183
+2026-10-09,coworking · Aerolíneas Centroamericanas,coworking,Aerolíneas Centroamericanas,"1,734,423.24",out,NIO,NI-202610-00238
+2026-10-09,auditoría · Transportes Rápidos,auditoría,Transportes Rápidos,"2,188,674.16",out,NIO,NI-202610-00401
+2026-10-10,brand · Aerolíneas Centroamericanas,brand,Aerolíneas Centroamericanas,"3,383,868.48",out,NIO,NI-202610-00018
+2026-10-10,transporte last-mile · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"886,946.81",out,NIO,NI-202610-00104
+2026-10-10,electricidad · Aerolíneas Centroamericanas,Utilities,Aerolíneas Centroamericanas,"2,857,141.83",out,NIO,NI-202610-00172
+2026-10-10,agua · Energía del Pacífico,Utilities,Energía del Pacífico,"492,363.20",out,NIO,NI-202610-00182
+2026-10-10,ads · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"544,789.25",out,NIO,NI-202610-00412
+2026-10-10,cargas sociales · LogiCentro CA,Payroll,LogiCentro CA,"5,629,990.06",out,NIO,NI-202610-00489
+2026-10-11,legal · Seguros Volcán,ProfessionalServices,Seguros Volcán,"645,704.08",out,NIO,NI-202610-00397
+2026-10-12,compute · Transportes Rápidos,Cloud,Transportes Rápidos,"1,384,886.45",out,NIO,NI-202610-00049
+2026-10-12,internet · LogiCentro CA,Utilities,LogiCentro CA,"1,453,879.48",out,NIO,NI-202610-00056
+2026-10-12,nómina · Energía del Pacífico,nómina,Energía del Pacífico,"4,464,281.83",out,NIO,NI-202610-00171
+2026-10-12,Ingreso canal Amazon · ref 24590,Revenue,,"169,622.86",in,NIO,NI-202610-00256
+2026-10-12,electricidad · Energía del Pacífico,Utilities,Energía del Pacífico,"1,788,108.73",out,NIO,NI-202610-00280
+2026-10-12,cargas sociales · Transportes Rápidos,Payroll,Transportes Rápidos,"5,540,054.09",out,NIO,NI-202610-00290
+2026-10-12,nómina · LogiCentro CA,Payroll,LogiCentro CA,"11,260,088.71",out,NIO,NI-202610-00369
+2026-10-12,Ingreso canal Amazon · ref 24379,Revenue,,"3,148,989.54",in,NIO,NI-202610-00409
+2026-10-12,nómina · LogiCentro CA,nómina,LogiCentro CA,"1,250,431.54",out,NIO,NI-202610-00442
+2026-10-12,Ingreso canal Amazon · ref 99910,Revenue,,"11,001,290.32",in,NIO,NI-202610-00458
+2026-10-13,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"3,090,156.95",out,NIO,NI-202610-00014
+2026-10-13,brand · AWS Marketplace Reseller,brand,AWS Marketplace Reseller,"1,721,761.73",out,NIO,NI-202610-00063
+2026-10-13,brand · Impresos del Valle,brand,Impresos del Valle,"2,254,544.85",out,NIO,NI-202610-00156
+2026-10-13,agua · Energía del Pacífico,Utilities,Energía del Pacífico,"222,071.15",out,NIO,NI-202610-00170
+2026-10-14,entregas · LogiCentro CA,entregas,LogiCentro CA,"3,305,459.42",out,NIO,NI-202610-00147
+2026-10-14,Ingreso canal Amazon · ref 94755,Revenue,,"1,113,896.89",in,NIO,NI-202610-00288
+2026-10-14,auditoría · Bufete Istmo & Asociados,auditoría,Bufete Istmo & Asociados,"1,639,512.31",out,NIO,NI-202610-00365
+2026-10-14,internet · Agencia Brújula Media,Utilities,Agencia Brújula Media,"184,889.45",out,NIO,NI-202610-00473
+2026-10-14,agua · Seguros Volcán,Utilities,Seguros Volcán,"2,942,375.82",out,NIO,NI-202610-00519
+2026-10-15,Ingreso canal Amazon · ref 28076,Revenue,,"1,654,658.90",in,NIO,NI-202610-00190
+2026-10-15,hoteles · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"3,449,462.73",out,NIO,NI-202610-00197
+2026-10-16,bodega · Impresos del Valle,Rent,Impresos del Valle,"1,551,816.47",out,NIO,NI-202610-00140
+2026-10-16,coworking · Transportes Rápidos,Rent,Transportes Rápidos,"1,832,487.80",out,NIO,NI-202610-00216
+2026-10-16,nómina · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"9,440,686.83",out,NIO,NI-202610-00297
+2026-10-16,beneficios · Agencia Brújula Media,Payroll,Agencia Brújula Media,"3,785,596.98",out,NIO,NI-202610-00310
+2026-10-16,Ingreso canal Amazon · ref 90418,Revenue,,"801,442.38",in,NIO,NI-202610-00406
+2026-10-17,beneficios · Impresos del Valle,Payroll,Impresos del Valle,"10,872,753.11",out,NIO,NI-202610-00039
+2026-10-17,vuelos · Catering La Ceiba,Travel,Catering La Ceiba,"203,707.51",out,NIO,NI-202610-00078
+2026-10-17,cargas sociales · Datacenter Istmo,Payroll,Datacenter Istmo,"12,463,584.14",out,NIO,NI-202610-00090
+2026-10-17,legal · LogiCentro CA,legal,LogiCentro CA,"2,377,380.59",out,NIO,NI-202610-00119
+2026-10-17,transporte last-mile · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"2,691,453.36",out,NIO,NI-202610-00146
+2026-10-17,compute · Agencia Brújula Media,compute,Agencia Brújula Media,"436,170.56",out,NIO,NI-202610-00201
+2026-10-17,Ingreso canal Amazon · ref 85112,Revenue,,"3,060,552.89",in,NIO,NI-202610-00242
+2026-10-17,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"3,242,749.34",out,NIO,NI-202610-00251
+2026-10-17,Ingreso canal Amazon · ref 72072,Revenue,,"3,196,079.93",in,NIO,NI-202610-00282
+2026-10-17,agua · Transportes Rápidos,Utilities,Transportes Rápidos,"2,978,316.05",out,NIO,NI-202610-00298
+2026-10-17,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"2,476,878.95",out,NIO,NI-202610-00371
+2026-10-18,eventos · Agencia Brújula Media,Marketing,Agencia Brújula Media,"3,244,595.01",out,NIO,NI-202610-00042
+2026-10-18,auditoría · AWS Marketplace Reseller,auditoría,AWS Marketplace Reseller,"2,105,767.86",out,NIO,NI-202610-00161
+2026-10-18,compute · Agencia Brújula Media,Cloud,Agencia Brújula Media,"7,924,349.66",out,NIO,NI-202610-00194
+2026-10-18,cargas sociales · Seguros Volcán,Payroll,Seguros Volcán,"2,665,616.42",out,NIO,NI-202610-00335
+2026-10-18,agua · Transportes Rápidos,agua,Transportes Rápidos,"1,595,735.38",out,NIO,NI-202610-00346
+2026-10-18,Ingreso canal Amazon · ref 16928,Revenue,,"2,985,238.26",in,NIO,NI-202610-00384
+2026-10-18,brand · Bufete Istmo & Asociados,brand,Bufete Istmo & Asociados,"2,977,579.48",out,NIO,NI-202610-00417
+2026-10-18,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"446,154.08",out,NIO,NI-202610-00478
+2026-10-18,internet · Transportes Rápidos,internet,Transportes Rápidos,"145,331.41",out,NIO,NI-202610-00492
+2026-10-18,cargas sociales · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"3,780,830.86",out,NIO,NI-202610-00506
+2026-10-19,Ingreso canal Amazon · ref 22736,Revenue,,"1,952,418.60",in,NIO,NI-202610-00210
+2026-10-19,per diem · Datacenter Istmo,per diem,Datacenter Istmo,"2,840,169.97",out,NIO,NI-202610-00212
+2026-10-19,infra cloud · LogiCentro CA,Cloud,LogiCentro CA,"948,986.19",out,NIO,NI-202610-00319
+2026-10-19,Ingreso canal Amazon · ref 85286,Revenue,,"14,975,835.67",in,NIO,NI-202610-00420
+2026-10-19,nómina · Transportes Rápidos,Payroll,Transportes Rápidos,"3,716,429.23",out,NIO,NI-202610-00512
+2026-10-20,compute · Datacenter Istmo,compute,Datacenter Istmo,"10,432,917.64",out,NIO,NI-202610-00020
+2026-10-20,agua · Impresos del Valle,agua,Impresos del Valle,"1,358,332.38",out,NIO,NI-202610-00168
+2026-10-20,agua · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"2,122,948.51",out,NIO,NI-202610-00247
+2026-10-20,bodega · Transportes Rápidos,Rent,Transportes Rápidos,"846,157.16",out,NIO,NI-202610-00407
+2026-10-21,bodega · Aerolíneas Centroamericanas,bodega,Aerolíneas Centroamericanas,"3,043,710.41",out,NIO,NI-202610-00127
+2026-10-21,Ingreso canal Amazon · ref 26536,Revenue,,"1,155,790.06",in,NIO,NI-202610-00149
+2026-10-21,eventos · Catering La Ceiba,Marketing,Catering La Ceiba,"3,003,672.78",out,NIO,NI-202610-00454
+2026-10-22,entregas · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"779,241.01",out,NIO,NI-202610-00069
+2026-10-22,Ingreso canal Amazon · ref 21105,Revenue,,"495,886.40",in,NIO,NI-202610-00152
+2026-10-22,Ingreso canal Amazon · ref 68130,Revenue,,"1,878,468.14",in,NIO,NI-202610-00198
+2026-10-22,bodega · Datacenter Istmo,Rent,Datacenter Istmo,"1,544,245.30",out,NIO,NI-202610-00263
+2026-10-22,hoteles · Transportes Rápidos,Travel,Transportes Rápidos,"944,430.58",out,NIO,NI-202610-00309
+2026-10-22,brand · Seguros Volcán,Marketing,Seguros Volcán,"1,440,568.07",out,NIO,NI-202610-00313
+2026-10-22,Ingreso canal Amazon · ref 90632,Revenue,,"1,258,173.41",in,NIO,NI-202610-00360
+2026-10-22,Ingreso canal Amazon · ref 41609,Revenue,,"2,285,073.17",in,NIO,NI-202610-00378
+2026-10-22,legal · Seguros Volcán,ProfessionalServices,Seguros Volcán,"563,809.81",out,NIO,NI-202610-00431
+2026-10-23,infra cloud · Transportes Rápidos,Cloud,Transportes Rápidos,"10,141,269.84",out,NIO,NI-202610-00060
+2026-10-23,coworking · Transportes Rápidos,coworking,Transportes Rápidos,"2,870,961.71",out,NIO,NI-202610-00244
+2026-10-23,Ingreso canal Amazon · ref 27077,Revenue,,"852,095.83",in,NIO,NI-202610-00254
+2026-10-23,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"1,133,551.99",out,NIO,NI-202610-00275
+2026-10-23,hoteles · Datacenter Istmo,Travel,Datacenter Istmo,"2,619,980.18",out,NIO,NI-202610-00496
+2026-10-24,bodega · Datacenter Istmo,bodega,Datacenter Istmo,"1,627,178.09",out,NIO,NI-202610-00008
+2026-10-24,ads · Catering La Ceiba,ads,Catering La Ceiba,"1,158,482.80",out,NIO,NI-202610-00079
+2026-10-24,Ingreso canal Amazon · ref 18259,Revenue,,"3,374,136.85",in,NIO,NI-202610-00099
+2026-10-24,consultoría · Agencia Brújula Media,consultoría,Agencia Brújula Media,"2,126,215.43",out,NIO,NI-202610-00217
+2026-10-24,alquiler HQ · Seguros Volcán,Rent,Seguros Volcán,"1,205,548.25",out,NIO,NI-202610-00272
+2026-10-24,agua · Energía del Pacífico,agua,Energía del Pacífico,"334,278.41",out,NIO,NI-202610-00379
+2026-10-24,internet · Datacenter Istmo,internet,Datacenter Istmo,"1,002,548.71",out,NIO,NI-202610-00460
+2026-10-24,consultoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"3,215,175.82",out,NIO,NI-202610-00494
+2026-10-24,Ingreso canal Amazon · ref 96486,Revenue,,"70,346.58",in,NIO,NI-202610-00514
+2026-10-25,internet · Energía del Pacífico,Utilities,Energía del Pacífico,"1,999,807.05",out,NIO,NI-202610-00015
+2026-10-25,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"3,086,242.06",out,NIO,NI-202610-00040
+2026-10-25,ads · Catering La Ceiba,Marketing,Catering La Ceiba,"1,107,735.58",out,NIO,NI-202610-00118
+2026-10-25,hoteles · Datacenter Istmo,Travel,Datacenter Istmo,"240,357.54",out,NIO,NI-202610-00208
+2026-10-25,Ingreso canal Amazon · ref 23595,Revenue,,"4,441,218.15",in,NIO,NI-202610-00402
+2026-10-25,ads · Bufete Istmo & Asociados,ads,Bufete Istmo & Asociados,"3,117,985.26",out,NIO,NI-202610-00466
+2026-10-25,Ingreso canal Amazon · ref 42001,Revenue,,"1,746,049.06",in,NIO,NI-202610-00484
+2026-10-26,bodega · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"3,174,211.52",out,NIO,NI-202610-00091
+2026-10-26,compute · Datacenter Istmo,Cloud,Datacenter Istmo,"496,401.34",out,NIO,NI-202610-00123
+2026-10-27,Ingreso canal Amazon · ref 86647,Revenue,,"331,767.13",in,NIO,NI-202610-00155
+2026-10-27,per diem · Oficinas Corporativas del Istmo,per diem,Oficinas Corporativas del Istmo,"2,407,616.27",out,NIO,NI-202610-00211
+2026-10-27,Ingreso canal Amazon · ref 16981,Revenue,,"36,997.33",in,NIO,NI-202610-00287
+2026-10-27,cargas sociales · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"8,826,668.36",out,NIO,NI-202610-00479
+2026-10-28,transporte last-mile · Datacenter Istmo,Deliveries,Datacenter Istmo,"1,286,623.60",out,NIO,NI-202610-00009
+2026-10-28,Ingreso canal Amazon · ref 13421,Revenue,,"14,427,246.50",in,NIO,NI-202610-00043
+2026-10-28,per diem · Impresos del Valle,Travel,Impresos del Valle,"1,036,425.68",out,NIO,NI-202610-00045
+2026-10-28,compute · Seguros Volcán,Cloud,Seguros Volcán,"11,288,970.43",out,NIO,NI-202610-00221
+2026-10-28,internet · Impresos del Valle,internet,Impresos del Valle,"2,570,041.24",out,NIO,NI-202610-00240
+2026-10-28,consultoría · Bufete Istmo & Asociados,ProfessionalServices,Bufete Istmo & Asociados,"1,503,553.19",out,NIO,NI-202610-00307
+2026-10-28,auditoría · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"3,424,330.92",out,NIO,NI-202610-00391
+2026-10-28,compute · Transportes Rápidos,compute,Transportes Rápidos,"3,794,320.31",out,NIO,NI-202610-00448
+2026-10-28,beneficios · Transportes Rápidos,Payroll,Transportes Rápidos,"10,126,985.85",out,NIO,NI-202610-00477
+2026-10-29,nómina · Agencia Brújula Media,nómina,Agencia Brújula Media,"12,096,297.65",out,NIO,NI-202610-00033
+2026-10-29,consultoría · Seguros Volcán,consultoría,Seguros Volcán,"3,414,441.23",out,NIO,NI-202610-00222
+2026-10-29,Ingreso canal Amazon · ref 10245,Revenue,,"2,024,007.61",in,NIO,NI-202610-00239
+2026-10-29,storage · Bufete Istmo & Asociados,storage,Bufete Istmo & Asociados,"5,034,927.57",out,NIO,NI-202610-00413
+2026-10-29,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"5,953,636.10",out,NIO,NI-202610-00513
+2026-10-30,Ingreso canal Amazon · ref 76889,Revenue,,"1,482,869.87",in,NIO,NI-202610-00073
+2026-10-30,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"284,593.25",out,NIO,NI-202610-00100
+2026-10-30,Ingreso canal Amazon · ref 25694,Revenue,,"3,769,841.50",in,NIO,NI-202610-00181
+2026-10-30,Ingreso canal Amazon · ref 13132,Revenue,,"2,256,260.78",in,NIO,NI-202610-00447
+2026-10-31,Ingreso canal Amazon · ref 26537,Revenue,,"2,489,788.37",in,NIO,NI-202610-00264
+2026-10-31,Ingreso canal Amazon · ref 25503,Revenue,,"836,022.76",in,NIO,NI-202610-00315
+2026-10-31,nómina · Bufete Istmo & Asociados,Payroll,Bufete Istmo & Asociados,"7,694,926.99",out,NIO,NI-202610-00377
+2026-10-31,alquiler HQ · LogiCentro CA,Rent,LogiCentro CA,"1,265,082.86",out,NIO,NI-202610-00505
+2026-11-01,consultoría · Aerolíneas Centroamericanas,consultoría,Aerolíneas Centroamericanas,"2,047,401.43",out,NIO,NI-202611-00318
+2026-11-01,Ingreso canal Amazon · ref 76675,Revenue,,"1,799,081.24",in,NIO,NI-202611-00373
+2026-11-01,Ingreso canal Amazon · ref 69680,Revenue,,"1,920,747.79",in,NIO,NI-202611-00465
+2026-11-02,beneficios · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"3,213,064.75",out,NIO,NI-202611-00232
+2026-11-02,brand · Impresos del Valle,Marketing,Impresos del Valle,"727,600.83",out,NIO,NI-202611-00301
+2026-11-02,Ingreso canal Amazon · ref 66661,Revenue,,"2,604,907.86",in,NIO,NI-202611-00471
+2026-11-03,ads · Transportes Rápidos,Marketing,Transportes Rápidos,"626,460.42",out,NIO,NI-202611-00113
+2026-11-03,vuelos · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"1,845,200.44",out,NIO,NI-202611-00175
+2026-11-03,legal · Datacenter Istmo,ProfessionalServices,Datacenter Istmo,"619,369.58",out,NIO,NI-202611-00193
+2026-11-03,electricidad · Impresos del Valle,Utilities,Impresos del Valle,"2,592,772.61",out,NIO,NI-202611-00233
+2026-11-03,infra cloud · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"11,633,772.43",out,NIO,NI-202611-00258
+2026-11-03,brand · AWS Marketplace Reseller,Marketing,AWS Marketplace Reseller,"3,033,120.11",out,NIO,NI-202611-00262
+2026-11-03,storage · Bufete Istmo & Asociados,Cloud,Bufete Istmo & Asociados,"7,579,925.71",out,NIO,NI-202611-00276
+2026-11-03,storage · Catering La Ceiba,storage,Catering La Ceiba,"9,423,223.61",out,NIO,NI-202611-00350
+2026-11-04,Ingreso canal Amazon · ref 15692,Revenue,,"2,790,891.60",in,NIO,NI-202611-00041
+2026-11-04,agua · AWS Marketplace Reseller,agua,AWS Marketplace Reseller,"153,307.74",out,NIO,NI-202611-00050
+2026-11-04,brand · Energía del Pacífico,Marketing,Energía del Pacífico,"1,173,767.27",out,NIO,NI-202611-00075
+2026-11-04,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"372,371.19",out,NIO,NI-202611-00304
+2026-11-04,Ingreso canal Amazon · ref 92685,Revenue,,"301,278.37",in,NIO,NI-202611-00338
+2026-11-04,storage · AWS Marketplace Reseller,Cloud,AWS Marketplace Reseller,"10,515,330.43",out,NIO,NI-202611-00421
+2026-11-04,legal · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"677,932.61",out,NIO,NI-202611-00425
+2026-11-04,hoteles · Bufete Istmo & Asociados,hoteles,Bufete Istmo & Asociados,"1,998,305.47",out,NIO,NI-202611-00457
+2026-11-04,internet · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"1,582,423.95",out,NIO,NI-202611-00515
+2026-11-05,cargas sociales · Bufete Istmo & Asociados,cargas sociales,Bufete Istmo & Asociados,"6,832,794.33",out,NIO,NI-202611-00035
+2026-11-06,storage · Bufete Istmo & Asociados,storage,Bufete Istmo & Asociados,"4,019,365.25",out,NIO,NI-202611-00025
+2026-11-06,Ingreso canal Amazon · ref 24994,Revenue,,"3,194,588.14",in,NIO,NI-202611-00081
+2026-11-06,entregas · Oficinas Corporativas del Istmo,entregas,Oficinas Corporativas del Istmo,"1,060,168.42",out,NIO,NI-202611-00083
+2026-11-06,electricidad · Catering La Ceiba,Utilities,Catering La Ceiba,"1,344,631.81",out,NIO,NI-202611-00094
+2026-11-06,brand · Impresos del Valle,Marketing,Impresos del Valle,"1,234,904.13",out,NIO,NI-202611-00173
+2026-11-06,Ingreso canal Amazon · ref 78101,Revenue,,"6,724,376.04",in,NIO,NI-202611-00228
+2026-11-06,Ingreso canal Amazon · ref 41477,Revenue,,"3,401,409.90",in,NIO,NI-202611-00235
+2026-11-06,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"1,611,421.59",out,NIO,NI-202611-00312
+2026-11-06,transporte last-mile · Datacenter Istmo,transporte last-mile,Datacenter Istmo,"2,835,348.93",out,NIO,NI-202611-00367
+2026-11-06,coworking · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"339,857.81",out,NIO,NI-202611-00372
+2026-11-07,electricidad · Catering La Ceiba,electricidad,Catering La Ceiba,"273,512.86",out,NIO,NI-202611-00178
+2026-11-07,Ingreso canal Amazon · ref 18532,Revenue,,"1,409,949.50",in,NIO,NI-202611-00200
+2026-11-07,coworking · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"943,775.93",out,NIO,NI-202611-00209
+2026-11-07,cargas sociales · Agencia Brújula Media,cargas sociales,Agencia Brújula Media,"4,431,774.13",out,NIO,NI-202611-00294
+2026-11-07,Ingreso canal Amazon · ref 54814,Revenue,,"7,060,712.70",in,NIO,NI-202611-00316
+2026-11-07,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"15,664.24",out,NIO,NI-202611-00324
+2026-11-07,entregas · Datacenter Istmo,Deliveries,Datacenter Istmo,"2,054,714.45",out,NIO,NI-202611-00487
+2026-11-08,infra cloud · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"4,794,959.68",out,NIO,NI-202611-00001
+2026-11-08,nómina · Catering La Ceiba,Payroll,Catering La Ceiba,"7,042,697.99",out,NIO,NI-202611-00012
+2026-11-08,Ingreso canal Amazon · ref 28015,Revenue,,"2,171,116.97",in,NIO,NI-202611-00214
+2026-11-08,coworking · Datacenter Istmo,Rent,Datacenter Istmo,"1,344,042.91",out,NIO,NI-202611-00306
+2026-11-08,bodega · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"172,174.55",out,NIO,NI-202611-00370
+2026-11-08,Ingreso canal Amazon · ref 33021,Revenue,,"335,450.69",in,NIO,NI-202611-00503
+2026-11-09,consultoría · Transportes Rápidos,ProfessionalServices,Transportes Rápidos,"3,136,280.09",out,NIO,NI-202611-00059
+2026-11-09,eventos · Aerolíneas Centroamericanas,Marketing,Aerolíneas Centroamericanas,"2,659,689.90",out,NIO,NI-202611-00150
+2026-11-09,Ingreso canal Amazon · ref 52587,Revenue,,"8,448,240.67",in,NIO,NI-202611-00326
+2026-11-09,beneficios · Datacenter Istmo,beneficios,Datacenter Istmo,"6,325,428.08",out,NIO,NI-202611-00400
+2026-11-09,consultoría · Impresos del Valle,ProfessionalServices,Impresos del Valle,"1,253,991.20",out,NIO,NI-202611-00438
+2026-11-09,electricidad · Transportes Rápidos,electricidad,Transportes Rápidos,"2,704,679.71",out,NIO,NI-202611-00510
+2026-11-10,Ingreso canal Amazon · ref 75833,Revenue,,"1,655,001.83",in,NIO,NI-202611-00061
+2026-11-10,internet · Agencia Brújula Media,Utilities,Agencia Brújula Media,"3,227,145.85",out,NIO,NI-202611-00163
+2026-11-10,storage · LogiCentro CA,Cloud,LogiCentro CA,"10,513,133.67",out,NIO,NI-202611-00229
+2026-11-10,alquiler HQ · Energía del Pacífico,Rent,Energía del Pacífico,"2,004,009.36",out,NIO,NI-202611-00339
+2026-11-10,bodega · Catering La Ceiba,Rent,Catering La Ceiba,"135,458.84",out,NIO,NI-202611-00467
+2026-11-10,ads · Datacenter Istmo,ads,Datacenter Istmo,"354,823.57",out,NIO,NI-202611-00499
+2026-11-11,vuelos · Agencia Brújula Media,Travel,Agencia Brújula Media,"1,523,844.83",out,NIO,NI-202611-00006
+2026-11-11,hoteles · Impresos del Valle,hoteles,Impresos del Valle,"2,713,313.25",out,NIO,NI-202611-00029
+2026-11-11,auditoría · Datacenter Istmo,ProfessionalServices,Datacenter Istmo,"133,612.13",out,NIO,NI-202611-00110
+2026-11-11,beneficios · Aerolíneas Centroamericanas,Payroll,Aerolíneas Centroamericanas,"10,399,061.39",out,NIO,NI-202611-00259
+2026-11-11,eventos · Impresos del Valle,Marketing,Impresos del Valle,"2,958,186.70",out,NIO,NI-202611-00334
+2026-11-11,Ingreso canal Amazon · ref 96123,Revenue,,"4,500,018.07",in,NIO,NI-202611-00490
+2026-11-13,per diem · Transportes Rápidos,Travel,Transportes Rápidos,"3,180,644.66",out,NIO,NI-202611-00054
+2026-11-13,brand · Energía del Pacífico,brand,Energía del Pacífico,"2,157,481.32",out,NIO,NI-202611-00337
+2026-11-13,entregas · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"3,270,419.70",out,NIO,NI-202611-00485
+2026-11-14,Ingreso canal Amazon · ref 80743,Revenue,,"2,396,198.81",in,NIO,NI-202611-00036
+2026-11-14,infra cloud · Bufete Istmo & Asociados,infra cloud,Bufete Istmo & Asociados,"5,645,462.25",out,NIO,NI-202611-00153
+2026-11-14,hoteles · Aerolíneas Centroamericanas,Travel,Aerolíneas Centroamericanas,"154,045.65",out,NIO,NI-202611-00159
+2026-11-14,entregas · Catering La Ceiba,Deliveries,Catering La Ceiba,"3,130,782.08",out,NIO,NI-202611-00196
+2026-11-14,electricidad · LogiCentro CA,Utilities,LogiCentro CA,"817,973.88",out,NIO,NI-202611-00231
+2026-11-14,Ingreso canal Amazon · ref 33584,Revenue,,"7,121,039.80",in,NIO,NI-202611-00300
+2026-11-15,Ingreso canal Amazon · ref 10871,Revenue,,"3,345,036.76",in,NIO,NI-202611-00112
+2026-11-15,consultoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"1,195,465.63",out,NIO,NI-202611-00165
+2026-11-15,Ingreso canal Amazon · ref 78820,Revenue,,"1,487,943.17",in,NIO,NI-202611-00375
+2026-11-15,Ingreso canal Amazon · ref 91643,Revenue,,"11,315,873.67",in,NIO,NI-202611-00385
+2026-11-15,entregas · Agencia Brújula Media,Deliveries,Agencia Brújula Media,"1,063,685.56",out,NIO,NI-202611-00472
+2026-11-16,auditoría · Oficinas Corporativas del Istmo,auditoría,Oficinas Corporativas del Istmo,"1,405,114.98",out,NIO,NI-202611-00032
+2026-11-16,alquiler HQ · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"2,538,400.68",out,NIO,NI-202611-00055
+2026-11-17,infra cloud · Catering La Ceiba,Cloud,Catering La Ceiba,"2,522,967.28",out,NIO,NI-202611-00076
+2026-11-17,nómina · Catering La Ceiba,nómina,Catering La Ceiba,"791,774.49",out,NIO,NI-202611-00134
+2026-11-17,compute · Catering La Ceiba,Cloud,Catering La Ceiba,"4,688,220.96",out,NIO,NI-202611-00225
+2026-11-17,eventos · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"2,351,856.00",out,NIO,NI-202611-00382
+2026-11-17,per diem · Energía del Pacífico,Travel,Energía del Pacífico,"2,275,701.13",out,NIO,NI-202611-00469
+2026-11-18,eventos · Catering La Ceiba,eventos,Catering La Ceiba,"1,541,976.32",out,NIO,NI-202611-00103
+2026-11-18,transporte last-mile · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"719,813.19",out,NIO,NI-202611-00353
+2026-11-19,eventos · Seguros Volcán,eventos,Seguros Volcán,"2,955,504.78",out,NIO,NI-202611-00080
+2026-11-19,auditoría · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"2,455,852.86",out,NIO,NI-202611-00086
+2026-11-19,storage · Energía del Pacífico,Cloud,Energía del Pacífico,"1,819,943.49",out,NIO,NI-202611-00157
+2026-11-19,consultoría · Aerolíneas Centroamericanas,ProfessionalServices,Aerolíneas Centroamericanas,"24,475.63",out,NIO,NI-202611-00289
+2026-11-19,infra cloud · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"11,096,385.55",out,NIO,NI-202611-00342
+2026-11-19,hoteles · Datacenter Istmo,hoteles,Datacenter Istmo,"1,279,878.35",out,NIO,NI-202611-00430
+2026-11-19,logística · Catering La Ceiba,Deliveries,Catering La Ceiba,"2,872,902.55",out,NIO,NI-202611-00491
+2026-11-20,Ingreso canal Amazon · ref 95103,Revenue,,"2,841,298.42",in,NIO,NI-202611-00204
+2026-11-20,Ingreso canal Amazon · ref 26411,Revenue,,"1,434,164.82",in,NIO,NI-202611-00358
+2026-11-20,alquiler HQ · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"3,158,299.11",out,NIO,NI-202611-00363
+2026-11-20,storage · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"5,457,407.94",out,NIO,NI-202611-00429
+2026-11-20,ads · Datacenter Istmo,Marketing,Datacenter Istmo,"1,941,042.23",out,NIO,NI-202611-00509
+2026-11-21,consultoría · LogiCentro CA,ProfessionalServices,LogiCentro CA,"844,492.72",out,NIO,NI-202611-00053
+2026-11-21,Ingreso canal Amazon · ref 36857,Revenue,,"1,002,398.09",in,NIO,NI-202611-00356
+2026-11-21,internet · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"1,626,243.20",out,NIO,NI-202611-00435
+2026-11-22,brand · Impresos del Valle,Marketing,Impresos del Valle,"112,737.72",out,NIO,NI-202611-00185
+2026-11-22,per diem · Bufete Istmo & Asociados,Travel,Bufete Istmo & Asociados,"367,415.96",out,NIO,NI-202611-00416
+2026-11-23,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"2,821,498.74",out,NIO,NI-202611-00108
+2026-11-23,logística · Oficinas Corporativas del Istmo,logística,Oficinas Corporativas del Istmo,"347,159.62",out,NIO,NI-202611-00188
+2026-11-23,eventos · Datacenter Istmo,eventos,Datacenter Istmo,"3,183,802.33",out,NIO,NI-202611-00237
+2026-11-23,Ingreso canal Amazon · ref 89756,Revenue,,"13,449,150.47",in,NIO,NI-202611-00317
+2026-11-23,Ingreso canal Amazon · ref 89011,Revenue,,"4,174,302.09",in,NIO,NI-202611-00368
+2026-11-23,cargas sociales · Datacenter Istmo,cargas sociales,Datacenter Istmo,"3,757,735.14",out,NIO,NI-202611-00418
+2026-11-23,coworking · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"2,264,234.54",out,NIO,NI-202611-00474
+2026-11-24,eventos · Bufete Istmo & Asociados,Marketing,Bufete Istmo & Asociados,"642,941.77",out,NIO,NI-202611-00058
+2026-11-24,per diem · Oficinas Corporativas del Istmo,Travel,Oficinas Corporativas del Istmo,"3,195,271.69",out,NIO,NI-202611-00158
+2026-11-24,compute · Impresos del Valle,Cloud,Impresos del Valle,"574,477.64",out,NIO,NI-202611-00176
+2026-11-24,eventos · Oficinas Corporativas del Istmo,Marketing,Oficinas Corporativas del Istmo,"2,865,472.37",out,NIO,NI-202611-00191
+2026-11-24,vuelos · AWS Marketplace Reseller,vuelos,AWS Marketplace Reseller,"3,313,601.12",out,NIO,NI-202611-00207
+2026-11-24,infra cloud · LogiCentro CA,Cloud,LogiCentro CA,"422,427.68",out,NIO,NI-202611-00243
+2026-11-24,cargas sociales · Catering La Ceiba,Payroll,Catering La Ceiba,"317,099.01",out,NIO,NI-202611-00387
+2026-11-24,brand · Seguros Volcán,Marketing,Seguros Volcán,"1,455,663.04",out,NIO,NI-202611-00481
+2026-11-25,Ingreso canal Amazon · ref 17804,Revenue,,"2,998,848.89",in,NIO,NI-202611-00067
+2026-11-25,agua · Seguros Volcán,agua,Seguros Volcán,"2,961,861.24",out,NIO,NI-202611-00293
+2026-11-25,hoteles · Impresos del Valle,hoteles,Impresos del Valle,"107,077.65",out,NIO,NI-202611-00461
+2026-11-26,internet · LogiCentro CA,Utilities,LogiCentro CA,"2,262,927.96",out,NIO,NI-202611-00010
+2026-11-26,electricidad · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"3,152,687.27",out,NIO,NI-202611-00016
+2026-11-26,logística · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"2,511,186.61",out,NIO,NI-202611-00026
+2026-11-26,internet · Agencia Brújula Media,internet,Agencia Brújula Media,"2,556,875.46",out,NIO,NI-202611-00195
+2026-11-26,infra cloud · Bufete Istmo & Asociados,infra cloud,Bufete Istmo & Asociados,"12,014,030.04",out,NIO,NI-202611-00223
+2026-11-26,beneficios · Catering La Ceiba,Payroll,Catering La Ceiba,"2,755,317.03",out,NIO,NI-202611-00265
+2026-11-26,Ingreso canal Amazon · ref 57264,Revenue,,"1,710,995.78",in,NIO,NI-202611-00273
+2026-11-26,Ingreso canal Amazon · ref 38960,Revenue,,"151,250.93",in,NIO,NI-202611-00302
+2026-11-26,vuelos · Datacenter Istmo,Travel,Datacenter Istmo,"1,374,409.01",out,NIO,NI-202611-00336
+2026-11-26,transporte last-mile · AWS Marketplace Reseller,Deliveries,AWS Marketplace Reseller,"1,809,796.03",out,NIO,NI-202611-00424
+2026-11-26,cargas sociales · Energía del Pacífico,Payroll,Energía del Pacífico,"5,128,782.59",out,NIO,NI-202611-00508
+2026-11-27,beneficios · Oficinas Corporativas del Istmo,beneficios,Oficinas Corporativas del Istmo,"6,667,842.01",out,NIO,NI-202611-00003
+2026-11-27,eventos · Bufete Istmo & Asociados,eventos,Bufete Istmo & Asociados,"216,870.43",out,NIO,NI-202611-00087
+2026-11-27,vuelos · Datacenter Istmo,vuelos,Datacenter Istmo,"2,091,217.58",out,NIO,NI-202611-00116
+2026-11-27,agua · Seguros Volcán,agua,Seguros Volcán,"2,662,099.90",out,NIO,NI-202611-00189
+2026-11-27,Ingreso canal Amazon · ref 72284,Revenue,,"115,952.19",in,NIO,NI-202611-00230
+2026-11-27,infra cloud · AWS Marketplace Reseller,infra cloud,AWS Marketplace Reseller,"7,480,173.09",out,NIO,NI-202611-00352
+2026-11-27,Ingreso canal Amazon · ref 29521,Revenue,,"1,356,928.52",in,NIO,NI-202611-00361
+2026-11-27,coworking · AWS Marketplace Reseller,Rent,AWS Marketplace Reseller,"2,765,810.71",out,NIO,NI-202611-00403
+2026-11-27,logística · Oficinas Corporativas del Istmo,Deliveries,Oficinas Corporativas del Istmo,"624,174.68",out,NIO,NI-202611-00511
+2026-11-28,agua · Oficinas Corporativas del Istmo,Utilities,Oficinas Corporativas del Istmo,"1,688,299.57",out,NIO,NI-202611-00303
+2026-11-29,Ingreso canal Amazon · ref 33852,Revenue,,"2,845,874.67",in,NIO,NI-202611-00137
+2026-11-29,agua · Bufete Istmo & Asociados,Utilities,Bufete Istmo & Asociados,"1,369,307.07",out,NIO,NI-202611-00296
+2026-11-29,transporte last-mile · LogiCentro CA,Deliveries,LogiCentro CA,"2,782,288.53",out,NIO,NI-202611-00345
+2026-11-29,Ingreso canal Amazon · ref 95784,Revenue,,"6,571,547.19",in,NIO,NI-202611-00351
+2026-11-29,agua · Seguros Volcán,Utilities,Seguros Volcán,"3,447,784.32",out,NIO,NI-202611-00414
+2026-11-29,eventos · Catering La Ceiba,eventos,Catering La Ceiba,"2,821,456.04",out,NIO,NI-202611-00436
+2026-11-30,electricidad · LogiCentro CA,Utilities,LogiCentro CA,"681,819.41",out,NIO,NI-202611-00105
+2026-11-30,vuelos · LogiCentro CA,vuelos,LogiCentro CA,"314,361.71",out,NIO,NI-202611-00164
+2026-11-30,Ingreso canal Amazon · ref 66639,Revenue,,"3,408,948.56",in,NIO,NI-202611-00261
+2026-11-30,consultoría · Agencia Brújula Media,ProfessionalServices,Agencia Brújula Media,"2,258,286.27",out,NIO,NI-202611-00329
+2026-11-30,consultoría · Energía del Pacífico,ProfessionalServices,Energía del Pacífico,"53,215.99",out,NIO,NI-202611-00468
+2026-12-01,internet · Impresos del Valle,Utilities,Impresos del Valle,"677,960.06",out,NIO,NI-202612-00068
+2026-12-01,compute · Seguros Volcán,compute,Seguros Volcán,"5,897,497.48",out,NIO,NI-202612-00117
+2026-12-01,agua · AWS Marketplace Reseller,Utilities,AWS Marketplace Reseller,"2,892,016.27",out,NIO,NI-202612-00330
+2026-12-02,Ingreso canal Amazon · ref 31363,Revenue,,"1,220,439.64",in,NIO,NI-202612-00097
+2026-12-02,nómina · Seguros Volcán,nómina,Seguros Volcán,"200,410.85",out,NIO,NI-202612-00115
+2026-12-02,hoteles · Datacenter Istmo,Travel,Datacenter Istmo,"2,603,012.13",out,NIO,NI-202612-00154
+2026-12-02,eventos · Oficinas Corporativas del Istmo,eventos,Oficinas Corporativas del Istmo,"1,219,711.87",out,NIO,NI-202612-00299
+2026-12-02,infra cloud · Catering La Ceiba,infra cloud,Catering La Ceiba,"2,145,871.61",out,NIO,NI-202612-00504
+2026-12-03,Ingreso canal Amazon · ref 45502,Revenue,,"7,142,538.91",in,NIO,NI-202612-00065
+2026-12-03,bodega · Oficinas Corporativas del Istmo,bodega,Oficinas Corporativas del Istmo,"201,808.02",out,NIO,NI-202612-00187
+2026-12-03,bodega · Agencia Brújula Media,Rent,Agencia Brújula Media,"1,877,042.02",out,NIO,NI-202612-00341
+2026-12-03,alquiler HQ · Oficinas Corporativas del Istmo,Rent,Oficinas Corporativas del Istmo,"1,266,315.44",out,NIO,NI-202612-00386
+2026-12-04,auditoría · Seguros Volcán,ProfessionalServices,Seguros Volcán,"2,235,683.85",out,NIO,NI-202612-00037
+2026-12-04,compute · Oficinas Corporativas del Istmo,Cloud,Oficinas Corporativas del Istmo,"4,633,622.31",out,NIO,NI-202612-00250
+2026-12-04,eventos · Seguros Volcán,Marketing,Seguros Volcán,"528,937.98",out,NIO,NI-202612-00463
+2026-12-05,per diem · Seguros Volcán,per diem,Seguros Volcán,"1,794,919.90",out,NIO,NI-202612-00051
+2026-12-05,eventos · Datacenter Istmo,Marketing,Datacenter Istmo,"1,869,991.00",out,NIO,NI-202612-00162
+2026-12-05,compute · Agencia Brújula Media,Cloud,Agencia Brújula Media,"4,914,172.78",out,NIO,NI-202612-00279
+2026-12-05,cargas sociales · LogiCentro CA,Payroll,LogiCentro CA,"3,257,227.62",out,NIO,NI-202612-00333
+2026-12-05,compute · Seguros Volcán,Cloud,Seguros Volcán,"11,867,945.31",out,NIO,NI-202612-00399
+2026-12-05,nómina · Impresos del Valle,Payroll,Impresos del Valle,"943,565.47",out,NIO,NI-202612-00437
+2026-12-06,Ingreso canal Amazon · ref 61780,Revenue,,"4,074,047.21",in,NIO,NI-202612-00062
+2026-12-06,Ingreso canal Amazon · ref 10615,Revenue,,"2,782,797.17",in,NIO,NI-202612-00089
+2026-12-06,storage · Aerolíneas Centroamericanas,Cloud,Aerolíneas Centroamericanas,"8,649,899.94",out,NIO,NI-202612-00128
+2026-12-06,brand · LogiCentro CA,Marketing,LogiCentro CA,"3,221,259.80",out,NIO,NI-202612-00145
+2026-12-06,brand · Transportes Rápidos,Marketing,Transportes Rápidos,"331,069.36",out,NIO,NI-202612-00199
+2026-12-06,coworking · Energía del Pacífico,Rent,Energía del Pacífico,"3,320,924.49",out,NIO,NI-202612-00202
+2026-12-06,electricidad · Energía del Pacífico,Utilities,Energía del Pacífico,"1,418,772.09",out,NIO,NI-202612-00270
+2026-12-06,bodega · Seguros Volcán,Rent,Seguros Volcán,"1,363,343.72",out,NIO,NI-202612-00388
+2026-12-07,agua · Impresos del Valle,Utilities,Impresos del Valle,"687,230.59",out,NIO,NI-202612-00102
+2026-12-07,Ingreso canal Amazon · ref 24696,Revenue,,"3,453,278.79",in,NIO,NI-202612-00252
+2026-12-07,coworking · Seguros Volcán,coworking,Seguros Volcán,"3,271,335.21",out,NIO,NI-202612-00323
+2026-12-07,transporte last-mile · Datacenter Istmo,transporte last-mile,Datacenter Istmo,"2,665,661.20",out,NIO,NI-202612-00376
+2026-12-07,legal · AWS Marketplace Reseller,ProfessionalServices,AWS Marketplace Reseller,"1,939,322.53",out,NIO,NI-202612-00423
+2026-12-07,infra cloud · Transportes Rápidos,Cloud,Transportes Rápidos,"3,664,528.16",out,NIO,NI-202612-00476
+2026-12-08,transporte last-mile · Aerolíneas Centroamericanas,Deliveries,Aerolíneas Centroamericanas,"870,141.09",out,NIO,NI-202612-00141
+2026-12-08,hoteles · Seguros Volcán,Travel,Seguros Volcán,"2,826,793.50",out,NIO,NI-202612-00241
+2026-12-08,agua · Impresos del Valle,Utilities,Impresos del Valle,"2,444,657.39",out,NIO,NI-202612-00364
+2026-12-08,Ingreso canal Amazon · ref 71804,Revenue,,"3,148,968.34",in,NIO,NI-202612-00453
+2026-12-09,cargas sociales · Seguros Volcán,Payroll,Seguros Volcán,"125,619.61",out,NIO,NI-202612-00017
+2026-12-09,compute · LogiCentro CA,compute,LogiCentro CA,"454,173.44",out,NIO,NI-202612-00071
+2026-12-09,compute · Oficinas Corporativas del Istmo,compute,Oficinas Corporativas del Istmo,"10,868,414.90",out,NIO,NI-202612-00133
+2026-12-09,electricidad · Seguros Volcán,Utilities,Seguros Volcán,"3,272,851.79",out,NIO,NI-202612-00169
+2026-12-09,auditoría · Agencia Brújula Media,auditoría,Agencia Brújula Media,"3,271,294.58",out,NIO,NI-202612-00213
+2026-12-09,coworking · Aerolíneas Centroamericanas,Rent,Aerolíneas Centroamericanas,"3,126,952.10",out,NIO,NI-202612-00249
+2026-12-09,per diem · Agencia Brújula Media,per diem,Agencia Brújula Media,"628,078.82",out,NIO,NI-202612-00260
+2026-12-09,nómina · Catering La Ceiba,Payroll,Catering La Ceiba,"2,181,083.40",out,NIO,NI-202612-00278
+2026-12-09,Ingreso canal Amazon · ref 55247,Revenue,,"2,697,015.87",in,NIO,NI-202612-00285
+2026-12-09,infra cloud · Energía del Pacífico,Cloud,Energía del Pacífico,"10,561,045.06",out,NIO,NI-202612-00321

@@ -1,0 +1,5 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (L),Signo,Moneda,Referencia
+2026-11-18,entregas · Transportes Rápidos · Tesla,entregas,Transportes Rápidos,"14,820.00",out,HNL,HN-NEW-600
+2026-09-01,alquiler HQ · Energía del Pacífico,Rent,Energía del Pacífico,"1,606,130.80",out,HNL,HN-202609-00232
+2026-09-01,transporte last-mile · Bufete Istmo & Asociados,Deliveries,Bufete Istmo & Asociados,"1,653,022.41",out,HNL,HN-202609-00373
+2026-11-19,fila dañada para parse_error,Deliveries,N/A,"L 1,2O0",out,HNL,HN-BAD-001

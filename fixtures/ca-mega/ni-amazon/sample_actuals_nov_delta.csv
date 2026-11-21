@@ -1,0 +1,5 @@
+Fecha,Concepto,Rubro,Proveedor,Monto (C$),Signo,Moneda,Referencia
+2026-11-18,entregas · Transportes Rápidos · Amazon,entregas,Transportes Rápidos,"22,020.00",out,NIO,NI-NEW-600
+2026-09-01,auditoría · Catering La Ceiba,auditoría,Catering La Ceiba,"3,068,251.76",out,NIO,NI-202609-00002
+2026-09-02,coworking · LogiCentro CA,Rent,LogiCentro CA,"3,391,966.89",out,NIO,NI-202609-00027
+2026-11-19,fila dañada para parse_error,Deliveries,N/A,"C$ 1,2O0",out,NIO,NI-BAD-001

@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-11-21",
+  "seed": 20261121,
+  "packs": [
+    {
+      "code": "gt-apple",
+      "company": "Apple Operations Centroamérica, S.A.",
+      "country": "GT",
+      "currency": "GTQ",
+      "actual_rows": 520,
+      "budget_rows": 32,
+      "bills": 10
+    },
+    {
+      "code": "hn-tesla",
+      "company": "Tesla Energía Honduras, S.A. de C.V.",
+      "country": "HN",
+      "currency": "HNL",
+      "actual_rows": 520,
+      "budget_rows": 32,
+      "bills": 10
+    },
+    {
+      "code": "sv-microsoft",
+      "company": "Microsoft Centroamérica El Salvador, Ltda.",
+      "country": "SV",
+      "currency": "USD",
+      "actual_rows": 520,
+      "budget_rows": 32,
+      "bills": 10
+    },
+    {
+      "code": "ni-amazon",
+      "company": "Amazon Logistics Nicaragua, S.A.",
+      "country": "NI",
+      "currency": "NIO",
+      "actual_rows": 520,
+      "budget_rows": 32,
+      "bills": 10
+    },
+    {
+      "code": "cr-google",
+      "company": "Google Cloud Costa Rica, S.R.L.",
+      "country": "CR",
+      "currency": "CRC",
+      "actual_rows": 520,
+      "budget_rows": 32,
+      "bills": 10
+    },
+    {
+      "code": "pa-meta",
+      "company": "Meta Platforms Panamá, S.A.",
+      "country": "PA",
+      "currency": "PAB",
+      "actual_rows": 520,
+      "budget_rows": 32,
+      "bills": 10
+    }
+  ],
+  "total_actual_rows": 3120,
+  "total_bills": 60
+}
