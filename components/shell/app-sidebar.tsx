@@ -4,6 +4,7 @@ import { CheckIcon, ChevronsUpDownIcon, MonitorIcon, MoonIcon, SearchIcon, SunIc
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { KaikeiSymbol, KaikeiWordmark } from "@/components/brand";
 import { useCommandMenu } from "@/components/command/command-menu";
 import { NavIcon } from "@/components/shell/nav-icon";
 import {
@@ -55,12 +56,16 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="gap-2">
+        <Link href={gPath(group)} aria-label="kaikei home" className="flex h-8 items-center gap-2 px-2 text-foreground group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
+          <KaikeiSymbol className="size-5 shrink-0" />
+          <KaikeiWordmark className="h-3.5 w-auto group-data-[collapsible=icon]:hidden" />
+        </Link>
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent">
-                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-foreground text-[12px] font-semibold text-background">AG</span>
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md border bg-background text-[11px] font-semibold">AG</span>
                   <span className="grid min-w-0 flex-1 text-left leading-tight">
                     <span className="truncate text-sm font-medium text-sidebar-accent-foreground">{groupName}</span>
                     <span className="truncate text-xs text-muted-foreground">{subtitle}</span>
@@ -72,7 +77,7 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
                 <DropdownMenuLabel className="text-xs text-muted-foreground">Group</DropdownMenuLabel>
                 <DropdownMenuItem asChild>
                   <Link href={gPath(group)}>
-                    <span className="flex size-5 items-center justify-center rounded bg-foreground text-[9px] font-semibold text-background">AG</span>
+                    <span className="flex size-5 items-center justify-center rounded border text-[9px] font-semibold">AG</span>
                     {groupName}
                     <CheckIcon className="ml-auto size-4" />
                   </Link>
