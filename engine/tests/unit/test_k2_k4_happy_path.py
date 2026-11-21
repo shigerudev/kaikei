@@ -17,16 +17,16 @@ from decimal import Decimal
 from pathlib import Path
 
 from kaikei.domain.ingestion.csv_adapter import read_csv_rows
+from kaikei.domain.normalization.long_format import LongLayout, LongMapping
 from kaikei.domain.normalization.mapping_loader import load_account_mappings
-from kaikei.domain.normalization.models import MappingConfig, StructuralMapping
 from kaikei.domain.normalization.normalize import normalize
 from kaikei.domain.validation.rules import find_duplicates
 
 FIXTURES = Path(__file__).resolve().parents[3] / "fixtures" / "grupo-ag"
 
 
-def _emp1_mapping() -> MappingConfig:
-    structural = StructuralMapping(
+def _emp1_mapping() -> LongMapping:
+    structural = LongLayout(
         mapping_version="v1",
         company_id="EMP1",
         period_column="Mes",
@@ -42,7 +42,7 @@ def _emp1_mapping() -> MappingConfig:
         },
     )
     accounts = load_account_mappings(FIXTURES / "answer_key_mapping.csv", "EMP1")
-    return MappingConfig(structural=structural, accounts=accounts)
+    return LongMapping(structural=structural, accounts=accounts)
 
 
 def test_happy_path_ingests_and_normalizes_every_mapped_row():

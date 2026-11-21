@@ -16,27 +16,27 @@ import { gPath } from "@/lib/ui/nav";
 export function StartRunButton({ group, defaultOpen = false, variant = "outline" }: { group: string; defaultOpen?: boolean; variant?: "outline" | "brand" }) {
   const router = useRouter();
   const [open, setOpen] = useState(defaultOpen);
-  const [reason, setReason] = useState("Rerun with the same inputs");
+  const [reason, setReason] = useState("Reejecutar con las mismas entradas");
   const [pending, start] = useTransition();
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm" variant={variant}>
-          <PlayIcon /> Start run
+          <PlayIcon /> Nueva ejecución
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Start a new run</DialogTitle>
-          <DialogDescription>Pins the approved files, mapping, rate set and rule set. Earlier runs are kept unchanged.</DialogDescription>
+          <DialogTitle>Nueva ejecución</DialogTitle>
+          <DialogDescription>Fija los archivos aprobados, el mapeo, las tasas y las reglas. Las ejecuciones anteriores no cambian.</DialogDescription>
         </DialogHeader>
         <div className="space-y-1.5">
-          <Label htmlFor="run-reason" className="text-xs text-muted-foreground">Reason</Label>
+          <Label htmlFor="run-reason" className="text-xs text-muted-foreground">Motivo</Label>
           <Input id="run-reason" value={reason} onChange={(e) => setReason(e.target.value)} maxLength={140} />
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline" size="sm">Cancel</Button>
+            <Button variant="outline" size="sm">Cancelar</Button>
           </DialogClose>
           <Button
             size="sm"
@@ -46,16 +46,16 @@ export function StartRunButton({ group, defaultOpen = false, variant = "outline"
               start(async () => {
                 const res = await startRunAction(group, reason);
                 if (!res.ok) {
-                  toast.error("Couldn't start the run", { description: res.error });
+                  toast.error("No se pudo ejecutar", { description: res.error });
                   return;
                 }
                 setOpen(false);
-                toast.success(`Run #${res.data.number} finished`, { description: `Fingerprint ${shortHash(res.data.fingerprint)}` });
+                toast.success(`Ejecución #${res.data.number} lista`, { description: `Huella ${shortHash(res.data.fingerprint)}` });
                 router.push(gPath(group, `/runs/${res.data.id}`));
               })
             }
           >
-            {pending ? <Loader2Icon className="animate-spin" /> : <PlayIcon />} Run
+            {pending ? <Loader2Icon className="animate-spin" /> : <PlayIcon />} Ejecutar
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -69,7 +69,7 @@ export function PublishButton({ runId, blockers, published }: { runId: string; b
   if (published)
     return (
       <Button size="sm" variant="outline" disabled>
-        <CheckCircle2Icon /> Published
+        <CheckCircle2Icon /> Publicada
       </Button>
     );
   return (
@@ -77,16 +77,16 @@ export function PublishButton({ runId, blockers, published }: { runId: string; b
       size="sm"
       variant="brand"
       disabled={blockers > 0 || pending}
-      title={blockers ? `${blockers} blocker(s) open` : undefined}
+      title={blockers ? `${blockers} bloqueante(s) abierto(s)` : undefined}
       onClick={() =>
         start(async () => {
           const res = await publishAction(runId);
-          if (!res.ok) toast.error("Not published", { description: res.error });
-          else toast.success(`Run #${res.data.number} published`, { description: "The snapshot is frozen." });
+          if (!res.ok) toast.error("No se publicó", { description: res.error });
+          else toast.success(`Ejecución #${res.data.number} publicada`, { description: "La versión quedó congelada." });
         })
       }
     >
-      {pending ? <Loader2Icon className="animate-spin" /> : <SendIcon />} Publish
+      {pending ? <Loader2Icon className="animate-spin" /> : <SendIcon />} Publicar
     </Button>
   );
 }

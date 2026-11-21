@@ -10,13 +10,13 @@ import type { FileStatus } from "@/lib/api/types";
 import { formatStamp, shortHash } from "@/lib/ui/format";
 import { gPath } from "@/lib/ui/nav";
 
-export const metadata = { title: "Uploads" };
+export const metadata = { title: "Cargas" };
 
 const STATUS: Record<FileStatus, { label: string; cls: string }> = {
-  MISSING: { label: "Waiting for file", cls: "text-muted-foreground" },
-  UPLOADED: { label: "Review mapping", cls: "text-warning" },
-  MAPPING_APPROVED: { label: "Ready", cls: "text-brand" },
-  REJECTED: { label: "Rejected", cls: "text-negative" },
+  MISSING: { label: "Esperando archivo", cls: "text-muted-foreground" },
+  UPLOADED: { label: "Revisar mapeo", cls: "text-warning" },
+  MAPPING_APPROVED: { label: "Listo", cls: "text-brand" },
+  REJECTED: { label: "Rechazado", cls: "text-negative" },
 };
 
 /** Screen 2: upload wizard — one pack per company, preview as parsed, mapping approval. */
@@ -28,7 +28,7 @@ export default async function UploadsPage({ params }: PageProps<"/g/[group]/uplo
   if (!result.ok)
     return (
       <>
-        <PageHeader group={group} crumbs={[{ label: "Uploads" }]} preview={preview} />
+        <PageHeader group={group} crumbs={[{ label: "Cargas" }]} preview={preview} />
         <PageBody>{result.node}</PageBody>
       </>
     );
@@ -40,11 +40,11 @@ export default async function UploadsPage({ params }: PageProps<"/g/[group]/uplo
 
   return (
     <>
-      <PageHeader group={group} crumbs={[{ label: "Uploads" }]} run={run} preview={preview} />
+      <PageHeader group={group} crumbs={[{ label: "Cargas" }]} run={run} preview={preview} />
       <PageBody className="max-w-5xl">
         <PageTitle
-          title="Company packs"
-          description="One budget pack per company, in whatever shape it arrives. Originals are stored unchanged with their SHA-256; every value keeps its file, row and cell."
+          title="Paquetes de las empresas"
+          description="Un paquete de presupuesto por empresa, en el formato que llegue. Los originales se guardan sin cambios con su SHA-256; cada valor conserva su archivo, fila y celda."
         >
           {allReady && <StartRunButton group={group} variant="brand" />}
         </PageTitle>
@@ -53,9 +53,9 @@ export default async function UploadsPage({ params }: PageProps<"/g/[group]/uplo
 
         <section className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-medium">Companies</h2>
+            <h2 className="text-sm font-medium">Empresas</h2>
             <p className="num text-xs text-muted-foreground">
-              {ready} of {companies.length} ready for a run
+              {ready} de {companies.length} listas para ejecutar
             </p>
           </div>
           <div aria-hidden className="h-1 overflow-hidden rounded-full bg-muted">
@@ -78,7 +78,7 @@ export default async function UploadsPage({ params }: PageProps<"/g/[group]/uplo
                           <CompanyTag id={c.id} name={c.name} />
                         </p>
                         <p className="mt-1 text-xs text-muted-foreground">
-                          {c.country} · {c.functional_currency} · {c.ownership_pct}% · full consolidation
+                          {c.country} · {c.functional_currency} · {c.ownership_pct}% · consolidación total
                         </p>
                       </div>
                       <span className={`flex shrink-0 items-center gap-1 text-xs font-medium ${st.cls}`}>
@@ -93,9 +93,9 @@ export default async function UploadsPage({ params }: PageProps<"/g/[group]/uplo
                     </div>
                     <p className="line-clamp-2 text-xs text-muted-foreground">{c.format}</p>
                     <div className="mt-auto flex items-center justify-between text-xs text-muted-foreground">
-                      <span>{has ? `${f.records ?? 0} records · ${f.uploaded_at ? formatStamp(f.uploaded_at) : ""}` : "Not uploaded"}</span>
+                      <span>{has ? `${f.records ?? 0} registros · ${f.uploaded_at ? formatStamp(f.uploaded_at) : ""}` : "Sin subir"}</span>
                       <span className="flex items-center gap-1 text-foreground opacity-0 transition-opacity group-hover:opacity-100">
-                        {has ? "Preview" : "Details"} <ArrowRightIcon className="size-3.5" />
+                        {has ? "Vista previa" : "Detalles"} <ArrowRightIcon className="size-3.5" />
                       </span>
                     </div>
                   </Link>

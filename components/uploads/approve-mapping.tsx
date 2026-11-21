@@ -12,7 +12,7 @@ export function ApproveMapping({ group, companyId, approved, disabled }: { group
   if (approved)
     return (
       <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-subtle px-2.5 py-1 text-xs font-medium text-brand">
-        <CheckIcon className="size-3.5" /> Mapping approved · MAP-V1
+        <CheckIcon className="size-3.5" /> Mapeo aprobado · MAP-V1
       </span>
     );
   return (
@@ -23,12 +23,12 @@ export function ApproveMapping({ group, companyId, approved, disabled }: { group
       onClick={() =>
         start(async () => {
           const res = await approveMappingAction(group, companyId);
-          if (!res.ok) toast.error("Not approved", { description: res.error });
-          else toast.success(`${companyId} mapping approved`);
+          if (!res.ok) toast.error("No se aprobó", { description: res.error });
+          else toast.success(`Mapeo de ${companyId} aprobado`);
         })
       }
     >
-      {pending ? <Loader2Icon className="animate-spin" /> : <CheckIcon />} Approve mapping
+      {pending ? <Loader2Icon className="animate-spin" /> : <CheckIcon />} Aprobar mapeo
     </Button>
   );
 }

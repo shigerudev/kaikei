@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from kaikei.domain.normalization.models import CanonicalRecord
+from kaikei.domain.validation.helpers import finding_id
 from kaikei.domain.validation.models import Finding, Severity
 
 
@@ -12,7 +13,7 @@ def _duplicate_key(record: CanonicalRecord) -> tuple[str, str, str, str, str]:
         record.group_account_code,
         record.period,
         format(record.amount_local, "f"),
-        record.description,
+        record.local_account_name,
     )
 
 
@@ -30,17 +31,20 @@ def find_duplicates(records: list[CanonicalRecord]) -> list[Finding]:
     for group in groups.values():
         if len(group) < 2:
             continue
+        source_refs = [record.source for record in group]
+        reason = (
+            f"duplicate record: {group[0].company_id}/{group[0].group_account_code} "
+            f"{group[0].period} {group[0].local_account_name!r} appears {len(group)} times"
+        )
         findings.append(
             Finding(
+                finding_id=finding_id("VAL-006", reason, source_refs),
                 rule_id="VAL-006",
                 rule_version="v1",
                 severity=Severity.WARNING,
-                source_refs=[record.source for record in group],
-                observed=format(group[0].amount_local, "f"),
-                reason=(
-                    f"duplicate record: {group[0].company_id}/{group[0].group_account_code} "
-                    f"{group[0].period} {group[0].description!r} appears {len(group)} times"
-                ),
+                source_refs=source_refs,
+                observed=group[0].amount_local,
+                reason=reason,
             )
         )
     return findings

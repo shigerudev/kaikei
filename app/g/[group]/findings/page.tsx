@@ -9,10 +9,10 @@ import type { Finding, Severity } from "@/lib/api/types";
 import { pluralize } from "@/lib/ui/format";
 import { gPath } from "@/lib/ui/nav";
 
-export const metadata = { title: "Findings" };
+export const metadata = { title: "Hallazgos" };
 
 const ORDER: Severity[] = ["BLOCKER", "WARNING", "INFO"];
-const GROUP_LABEL: Record<Severity, string> = { BLOCKER: "Blockers — stop publication", WARNING: "Warnings — counted, flagged", INFO: "Info — no effect on figures" };
+const GROUP_LABEL: Record<Severity, string> = { BLOCKER: "Bloqueantes — detienen la publicación", WARNING: "Advertencias — se cuentan y se señalan", INFO: "Info — sin efecto en las cifras" };
 const isOpen = (f: Finding) => f.status === "OPEN" || f.status === "UNDER_REVIEW";
 
 /** Screen 4: findings center. Every finding is located (file · line · column) and decided with a reason. */
@@ -28,7 +28,7 @@ export default async function FindingsPage({ params, searchParams }: PageProps<"
   if (!result.ok)
     return (
       <>
-        <PageHeader group={group} crumbs={[{ label: "Findings" }]} preview={dataSource() === "preview"} />
+        <PageHeader group={group} crumbs={[{ label: "Hallazgos" }]} preview={dataSource() === "preview"} />
         <PageBody>{result.node}</PageBody>
       </>
     );
@@ -46,17 +46,17 @@ export default async function FindingsPage({ params, searchParams }: PageProps<"
 
   return (
     <>
-      <PageHeader group={group} crumbs={[{ label: "Findings" }]} run={run} preview={dataSource() === "preview"} />
+      <PageHeader group={group} crumbs={[{ label: "Hallazgos" }]} run={run} preview={dataSource() === "preview"} />
       <PageBody className="max-w-5xl">
         <PageTitle
-          title="Findings"
+          title="Hallazgos"
           description={
             run ? (
               <>
-                {pluralize(open.length, "open finding")} in run #{run.number} · {pluralize(open.filter((f) => f.severity === "BLOCKER").length, "blocker")}. Nothing uncertain is accepted silently.
+                {pluralize(open.length, "hallazgo abierto", "hallazgos abiertos")} en la ejecución #{run.number} · {pluralize(open.filter((f) => f.severity === "BLOCKER").length, "bloqueante")}. Nada incierto se acepta en silencio.
               </>
             ) : (
-              "Start a run to validate the uploaded packs."
+              "Lanza una ejecución para validar los paquetes subidos."
             )
           }
         />
@@ -65,8 +65,8 @@ export default async function FindingsPage({ params, searchParams }: PageProps<"
         {filtered.length === 0 ? (
           <EmptyState
             icon={CircleCheckBigIcon}
-            title={status === "open" && !sp.severity && !sp.company && !sp.rule ? "No open findings" : "Nothing matches these filters"}
-            description={status === "open" ? "Every finding in this run has a recorded decision." : "Try another filter."}
+            title={status === "open" && !sp.severity && !sp.company && !sp.rule ? "Sin hallazgos abiertos" : "Nada coincide con estos filtros"}
+            description={status === "open" ? "Cada hallazgo de esta ejecución tiene una decisión registrada." : "Prueba otro filtro."}
           />
         ) : (
           ORDER.filter((s) => filtered.some((f) => f.severity === s)).map((s) => (

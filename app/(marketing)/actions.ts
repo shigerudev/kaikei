@@ -1,10 +1,12 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { appHomeFor, safeNext } from "@/lib/hosts";
 import { z } from "zod";
 import { readSession, setSession } from "@/app/(marketing)/session";
 import { getDict } from "@/components/site/dict";
-import { isLang, type Lang, localize, PLAN_IDS, SITE } from "@/lib/ui/site";
+import { isLang, type Lang, localize, PLAN_IDS } from "@/lib/ui/site";
 
 export type FormState = {
   errors?: Record<string, string[] | undefined>;
@@ -42,7 +44,7 @@ export async function logIn(_prev: FormState, form: FormData): Promise<FormState
   const existing = await readSession();
   await setSession({ email: parsed.data.email, name: existing?.name ?? "", plan: existing?.plan ?? "free" });
   const next = String(form.get("next") ?? "");
-  redirect(next.startsWith("/") && !next.startsWith("//") ? next : SITE.appHome);
+  redirect(safeNext(next) ?? appHomeFor((await headers()).get("host")));
 }
 
 export async function completeOnboarding(_prev: FormState, form: FormData): Promise<FormState> {
@@ -57,5 +59,5 @@ export async function completeOnboarding(_prev: FormState, form: FormData): Prom
   const parsed = schema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return { errors: z.flattenError(parsed.error).fieldErrors, values: values(form, ["group", "currency", "companies"]) };
   // TODO(Antonio): create the group through the engine API (K6) and redirect to /g/<new-id>.
-  redirect(SITE.appHome);
+  redirect(appHomeFor((await headers()).get("host")));
 }

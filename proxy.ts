@@ -1,53 +1,81 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { APP_ORIGIN, hostRole, safeNext, SITE_ORIGIN } from "@/lib/hosts";
 
 /**
- * Auth gate between the marketing site and the platform (same app, same `kaikei_session` cookie).
- * - /g/*   without a session → kaikei.io/login?next=<path> (relative /login outside production).
- * - /login with a session    → straight into the platform (or the safe `next` path).
- * TODO(Antonio): the cookie is a placeholder (unsigned); swap for Better Auth sessions (MANIFESTO roadmap).
+ * Routing + auth gate between the marketing site and the platform, sharing the `kaikei_session` cookie.
+ *
+ * app.kaikei.io  → the platform with clean URLs: /uploads, /findings/FIND-E02, … are served from
+ *                  /g/<workspace>/… internally. Old /g/<ws>/… links redirect to the clean form.
+ *                  Marketing paths go back to kaikei.io; no session → kaikei.io/login?next=<url>.
+ * kaikei.io      → marketing; /app and /g/<ws>/… redirect to the clean app.kaikei.io URL.
+ * other hosts    → both on one host (localhost, previews), platform under /g/<ws>.
+ * TODO(Antonio): the cookie is a placeholder (unsigned); swap for Better Auth sessions.
  */
 const COOKIE = "kaikei_session";
-const APP_HOME = "/g/grupo-ag";
-const PROD_LOGIN = "https://kaikei.io/login";
+const WORKSPACE_COOKIE = "kaikei_workspace";
+const DEFAULT_WORKSPACE = process.env.KAIKEI_DEFAULT_GROUP ?? "demo";
+/** First path segments that belong to the platform on app.kaikei.io. */
+const PLATFORM = new Set(["", "uploads", "runs", "findings", "intercompany", "inspector", "settings", "search"]);
 
 function hasSession(req: NextRequest) {
   const raw = req.cookies.get(COOKIE)?.value;
   if (!raw) return false;
   try {
-    const json = atob(raw.replace(/-/g, "+").replace(/_/g, "/"));
-    return typeof JSON.parse(json)?.email === "string";
+    return typeof JSON.parse(atob(raw.replace(/-/g, "+").replace(/_/g, "/")))?.email === "string";
   } catch {
     return false;
   }
 }
 
-const safeNext = (v: string | null) => (v && v.startsWith("/") && !v.startsWith("//") ? v : null);
-
-function loginUrl(req: NextRequest) {
-  const configured = process.env.KAIKEI_LOGIN_URL;
-  const onKaikei = req.nextUrl.hostname === "kaikei.io" || req.nextUrl.hostname === "www.kaikei.io";
-  const base = configured ?? (onKaikei || process.env.VERCEL_ENV === "production" ? PROD_LOGIN : new URL("/login", req.url).toString());
-  const url = new URL(base);
-  url.searchParams.set("next", req.nextUrl.pathname + req.nextUrl.search);
-  return url;
-}
+/** "/g/demo/uploads" → "/uploads"; "/g/demo" → "/". */
+const stripWorkspace = (p: string) => p.replace(/^\/g\/[^/]+/, "") || "/";
+const isPlatformPath = (p: string) => p === "/app" || p === "/g" || p.startsWith("/g/");
+const isLogin = (p: string) => p === "/login" || p === "/en/login";
 
 export function proxy(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+  const { pathname, search } = req.nextUrl;
+  const role = hostRole(req.headers.get("host"));
   const authed = hasSession(req);
 
-  if (pathname.startsWith("/g/") || pathname === "/g") {
-    return authed ? NextResponse.next() : NextResponse.redirect(loginUrl(req));
+  if (role === "site") {
+    if (pathname === "/app") return NextResponse.redirect(new URL(`/${search}`, APP_ORIGIN));
+    if (pathname === "/g" || pathname.startsWith("/g/")) return NextResponse.redirect(new URL(stripWorkspace(pathname) + search, APP_ORIGIN));
+    if (isLogin(pathname) && authed) return NextResponse.redirect(new URL(safeNext(req.nextUrl.searchParams.get("next")) ?? `${APP_ORIGIN}/`));
+    return NextResponse.next();
   }
 
-  // /login and /en/login: already signed in → into the platform.
-  if (authed) {
-    const next = safeNext(req.nextUrl.searchParams.get("next"));
-    return NextResponse.redirect(new URL(next ?? APP_HOME, req.url));
+  if (role === "app") {
+    if (pathname === "/app") return NextResponse.redirect(new URL(`/${search}`, APP_ORIGIN));
+    if (pathname === "/g" || pathname.startsWith("/g/")) {
+      // Old links and fetches → canonical clean URL (keeps method/body for POSTs).
+      return NextResponse.redirect(new URL(stripWorkspace(pathname) + search, APP_ORIGIN), 308);
+    }
+    const first = pathname.split("/")[1] ?? "";
+    if (!PLATFORM.has(first)) return NextResponse.redirect(new URL(pathname + search, SITE_ORIGIN));
+    if (!authed) {
+      const login = new URL("/login", SITE_ORIGIN);
+      login.searchParams.set("next", `${APP_ORIGIN}${pathname}${search}`);
+      return NextResponse.redirect(login);
+    }
+    const ws = req.cookies.get(WORKSPACE_COOKIE)?.value || DEFAULT_WORKSPACE;
+    const url = req.nextUrl.clone();
+    url.pathname = `/g/${ws}${pathname === "/" ? "" : pathname}`;
+    return NextResponse.rewrite(url);
+  }
+
+  // Single host: platform under /g/<ws>.
+  if (isPlatformPath(pathname) && !authed) {
+    const login = new URL("/login", req.url);
+    login.searchParams.set("next", pathname + search);
+    return NextResponse.redirect(login);
+  }
+  if (isLogin(pathname) && authed) {
+    return NextResponse.redirect(new URL(safeNext(req.nextUrl.searchParams.get("next")) ?? "/app", req.url));
   }
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/g/:path*", "/login", "/en/login"],
+  // Pages only: skip Next internals, API routes and files with an extension (icons, images, fonts).
+  matcher: ["/((?!_next/|api/|.*\\..*).*)"],
 };

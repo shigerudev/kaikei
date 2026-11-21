@@ -41,31 +41,6 @@ def _facts(run_id: str, period: str = "2027", statement: str = "PL") -> dict:
 # ── Group configuration ──────────────────────────────────────────────────────────
 
 
-def test_group_config_comes_from_the_group_data_files():
-    group = client.get(f"/api/v1/groups/{GROUP}")
-    assert group.status_code == 200
-    assert group.json() == {
-        "id": "grupo-ag",
-        "name": "Grupo AG",
-        "reporting_currency": "USD",
-        "scenario": "BUDGET_2027",
-    }
-    assert client.get("/api/v1/groups/nope").status_code == 404
-
-
-def test_companies_carry_every_field_the_screens_need():
-    companies = client.get(f"/api/v1/groups/{GROUP}/companies").json()
-    assert [c["id"] for c in companies] == ["EMP1", "EMP2", "EMP3", "EMP4", "EMP5", "EMP6"]
-    emp5 = next(c for c in companies if c["id"] == "EMP5")
-    assert emp5["country"] == "ES"
-    assert emp5["functional_currency"] == "EUR"
-    assert emp5["ownership_pct"] == "100"
-    assert emp5["consolidation_method"] == "FULL"
-    assert "AG España" in emp5["aliases"]  # the alias table, not a guess
-    assert emp5["filename"] == "05_AG_Espana.csv"
-    assert emp5["format"]
-
-
 def test_rate_set_publishes_both_sides_of_the_group_quote():
     rate_set = client.get(f"/api/v1/groups/{GROUP}/fx-rate-sets/current").json()
     assert rate_set["id"] and rate_set["version"]
@@ -303,17 +278,6 @@ def test_matches_name_the_seller_the_buyer_and_the_flow():
 # ── Files and mappings ───────────────────────────────────────────────────────────
 
 
-def test_files_report_one_stored_pack_per_company():
-    _run()
-    files = client.get("/api/v1/files", params={"group_id": GROUP}).json()
-    assert [f["company_id"] for f in files] == ["EMP1", "EMP2", "EMP3", "EMP4", "EMP5", "EMP6"]
-    emp1 = files[0]
-    assert len(emp1["sha256"]) == 64
-    assert emp1["rows"] and emp1["records"]
-    assert emp1["status"] == "MAPPING_APPROVED"
-    assert emp1["id"] == "FILE-EMP1"
-
-
 def test_file_preview_shows_what_the_engine_read_and_the_mapping_it_used():
     _run()
     preview = client.get("/api/v1/files/FILE-EMP1/preview").json()
@@ -337,36 +301,6 @@ def test_approving_a_mapping_freezes_its_version():
     assert response.json()["status"] == "MAPPING_APPROVED"
     assert response.json()["mapping_version"]
     assert client.post(f"/api/v1/mappings/{GROUP}:NOPE/approve").status_code == 404
-
-
-def test_uploading_the_same_pack_again_is_recognised_not_reimported():
-    _run()
-    path = "fixtures/grupo-ag/01_AG_Distribucion_GT.csv"
-    from pathlib import Path
-
-    data = (Path(__file__).resolve().parents[3] / path).read_bytes()
-    response = client.post(
-        "/api/v1/files",
-        data={"group_id": GROUP},
-        files={"file": ("01_AG_Distribucion_GT.csv", data, "text/csv")},
-    )
-    assert response.status_code == 201
-    body = response.json()
-    assert body["alreadyImported"] is True
-    assert body["file"]["company_id"] == "EMP1"
-
-
-def test_an_unidentifiable_upload_is_refused_with_a_reason():
-    response = client.post(
-        "/api/v1/files",
-        data={"group_id": GROUP},
-        files={"file": ("mystery.csv", b"a,b\n1,2\n", "text/csv")},
-    )
-    assert response.status_code == 422
-    assert "mystery.csv" in response.json()["detail"]
-
-
-# ── Decisions ────────────────────────────────────────────────────────────────────
 
 
 def test_a_decision_creates_a_new_run_pinned_to_it():

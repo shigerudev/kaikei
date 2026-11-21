@@ -1,12 +1,13 @@
 "use client";
 
-import { CheckIcon, ChevronsUpDownIcon, LogOutIcon, MonitorIcon, MoonIcon, SearchIcon, SunIcon } from "lucide-react";
+import { CheckIcon, ChevronsUpDownIcon, GraduationCapIcon, LogOutIcon, MonitorIcon, MoonIcon, SearchIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { logOutAction } from "@/app/g/[group]/actions";
 import { KaikeiSymbol, KaikeiWordmark } from "@/components/brand";
 import { useCommandMenu } from "@/components/command/command-menu";
+import { openTour } from "@/components/onboarding-tour";
 import { NavIcon } from "@/components/shell/nav-icon";
 import {
   DropdownMenu,
@@ -47,6 +48,7 @@ type Props = {
 
 export function AppSidebar({ group, groupName, subtitle, companies, openBlockers, openFindings, filesReady }: Props) {
   const pathname = usePathname();
+  const initials = groupName.split(/\s+/).filter((w) => w.length > 2 || /^[A-Z]/.test(w)).map((w) => w[0]).join("").slice(0, 2).toUpperCase() || "K";
   const active = activeNav(pathname, group);
   const { open: openCommand } = useCommandMenu();
   const { isMobile, setOpenMobile } = useSidebar();
@@ -57,7 +59,7 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="gap-2">
-        <Link href={gPath(group)} aria-label="kaikei home" className="flex h-8 items-center gap-2 px-2 text-foreground group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
+        <Link href={gPath(group)} aria-label="Inicio de kaikei" className="flex h-8 items-center gap-2 px-2 text-foreground group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
           <KaikeiSymbol className="size-5 shrink-0" />
           <KaikeiWordmark className="h-3.5 w-auto group-data-[collapsible=icon]:hidden" />
         </Link>
@@ -66,7 +68,7 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent">
-                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md border bg-background text-[11px] font-semibold">AG</span>
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md border bg-background text-[11px] font-semibold">{initials}</span>
                   <span className="grid min-w-0 flex-1 text-left leading-tight">
                     <span className="truncate text-sm font-medium text-sidebar-accent-foreground">{groupName}</span>
                     <span className="truncate text-xs text-muted-foreground">{subtitle}</span>
@@ -75,15 +77,15 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" side={isMobile ? "bottom" : "right"} sideOffset={6} className="w-64">
-                <DropdownMenuLabel className="text-xs text-muted-foreground">Group</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-xs text-muted-foreground">Espacio de trabajo</DropdownMenuLabel>
                 <DropdownMenuItem asChild>
                   <Link href={gPath(group)}>
-                    <span className="flex size-5 items-center justify-center rounded border text-[9px] font-semibold">AG</span>
+                    <span className="flex size-5 items-center justify-center rounded border text-[9px] font-semibold">{initials}</span>
                     {groupName}
                     <CheckIcon className="ml-auto size-4" />
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuLabel className="mt-1 text-xs text-muted-foreground">Companies</DropdownMenuLabel>
+                <DropdownMenuLabel className="mt-1 text-xs text-muted-foreground">Empresas</DropdownMenuLabel>
                 {companies.map((c) => (
                   <DropdownMenuItem key={c.id} asChild>
                     <Link href={gPath(group, `/uploads/${c.id}`)}>
@@ -98,7 +100,7 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton
-              tooltip="Search ⌘K"
+              tooltip="Buscar ⌘K"
               onClick={() => {
                 close();
                 openCommand();
@@ -106,7 +108,7 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
               className="text-muted-foreground"
             >
               <SearchIcon />
-              <span>Search</span>
+              <span>Buscar</span>
               <Kbd className="ml-auto group-data-[collapsible=icon]:hidden">⌘K</Kbd>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -115,7 +117,7 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Consolidation</SidebarGroupLabel>
+          <SidebarGroupLabel>Consolidación</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {main.map((n) => {
@@ -152,13 +154,19 @@ export function AppSidebar({ group, groupName, subtitle, companies, openBlockers
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
+            <SidebarMenuButton tooltip="Tutorial" onClick={() => { close(); openTour(); }} className="text-muted-foreground">
+              <GraduationCapIcon />
+              <span>Tutorial</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
             <ThemeMenu />
           </SidebarMenuItem>
           <SidebarMenuItem>
             <form action={logOutAction}>
-              <SidebarMenuButton type="submit" tooltip="Log out" className="text-muted-foreground">
+              <SidebarMenuButton type="submit" tooltip="Cerrar sesión" className="text-muted-foreground">
                 <LogOutIcon />
-                <span>Log out</span>
+                <span>Cerrar sesión</span>
               </SidebarMenuButton>
             </form>
           </SidebarMenuItem>
@@ -174,17 +182,17 @@ function ThemeMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <SidebarMenuButton tooltip="Theme" className="text-muted-foreground">
+        <SidebarMenuButton tooltip="Tema" className="text-muted-foreground">
           <SunIcon className="dark:hidden" />
           <MoonIcon className="hidden dark:block" />
-          <span>Theme</span>
+          <span>Tema</span>
         </SidebarMenuButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="right" align="end" sideOffset={6} className="w-40">
         <DropdownMenuRadioGroup value={theme ?? "system"} onValueChange={setTheme}>
-          <DropdownMenuRadioItem value="light"><SunIcon /> Light</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="dark"><MoonIcon /> Dark</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="system"><MonitorIcon /> System</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="light"><SunIcon /> Claro</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="dark"><MoonIcon /> Oscuro</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="system"><MonitorIcon /> Sistema</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

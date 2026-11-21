@@ -23,20 +23,20 @@ export function FindingsFilters({ companies, rules, counts }: { companies: { id:
 
   return (
     <div className="flex flex-wrap items-center gap-2" data-pending={pending || undefined}>
-      <ToggleGroup type="single" variant="outline" size="sm" value={params.get("severity") ?? "all"} onValueChange={(v) => update("severity", v || "all")} aria-label="Severity">
+      <ToggleGroup type="single" variant="outline" size="sm" value={params.get("severity") ?? "all"} onValueChange={(v) => update("severity", v || "all")} aria-label="Severidad">
         {["all", "BLOCKER", "WARNING", "INFO"].map((s) => (
           <ToggleGroupItem key={s} value={s} className="h-8 gap-1.5 px-2.5 text-xs">
-            {s === "all" ? "All" : s.charAt(0) + s.slice(1).toLowerCase()}
+            {({ all: "Todos", BLOCKER: "Bloqueantes", WARNING: "Advertencias", INFO: "Info" } as Record<string, string>)[s]}
             <span className="num text-muted-foreground">{counts[s] ?? 0}</span>
           </ToggleGroupItem>
         ))}
       </ToggleGroup>
       <Select value={params.get("company") ?? "all"} onValueChange={(v) => update("company", v)}>
-        <SelectTrigger size="sm" className="h-8 w-44" aria-label="Company">
-          <SelectValue placeholder="All companies" />
+        <SelectTrigger size="sm" className="h-8 w-44" aria-label="Empresa">
+          <SelectValue placeholder="Todas las empresas" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All companies</SelectItem>
+          <SelectItem value="all">Todas las empresas</SelectItem>
           {companies.map((c) => (
             <SelectItem key={c.id} value={c.id}>
               <span className="font-mono text-[10px] text-muted-foreground">{c.id}</span> {c.name}
@@ -45,11 +45,11 @@ export function FindingsFilters({ companies, rules, counts }: { companies: { id:
         </SelectContent>
       </Select>
       <Select value={params.get("rule") ?? "all"} onValueChange={(v) => update("rule", v)}>
-        <SelectTrigger size="sm" className="h-8 w-32" aria-label="Rule">
-          <SelectValue placeholder="All rules" />
+        <SelectTrigger size="sm" className="h-8 w-32" aria-label="Regla">
+          <SelectValue placeholder="Todas las reglas" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All rules</SelectItem>
+          <SelectItem value="all">Todas las reglas</SelectItem>
           {rules.map((r) => (
             <SelectItem key={r} value={r} className="font-mono text-xs">
               {r}
@@ -58,13 +58,13 @@ export function FindingsFilters({ companies, rules, counts }: { companies: { id:
         </SelectContent>
       </Select>
       <Select value={params.get("status") ?? "open"} onValueChange={(v) => update("status", v === "open" ? null : v)}>
-        <SelectTrigger size="sm" className="h-8 w-36" aria-label="Status">
+        <SelectTrigger size="sm" className="h-8 w-36" aria-label="Estado">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="open">Open</SelectItem>
-          <SelectItem value="decided">Resolved / accepted</SelectItem>
-          <SelectItem value="any">Any status</SelectItem>
+          <SelectItem value="open">Abiertos</SelectItem>
+          <SelectItem value="decided">Resueltos / aceptados</SelectItem>
+          <SelectItem value="any">Cualquier estado</SelectItem>
         </SelectContent>
       </Select>
       {active && (
@@ -74,7 +74,7 @@ export function FindingsFilters({ companies, rules, counts }: { companies: { id:
           className="h-8 text-muted-foreground"
           onClick={() => start(() => router.replace(pathname, { scroll: false }))}
         >
-          <XIcon /> Clear
+          <XIcon /> Limpiar
         </Button>
       )}
     </div>

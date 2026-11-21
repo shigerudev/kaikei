@@ -201,6 +201,18 @@ def runs_out(records: list[RunRecord]) -> list[RunOut]:
 # ── Findings ─────────────────────────────────────────────────────────────────────
 
 
+def _amount_str(value: Decimal | None) -> str | None:
+    """K4 holds Decimals; the API carries decimal strings (MANIFESTO ?4.2)."""
+    return None if value is None else money(value)
+
+
+def _observed_str(finding: FindingRecord) -> str | None:
+    """The observed number, or the verbatim text the rule saw when it was not a number."""
+    if finding.observed is not None:
+        return money(finding.observed)
+    return (finding.context or {}).get("observed")
+
+
 def finding_out(record: RunRecord, finding: FindingRecord) -> FindingOut:
     info = rule_info(finding.rule_id)
     return FindingOut(
@@ -216,9 +228,9 @@ def finding_out(record: RunRecord, finding: FindingRecord) -> FindingOut:
         reason=finding.reason,
         expected_behavior=info.expected_behavior,
         source_refs=[source_ref_out(record, ref) for ref in finding.source_refs],
-        expected=finding.expected,
-        observed=finding.observed,
-        difference=finding.difference,
+        expected=_amount_str(finding.expected),
+        observed=_observed_str(finding),
+        difference=_amount_str(finding.difference),
         currency=finding.currency,
         match_group_id=finding.match_group_id,
         # An open BLOCKER stops publication of its scope (MANIFESTO §4.1 gate ⑦); a decided

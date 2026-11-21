@@ -27,28 +27,28 @@ export function CopyField({ value, label, mono = true, masked = false }: { value
       </span>
       {masked && (
         <Button variant="ghost" size="xs" onClick={() => setReveal((r) => !r)} className="text-muted-foreground">
-          {reveal ? "Hide" : "Show"}
+          {reveal ? "Ocultar" : "Mostrar"}
         </Button>
       )}
       <Button
         variant="outline"
         size="sm"
-        aria-label={`Copy ${label}`}
+        aria-label={`Copiar ${label}`}
         onClick={async () => {
           try {
             await navigator.clipboard.writeText(value);
             setCopied(true);
           } catch {
-            toast.error("Couldn't copy. Select the text and copy it manually.");
+            toast.error("No se pudo copiar. Selecciona el texto y cópialo manualmente.");
           }
         }}
-        className="relative w-20 overflow-hidden"
+        className="relative w-24 overflow-hidden"
       >
         <span className={`flex items-center gap-1.5 transition-[opacity,filter,transform] duration-200 ease-(--ease-out) ${copied ? "scale-90 opacity-0 blur-[2px]" : ""}`}>
-          <CopyIcon /> Copy
+          <CopyIcon /> Copiar
         </span>
         <span className={`absolute inset-0 flex items-center justify-center gap-1.5 text-brand transition-[opacity,filter,transform] duration-200 ease-(--ease-out) ${copied ? "" : "scale-90 opacity-0 blur-[2px]"}`}>
-          <CheckIcon /> Copied
+          <CheckIcon /> Copiado
         </span>
       </Button>
     </div>

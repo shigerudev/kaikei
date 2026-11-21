@@ -11,7 +11,19 @@ import hashlib
 import io
 from pathlib import Path
 
-from kaikei.domain.ingestion.models import SourceRow
+from pydantic import BaseModel, ConfigDict, Field
+
+
+class SourceRow(BaseModel):
+    """One ingested row, unparsed, keyed by its original column headers (MANIFESTO §4.1 ①)."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    filename: str
+    sha256: str
+    sheet: str | None = None
+    row: int = Field(ge=1)
+    raw: dict[str, str]
 
 
 def read_csv_rows(path: Path | str) -> tuple[str, list[SourceRow]]:

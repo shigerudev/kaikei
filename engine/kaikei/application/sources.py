@@ -198,7 +198,7 @@ def preview(group_id: str, file_identifier: str, record: RunRecord | None) -> Fi
                 PreviewRowOut(
                     source=source_ref_out(record, canonical.source, company_id=company_id),
                     local_account=canonical.local_account_code,
-                    local_name=canonical.description,
+                    local_name=canonical.local_account_name or "",
                     period=canonical.period,
                     amount_local=money(canonical.amount_local),
                     currency=canonical.currency,

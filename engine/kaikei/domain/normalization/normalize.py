@@ -12,8 +12,11 @@ from __future__ import annotations
 import re
 from decimal import Decimal, InvalidOperation
 
-from kaikei.domain.ingestion.models import SourceRef, SourceRow
-from kaikei.domain.normalization.models import CanonicalRecord, MappingConfig
+from kaikei.domain.ingestion.csv_adapter import SourceRow
+from kaikei.domain.ingestion.models import SourceRef
+from kaikei.domain.normalization.long_format import LongMapping
+from kaikei.domain.normalization.models import CanonicalRecord
+from kaikei.domain.validation.helpers import finding_id, observed_fields
 from kaikei.domain.validation.models import Finding, Severity
 
 _SPANISH_MONTHS = {
@@ -60,7 +63,7 @@ def parse_period(raw: str) -> str:
 
 def normalize(
     rows: list[SourceRow],
-    mapping: MappingConfig,
+    mapping: LongMapping,
 ) -> tuple[list[CanonicalRecord], list[Finding]]:
     """Apply one company's structural + account mapping to its raw rows."""
     structural = mapping.structural
@@ -80,14 +83,16 @@ def normalize(
             column=structural.amount_column,
         )
         if account is None:
+            reason = f"account {local_code!r} is not in {structural.company_id}'s mapping"
             findings.append(
                 Finding(
+                    finding_id=finding_id("VAL-003", reason, [source]),
                     rule_id="VAL-003",
                     rule_version="v1",
                     severity=Severity.BLOCKER,
                     source_refs=[source],
-                    observed=local_code,
-                    reason=f"account {local_code!r} is not in {structural.company_id}'s mapping",
+                    reason=reason,
+                    **observed_fields(local_code),
                 )
             )
             continue
@@ -96,14 +101,16 @@ def normalize(
         try:
             amount_local = Decimal(raw_amount)
         except InvalidOperation:
+            reason = "invalid or missing monetary value"
             findings.append(
                 Finding(
+                    finding_id=finding_id("VAL-002", reason, [source]),
                     rule_id="VAL-002",
                     rule_version="v1",
                     severity=Severity.BLOCKER,
                     source_refs=[source],
-                    observed=raw_amount,
-                    reason="invalid or missing monetary value",
+                    reason=reason,
+                    **observed_fields(raw_amount),
                 )
             )
             continue
@@ -113,14 +120,16 @@ def normalize(
 
         records.append(
             CanonicalRecord(
+                record_id=f"{source.filename}:{source.row}:{source.column}",
                 source=source,
                 company_id=structural.company_id,
                 scenario_id=scenario_id,
+                scenario_year=scenario_id[-4:],
                 period=parse_period(row.raw[structural.period_column]),
                 statement=account.statement,
                 group_account_code=account.group_account_code,
                 local_account_code=local_code,
-                description=row.raw[structural.description_column].strip(),
+                local_account_name=row.raw[structural.description_column].strip(),
                 amount_local=amount_local,
                 currency=structural.currency,
                 mapping_version=structural.mapping_version,

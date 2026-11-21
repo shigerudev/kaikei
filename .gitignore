@@ -49,3 +49,6 @@ engine/.venv/
 .pytest_cache/
 uv.lock
 .ruff_cache/
+
+# Agent git worktrees
+.claude/worktrees/

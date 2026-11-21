@@ -1,59 +1,194 @@
-"""Stored originals and their parsed preview (MANIFESTO §4.4 `/files`, §4.1 ① Ingest)."""
+"""Source files and groups (UI contract: lib/api/types.ts SourceFile / Group / Company)."""
 
 from __future__ import annotations
 
-from fastapi import APIRouter, File, Form, HTTPException, Query, UploadFile
+from typing import Annotated, Literal
 
-from kaikei.api.deps import group_or_404
-from kaikei.application import latest_run
-from kaikei.application.contracts import FilePreviewOut, SourceFileOut, UploadResultOut
-from kaikei.application.group_config import GROUPS
-from kaikei.application.sources import UnknownUploadError, list_files, preview, upload
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
+from pydantic import BaseModel
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session
+
+from kaikei.api.deps import get_session, get_store
+from kaikei.application.uploads import (
+    MAX_UPLOAD_BYTES,
+    UploadError,
+    parse_group_id,
+    upload_file,
+)
+from kaikei.infrastructure.db import models
+from kaikei.infrastructure.storage import ObjectStore
 
 router = APIRouter(prefix="/api/v1", tags=["files"])
 
-_MAX_BYTES = 20 * 1024 * 1024
+FileStatus = Literal["MISSING", "UPLOADED", "MAPPING_APPROVED", "REJECTED"]
+
+
+class SourceFileOut(BaseModel):
+    id: str
+    company_id: str | None  # NULL until the filename resolves to a configured company
+    filename: str
+    sha256: str | None
+    uploaded_at: str | None
+    status: FileStatus
+    format: str
+    rows: int | None
+    records: int | None
+    parse_warnings: list[str]
+    mapping_version: str | None
+
+
+class UploadOut(BaseModel):
+    file: SourceFileOut
+    alreadyImported: bool  # noqa: N815  (UI contract)
+
+
+class GroupOut(BaseModel):
+    id: str
+    name: str
+    reporting_currency: str
+    scenario: str
+
+
+class CompanyOut(BaseModel):
+    id: str
+    name: str
+    country: str
+    functional_currency: str
+    ownership_pct: str
+    consolidation_method: Literal["FULL"]
+    aliases: list[str]
+    filename: str
+    format: str
+
+
+def _file_out(f: models.SourceFile, session: Session) -> SourceFileOut:
+    rows = session.scalar(
+        select(func.count())
+        .select_from(models.SourceRow)
+        .where(models.SourceRow.source_file_id == f.id)
+    )
+    warnings = session.scalars(
+        select(models.ValidationFinding.reason)
+        .where(
+            models.ValidationFinding.context["source_file_id"].astext == str(f.id),
+            models.ValidationFinding.severity != "INFO",
+        )
+        .order_by(models.ValidationFinding.created_at)
+    )
+    return SourceFileOut(
+        id=str(f.id),
+        company_id=str(f.company_id) if f.company_id else None,
+        filename=f.filename,
+        sha256=f.sha256,
+        uploaded_at=f.uploaded_at.isoformat() if f.uploaded_at else None,
+        status="UPLOADED",  # TODO(Jose): MAPPING_APPROVED once mappings exist (K3)
+        format=f.filename.rsplit(".", 1)[-1].lower(),
+        rows=rows or None,  # None = not parsed (no adapter yet, e.g. XLSX until PIPER-64)
+        records=None,  # TODO(Jose): canonical records count after normalization (PIPER-65)
+        parse_warnings=list(warnings),
+        mapping_version=None,
+    )
+
+
+def _http(err: UploadError) -> HTTPException:
+    return HTTPException(status_code=err.status, detail=err.message)
+
+
+@router.post("/files", response_model=UploadOut)
+def post_file(
+    session: Annotated[Session, Depends(get_session)],
+    store: Annotated[ObjectStore, Depends(get_store)],
+    group_id: Annotated[str, Form()],
+    file: Annotated[UploadFile, File()],
+) -> UploadOut:
+    data = file.file.read(MAX_UPLOAD_BYTES + 1)
+    try:
+        result = upload_file(session, store, group_id, file.filename or "", data)
+    except UploadError as err:
+        raise _http(err) from err
+    return UploadOut(file=_file_out(result.file, session), alreadyImported=result.already_imported)
 
 
 @router.get("/files", response_model=list[SourceFileOut])
-def get_files(group_id: str = Query()) -> list[SourceFileOut]:
-    """One pack per company, with its SHA-256, line count and mapping state."""
-    group = group_or_404(group_id)
-    return list_files(group.id, latest_run(group.id))
-
-
-@router.get("/files/{file_id}/preview", response_model=FilePreviewOut)
-def get_file_preview(file_id: str, group_id: str | None = Query(default=None)) -> FilePreviewOut:
-    """The rows the engine read from this pack, each with its source cell, plus its mapping.
-
-    The UI addresses a file by id alone, so with no `group_id` the configured groups are
-    searched for the one that holds it — never a hard-coded group.
-    """
-    group_ids = [group_or_404(group_id).id] if group_id else list(GROUPS)
-    for candidate in group_ids:
-        result = preview(candidate, file_id, latest_run(candidate))
-        if result is not None:
-            return result
-    raise HTTPException(status_code=404, detail=f"file {file_id!r} not found")
-
-
-@router.post("/files", response_model=UploadResultOut, status_code=201)
-async def post_file(
-    group_id: str = Form(),
-    file: UploadFile = File(),
-) -> UploadResultOut:
-    """Store an original unchanged and report whether this exact hash was already imported.
-
-    Originals are append-only (MANIFESTO principle 2): the bytes are hashed as received and
-    the file is never rewritten. A file this build can't place is refused with a reason —
-    the alternative, accepting it and leaving it unparsed, is the silent drop the manifesto
-    forbids.
-    """
-    group = group_or_404(group_id)
-    data = await file.read()
-    if len(data) > _MAX_BYTES:
-        raise HTTPException(status_code=413, detail="file larger than 20 MB")
+def list_files(
+    session: Annotated[Session, Depends(get_session)], group_id: str
+) -> list[SourceFileOut]:
     try:
-        return upload(group.id, file.filename or "", data)
-    except UnknownUploadError as exc:
-        raise HTTPException(status_code=422, detail=str(exc)) from exc
+        gid = parse_group_id(group_id)
+    except UploadError as err:
+        raise _http(err) from err
+    rows = session.scalars(
+        select(models.SourceFile)
+        .where(models.SourceFile.group_id == gid)
+        .order_by(models.SourceFile.uploaded_at)
+    )
+    return [_file_out(r, session) for r in rows]
+
+
+@router.get("/files/{file_id}", response_model=SourceFileOut)
+def get_file(file_id: str, session: Annotated[Session, Depends(get_session)]) -> SourceFileOut:
+    try:
+        fid = parse_group_id(file_id)
+    except UploadError:
+        raise HTTPException(404, f"file {file_id!r} not found") from None
+    row = session.get(models.SourceFile, fid)
+    if row is None:
+        raise HTTPException(404, f"file {file_id!r} not found")
+    return _file_out(row, session)
+
+
+@router.get("/groups/{group_id}", response_model=GroupOut)
+def get_group(group_id: str, session: Annotated[Session, Depends(get_session)]) -> GroupOut:
+    try:
+        gid = parse_group_id(group_id)
+    except UploadError as err:
+        raise _http(err) from err
+    group = session.get(models.Group, gid)
+    if group is None:
+        raise HTTPException(404, f"group {group_id!r} not found")
+    scenario = session.scalar(
+        select(models.Scenario.code)
+        .where(models.Scenario.group_id == gid)
+        .order_by(models.Scenario.code)
+    )
+    return GroupOut(
+        id=str(group.id),
+        name=group.name,
+        reporting_currency=group.reporting_currency,
+        scenario=scenario or "",
+    )
+
+
+@router.get("/groups/{group_id}/companies", response_model=list[CompanyOut])
+def list_companies(
+    group_id: str, session: Annotated[Session, Depends(get_session)]
+) -> list[CompanyOut]:
+    try:
+        gid = parse_group_id(group_id)
+    except UploadError as err:
+        raise _http(err) from err
+    if session.get(models.Group, gid) is None:
+        raise HTTPException(404, f"group {group_id!r} not found")
+    companies = session.scalars(
+        select(models.Company).where(models.Company.group_id == gid).order_by(models.Company.name)
+    ).all()
+    aliases: dict[object, list[str]] = {}
+    for a in session.scalars(
+        select(models.CompanyAlias).where(models.CompanyAlias.group_id == gid)
+    ):
+        aliases.setdefault(a.company_id, []).append(a.alias)
+    return [
+        CompanyOut(
+            id=str(c.id),
+            name=c.name,
+            country=c.country or "",
+            functional_currency=c.functional_currency,
+            ownership_pct=str(c.ownership_pct),
+            consolidation_method="FULL",
+            aliases=sorted(aliases.get(c.id, [])),
+            filename="",  # not in the schema yet; report to owner
+            format="",
+        )
+        for c in companies
+    ]

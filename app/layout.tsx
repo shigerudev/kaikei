@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: { default: "kaikei", template: "%s · kaikei" },
   description: "Every number opens down to the row.",
-  icons: { apple: "/brand/kaikei-app-icon-rounded.svg" },
+  icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }], apple: "/brand/kaikei-app-icon-rounded.svg" },
 };
 
 export const viewport: Viewport = {
@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="es"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >

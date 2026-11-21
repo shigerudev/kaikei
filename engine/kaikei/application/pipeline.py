@@ -86,18 +86,14 @@ from kaikei.domain.fx import (
     load_rate_set,
     translate_records,
 )
-from kaikei.domain.ingestion.csv_adapter import read_csv_rows
-from kaikei.domain.ingestion.models import SourceRef, SourceRow
+from kaikei.domain.ingestion.csv_adapter import SourceRow, read_csv_rows
+from kaikei.domain.ingestion.models import SourceRef
 from kaikei.domain.lineage import Lineage, LineageAdjustment, LineageContribution, build_lineage
+from kaikei.domain.normalization.long_format import LongAccount, LongLayout, LongMapping
 from kaikei.domain.normalization.mapping_loader import load_account_mappings
-from kaikei.domain.normalization.models import (
-    AccountMapping,
-    CanonicalRecord,
-    MappingConfig,
-    Statement,
-    StructuralMapping,
-)
+from kaikei.domain.normalization.models import CanonicalRecord, Statement
 from kaikei.domain.normalization.normalize import normalize, parse_period
+from kaikei.domain.validation.helpers import finding_id, observed_fields
 from kaikei.domain.validation.models import Finding, FindingStatus, Severity
 from kaikei.domain.validation.rules import find_duplicates
 
@@ -148,10 +144,9 @@ _OPEN_STATUSES = (FindingStatus.OPEN, FindingStatus.UNDER_REVIEW)
 
 
 class FindingRecord(Finding):
-    """`Finding` + a stable id and the few API-facing fields the rule itself can't know.
+    """K4 `Finding` + the few API-facing fields the rule itself can't know.
 
-    K4's `Finding` has no id field by design (SCOPE §2 K4) — the id here is this application
-    layer's own concern, deterministic from rule + reason + source cells so it survives an
+    `finding_id` is deterministic from rule + reason + source cells so it survives an
     identical rerun (MANIFESTO: "same inputs -> same fingerprint and facts", AC10).
 
     `expected`/`difference`/`currency`/`match_group_id` are filled where the engine already
@@ -160,14 +155,13 @@ class FindingRecord(Finding):
     answer key's own id (E01...E11c) and the engine does not read its own answer sheet.
     """
 
-    id: str
-    reference: str | None = None
-    expected: str | None = None
-    difference: str | None = None
-    currency: str | None = None
     match_group_id: str | None = None
     company_ids: list[str] = []
     decisions: list[FindingDecisionOut] = []
+
+    @property
+    def id(self) -> str:
+        return self.finding_id
 
 
 @dataclass(frozen=True)
@@ -223,21 +217,14 @@ def _record_id(record: CanonicalRecord) -> str:
     return f"{record.source.filename}:{record.source.row}:{record.source.column}"
 
 
-def _finding_id(f: Finding) -> str:
-    raw = f"{f.rule_id}|{f.reason}|" + "|".join(
-        f"{r.filename}:{r.row}:{r.column}" for r in f.source_refs
-    )
-    return hashlib.sha256(raw.encode()).hexdigest()[:16]
-
-
 def _money(value: Decimal) -> str:
     """Every figure crosses the API as a decimal string, rounded half-even to the reporting
     scale only here, at the boundary (MANIFESTO principle 5, §4.2 rounding)."""
     return format(value.quantize(Decimal("0.0001"), rounding=ROUND_HALF_EVEN), "f")
 
 
-def _emp1_mapping(fixtures_dir: Path) -> MappingConfig:
-    structural = StructuralMapping(
+def _emp1_mapping(fixtures_dir: Path) -> LongMapping:
+    structural = LongLayout(
         mapping_version="answer_key_mapping.csv",
         company_id="EMP1",
         period_column="Mes",
@@ -253,11 +240,11 @@ def _emp1_mapping(fixtures_dir: Path) -> MappingConfig:
         },
     )
     accounts = load_account_mappings(fixtures_dir / "answer_key_mapping.csv", "EMP1")
-    return MappingConfig(structural=structural, accounts=accounts)
+    return LongMapping(structural=structural, accounts=accounts)
 
 
 def _normalize_emp2_budget(
-    rows: list[SourceRow], accounts: dict[str, AccountMapping]
+    rows: list[SourceRow], accounts: dict[str, LongAccount]
 ) -> tuple[list[CanonicalRecord], list[Finding]]:
     """EMP2's 2027-budget monthly block (CSV lines 2-17) reshaped wide -> long by hand.
 
@@ -289,28 +276,32 @@ def _normalize_emp2_budget(
             try:
                 amount_local = Decimal(raw_amount)
             except InvalidOperation:
+                reason = "invalid or missing monetary value"
                 findings.append(
                     Finding(
+                        finding_id=finding_id("VAL-002", reason, [source]),
                         rule_id="VAL-002",
                         rule_version="v1",
                         severity=Severity.BLOCKER,
                         source_refs=[source],
-                        observed=raw_amount,
-                        reason="invalid or missing monetary value",
+                        reason=reason,
+                        **observed_fields(raw_amount),
                     )
                 )
                 continue
 
             records.append(
                 CanonicalRecord(
+                    record_id=f"{source.filename}:{source.row}:{source.column}",
                     source=source,
                     company_id="EMP2",
                     scenario_id="BUDGET_2027",
+                    scenario_year="2027",
                     period=parse_period(f"{month.lower()}-2027"),
                     statement=account.statement,
                     group_account_code=account.group_account_code,
                     local_account_code=concept,
-                    description=concept,
+                    local_account_name=concept,
                     amount_local=amount_local,
                     currency="GTQ",
                     mapping_version="emp2-budget-subset-v1",
@@ -365,17 +356,50 @@ def _to_canonical_amount(record: CanonicalRecord, record_id: str) -> CanonicalAm
     )
 
 
+def _decimal(value: str | None) -> Decimal | None:
+    return Decimal(value) if value is not None else None
+
+
+def _build_record(
+    *,
+    rule_id: str,
+    rule_version: str,
+    severity: Severity,
+    source_refs: list[SourceRef],
+    reason: str,
+    observed: str | None = None,
+    expected: str | None = None,
+    difference: str | None = None,
+    currency: str | None = None,
+    match_group_id: str | None = None,
+) -> FindingRecord:
+    """Money arrives as the decimal strings this layer already formats; K4 holds Decimals."""
+    return FindingRecord(
+        finding_id=finding_id(rule_id, reason, source_refs),
+        rule_id=rule_id,
+        rule_version=rule_version,
+        severity=severity,
+        source_refs=source_refs,
+        reason=reason,
+        expected=_decimal(expected),
+        difference=_decimal(difference),
+        currency=currency,
+        match_group_id=match_group_id,
+        **observed_fields(observed),
+    )
+
+
 def _fx_finding_to_record(f: FxFinding, record_index: dict[str, CanonicalRecord]) -> FindingRecord:
     record = record_index.get(f.record_id)
-    finding = Finding(
+    return _build_record(
         rule_id=f.rule_id,
         rule_version="fx-v1",
         severity=Severity(f.severity),
         source_refs=[record.source] if record is not None else [],
-        observed=f.observed,
         reason=f.reason,
+        observed=f.observed,
+        expected=f.expected,
     )
-    return FindingRecord(id=_finding_id(finding), expected=f.expected, **finding.model_dump())
 
 
 def _ic_finding_to_record(
@@ -387,26 +411,22 @@ def _ic_finding_to_record(
     observed: str | None,
     currency: str,
 ) -> FindingRecord:
-    finding = Finding(
+    return _build_record(
         rule_id=f.rule_id,
         rule_version="ic-v1",
         severity=Severity(f.severity),
         source_refs=[record_index[rid].source for rid in f.record_ids if rid in record_index],
-        observed=observed,
         reason=f.reason,
-    )
-    return FindingRecord(
-        id=_finding_id(finding),
+        observed=observed,
         expected=expected,
         difference=_money(f.difference) if f.difference is not None else None,
         currency=currency,
         match_group_id=match_group_id,
-        **finding.model_dump(),
     )
 
 
 def _plain_finding_record(f: Finding) -> FindingRecord:
-    return FindingRecord(id=_finding_id(f), **f.model_dump())
+    return FindingRecord(**{name: getattr(f, name) for name in Finding.model_fields})
 
 
 def _fingerprint(
@@ -474,22 +494,23 @@ def _elimination_journals(
             # Not one credit-normal leg against one debit-normal leg: which accounts the
             # elimination would reverse is ambiguous, so nothing is eliminated and the pair
             # stays visible (MANIFESTO §4.1 ⑥, VAL-013).
-            finding = Finding(
-                rule_id="VAL-013",
-                rule_version="v1",
-                severity=Severity.BLOCKER,
-                source_refs=[
-                    record_index[m.record_id].source
-                    for m in match.members
-                    if m.record_id in record_index
-                ],
-                observed=", ".join(credit_legs + debit_legs),
-                reason=(
-                    "elimination accounts are ambiguous: expected one credit-normal and one "
-                    f"debit-normal leg, got credit={credit_legs} debit={debit_legs}"
-                ),
+            findings.append(
+                _build_record(
+                    rule_id="VAL-013",
+                    rule_version="v1",
+                    severity=Severity.BLOCKER,
+                    source_refs=[
+                        record_index[m.record_id].source
+                        for m in match.members
+                        if m.record_id in record_index
+                    ],
+                    observed=", ".join(credit_legs + debit_legs),
+                    reason=(
+                        "elimination accounts are ambiguous: expected one credit-normal and "
+                        f"one debit-normal leg, got credit={credit_legs} debit={debit_legs}"
+                    ),
+                )
             )
-            findings.append(_plain_finding_record(finding))
             continue
 
         journal = build_elimination_journal(
@@ -546,7 +567,7 @@ def _aggregate(
                     amount_group=translated.amount_group,
                     source=record.source,
                     local_account_code=record.local_account_code,
-                    description=record.description,
+                    description=record.local_account_name or "",
                     excluded=excluded,
                 )
             )
