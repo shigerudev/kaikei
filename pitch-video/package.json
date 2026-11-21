@@ -1,0 +1,25 @@
+{
+  "name": "kaikei-pitch-video",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pitch video for kaikei, built with Remotion. Standalone: not part of the Next.js app.",
+  "scripts": {
+    "music": "node scripts/make-music.mjs",
+    "studio": "remotion studio",
+    "render": "remotion render PitchEN out/kaikei-pitch-en.mp4",
+    "render:es": "remotion render PitchES out/kaikei-pitch-es.mp4",
+    "still": "remotion still PitchEN out/still.png --frame=600",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.545",
+    "@remotion/fonts": "4.0.545",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.545"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}
