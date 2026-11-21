@@ -5,7 +5,7 @@ description = "Kaikei consolidation engine: every financial number comes from he
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "fastapi[standard]>=0.115",
-    "pydantic>=2.9",
+    "pydantic>=2.10",
     "pydantic-settings>=2.6",
     "sqlalchemy>=2.0.36",
     "alembic>=1.14",
@@ -28,6 +28,7 @@ packages = ["kaikei"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers"
+pythonpath = ["."]
 
 [tool.ruff]
 line-length = 100
@@ -35,6 +36,7 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "S", "DTZ", "RUF"]
+allowed-confusables = ["×"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S101"]

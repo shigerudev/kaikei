@@ -2,7 +2,7 @@
 
 > From six isolated budgets to one consolidated, explainable result: one reporting currency, no double counting, validated errors, and evidence traced all the way to the original cell.
 
-Multi-company budget consolidation for the Grupo AG track. It takes six company budget packs in three currencies, normalizes them, catches the planted errors, translates them to USD, eliminates intercompany flows with balanced journals, and publishes consolidated figures that drill down to the source file, row and cell.
+Multi-company budget consolidation for the Grupo AG track. It takes six company budget packs in three currencies, normalizes them, catches the planted errors, translates them to USD, eliminates intercompany flows with balanced journals, and publishes consolidated figures that drill down to the source file, row and cell. A **read-only MCP** layer lets AI clients query those published figures (no invented numbers).
 
 - **What & why:** [`docs/MANIFESTO.md`](docs/MANIFESTO.md) (wins any conflict)
 - **Detailed financial rules:** [`docs/PLAN.md`](docs/PLAN.md)
