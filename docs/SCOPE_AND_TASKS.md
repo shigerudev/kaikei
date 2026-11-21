@@ -4,7 +4,7 @@
 > **Read first:** [`MANIFESTO.md`](./MANIFESTO.md) (decisions and contracts) and [`PLAN.md`](./PLAN.md) (detailed financial rules). If this document conflicts with the manifesto, the manifesto wins.
 > **Date:** 2026-11-21 · **Clock:** `R+h:mm` counts from the re-plan kickoff. The schedule follows PLAN.md §15.1 (4h); the team sets wall-clock times at kickoff.
 
-Legend: **J** Jordi (product, UI, fixtures) · **H** Hugo (FX, intercompany, eliminations, optional AI) · **Jo** Jose (DB, ingestion, normalization, validation, acceptance) · **A** Antonio (engine scaffold, API, runs, deploy)
+Legend: **J** Jordi (product, UI, fixtures) · **H** Hugo (FX, intercompany, eliminations, MCP tool descriptions/parity, optional AI) · **Jo** Jose (DB, ingestion, normalization, validation, acceptance) · **A** Antonio (engine scaffold, API, runs, MCP route, deploy)
 
 ---
 
@@ -20,9 +20,10 @@ Legend: **J** Jordi (product, UI, fixtures) · **H** Hugo (FX, intercompany, eli
 7. Consolidated facts per immutable run, with publication gates.
 8. Inspector: any consolidated number → contributions, rate, match, journal, findings, source cell.
 9. Identical reruns, with no duplicate records or journals.
+10. **Read-only MCP** over published runs: AI clients query facts / findings / reconciliations / lineage; figures come only from the engine (MANIFESTO §4.4.1).
 
 ### 1.2 Out
-NCI / partial ownership, unrealized profit, dividends, MCP and AI clients, PDF evidence, user accounts, background workers, exports (P1 at best), certified IFRS claims. See MANIFESTO §2 "What waits".
+NCI / partial ownership, unrealized profit, dividends, PDF bill evidence, user accounts, background workers, exports (P1 at best), certified IFRS claims. See MANIFESTO §2 "What waits". **MCP is in MVP** (§1.1 item 10), not parked.
 
 ### 1.3 Stack (confirmed, MANIFESTO §5.1 D2)
 - **Engine:** Python 3.12, FastAPI + Pydantic v2, SQLAlchemy 2 + Alembic, `decimal.Decimal`, openpyxl for XLSX, the stdlib `csv` module (pandas only where a wide → long reshape needs it), pytest + ruff, managed with `uv`.
@@ -50,6 +51,8 @@ engine/
       lineage/              fact → source trace
     infrastructure/db/      SQLAlchemy models, Alembic migrations
   tests/                    unit/, integration/, acceptance/ (AC1–AC12)
+app/api/mcp/[token]/       MCP HTTP route (read-only; Antonio)
+lib/mcp/                    tool descriptions + parity harness (Hugo)
 fixtures/grupo-ag/          six packs, group config, answer keys (+ golden.json, §2.1)
 docker-compose.yml
 ```
@@ -70,6 +73,7 @@ Pydantic models in `engine/kaikei/domain/**/models.py` are the source of truth. 
 | **K6 API** | A | OpenAPI for MANIFESTO §4.4, generated TS client in `lib/api/` |
 | **K7 Fixtures + golden numbers** | J | `fixtures/grupo-ag/` (on main) + `golden.json` (§2.1) |
 | **K8 Run** | A | `Run {id, status, fingerprint, inputs: file sha256s, mapping_version, rate_set_id, rule_set_version}`. Fingerprint = SHA-256 of those inputs in a fixed order |
+| **K9 MCP** | A + H | Read-only tools over published runs (MANIFESTO §4.4.1). Antonio: route + wiring to engine GETs. Hugo: bilingual descriptions + client parity check |
 
 ### 2.1 Fixtures and golden numbers
 - **Already on main:** `fixtures/grupo-ag/`, with six packs, `entidades.csv`, `tasas_grupo.csv`, `parametros_grupo.csv`, `answer_key_mapping.csv` and `answer_key_errors.csv` (13 errors with file and line). `npm run fixtures:check` asserts the pack's integrity.
@@ -111,13 +115,13 @@ Pydantic models in `engine/kaikei/domain/**/models.py` are the source of truth. 
 
 **✅ Checkpoint C2 (R+2:05).** Run on the fixture pack → **13/13** findings at the answer-key locations, 0 others; every IC flow eliminated except E02/E08; every journal balanced; facts equal `golden.json`. Freeze contracts after C2.
 
-### Phase 3: Inspector + review (R+2:05 → 3:05)
+### Phase 3: Inspector + review + MCP (R+2:05 → 3:05)
 | Who | Task |
 |---|---|
-| A | `GET /facts/{id}/lineage` (contributions, rates, matches, journals, findings, source cells); `POST /findings/{id}/decisions` creates a new run |
-| J | Inspector screen; run screen; publication badge; approve-exception action |
+| A | `GET /facts/{id}/lineage` (contributions, rates, matches, journals, findings, source cells); `POST /findings/{id}/decisions` creates a new run; **MCP route** wired to the same GETs (published runs only, K9) |
+| J | Inspector screen; run screen; publication badge; approve-exception action; Connect AI / MCP URL panel on the run screen |
 | Jo | Reproducibility test (same inputs → same fingerprint and facts); edge cases from PLAN.md §6.4 (blank ≠ zero, unknown columns kept) |
-| H | P1 if C2 is green: KPIs (ROIC/ROCE/EVA from `parametros_grupo.csv` + balance sheet) with missing-input status; otherwise help Jo with findings |
+| H | MCP bilingual tool descriptions + parity walkthrough (AC15); P1 if C2 is green: KPIs (ROIC/ROCE/EVA) with missing-input status; otherwise help Jo with findings |
 
 ### Phase 4: Integration (R+3:05 → 3:35), all
 Run the demo (§5.1) on the deploy target and run the acceptance suite. Apply the cut list. Fixes only from here.
@@ -134,6 +138,7 @@ Run the demo (§5.1) on the deploy target and run the acceptance suite. Apply th
 K1/K2/K3 ─▶ **ingestion ─▶ normalization ─▶ C1** ─▶ **validation ─▶ C2** ─▶ lineage ─▶ inspector ─▶ freeze
 K5 ─▶ aliases + FX ─▶ IC match ─▶ journals ────────────┘          ▲
 K6/K8 ─▶ API + runs ─▶ aggregation + publish gate ────────────────┤
+K9 MCP ─▶ read-only tools over published runs (after publish gate) ─┘
 J: fixtures JSON ─▶ upload ─▶ findings + dashboard ───────────────┘
 ```
 
@@ -145,8 +150,9 @@ J: fixtures JSON ─▶ upload ─▶ findings + dashboard ───────
 3. Approve-exception UI (decisions via the API only).
 4. XLSX adapter (only if the organizers' data is CSV).
 5. Multi-scenario history (keep 2027 budget only; 2026 actuals unused).
+6. MCP client parity across all three assistants (keep at least one client + the route working).
 
-**Never cut:** source-cell lineage · the 13/13 validator · `Decimal` arithmetic · IC matching with mismatch flags · balanced, separate elimination journals · publication gate on BLOCKERs · identical reruns.
+**Never cut:** source-cell lineage · the 13/13 validator · `Decimal` arithmetic · IC matching with mismatch flags · balanced, separate elimination journals · publication gate on BLOCKERs · identical reruns · **read-only MCP over published facts** (at least one working client).
 
 ---
 
@@ -159,6 +165,7 @@ J: fixtures JSON ─▶ upload ─▶ findings + dashboard ───────
 4. **Inspection.** Click consolidated revenue Jan 2027 → per-company contributions in USD → GTQ rate 7.75 (2027 average) → journals → the source cell of one contribution.
 5. **Gate.** E10 (EMP5 balance sheet off by €50,000) blocks the consolidated balance. Approve or fix → a new run, with the previous run kept.
 6. **Confidence.** Rerun the same inputs → same fingerprint, identical totals.
+7. **MCP.** On a published run, ask an AI client (via MCP) for consolidated revenue Jan 2027 + lineage; the answer matches the inspector and cites the source cell.
 
 ### 5.2 Acceptance checks (`engine/tests/acceptance/`, owner Jo)
 
@@ -174,8 +181,9 @@ J: fixtures JSON ─▶ upload ─▶ findings + dashboard ───────
 | AC8 | **Inspector** | For consolidated revenue Jan 2027, the contributions and adjustments shown sum to the figure, and each contribution opens its source cell |
 | AC9 | **Publication gate** | With E10 open, the consolidated balance can't publish. After a recorded decision, a new run publishes and the old run is unchanged |
 | AC10 | **Reproducibility** | Same inputs and versions → same fingerprint and byte-identical facts |
-| AC11 | **AI off** | AC1–AC10 pass with no model configured |
+| AC11 | **AI off** | AC1–AC10 pass with no model configured; MCP simply isn't connected |
 | AC12 | **Untrusted input** | A wrong file type, an oversized file, or an XLSX with formulas is rejected or flagged. Nothing is executed |
+| AC15 | **MCP read-only** | Against a published run: tools return engine facts/findings/lineage as decimal strings + source refs; no mutating tool is registered; draft/blocked runs are refused or clearly labelled |
 | AC13 (P1) | **KPIs** | ROIC/ROCE/EVA show formula and inputs; a removed input → `INSUFFICIENT_DATA` |
 | AC14 (P1) | **Variance** | 2027 budget vs 2026 actual components sum exactly to the total |
 
@@ -195,7 +203,7 @@ J: fixtures JSON ─▶ upload ─▶ findings + dashboard ───────
 ---
 
 ## 7. After the MVP
-PLAN.md §15.2. Phase A stabilize (real-data golden tests); Phase B finance controls (approval workflow, more elimination types, budget-rate management, exports); Phase C scale (workers, object storage, RBAC, multi-tenancy); Phase D expanded consolidation (ownership accounting, unrealized profit, hierarchies, ERP connectors, read-only MCP over published runs).
+PLAN.md §15.2. Phase A stabilize (real-data golden tests); Phase B finance controls (approval workflow, more elimination types, budget-rate management, exports); Phase C scale (workers, object storage, RBAC, multi-tenancy); Phase D expanded consolidation (ownership accounting, unrealized profit, hierarchies, ERP connectors). **MCP over published runs is MVP** (MANIFESTO §4.4.1), not deferred to Phase D.
 
 ---
 
