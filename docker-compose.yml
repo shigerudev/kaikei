@@ -1,0 +1,56 @@
+# Local runtime: postgres + engine. The UI runs on the host with `npm run dev`.
+# Postgres publishes no port: it is reachable only on the internal `backend` network.
+# The engine publishes 8000 on loopback only, for the host-run UI and curl.
+name: kaikei
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-kaikei}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kaikei}
+      POSTGRES_DB: ${POSTGRES_DB:-kaikei}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [backend]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  engine:
+    image: ghcr.io/astral-sh/uv:0.11.2-python3.12-trixie-slim
+    working_dir: /app
+    command: ["uv", "run", "fastapi", "dev", "kaikei/main.py", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-kaikei}:${POSTGRES_PASSWORD:-kaikei}@postgres:5432/${POSTGRES_DB:-kaikei}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      UV_PROJECT_ENVIRONMENT: /opt/venv
+      UV_CACHE_DIR: /opt/uv-cache
+      UV_LINK_MODE: copy
+    volumes:
+      - ./engine:/app
+      - engine-venv:/opt/venv
+      - uv-cache:/opt/uv-cache
+    ports:
+      - "127.0.0.1:${ENGINE_PORT:-8000}:8000"
+    networks: [backend]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+
+networks:
+  backend:
+
+volumes:
+  pgdata:
+  engine-venv:
+  uv-cache:

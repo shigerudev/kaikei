@@ -21,11 +21,12 @@ Multi-company budget consolidation for the Grupo AG track. It takes six company 
 
 ```bash
 cp .env.example .env
-docker compose up -d postgres
-cd engine && uv sync && uv run alembic upgrade head && uv run fastapi dev kaikei/main.py
-# another terminal, repo root:
+docker compose up -d postgres engine
+curl -fsS http://127.0.0.1:8000/health
 npm install && npm run dev
 ```
+
+Postgres publishes no port; it is reachable only from the compose network. The engine is published on `127.0.0.1:8000` with hot reload from `engine/`. Run migrations inside it: `docker compose exec engine uv run alembic upgrade head`. Engine tests run on the host: `cd engine && uv sync --extra dev && uv run pytest`.
 
 ## Checks
 
@@ -37,4 +38,4 @@ npm install && npm run dev
 | `npm run typecheck && npm run lint && npm run build` | UI |
 | `npm run fixtures:check` | Fixture pack integrity: 13/13 planted errors, no unplanted defects |
 
-The engine scaffold, compose file and Python commands land in Phase 0 (SCOPE §3). The TypeScript backend that used to live in `lib/` is retired; its history is under the `pre-python` tag.
+The TypeScript backend that used to live in `lib/` is retired; its history is under the `pre-python` tag.

@@ -200,11 +200,7 @@ def match_intercompany(
             )
         )
 
-    unmatched = [
-        c.record_id
-        for c in eligible
-        if c.record_id not in used
-    ]
+    unmatched = [c.record_id for c in eligible if c.record_id not in used]
     # Unresolved partner text also counts as unmatched / not eliminated
     for c in unresolved:
         if c.record_id not in used and c.record_id not in unmatched:

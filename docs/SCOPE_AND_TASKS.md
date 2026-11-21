@@ -30,7 +30,7 @@ NCI / partial ownership, unrealized profit, dividends, PDF bill evidence, user a
 - **DB:** PostgreSQL. Money in `NUMERIC(20,4)`, rates in `NUMERIC(20,10)`.
 - **UI:** the existing Next.js + TypeScript app at the repo root. It calls the engine API only. TS types are generated from the engine's OpenAPI schema; the UI does no financial math.
 - **Local runtime:** Docker Compose with `postgres` + `engine`; Next.js runs with `npm run dev`.
-- **Hosting:** Antonio decides at kickoff (A3). Proposal: Vercel for the UI, a container host for the engine, Neon for Postgres.
+- **Hosting (A3, decided):** `app.kaikei.io` runs on one VPS with Docker Compose: `postgres`, `engine`, `ui` and `caddy`. Only Caddy publishes 80/443 (automatic TLS); `/api/v1` goes to the engine, everything else to the UI. `www.kaikei.io` stays on Vercel in a separate repo.
 
 ### 1.4 Repo layout
 ```
@@ -195,7 +195,7 @@ J: fixtures JSON ─▶ upload ─▶ findings + dashboard ───────
 |---|---|---|---|---|
 | **A1** | The organizers' data has the same shape as the fixture pack (six companies, three currencies, IC partner hints) | Mappings and rules are tuned to it | Inspect as soon as it arrives | Jo + H |
 | **A2** | The data is summary budget lines per account and month, not transactions | Matching is aggregate per company pair + period (PLAN.md §8.2) | Same | H |
-| A3 | Hosting: UI on Vercel, engine on a container host, Postgres on Neon | The demo needs a reachable URL, or else a local compose fallback | Kickoff decision | A |
+| A3 | Hosting: `app.kaikei.io` on one VPS via Docker Compose (Caddy for TLS, Postgres internal only); `www.kaikei.io` on Vercel, separate repo | The demo needs a reachable URL, or else a local compose fallback | Decided; deploy on `chore/vps-deploy` | A |
 | A4 | Package installs (`uv sync`, `npm install`) work on the venue network. Unrelated to app authentication: some networks inspect TLS (e.g. Fortinet, see AGENTS.md) and break installs until their CA is trusted | Nobody can build if installs fail | Run `uv sync` and `npm install` at kickoff | A |
 | A5 | Golden numbers can be hand-computed for the listed figures by R+1:05 | AC7 depends on them | J reports at C1 | J |
 | A6 | Management budget consolidation is what the judges expect (no statutory IFRS) | Scope of claims in the pitch | Ask organizers (PLAN.md §18.1) | J |
