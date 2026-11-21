@@ -2,7 +2,7 @@
  * K6 MCP tools (owners: Antonio + Hugo). MANIFESTO §4.4. READ-ONLY: never register a mutating tool (AC11).
  * Every tool calls lib/metrics (or a read-only query) — never computes figures itself.
  * Every response carries workspace, period, currency, as_of and app_url.
- * TODO(Hugo): finalize bilingual descriptions + category aliases (Phase 3).
+ * Hugo: bilingual descriptions + category aliases (PIPER-38 / AC9).
  */
 import type { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
@@ -11,6 +11,7 @@ import { getOverview, getVariance, whatChanged } from "@/lib/metrics";
 import { listFlags } from "@/lib/flags";
 import { appUrl, type Workspace } from "@/lib/workspaces";
 import { Currency, Period } from "@/lib/types";
+import { TOOL_COPY } from "./descriptions";
 
 const READ_ONLY = { readOnlyHint: true, destructiveHint: false, openWorldHint: false } as const;
 
@@ -42,10 +43,8 @@ export function registerTools(server: McpServer, ws: Workspace) {
   server.registerTool(
     "get_overview",
     {
-      title: "Overview / Resumen",
-      description:
-        "EN: Budget, actual and variance per category for a period, plus cash in/out and open review flags. " +
-        "ES: Presupuesto, real y variación por rubro para un periodo, más entradas/salidas de efectivo y alertas abiertas.",
+      title: TOOL_COPY.get_overview.title,
+      description: TOOL_COPY.get_overview.description,
       inputSchema: z.object({ period: Period.optional().describe("YYYY-MM") }),
       annotations: READ_ONLY,
     },
@@ -55,11 +54,8 @@ export function registerTools(server: McpServer, ws: Workspace) {
   server.registerTool(
     "get_budget_variance",
     {
-      title: "Budget variance / Variación vs presupuesto",
-      description:
-        "EN: Budget vs actual for one category with the contributing transactions (latest first) and source refs. " +
-        "ES: Presupuesto vs real de un rubro, con las transacciones que lo componen y sus comprobantes. " +
-        "Category aliases: entregas = Deliveries.",
+      title: TOOL_COPY.get_budget_variance.title,
+      description: TOOL_COPY.get_budget_variance.description,
       inputSchema: z.object({
         category: z.string(),
         period: Period.optional(),
@@ -76,10 +72,8 @@ export function registerTools(server: McpServer, ws: Workspace) {
   server.registerTool(
     "search_transactions",
     {
-      title: "Search transactions / Buscar transacciones",
-      description:
-        "EN: Find transactions by text, category, period or whether a bill is attached. " +
-        "ES: Busca transacciones por texto, rubro, periodo o si tienen comprobante.",
+      title: TOOL_COPY.search_transactions.title,
+      description: TOOL_COPY.search_transactions.description,
       inputSchema: z.object({
         query: z.string().optional(),
         category: z.string().optional(),
@@ -97,10 +91,8 @@ export function registerTools(server: McpServer, ws: Workspace) {
   server.registerTool(
     "get_transaction",
     {
-      title: "Transaction / Transacción",
-      description:
-        "EN: One transaction with its original CSV row and linked bills. " +
-        "ES: Una transacción con su fila CSV original y comprobantes vinculados.",
+      title: TOOL_COPY.get_transaction.title,
+      description: TOOL_COPY.get_transaction.description,
       inputSchema: z.object({ id: z.string().uuid() }),
       annotations: READ_ONLY,
     },
@@ -113,10 +105,8 @@ export function registerTools(server: McpServer, ws: Workspace) {
   server.registerTool(
     "get_document",
     {
-      title: "Document / Documento",
-      description:
-        "EN: Extracted bill fields, the PDF link and the linked transaction. " +
-        "ES: Datos extraídos de la factura, enlace al PDF y transacción vinculada.",
+      title: TOOL_COPY.get_document.title,
+      description: TOOL_COPY.get_document.description,
       inputSchema: z.object({ id: z.string().uuid() }),
       annotations: READ_ONLY,
     },
@@ -129,10 +119,8 @@ export function registerTools(server: McpServer, ws: Workspace) {
   server.registerTool(
     "list_review_flags",
     {
-      title: "Review flags / Alertas por revisar",
-      description:
-        "EN: Flags with their location (file, row, column) and reason. " +
-        "ES: Alertas con su ubicación (archivo, fila, columna) y motivo.",
+      title: TOOL_COPY.list_review_flags.title,
+      description: TOOL_COPY.list_review_flags.description,
       inputSchema: z.object({ status: z.enum(["open", "resolved", "dismissed"]).optional() }),
       annotations: READ_ONLY,
     },
@@ -143,10 +131,8 @@ export function registerTools(server: McpServer, ws: Workspace) {
   server.registerTool(
     "what_changed",
     {
-      title: "What changed / Qué cambió",
-      description:
-        "EN: Per-figure deltas (before → after) from the latest or a given import. " +
-        "ES: Cambios por cifra (antes → después) de la última importación o de una específica.",
+      title: TOOL_COPY.what_changed.title,
+      description: TOOL_COPY.what_changed.description,
       inputSchema: z.object({ import_id: z.string().uuid().optional() }),
       annotations: READ_ONLY,
     },
