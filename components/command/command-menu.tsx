@@ -21,6 +21,7 @@ import * as React from "react";
 import { openTour } from "@/components/onboarding-tour";
 import { NavIcon } from "@/components/shell/nav-icon";
 import {
+  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -190,6 +191,7 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
     <CommandMenuContext.Provider value={ctx}>
       {children}
       <CommandDialog open={open} onOpenChange={onOpenChange} title="Menú de comandos" description="Busca hallazgos, cuentas y empresas, ve a una pantalla o ejecuta una acción.">
+        <Command className="**:data-[slot=command-input-wrapper]:h-12">
         <CommandInput placeholder="Busca hallazgos (E02), cuentas, empresas… o escribe un comando" value={query} onValueChange={setQuery} />
         <CommandList className="max-h-[min(440px,60vh)]">
           <CommandEmpty>{loading ? "Buscando…" : "Sin resultados."}</CommandEmpty>
@@ -282,6 +284,7 @@ export function CommandMenuProvider({ group, periods, children }: { group: strin
           <span><kbd className="font-sans">esc</kbd> cerrar</span>
           <span className="ml-auto hidden sm:inline">G y una letra para saltar</span>
         </div>
+        </Command>
       </CommandDialog>
     </CommandMenuContext.Provider>
   );
