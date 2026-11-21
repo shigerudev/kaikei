@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "fixtures:check": "tsx scripts/check-grupo-ag.ts"
+    "fixtures:check": "tsx scripts/check-grupo-ag.ts",
+    "mcp:parity": "tsx scripts/mcp-parity.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
