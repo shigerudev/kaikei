@@ -43,3 +43,8 @@ next-env.d.ts
 
 .certs/
 .venv-fixtures/
+engine/.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+uv.lock
