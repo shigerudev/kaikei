@@ -28,7 +28,7 @@ export function DetailSheet({ title, description, fullHref, children }: { title:
             <SheetTitle className="truncate">{title}</SheetTitle>
             {description && <SheetDescription className="truncate">{description}</SheetDescription>}
           </div>
-          <Button variant="ghost" size="icon-sm" asChild aria-label="Open full page" className="mr-8">
+          <Button variant="ghost" size="icon-sm" asChild aria-label="Abrir en página completa" className="mr-8">
             {/* Plain anchor on purpose: a soft <Link> would be intercepted back into this sheet. */}
             <a href={fullHref}>
               <Maximize2Icon />

@@ -2,8 +2,8 @@
  * PIPER-84: map the MCP path token to a group id. Unknown tokens must 404.
  * Demo default is a path secret, not a login. Override in env for anything beyond localhost.
  */
-export const DEFAULT_DEMO_TOKEN = "grupo-ag-mcp-demo";
-export const PREVIEW_GROUP_ID = "grupo-ag";
+export const DEFAULT_DEMO_TOKEN = "demo-mcp-token";
+export const PREVIEW_GROUP_ID = "demo";
 
 export type EnvLike = Record<string, string | undefined>;
 

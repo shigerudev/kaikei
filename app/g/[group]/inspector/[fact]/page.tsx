@@ -25,14 +25,14 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
   if (!result.ok || !result.data.lineage) {
     return (
       <>
-        <PageHeader group={group} crumbs={[{ label: "Dashboard", href: gPath(group) }, { label: "Inspector" }]} preview={dataSource() === "preview"} />
+        <PageHeader group={group} crumbs={[{ label: "Panel", href: gPath(group) }, { label: "Inspector" }]} preview={dataSource() === "preview"} />
         <PageBody>
           {!result.ok ? (
             result.node
           ) : (
-            <EmptyState icon={SearchXIcon} title="We couldn't trace that number" description="It may belong to another run or the link is out of date.">
+            <EmptyState icon={SearchXIcon} title="No pudimos rastrear esa cifra" description="Puede pertenecer a otra ejecución o el enlace está desactualizado.">
               <Button variant="outline" size="sm" asChild>
-                <Link href={gPath(group)}>Back to dashboard</Link>
+                <Link href={gPath(group)}>Volver al panel</Link>
               </Button>
             </EmptyState>
           )}
@@ -43,7 +43,7 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
 
   const { lineage: l, run, companies, findings } = result.data;
   const name = (id: string) => companies.find((c) => c.id === id)?.name ?? id;
-  const periodLabel = l.statement === "BS" ? "31 Dec 2027" : formatPeriod(l.period, true);
+  const periodLabel = l.statement === "BS" ? "31 dic 2027" : formatPeriod(l.period, true);
   const dashHref = gPath(group, l.statement === "BS" ? "?statement=BS" : `?period=${l.period}`);
   const related = findings.filter((f) => l.finding_ids.includes(f.id));
   const records = l.contributions.reduce((n, c) => n + c.records.length, 0);
@@ -53,7 +53,7 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
     <>
       <PageHeader
         group={group}
-        crumbs={[{ label: "Dashboard", href: gPath(group) }, { label: periodLabel, href: dashHref }, { label: l.name }]}
+        crumbs={[{ label: "Panel", href: gPath(group) }, { label: periodLabel, href: dashHref }, { label: l.name }]}
         run={run}
         preview={dataSource() === "preview"}
       />
@@ -62,26 +62,26 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
           <p className="font-mono text-xs text-muted-foreground">{l.group_account}</p>
           <h1 className="text-xl font-semibold tracking-tight">{l.name}</h1>
           <p className="text-sm text-muted-foreground">
-            {periodLabel} · {l.currency} · run #{run?.number}
+            {periodLabel} · {l.currency} · ejecución #{run?.number}
           </p>
         </div>
 
         {/* The formula, with the engine's own totals */}
-        <section aria-label="How this number is built" className="grid gap-px overflow-hidden rounded-xl border bg-border sm:grid-cols-[1fr_auto_1fr_auto_1.15fr]">
-          <Eq label="Σ contributions" value={l.contributions_total} hint={`${pluralize(l.contributions.filter((c) => !c.excluded).length, "company", "companies")} · ${pluralize(records, "record")}`} />
+        <section aria-label="Cómo se construye esta cifra" className="grid gap-px overflow-hidden rounded-xl border bg-border sm:grid-cols-[1fr_auto_1fr_auto_1.15fr]">
+          <Eq label="Σ aportes" value={l.contributions_total} hint={`${pluralize(l.contributions.filter((c) => !c.excluded).length, "empresa")} · ${pluralize(records, "registro")}`} />
           <Op>+</Op>
-          <Eq label="Σ eliminations" value={l.adjustments_total} hint={pluralize(l.adjustments.length, "journal")} tone="brand" />
+          <Eq label="Σ eliminaciones" value={l.adjustments_total} hint={pluralize(l.adjustments.length, "asiento")} tone="brand" />
           <Op>=</Op>
-          <Eq label="Consolidated" value={l.amount} hint={`${l.currency}, this run`} strong />
+          <Eq label="Consolidado" value={l.amount} hint={`${l.currency}, esta ejecución`} strong />
         </section>
 
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground" aria-label="Lineage">
+        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground" aria-label="Trazabilidad">
           {[
-            `${pluralize(records, "source cell")}`,
-            `${pluralize(records, "canonical record")}`,
-            rates ? `translated with ${pluralize(rates, "rate")}` : "already in USD",
-            `${pluralize(l.adjustments.length, "elimination")}`,
-            "1 consolidated fact",
+            `${pluralize(records, "celda", "celdas")} de origen`,
+            `${pluralize(records, "registro canónico", "registros canónicos")}`,
+            rates ? `convertidos con ${pluralize(rates, "tasa")}` : "ya en USD",
+            `${pluralize(l.adjustments.length, "eliminación", "eliminaciones")}`,
+            "1 cifra consolidada",
           ].map((s, i, a) => (
             <li key={s} className="flex items-center gap-2">
               <span className="rounded-md border bg-muted/40 px-2 py-0.5">{s}</span>
@@ -91,12 +91,12 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
         </ol>
 
         <section className="space-y-3">
-          <h2 className="text-sm font-medium">Contributions by company</h2>
+          <h2 className="text-sm font-medium">Aportes por empresa</h2>
           <div className="overflow-hidden rounded-xl border">
             <div className="grid grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,1fr)] gap-4 border-b bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground max-md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-              <span>Company</span>
-              <span className="text-right max-md:hidden">Local amount</span>
-              <span className="max-md:hidden">Rate</span>
+              <span>Empresa</span>
+              <span className="text-right max-md:hidden">Monto local</span>
+              <span className="max-md:hidden">Tasa</span>
               <span className="text-right">{l.currency}</span>
             </div>
             {l.contributions.map((c) => (
@@ -105,7 +105,7 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
                   <span className="flex min-w-0 items-center gap-2">
                     <ChevronRightIcon className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-200 ease-(--ease-out) group-open:rotate-90" />
                     <CompanyTag id={c.company_id} name={name(c.company_id)} />
-                    {c.excluded && <span className="rounded bg-negative/12 px-1.5 text-[10px] text-negative">excluded</span>}
+                    {c.excluded && <span className="rounded bg-negative/12 px-1.5 text-[10px] text-negative">excluida</span>}
                   </span>
                   <span className="num text-right text-muted-foreground max-md:hidden">
                     {formatAmount(c.amount_local, { dp: 2 })} <span className="text-[11px]">{c.currency}</span>
@@ -113,17 +113,17 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
                   <span className="truncate text-xs text-muted-foreground max-md:hidden">
                     {c.rate ? (
                       <>
-                        {c.rate.rate_type} {c.rate.period} · 1 USD = {c.rate.units_per_usd} {c.rate.from_ccy}
+                        {c.rate.rate_type === "average" ? "promedio" : "cierre"} {c.rate.period} · 1 USD = {c.rate.units_per_usd} {c.rate.from_ccy}
                       </>
                     ) : (
-                      "Functional currency is USD"
+                      "Moneda funcional USD"
                     )}
                   </span>
                   <span className={`num text-right font-medium ${c.excluded ? "line-through opacity-50" : ""}`}>{formatAmount(c.amount_group, { dp: 2 })}</span>
                 </summary>
                 <div className="border-t border-border/60 bg-muted/20 px-4 py-3">
                   <p className="mb-2 text-xs text-muted-foreground">
-                    {pluralize(c.records.length, "record")} · each ends at a source cell
+                    {pluralize(c.records.length, "registro")} · cada uno termina en una celda de origen
                   </p>
                   <ul className="space-y-1.5">
                     {c.records.map((r) => (
@@ -151,9 +151,9 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-sm font-medium">Eliminations</h2>
+          <h2 className="text-sm font-medium">Eliminaciones</h2>
           {l.adjustments.length === 0 ? (
-            <p className="rounded-xl border border-dashed px-4 py-3 text-sm text-muted-foreground">No intercompany elimination touches this account.</p>
+            <p className="rounded-xl border border-dashed px-4 py-3 text-sm text-muted-foreground">Ninguna eliminación intercompañía afecta esta cuenta.</p>
           ) : (
             <div className="overflow-hidden rounded-xl border">
               {l.adjustments.slice(0, 14).map((a) => (
@@ -167,14 +167,14 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
                     {a.flow} · {formatPeriod(a.period)}
                   </span>
                   <span className="hidden text-muted-foreground sm:block">
-                    with <CompanyTag id={a.counterparty} /> · {a.rule_id} v{a.rule_version}
+                    con <CompanyTag id={a.counterparty} /> · {a.rule_id} v{a.rule_version}
                   </span>
                   <span className="num text-right text-brand">({formatAmount(a.amount_group, { dp: 2 })})</span>
                 </Link>
               ))}
               {l.adjustments.length > 14 && (
                 <Link href={gPath(group, "/intercompany")} className="block px-4 py-2.5 text-sm text-muted-foreground hover:bg-muted/40">
-                  {l.adjustments.length - 14} more journals →
+                  {l.adjustments.length - 14} asientos más →
                 </Link>
               )}
             </div>
@@ -182,9 +182,9 @@ export default async function InspectorPage({ params }: PageProps<"/g/[group]/in
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-sm font-medium">Findings touching this number</h2>
+          <h2 className="text-sm font-medium">Hallazgos que afectan esta cifra</h2>
           {related.length === 0 ? (
-            <p className="rounded-xl border border-dashed px-4 py-3 text-sm text-muted-foreground">None. Every contributing record passed validation.</p>
+            <p className="rounded-xl border border-dashed px-4 py-3 text-sm text-muted-foreground">Ninguno. Todos los registros pasaron la validación.</p>
           ) : (
             <ul className="overflow-hidden rounded-xl border">
               {related.map((f) => (

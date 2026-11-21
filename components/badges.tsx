@@ -4,13 +4,13 @@ import type { FindingStatus, MatchStatus, RunStatus, Severity } from "@/lib/api/
 const pill = "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium whitespace-nowrap";
 
 const RUN: Record<RunStatus, { label: string; cls: string; Icon: typeof CircleCheckIcon }> = {
-  CREATED: { label: "Created", cls: "bg-muted text-muted-foreground", Icon: CircleDashedIcon },
-  RUNNING: { label: "Running", cls: "bg-muted text-foreground", Icon: LoaderIcon },
-  DRAFT: { label: "Draft", cls: "bg-muted text-foreground", Icon: CircleDashedIcon },
-  BLOCKED: { label: "Blocked", cls: "bg-negative/12 text-negative", Icon: OctagonXIcon },
-  READY_FOR_REVIEW: { label: "Ready for review", cls: "bg-brand-subtle text-brand", Icon: CircleAlertIcon },
-  PUBLISHED: { label: "Published", cls: "bg-brand text-brand-foreground", Icon: CircleCheckIcon },
-  FAILED: { label: "Failed", cls: "bg-negative/12 text-negative", Icon: OctagonXIcon },
+  CREATED: { label: "Creada", cls: "bg-muted text-muted-foreground", Icon: CircleDashedIcon },
+  RUNNING: { label: "En curso", cls: "bg-muted text-foreground", Icon: LoaderIcon },
+  DRAFT: { label: "Borrador", cls: "bg-muted text-foreground", Icon: CircleDashedIcon },
+  BLOCKED: { label: "Bloqueada", cls: "bg-negative/12 text-negative", Icon: OctagonXIcon },
+  READY_FOR_REVIEW: { label: "Lista para revisión", cls: "bg-brand-subtle text-brand", Icon: CircleAlertIcon },
+  PUBLISHED: { label: "Publicada", cls: "bg-brand text-brand-foreground", Icon: CircleCheckIcon },
+  FAILED: { label: "Fallida", cls: "bg-negative/12 text-negative", Icon: OctagonXIcon },
 };
 
 /** Publication badge (MANIFESTO §3.2): a draft preview is always labelled as such. */
@@ -29,11 +29,13 @@ const SEV: Record<Severity, { cls: string; dot: string; Icon: typeof InfoIcon }>
   INFO: { cls: "bg-muted text-muted-foreground", dot: "bg-muted-foreground", Icon: InfoIcon },
 };
 
+const SEV_LABEL: Record<Severity, string> = { BLOCKER: "Bloqueante", WARNING: "Advertencia", INFO: "Info" };
+
 export function SeverityBadge({ severity }: { severity: Severity }) {
   const { cls, Icon } = SEV[severity];
   return (
     <span className={`${pill} ${cls}`}>
-      <Icon className="size-3" /> {severity.charAt(0) + severity.slice(1).toLowerCase()}
+      <Icon className="size-3" /> {SEV_LABEL[severity]}
     </span>
   );
 }
@@ -41,11 +43,11 @@ export function SeverityBadge({ severity }: { severity: Severity }) {
 export const severityDot = (s: Severity) => SEV[s].dot;
 
 const FSTATUS: Record<FindingStatus, { label: string; cls: string }> = {
-  OPEN: { label: "Open", cls: "text-foreground" },
-  UNDER_REVIEW: { label: "Under review", cls: "text-foreground" },
-  RESOLVED: { label: "Resolved", cls: "text-brand" },
-  ACCEPTED_RISK: { label: "Accepted risk", cls: "text-muted-foreground" },
-  SUPERSEDED: { label: "Superseded", cls: "text-muted-foreground" },
+  OPEN: { label: "Abierto", cls: "text-foreground" },
+  UNDER_REVIEW: { label: "En revisión", cls: "text-foreground" },
+  RESOLVED: { label: "Resuelto", cls: "text-brand" },
+  ACCEPTED_RISK: { label: "Riesgo aceptado", cls: "text-muted-foreground" },
+  SUPERSEDED: { label: "Reemplazado", cls: "text-muted-foreground" },
 };
 
 export function FindingStatusText({ status }: { status: FindingStatus }) {
@@ -54,9 +56,9 @@ export function FindingStatusText({ status }: { status: FindingStatus }) {
 }
 
 const MATCH: Record<MatchStatus, { label: string; cls: string }> = {
-  MATCHED: { label: "Matched", cls: "bg-brand-subtle text-brand" },
-  MISMATCH: { label: "Mismatch", cls: "bg-warning/15 text-warning" },
-  ONE_SIDED: { label: "One-sided", cls: "bg-warning/15 text-warning" },
+  MATCHED: { label: "Conciliado", cls: "bg-brand-subtle text-brand" },
+  MISMATCH: { label: "Diferencia", cls: "bg-warning/15 text-warning" },
+  ONE_SIDED: { label: "Sin contraparte", cls: "bg-warning/15 text-warning" },
 };
 
 export function MatchStatusBadge({ status }: { status: MatchStatus }) {

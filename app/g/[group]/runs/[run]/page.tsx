@@ -11,7 +11,7 @@ import type { RunStage } from "@/lib/api/types";
 import { formatStamp, shortHash } from "@/lib/ui/format";
 import { gPath } from "@/lib/ui/nav";
 
-export const metadata = { title: "Run" };
+export const metadata = { title: "Ejecución" };
 
 const STAGE_ICON: Record<RunStage["status"], { Icon: typeof CheckIcon; cls: string }> = {
   done: { Icon: CheckIcon, cls: "bg-foreground text-background" },
@@ -31,16 +31,16 @@ export default async function RunPage({ params }: PageProps<"/g/[group]/runs/[ru
 
   return (
     <>
-      <PageHeader group={group} crumbs={[{ label: "Runs", href: gPath(group, "/runs") }, { label: run ? `Run #${run.number}` : runId }]} run={run} preview={dataSource() === "preview"} />
+      <PageHeader group={group} crumbs={[{ label: "Ejecuciones", href: gPath(group, "/runs") }, { label: run ? `Ejecución #${run.number}` : runId }]} run={run} preview={dataSource() === "preview"} />
       <PageBody className="max-w-4xl">
         {!result.ok ? (
           result.node
         ) : !run ? (
-          <EmptyState icon={SearchXIcon} title="Run not found" />
+          <EmptyState icon={SearchXIcon} title="Ejecución no encontrada" />
         ) : (
           <>
             <PageTitle
-              title={`Run #${run.number}`}
+              title={`Ejecución #${run.number}`}
               description={
                 <span className="flex flex-wrap items-center gap-2">
                   <RunStatusBadge status={run.status} /> {formatStamp(run.created_at)} · {run.reason}
@@ -55,7 +55,7 @@ export default async function RunPage({ params }: PageProps<"/g/[group]/runs/[ru
             )}
 
             <section className="space-y-3">
-              <h2 className="text-sm font-medium">Stages</h2>
+              <h2 className="text-sm font-medium">Etapas</h2>
               <ol className="relative space-y-0">
                 {run.stages.map((s, i) => {
                   const { Icon, cls } = STAGE_ICON[s.status];
@@ -72,7 +72,7 @@ export default async function RunPage({ params }: PageProps<"/g/[group]/runs/[ru
                         <p className="text-sm text-muted-foreground">{s.detail}</p>
                         {s.status === "blocked" && (
                           <Link href={gPath(group, "/findings?severity=BLOCKER")} className="text-xs underline underline-offset-2">
-                            See blockers
+                            Ver bloqueantes
                           </Link>
                         )}
                       </div>
@@ -83,7 +83,7 @@ export default async function RunPage({ params }: PageProps<"/g/[group]/runs/[ru
             </section>
 
             <section className="space-y-3">
-              <h2 className="text-sm font-medium">Pinned inputs</h2>
+              <h2 className="text-sm font-medium">Entradas fijadas</h2>
               <div className="overflow-hidden rounded-xl border text-sm">
                 {run.inputs.files.map((f) => (
                   <div key={f.company_id} className="grid grid-cols-[56px_minmax(0,1fr)_auto] items-center gap-3 border-b border-border/60 px-4 py-2">
@@ -94,9 +94,9 @@ export default async function RunPage({ params }: PageProps<"/g/[group]/runs/[ru
                 ))}
                 <div className="grid gap-px bg-border sm:grid-cols-3">
                   {[
-                    ["Mapping", run.inputs.mapping_version],
-                    ["Rate set", run.inputs.rate_set_id],
-                    ["Rule set", run.inputs.rule_set_version],
+                    ["Mapeo", run.inputs.mapping_version],
+                    ["Tasas", run.inputs.rate_set_id],
+                    ["Reglas", run.inputs.rule_set_version],
                   ].map(([k, v]) => (
                     <div key={k} className="bg-background px-4 py-2.5">
                       <p className="text-xs text-muted-foreground">{k}</p>
@@ -106,7 +106,7 @@ export default async function RunPage({ params }: PageProps<"/g/[group]/runs/[ru
                 </div>
                 {run.inputs.decisions.length > 0 && (
                   <div className="border-t px-4 py-2.5">
-                    <p className="text-xs text-muted-foreground">Decisions included</p>
+                    <p className="text-xs text-muted-foreground">Decisiones incluidas</p>
                     <p className="font-mono text-xs">{run.inputs.decisions.join(" · ")}</p>
                   </div>
                 )}
@@ -114,9 +114,9 @@ export default async function RunPage({ params }: PageProps<"/g/[group]/runs/[ru
             </section>
 
             <section className="space-y-2">
-              <h2 className="text-sm font-medium">Fingerprint</h2>
-              <CopyField value={run.fingerprint} label="run fingerprint" />
-              <p className="text-xs text-muted-foreground">SHA-256 of the ordered inputs above. Rerunning with the same inputs and versions produces this same fingerprint and identical totals.</p>
+              <h2 className="text-sm font-medium">Huella</h2>
+              <CopyField value={run.fingerprint} label="huella de la ejecución" />
+              <p className="text-xs text-muted-foreground">SHA-256 de las entradas en orden. Reejecutar con las mismas entradas y versiones da la misma huella y totales idénticos.</p>
             </section>
           </>
         )}

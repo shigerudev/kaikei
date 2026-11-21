@@ -34,11 +34,11 @@ export function EngineErrorState({ error }: { error: ApiError }) {
   return (
     <EmptyState
       icon={ServerCrashIcon}
-      title={error.status === 404 ? "The engine doesn't serve this yet" : "The engine couldn't answer"}
+      title={error.status === 404 ? "El motor aún no ofrece esta vista" : "El motor no respondió"}
       description={
         <>
-          <span className="font-mono text-xs">{error.path}</span> returned {error.status || "no response"}. Nothing was changed. Unset{" "}
-          <span className="font-mono text-xs">KAIKEI_API_URL</span> to explore with preview data.
+          <span className="font-mono text-xs">{error.path}</span> respondió {error.status || "sin respuesta"}. No se cambió nada. Quita{" "}
+          <span className="font-mono text-xs">KAIKEI_API_URL</span> para explorar con datos de ejemplo.
         </>
       }
     />

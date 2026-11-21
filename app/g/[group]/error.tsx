@@ -12,16 +12,16 @@ export default function WorkspaceError({ error, reset }: { error: Error & { dige
         <TriangleAlertIcon className="size-5" />
       </span>
       <div className="space-y-1">
-        <h1 className="font-medium">Something went wrong loading this view</h1>
-        <p className="text-sm text-muted-foreground">Your data is safe — nothing was changed. Try again, or go back to the overview.</p>
-        {error.digest && <p className="font-mono text-[11px] text-muted-foreground">Ref {error.digest}</p>}
+        <h1 className="font-medium">Algo salió mal al cargar esta vista</h1>
+        <p className="text-sm text-muted-foreground">Tus datos están a salvo: no se cambió nada. Inténtalo de nuevo o vuelve al inicio.</p>
+        {error.digest && <p className="font-mono text-[11px] text-muted-foreground">Ref. {error.digest}</p>}
       </div>
       <div className="flex gap-2">
         <Button size="sm" onClick={reset}>
-          <RotateCcwIcon /> Try again
+          <RotateCcwIcon /> Reintentar
         </Button>
         <Button size="sm" variant="outline" asChild>
-          <Link href="/">Home</Link>
+          <Link href="/app">Inicio</Link>
         </Button>
       </div>
     </div>

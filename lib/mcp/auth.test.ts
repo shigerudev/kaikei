@@ -9,19 +9,19 @@ test("unknown and empty tokens do not resolve", () => {
   assert.equal(resolveGroupId("not-a-token"), null);
 });
 
-test("default demo token maps to grupo-ag", () => {
-  assert.equal(resolveGroupId(DEFAULT_DEMO_TOKEN, {}), "grupo-ag");
+test("default demo token maps to demo", () => {
+  assert.equal(resolveGroupId(DEFAULT_DEMO_TOKEN, {}), "demo");
 });
 
 test("MCP_DEMO_TOKEN overrides the default", () => {
   const env = { MCP_DEMO_TOKEN: "secret-from-ops" };
-  assert.equal(resolveGroupId("secret-from-ops", env), "grupo-ag");
+  assert.equal(resolveGroupId("secret-from-ops", env), "demo");
   assert.equal(resolveGroupId(DEFAULT_DEMO_TOKEN, env), null);
 });
 
 test("MCP_GROUP_TOKENS maps extra tokens", () => {
-  const env = { MCP_GROUP_TOKENS: "aaa=grupo-ag,bbb=other" };
-  assert.equal(resolveGroupId("aaa", env), "grupo-ag");
+  const env = { MCP_GROUP_TOKENS: "aaa=demo,bbb=other" };
+  assert.equal(resolveGroupId("aaa", env), "demo");
   assert.equal(resolveGroupId("bbb", env), "other");
 });
 

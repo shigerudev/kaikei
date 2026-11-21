@@ -22,14 +22,14 @@ export function StatementControls({ statement, byCompany }: { statement: "PL" | 
     <div className="flex flex-wrap items-center justify-between gap-3" data-pending={pending || undefined}>
       <Tabs value={statement} onValueChange={(v) => set("statement", v === "PL" ? null : v)}>
         <TabsList>
-          <TabsTrigger value="PL">Income statement</TabsTrigger>
-          <TabsTrigger value="BS">Balance sheet</TabsTrigger>
+          <TabsTrigger value="PL">Estado de resultados</TabsTrigger>
+          <TabsTrigger value="BS">Balance general</TabsTrigger>
         </TabsList>
       </Tabs>
       <div className="flex items-center gap-2">
         <Switch id="by-company" checked={byCompany} onCheckedChange={(v) => set("view", v ? "companies" : null)} />
         <Label htmlFor="by-company" className="text-sm text-muted-foreground">
-          By company
+          Por empresa
         </Label>
       </div>
     </div>

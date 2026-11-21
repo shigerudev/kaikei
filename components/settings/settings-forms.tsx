@@ -30,10 +30,10 @@ export function ThemeSetting() {
   const { theme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   return (
-    <ToggleGroup type="single" variant="outline" value={mounted ? theme : undefined} onValueChange={(v) => v && setTheme(v)} aria-label="Theme">
-      <ToggleGroupItem value="light" className="gap-1.5 px-3"><SunIcon /> Light</ToggleGroupItem>
-      <ToggleGroupItem value="dark" className="gap-1.5 px-3"><MoonIcon /> Dark</ToggleGroupItem>
-      <ToggleGroupItem value="system" className="gap-1.5 px-3"><MonitorIcon /> System</ToggleGroupItem>
+    <ToggleGroup type="single" variant="outline" value={mounted ? theme : undefined} onValueChange={(v) => v && setTheme(v)} aria-label="Tema">
+      <ToggleGroupItem value="light" className="gap-1.5 px-3"><SunIcon /> Claro</ToggleGroupItem>
+      <ToggleGroupItem value="dark" className="gap-1.5 px-3"><MoonIcon /> Oscuro</ToggleGroupItem>
+      <ToggleGroupItem value="system" className="gap-1.5 px-3"><MonitorIcon /> Sistema</ToggleGroupItem>
     </ToggleGroup>
   );
 }
@@ -43,7 +43,7 @@ export function ResetPreview({ group, mode }: { group: string; mode: "full" | "e
   const router = useRouter();
   const [pending, start] = useTransition();
   const [open, setOpen] = useState(false);
-  const label = mode === "full" ? "Restore sample run" : "Start from empty uploads";
+  const label = mode === "full" ? "Restaurar ejemplo" : "Empezar sin cargas";
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -54,14 +54,14 @@ export function ResetPreview({ group, mode }: { group: string; mode: "full" | "e
           <DialogTitle>{label}?</DialogTitle>
           <DialogDescription>
             {mode === "full"
-              ? "Removes your uploads, decisions and extra runs, and restores the six approved packs with run #1."
-              : "Clears every upload, decision and run so you can demo the flow from the first file."}{" "}
-            Only the in-memory preview is affected.
+              ? "Quita tus cargas, decisiones y ejecuciones extra, y restaura los seis paquetes aprobados con la ejecución #1."
+              : "Borra cargas, decisiones y ejecuciones para recorrer el flujo desde el primer archivo."}{" "}
+            Solo afecta al espacio de ejemplo.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline" size="sm">Cancel</Button>
+            <Button variant="outline" size="sm">Cancelar</Button>
           </DialogClose>
           <Button
             variant="destructive"
@@ -75,12 +75,12 @@ export function ResetPreview({ group, mode }: { group: string; mode: "full" | "e
                   return;
                 }
                 setOpen(false);
-                toast.success(mode === "full" ? "Sample run restored" : "Preview cleared");
+                toast.success(mode === "full" ? "Ejemplo restaurado" : "Espacio vaciado");
                 router.push(gPath(group, mode === "full" ? "" : "/uploads"));
               })
             }
           >
-            {pending && <Loader2Icon className="animate-spin" />} Reset
+            {pending && <Loader2Icon className="animate-spin" />} Restablecer
           </Button>
         </DialogFooter>
       </DialogContent>
