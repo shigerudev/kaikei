@@ -2,14 +2,22 @@
 
 from __future__ import annotations
 
+import uuid
 from typing import Annotated, Literal
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from kaikei.api.deps import get_session, get_store
+from kaikei.application import latest_run
+from kaikei.application import sources as pipeline_sources
+from kaikei.application.group_config import GroupMeta
+from kaikei.application.group_config import get_group as get_configured_group
+from kaikei.application.presentation import companies_out, group_out
 from kaikei.application.uploads import (
     MAX_UPLOAD_BYTES,
     UploadError,
@@ -20,6 +28,26 @@ from kaikei.infrastructure.db import models
 from kaikei.infrastructure.storage import ObjectStore
 
 router = APIRouter(prefix="/api/v1", tags=["files"])
+
+
+def _configured_group(group_id: str) -> GroupMeta | None:
+    """The in-memory pipeline's group when the UI addresses it by slug (e.g. `grupo-ag`).
+
+    The DB-backed upload vertical keys groups by UUID; every pipeline route keys them by
+    slug. A UUID stays on the DB path; a configured slug is served by the pipeline, so the
+    UI can use one group id on all 18 routes. An unknown slug falls through to the DB path,
+    which answers 404.
+    """
+    try:
+        uuid.UUID(group_id)
+    except (ValueError, AttributeError, TypeError):
+        return get_configured_group(group_id)
+    return None
+
+
+def _json(payload: object, status_code: int = 200) -> JSONResponse:
+    return JSONResponse(jsonable_encoder(payload), status_code=status_code)
+
 
 FileStatus = Literal["MISSING", "UPLOADED", "MAPPING_APPROVED", "REJECTED"]
 
@@ -103,6 +131,15 @@ def post_file(
     file: Annotated[UploadFile, File()],
 ) -> UploadOut:
     data = file.file.read(MAX_UPLOAD_BYTES + 1)
+    configured = _configured_group(group_id)
+    if configured is not None:
+        if len(data) > MAX_UPLOAD_BYTES:
+            raise HTTPException(413, "file larger than 20 MB")
+        try:
+            result_out = pipeline_sources.upload(configured.id, file.filename or "", data)
+        except pipeline_sources.UnknownUploadError as exc:
+            raise HTTPException(422, str(exc)) from exc
+        return _json(result_out, status_code=201)
     try:
         result = upload_file(session, store, group_id, file.filename or "", data)
     except UploadError as err:
@@ -114,6 +151,9 @@ def post_file(
 def list_files(
     session: Annotated[Session, Depends(get_session)], group_id: str
 ) -> list[SourceFileOut]:
+    configured = _configured_group(group_id)
+    if configured is not None:
+        return _json(pipeline_sources.list_files(configured.id, latest_run(configured.id)))
     try:
         gid = parse_group_id(group_id)
     except UploadError as err:
@@ -140,6 +180,9 @@ def get_file(file_id: str, session: Annotated[Session, Depends(get_session)]) ->
 
 @router.get("/groups/{group_id}", response_model=GroupOut)
 def get_group(group_id: str, session: Annotated[Session, Depends(get_session)]) -> GroupOut:
+    configured = _configured_group(group_id)
+    if configured is not None:
+        return _json(group_out(configured))
     try:
         gid = parse_group_id(group_id)
     except UploadError as err:
@@ -164,6 +207,9 @@ def get_group(group_id: str, session: Annotated[Session, Depends(get_session)]) 
 def list_companies(
     group_id: str, session: Annotated[Session, Depends(get_session)]
 ) -> list[CompanyOut]:
+    configured = _configured_group(group_id)
+    if configured is not None:
+        return _json(companies_out(configured.id))
     try:
         gid = parse_group_id(group_id)
     except UploadError as err:
