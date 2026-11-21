@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Fragment } from "react";
-import { PeriodPicker } from "@/components/shell/period-picker";
+import { RunStatusBadge } from "@/components/badges";
 import { HeaderSearch } from "@/components/shell/header-search";
+import { PeriodPicker } from "@/components/shell/period-picker";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -14,24 +15,27 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import type { AsOf } from "@/lib/types";
-import { formatStamp } from "@/lib/format";
+import type { Run } from "@/lib/api/types";
+import { formatStamp, shortHash } from "@/lib/ui/format";
+import { gPath } from "@/lib/ui/nav";
 
 export type Crumb = { label: string; href?: string };
 
 /**
- * Sticky top bar for every workspace screen: breadcrumb (location only) on the left;
- * data freshness, period scope and search on the right. Server-rendered so labels come from data.
+ * Sticky top bar for every group screen: breadcrumb (location only) on the left; the run being viewed,
+ * period scope and search on the right. Server-rendered so labels come from data.
  */
 export function PageHeader({
+  group,
   crumbs,
   period,
-  asOf,
+  run,
   preview,
 }: {
+  group: string;
   crumbs: Crumb[];
   period?: { value: string; options: string[] };
-  asOf?: AsOf;
+  run?: Run | null;
   preview?: boolean;
 }) {
   const last = crumbs.length - 1;
@@ -42,16 +46,17 @@ export function PageHeader({
       <Breadcrumb className="min-w-0 flex-1">
         <BreadcrumbList className="flex-nowrap">
           {crumbs.map((c, i) => {
-            // On narrow screens keep only the last two segments; middle ones collapse to an ellipsis.
             const hideOnMobile = crumbs.length > 2 && i < last - 1;
             return (
               <Fragment key={`${c.label}-${i}`}>
                 {i === 1 && crumbs.length > 2 && (
-                  <BreadcrumbItem className="md:hidden">
-                    <BreadcrumbEllipsis className="size-4" />
-                  </BreadcrumbItem>
+                  <>
+                    <BreadcrumbItem className="md:hidden">
+                      <BreadcrumbEllipsis className="size-4" />
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator className="md:hidden" />
+                  </>
                 )}
-                {i === 1 && crumbs.length > 2 && <BreadcrumbSeparator className="md:hidden" />}
                 <BreadcrumbItem className={hideOnMobile ? "hidden min-w-0 md:inline-flex" : "min-w-0"}>
                   {i === last || !c.href ? (
                     <BreadcrumbPage className="truncate font-medium">{c.label}</BreadcrumbPage>
@@ -72,20 +77,27 @@ export function PageHeader({
         {preview && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <span className="hidden items-center gap-1.5 rounded-full border border-dashed px-2 py-0.5 text-[11px] text-muted-foreground sm:inline-flex">
+              <span className="hidden items-center gap-1.5 rounded-full border border-dashed px-2 py-0.5 text-[11px] text-muted-foreground xl:inline-flex">
                 <span className="size-1.5 rounded-full bg-warning" />
                 Preview data
               </span>
             </TooltipTrigger>
-            <TooltipContent>Sample records held in memory until the database path is live. Figures follow the same rules.</TooltipContent>
+            <TooltipContent className="max-w-64">
+              Built from the Grupo AG fixture pack until the engine API is connected. Findings and locations come from the answer key; figures are not golden numbers.
+            </TooltipContent>
           </Tooltip>
         )}
-        {asOf?.at && (
+        {run && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <span className="hidden text-xs text-muted-foreground lg:inline">Updated {formatStamp(asOf.at)}</span>
+              <Link href={gPath(group, `/runs/${run.id}`)} className="hidden items-center gap-2 rounded-md px-1.5 py-1 text-xs text-muted-foreground transition-colors hover:bg-muted sm:inline-flex">
+                <span className="num">Run #{run.number}</span>
+                <RunStatusBadge status={run.status} />
+              </Link>
             </TooltipTrigger>
-            <TooltipContent>As of the latest import. The app and every AI client read this same state.</TooltipContent>
+            <TooltipContent>
+              Fingerprint <span className="font-mono">{shortHash(run.fingerprint)}</span> · {formatStamp(run.created_at)}
+            </TooltipContent>
           </Tooltip>
         )}
         {period && period.options.length > 0 && <PeriodPicker value={period.value} options={period.options} />}
@@ -101,9 +113,9 @@ export function PageTitle({ title, description, children }: { title: string; des
     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div className="min-w-0 space-y-1">
         <h1 className="text-xl font-semibold tracking-tight text-balance">{title}</h1>
-        {description && <p className="text-sm text-pretty text-muted-foreground">{description}</p>}
+        {description && <div className="text-sm text-pretty text-muted-foreground">{description}</div>}
       </div>
-      {children && <div className="flex shrink-0 items-center gap-2">{children}</div>}
+      {children && <div className="flex shrink-0 flex-wrap items-center gap-2">{children}</div>}
     </div>
   );
 }

@@ -2,41 +2,41 @@
 
 import { animate, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
-import { formatMinor } from "@/lib/money";
+import { formatAmount } from "@/lib/ui/format";
 
 /**
- * Animates a money figure up to its exact value once per data version (`version` = as_of import id).
- * Purpose: draw the eye to a figure that changed after an upload. The final text is always the exact
- * `formatMinor` output; intermediate frames are display-only. Skipped under reduced motion or repeats.
+ * Counts a figure up to its exact value once per run (`version` = run id), to draw the eye to a fresh
+ * result. Intermediate frames are display-only; the settled text is always the exact formatted value.
+ * Skipped under reduced motion and on repeat views.
  */
-export function CountUp({ minor, currency, version, className = "" }: { minor: string; currency: string; version: string | null; className?: string }) {
+export function CountUp({ value, version, dp = 0, className = "" }: { value: string; version: string | null; dp?: number; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduce = useReducedMotion();
-  const exact = formatMinor(minor, currency);
+  const exact = formatAmount(value, { dp });
 
   useEffect(() => {
     const el = ref.current;
     if (!el || reduce || !version) return;
-    const key = `kaikei:counted:${version}:${minor}`;
+    const key = `kaikei:counted:${version}:${value}`;
     try {
       if (sessionStorage.getItem(key)) return;
       sessionStorage.setItem(key, "1");
     } catch {
       return;
     }
-    const target = Number(BigInt(minor));
-    const controls = animate(target * 0.82, target, {
-      duration: 0.5,
+    const target = Number(value);
+    const controls = animate(target * 0.86, target, {
+      duration: 0.55,
       ease: [0.23, 1, 0.32, 1],
       onUpdate: (v) => {
-        el.textContent = formatMinor(BigInt(Math.round(v)), currency);
+        el.textContent = formatAmount(v.toFixed(dp), { dp });
       },
       onComplete: () => {
         el.textContent = exact;
       },
     });
     return () => controls.stop();
-  }, [minor, currency, version, reduce, exact]);
+  }, [value, version, reduce, exact, dp]);
 
   return (
     <span ref={ref} className={`num ${className}`}>

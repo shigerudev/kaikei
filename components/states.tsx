@@ -1,7 +1,7 @@
-import { ConstructionIcon, type LucideIcon } from "lucide-react";
-import { NotImplementedError } from "@/lib/not-implemented";
+import { ServerCrashIcon, type LucideIcon } from "lucide-react";
+import { ApiError } from "@/lib/api";
 
-/** Designed empty state: icon, one-line title, one helpful sentence, optional primary action. */
+/** Designed empty state: icon, one-line title, one helpful sentence, optional actions. */
 export function EmptyState({
   icon: Icon,
   title,
@@ -24,33 +24,34 @@ export function EmptyState({
         <p className="font-medium">{title}</p>
         {description && <p className="text-sm text-pretty text-muted-foreground">{description}</p>}
       </div>
-      {children && <div className="mt-1 flex gap-2">{children}</div>}
+      {children && <div className="mt-1 flex flex-wrap justify-center gap-2">{children}</div>}
     </div>
   );
 }
 
-/** Shown when the db path for a read isn't implemented yet (DATA_SOURCE=db before the owner lands it). */
-export function NotBuiltState({ error }: { error: NotImplementedError }) {
+/** The engine answered with an error or isn't reachable: say so plainly, keep the shell usable. */
+export function EngineErrorState({ error }: { error: ApiError }) {
   return (
     <EmptyState
-      icon={ConstructionIcon}
-      title="This view isn't connected yet"
+      icon={ServerCrashIcon}
+      title={error.status === 404 ? "The engine doesn't serve this yet" : "The engine couldn't answer"}
       description={
         <>
-          <span className="font-mono text-xs">{error.what}</span> is still being built by {error.owner}. Switch to preview data
-          (<span className="font-mono text-xs">DATA_SOURCE=preview</span>) to explore it now.
+          <span className="font-mono text-xs">{error.path}</span> returned {error.status || "no response"}. Nothing was changed. Unset{" "}
+          <span className="font-mono text-xs">KAIKEI_API_URL</span> to explore with preview data.
         </>
       }
     />
   );
 }
 
-/** Run a data read; turn a NotImplementedError into a renderable state instead of a crash. */
+/** Run a read; turn an engine error into a renderable state instead of a crash. */
 export async function load<T>(fn: () => Promise<T>): Promise<{ ok: true; data: T } | { ok: false; node: React.ReactNode }> {
   try {
     return { ok: true, data: await fn() };
   } catch (err) {
-    if (err instanceof NotImplementedError) return { ok: false, node: <NotBuiltState error={err} /> };
+    if (err instanceof ApiError) return { ok: false, node: <EngineErrorState error={err} /> };
+    if (err instanceof TypeError && /fetch/i.test(err.message)) return { ok: false, node: <EngineErrorState error={new ApiError(err.message, 0, "engine")} /> };
     throw err;
   }
 }

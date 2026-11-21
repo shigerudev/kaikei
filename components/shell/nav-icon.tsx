@@ -1,22 +1,20 @@
 import {
   ArrowLeftRightIcon,
-  FileTextIcon,
   FlagIcon,
   LayoutGridIcon,
   type LucideProps,
-  PlugZapIcon,
+  PlayIcon,
   SettingsIcon,
   UploadIcon,
 } from "lucide-react";
-import type { NavKey } from "@/lib/nav";
+import type { NavKey } from "@/lib/ui/nav";
 
 const ICONS = {
-  overview: LayoutGridIcon,
-  import: UploadIcon,
-  transactions: ArrowLeftRightIcon,
-  documents: FileTextIcon,
-  review: FlagIcon,
-  connect: PlugZapIcon,
+  dashboard: LayoutGridIcon,
+  uploads: UploadIcon,
+  runs: PlayIcon,
+  findings: FlagIcon,
+  intercompany: ArrowLeftRightIcon,
   settings: SettingsIcon,
 } satisfies Record<NavKey, React.ComponentType<LucideProps>>;
 

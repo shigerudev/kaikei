@@ -2,23 +2,24 @@
 
 import {
   ArrowRightIcon,
+  BuildingIcon,
   CalendarIcon,
-  ClipboardCopyIcon,
-  FileTextIcon,
+  FileSpreadsheetIcon,
   FlagIcon,
-  FolderIcon,
   HistoryIcon,
   MonitorIcon,
   MoonIcon,
-  ReceiptIcon,
+  PlayIcon,
   RotateCcwIcon,
+  SigmaIcon,
   SunIcon,
   UploadIcon,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import * as React from "react";
-import { toast } from "sonner";
+import { searchAction } from "@/app/g/[group]/actions";
+import { NavIcon } from "@/components/shell/nav-icon";
 import {
   CommandDialog,
   CommandEmpty,
@@ -29,30 +30,27 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
-import { NavIcon } from "@/components/shell/nav-icon";
-import type { SearchResult } from "@/lib/data/types";
-import { formatPeriod, shiftPeriod } from "@/lib/format";
-import { formatMinor } from "@/lib/money";
-import { NAV, SETTINGS_SECTIONS, wsPath } from "@/lib/nav";
+import type { SearchHit } from "@/lib/api/types";
+import { formatPeriod } from "@/lib/ui/format";
+import { gPath, NAV, SETTINGS_SECTIONS } from "@/lib/ui/nav";
 
 type Ctx = { open: () => void };
 const CommandMenuContext = React.createContext<Ctx>({ open: () => {} });
 export const useCommandMenu = () => React.useContext(CommandMenuContext);
 
-const RECENTS_KEY = "kaikei:recents";
+const RECENTS_KEY = "kaikei:recents:v2";
 
-function readRecents(): SearchResult[] {
+function readRecents(): SearchHit[] {
   try {
-    return JSON.parse(localStorage.getItem(RECENTS_KEY) ?? "[]") as SearchResult[];
+    return JSON.parse(localStorage.getItem(RECENTS_KEY) ?? "[]") as SearchHit[];
   } catch {
     return [];
   }
 }
 
-function pushRecent(item: SearchResult) {
+function pushRecent(item: SearchHit) {
   try {
-    const next = [item, ...readRecents().filter((r) => r.id !== item.id)].slice(0, 5);
-    localStorage.setItem(RECENTS_KEY, JSON.stringify(next));
+    localStorage.setItem(RECENTS_KEY, JSON.stringify([item, ...readRecents().filter((r) => r.id !== item.id)].slice(0, 5)));
   } catch {
     /* storage unavailable: recents are a convenience only */
   }
@@ -63,39 +61,35 @@ const isTyping = (e: KeyboardEvent) => {
   return !!el && (el.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName));
 };
 
-const KIND_ICON = { transaction: ReceiptIcon, document: FileTextIcon, category: FolderIcon, flag: FlagIcon } as const;
-const KIND_LABEL = { transaction: "Transactions", document: "Documents", category: "Categories", flag: "Review" } as const;
+const KIND_ICON = { company: BuildingIcon, account: SigmaIcon, finding: FlagIcon, file: FileSpreadsheetIcon, run: PlayIcon } as const;
+const KIND_LABEL = { finding: "Findings", account: "Accounts", company: "Companies", file: "Files", run: "Runs" } as const;
+const KIND_ORDER: SearchHit["kind"][] = ["finding", "account", "company", "file", "run"];
+
+/** Move through the period options (display order) — `]` next, `[` previous. */
+const step = (options: string[], current: string, dir: 1 | -1) => {
+  const i = options.indexOf(current);
+  return i < 0 ? undefined : options[i + dir];
+};
 
 /**
  * ⌘K palette + global keyboard shortcuts. Deliberately no open/close animation (used constantly).
- * Shortcuts: ⌘K or / opens · G then O/I/T/D/R/C/S navigates · [ ] steps the period · ⌘U imports.
+ * Shortcuts: ⌘K or / opens · G then D/U/R/F/I/S navigates · [ ] steps the period on the dashboard.
  */
-export function CommandMenuProvider({
-  ws,
-  periods,
-  defaultPeriod,
-  mcpUrl,
-  children,
-}: {
-  ws: string;
-  periods: string[];
-  defaultPeriod: string | null;
-  mcpUrl: string;
-  children: React.ReactNode;
-}) {
+export function CommandMenuProvider({ group, periods, children }: { group: string; periods: string[]; children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
   const openRef = React.useRef(open);
   React.useEffect(() => {
     openRef.current = open;
   }, [open]);
   const [query, setQuery] = React.useState("");
-  const [results, setResults] = React.useState<SearchResult[]>([]);
-  const [recents, setRecents] = React.useState<SearchResult[]>([]);
+  const [results, setResults] = React.useState<SearchHit[]>([]);
+  const [recents, setRecents] = React.useState<SearchHit[]>([]);
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { setTheme } = useTheme();
+  const onDashboard = pathname === gPath(group);
 
   const go = React.useCallback(
     (href: string) => {
@@ -111,19 +105,17 @@ export function CommandMenuProvider({
     setOpen(next);
   }, []);
 
-  const currentPeriod = searchParams.get("period") ?? defaultPeriod;
+  const currentPeriod = searchParams.get("period") ?? periods.at(-1);
 
   const setPeriod = React.useCallback(
     (period: string) => {
       const params = new URLSearchParams(searchParams.toString());
       params.set("period", period);
-      const onPeriodPage = pathname === wsPath(ws) || pathname.startsWith(wsPath(ws, "/transactions"));
-      router.replace(`${onPeriodPage ? pathname : wsPath(ws)}?${params.toString()}`, { scroll: false });
+      router.replace(`${gPath(group)}?${params.toString()}`, { scroll: false });
     },
-    [pathname, router, searchParams, ws],
+    [group, router, searchParams],
   );
 
-  // Global shortcuts
   React.useEffect(() => {
     let pendingG = 0;
     const onKey = (e: KeyboardEvent) => {
@@ -132,21 +124,15 @@ export function CommandMenuProvider({
         onOpenChange(!openRef.current);
         return;
       }
-      if (isTyping(e) || e.altKey) return;
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "u") {
-        e.preventDefault();
-        router.push(wsPath(ws, "/import"));
-        return;
-      }
-      if (e.metaKey || e.ctrlKey) return;
+      if (isTyping(e) || e.altKey || e.metaKey || e.ctrlKey) return;
       if (e.key === "/") {
         e.preventDefault();
         onOpenChange(true);
         return;
       }
-      if ((e.key === "[" || e.key === "]") && currentPeriod) {
-        const next = shiftPeriod(currentPeriod, e.key === "]" ? 1 : -1);
-        if (periods.includes(next)) setPeriod(next);
+      if ((e.key === "[" || e.key === "]") && onDashboard && currentPeriod) {
+        const next = step(periods, currentPeriod, e.key === "]" ? 1 : -1);
+        if (next) setPeriod(next);
         return;
       }
       const key = e.key.toUpperCase();
@@ -159,45 +145,38 @@ export function CommandMenuProvider({
         pendingG = 0;
         if (item) {
           e.preventDefault();
-          router.push(wsPath(ws, item.path));
+          router.push(gPath(group, item.path));
         }
       }
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [currentPeriod, onOpenChange, periods, router, setPeriod, ws]);
+  }, [currentPeriod, group, onDashboard, onOpenChange, periods, router, setPeriod]);
 
-
-  // Debounced record search (read-only route → lib/data.search)
   React.useEffect(() => {
     const q = query.trim();
     if (q.length < 2) return;
-    const ctrl = new AbortController();
+    let cancelled = false;
     const t = setTimeout(async () => {
       setLoading(true);
-      try {
-        const res = await fetch(`/api/w/${ws}/search?q=${encodeURIComponent(q)}`, { signal: ctrl.signal });
-        setResults(res.ok ? ((await res.json()) as { results: SearchResult[] }).results : []);
-      } catch {
-        /* aborted or offline: keep previous results */
-      } finally {
-        if (!ctrl.signal.aborted) setLoading(false);
+      const hits = await searchAction(group, q).catch(() => [] as SearchHit[]);
+      if (!cancelled) {
+        setResults(hits);
+        setLoading(false);
       }
     }, 120);
     return () => {
-      ctrl.abort();
+      cancelled = true;
       clearTimeout(t);
     };
-  }, [query, ws]);
+  }, [query, group]);
 
   const grouped = React.useMemo(() => {
-    const map = new Map<SearchResult["kind"], SearchResult[]>();
     if (query.trim().length < 2) return [];
-    for (const r of results) map.set(r.kind, [...(map.get(r.kind) ?? []), r]);
-    return [...map.entries()];
+    return KIND_ORDER.map((k) => [k, results.filter((r) => r.kind === k)] as const).filter(([, items]) => items.length);
   }, [results, query]);
 
-  const openRecord = (r: SearchResult) => {
+  const openHit = (r: SearchHit) => {
     pushRecent(r);
     go(r.href);
   };
@@ -207,15 +186,15 @@ export function CommandMenuProvider({
   return (
     <CommandMenuContext.Provider value={ctx}>
       {children}
-      <CommandDialog open={open} onOpenChange={onOpenChange} title="Command menu" description="Search records, jump to a screen or run an action.">
-        <CommandInput placeholder="Search transactions, bills, categories… or type a command" value={query} onValueChange={setQuery} />
-        <CommandList className="max-h-[min(420px,60vh)]">
+      <CommandDialog open={open} onOpenChange={onOpenChange} title="Command menu" description="Search findings, accounts and companies, jump to a screen or run an action.">
+        <CommandInput placeholder="Search findings (E02), accounts, companies… or type a command" value={query} onValueChange={setQuery} />
+        <CommandList className="max-h-[min(440px,60vh)]">
           <CommandEmpty>{loading ? "Searching…" : "No results."}</CommandEmpty>
 
           {query.trim().length < 2 && recents.length > 0 && (
             <CommandGroup heading="Recent">
               {recents.map((r) => (
-                <ResultItem key={`recent-${r.id}`} r={r} onSelect={() => openRecord(r)} recent />
+                <Hit key={`recent-${r.id}`} r={r} onSelect={() => openHit(r)} recent />
               ))}
             </CommandGroup>
           )}
@@ -223,7 +202,7 @@ export function CommandMenuProvider({
           {grouped.map(([kind, items]) => (
             <CommandGroup key={kind} heading={KIND_LABEL[kind]} forceMount>
               {items.map((r) => (
-                <ResultItem key={r.id} r={r} onSelect={() => openRecord(r)} />
+                <Hit key={r.id} r={r} onSelect={() => openHit(r)} />
               ))}
             </CommandGroup>
           ))}
@@ -231,56 +210,43 @@ export function CommandMenuProvider({
           {grouped.length > 0 && <CommandSeparator />}
 
           <CommandGroup heading="Actions">
-            <CommandItem value="upload actuals csv import transactions" onSelect={() => go(wsPath(ws, "/import?type=actual"))}>
-              <UploadIcon />
-              Upload actuals CSV
-              <CommandShortcut>⌘U</CommandShortcut>
+            <CommandItem value="upload packs files import ingest" onSelect={() => go(gPath(group, "/uploads"))}>
+              <UploadIcon /> Upload company packs
             </CommandItem>
-            <CommandItem value="upload budget csv import planned" onSelect={() => go(wsPath(ws, "/import?type=budget"))}>
-              <UploadIcon />
-              Upload budget CSV
+            <CommandItem value="start new run rerun consolidation" onSelect={() => go(gPath(group, "/runs?start=1"))}>
+              <PlayIcon /> Start a run
             </CommandItem>
-            <CommandItem value="upload bill receipt pdf document factura" onSelect={() => go(wsPath(ws, "/documents?upload=1"))}>
-              <FileTextIcon />
-              Upload a bill (PDF)
-            </CommandItem>
-            <CommandItem
-              value="copy mcp url connect ai assistant"
-              onSelect={async () => {
-                setOpen(false);
-                try {
-                  await navigator.clipboard.writeText(mcpUrl);
-                  toast.success("MCP URL copied", { description: "Paste it into Grok, Claude or ChatGPT." });
-                } catch {
-                  toast.error("Couldn't copy. Open Connect AI to copy it manually.");
-                }
-              }}
-            >
-              <ClipboardCopyIcon />
-              Copy MCP URL
+            <CommandItem value="open blockers findings severity" onSelect={() => go(gPath(group, "/findings?severity=BLOCKER"))}>
+              <FlagIcon /> Show open blockers
             </CommandItem>
           </CommandGroup>
 
           <CommandGroup heading="Go to">
             {NAV.map((n) => (
-              <CommandItem key={n.key} value={`${n.label} ${n.keywords.join(" ")}`} onSelect={() => go(wsPath(ws, n.path))}>
+              <CommandItem key={n.key} value={`${n.label} ${n.keywords.join(" ")}`} onSelect={() => go(gPath(group, n.path))}>
                 <NavIcon nav={n.key} />
                 {n.label}
                 <CommandShortcut>G {n.shortcut}</CommandShortcut>
               </CommandItem>
             ))}
-            {SETTINGS_SECTIONS.filter((s) => s.key !== "general").map((s) => (
-              <CommandItem key={s.key} value={`settings ${s.label} ${s.description}`} onSelect={() => go(wsPath(ws, `/settings/${s.key}`))}>
-                <ArrowRightIcon />
-                Settings › {s.label}
+            {SETTINGS_SECTIONS.filter((s) => s.key !== "entities").map((s) => (
+              <CommandItem key={s.key} value={`settings ${s.label} ${s.description}`} onSelect={() => go(gPath(group, `/settings/${s.key}`))}>
+                <ArrowRightIcon /> Settings › {s.label}
               </CommandItem>
             ))}
           </CommandGroup>
 
           {periods.length > 0 && (
-            <CommandGroup heading="Period">
+            <CommandGroup heading="Dashboard period">
               {periods.map((p) => (
-                <CommandItem key={p} value={`period ${formatPeriod(p, true)} ${p}`} onSelect={() => { setOpen(false); setPeriod(p); }}>
+                <CommandItem
+                  key={p}
+                  value={`period ${formatPeriod(p, true)} ${p}`}
+                  onSelect={() => {
+                    setOpen(false);
+                    setPeriod(p);
+                  }}
+                >
                   <CalendarIcon />
                   {formatPeriod(p, true)}
                   {p === currentPeriod && <span className="ml-auto text-xs text-muted-foreground">Current</span>}
@@ -299,8 +265,8 @@ export function CommandMenuProvider({
             <CommandItem value="theme system auto" onSelect={() => { setTheme("system"); setOpen(false); }}>
               <MonitorIcon /> System theme
             </CommandItem>
-            <CommandItem value="reset sample workspace danger" onSelect={() => go(wsPath(ws, "/settings/danger"))}>
-              <RotateCcwIcon /> Reset sample workspace…
+            <CommandItem value="reset preview data" onSelect={() => go(gPath(group, "/settings/danger"))}>
+              <RotateCcwIcon /> Reset preview data…
             </CommandItem>
           </CommandGroup>
         </CommandList>
@@ -308,14 +274,14 @@ export function CommandMenuProvider({
           <span><kbd className="font-sans">↑↓</kbd> navigate</span>
           <span><kbd className="font-sans">↵</kbd> open</span>
           <span><kbd className="font-sans">esc</kbd> close</span>
-          <span className="ml-auto">G then a letter jumps anywhere</span>
+          <span className="ml-auto hidden sm:inline">G then a letter jumps anywhere</span>
         </div>
       </CommandDialog>
     </CommandMenuContext.Provider>
   );
 }
 
-function ResultItem({ r, onSelect, recent }: { r: SearchResult; onSelect: () => void; recent?: boolean }) {
+function Hit({ r, onSelect, recent }: { r: SearchHit; onSelect: () => void; recent?: boolean }) {
   const Icon = recent ? HistoryIcon : KIND_ICON[r.kind];
   return (
     <CommandItem value={`${r.kind} ${r.id} ${r.title} ${r.subtitle}`} onSelect={onSelect}>
@@ -324,7 +290,6 @@ function ResultItem({ r, onSelect, recent }: { r: SearchResult; onSelect: () => 
         {r.title}
         <span className="ml-2 text-muted-foreground">{r.subtitle}</span>
       </span>
-      {r.amountMinor && r.currency && <span className="num ml-2 text-xs text-muted-foreground">{formatMinor(r.amountMinor, r.currency)}</span>}
     </CommandItem>
   );
 }

@@ -7,17 +7,18 @@ import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { formatPeriod } from "@/lib/format";
+import { formatPeriod } from "@/lib/ui/format";
 
-/** Global period scope, stored in the URL (?period=YYYY-MM). Options are latest-first. */
+/** Global period scope, stored in the URL (?period=YYYY-MM or YYYY for the full year). */
 export function PeriodPicker({ value, options }: { value: string; options: string[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
   const [pending, start] = useTransition();
   const idx = options.indexOf(value);
-  const older = idx >= 0 ? options[idx + 1] : undefined;
-  const newer = idx > 0 ? options[idx - 1] : undefined;
+  // Options are in display order (Jan … Dec, then the full year).
+  const older = idx > 0 ? options[idx - 1] : undefined;
+  const newer = idx >= 0 ? options[idx + 1] : undefined;
 
   const set = (period: string) => {
     const next = new URLSearchParams(params.toString());
