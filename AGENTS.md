@@ -49,8 +49,18 @@ Work only in your task's lane. Need a change in another lane: leave a `TODO(<own
 ## Stack notes
 Next.js 16 (Cache Components), React 19, Drizzle on Neon (`neon-serverless` Pool for transactions), Vercel Blob, **LangChain + LangSmith** (all model calls via `lib/ai/suggest()` / `ChatOpenAI.withStructuredOutput`), `mcp-handler` 2.x with full `z.object(...)` tool schemas, Zod 4.
 
-### npm behind Fortinet
-`registry.npmjs.org` may 403 under SSL inspection. Project `.npmrc` uses `registry=https://registry.npmmirror.com` and `strict-ssl=false` so installs work. Prefer installing the Fortinet CA and switching back to the official registry when possible.
+### npm behind Fortinet SSL inspection
+The network MITM-signs TLS as `CN=FG6H0FTB22905955` (Fortinet). Without that appliance CA in the trust store, Node/npm fail (`UNABLE_TO_VERIFY_LEAF_SIGNATURE` / `unable to get local issuer certificate`) and the firewall may also **403** `registry.npmjs.org`.
+
+**Proper fix:** get the FortiGate SSL-inspection CA (Security Profiles → SSL/SSH Inspection → Download CA Certificate) and run:
+```bash
+./scripts/trust-fortinet-ca.sh /path/to/fortinet-ca.cer
+export NODE_EXTRA_CA_CERTS="$PWD/.certs/fortinet-ssl-inspection-ca.pem"
+npm ping
+```
+That writes `.npmrc` with `registry=https://registry.npmjs.org/`, `strict-ssl=true`, and `cafile=…`.
+
+**Temporary workaround** (until the CA is installed): `registry=https://registry.npmmirror.com` + `strict-ssl=false`.
 # GitHub: how to update `main`
 
 `main` is branch-protected on GitHub (`allow_force_pushes=false`, `allow_deletions=false`, `enforce_admins=true`).
