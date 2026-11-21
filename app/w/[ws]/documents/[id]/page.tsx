@@ -1,19 +1,40 @@
-import { ScreenPlaceholder } from "@/components/screen-placeholder";
+import { SearchXIcon } from "lucide-react";
+import Link from "next/link";
+import { DocumentReview } from "@/components/documents/document-review";
+import { PageBody, PageHeader } from "@/components/shell/page-header";
+import { EmptyState, load } from "@/components/states";
+import { Button } from "@/components/ui/button";
+import { getDocument, getWorkspaceInfo } from "@/lib/data";
+import { wsPath } from "@/lib/nav";
 
-/** Screen 6: Document review. */
+export const metadata = { title: "Review bill" };
+
+/** Screen 6: document review (full page: the PDF needs the room). */
 export default async function DocumentPage({ params }: PageProps<"/w/[ws]/documents/[id]">) {
-  const { id } = await params;
+  const { ws, id } = await params;
+  const info = await getWorkspaceInfo(ws);
+  const result = await load(() => getDocument(ws, id));
+  const doc = result.ok ? result.data : null;
+
   return (
-    <ScreenPlaceholder
-      title={`Bill ${id.slice(0, 8)}`}
-      owner="Jordi (UI) · Hugo (extract + match)"
-      purpose="PDF page left; extracted supplier / date / currency / total right (editable); suggested match; Confirm / Not this one."
-      todo={[
-        "PDF page via react-pdf (client component)",
-        "Editable fields (manual entry when AI_ENABLED=false) — R4",
-        "Match card with reasons (amount_exact, date_within_3d, supplier_in_description)",
-        "Confirm / Not this one → POST /api/w/[ws]/documents/[id]/match — R5",
-      ]}
-    />
+    <>
+      <PageHeader crumbs={[{ label: "Documents", href: wsPath(ws, "/documents") }, { label: doc?.fileName ?? "Document" }]} preview={info?.dataSource === "preview"} />
+      <PageBody className="max-w-7xl">
+        {!result.ok ? (
+          result.node
+        ) : !doc ? (
+          <EmptyState icon={SearchXIcon} title="Document not found" description="The link may be out of date.">
+            <Button variant="outline" size="sm" asChild>
+              <Link href={wsPath(ws, "/documents")}>All documents</Link>
+            </Button>
+          </EmptyState>
+        ) : (
+          <>
+            <h1 className="sr-only">Review {doc.fileName}</h1>
+            <DocumentReview key={`${doc.id}-${doc.candidates.map((c) => c.transactionId + c.status).join()}`} ws={ws} doc={doc} />
+          </>
+        )}
+      </PageBody>
+    </>
   );
 }

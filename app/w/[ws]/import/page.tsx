@@ -1,20 +1,30 @@
-import { ScreenPlaceholder } from "@/components/screen-placeholder";
+import { ImportWizard } from "@/components/import/import-wizard";
+import { PageBody, PageHeader, PageTitle } from "@/components/shell/page-header";
+import { getWorkspaceInfo } from "@/lib/data";
 
-/** Screen 3: Import wizard. */
-export default function ImportPage() {
+export const metadata = { title: "Import" };
+
+const SAMPLES = [
+  { label: "Actuals · Nov", href: "/samples/sample_actuals_nov.csv" },
+  { label: "Budget · Nov", href: "/samples/sample_budget_nov.csv" },
+  { label: "Budget · Dec", href: "/samples/sample_budget_dec.csv" },
+];
+
+/** Screen 3: import wizard. */
+export default async function ImportPage({ params, searchParams }: PageProps<"/w/[ws]/import">) {
+  const { ws } = await params;
+  const { type } = await searchParams;
+  const info = await getWorkspaceInfo(ws);
   return (
-    <ScreenPlaceholder
-      title="Upload a file"
-      owner="Jordi"
-      purpose="Upload → type (Budget / Actual) → mapping with raw sample values and confidence → summary → apply."
-      todo={[
-        "Drop zone for CSV or PDF → POST /api/w/[ws]/upload (PDF redirects to /documents/<id>)",
-        "Type picker, pre-selected from the proposal (R2)",
-        "Mapping table: field → column, confidence badge, raw sample values; ambiguous fields block Apply (R1, AC3)",
-        "Provenance badge: “Suggested by AI” vs heuristic",
-        "Apply → POST /api/w/[ws]/imports/[id]/apply → summary: new / already imported / flagged",
-        "Repeat file: “This file was already imported. 0 new.”",
-      ]}
-    />
+    <>
+      <PageHeader crumbs={[{ label: "Import" }]} preview={info?.dataSource === "preview"} />
+      <PageBody className="max-w-3xl">
+        <PageTitle
+          title="Import a CSV"
+          description="We keep your original file untouched, propose how its columns map, and count every transaction once — even if you upload an overlapping export."
+        />
+        <ImportWizard ws={ws} initialType={type === "budget" || type === "actual" ? type : undefined} samples={SAMPLES} />
+      </PageBody>
+    </>
   );
 }
