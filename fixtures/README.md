@@ -13,3 +13,7 @@ Expected figures live in [`golden.json`](./golden.json), hand-computed and never
 | `adversarial_actuals.csv` | TODO | Test-only: injection text in a description cell + unresolvable header `Imp. neto` (AC13) |
 
 Headers are intentionally non-standard: `Fecha`, `Concepto`, `Rubro`, `Monto (Q)`.
+
+## Consolidation track set
+
+[`grupo-ag/`](./grupo-ag/README.md): six-company, three-currency, six-format group pack with 13 planted errors for the multi-company consolidation track. Verified by `npm run fixtures:check`.
