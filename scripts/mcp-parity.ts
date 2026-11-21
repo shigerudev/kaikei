@@ -8,15 +8,6 @@
  * Usage: npm run mcp:parity
  *
  * Live Grok/Claude/ChatGPT rows stay `not-verified` until PIPER-84/83.
- * Simulates the consolidation walkthrough without a live AI client or MCP route:
- *   get_facts(period=2027-01) → pick Revenue → get_fact_lineage → require decimal
- *   strings + source cells. Also checks bilingual tool copy and that no mutating
- *   tool name is registered.
- *
- * Usage: npm run mcp:parity
- *
- * Live Grok/Claude/ChatGPT rows stay `not-verified` until Antonio lands
- * /api/mcp/[token] + HTTPS (PIPER-84/83).
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
