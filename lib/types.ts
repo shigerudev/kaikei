@@ -174,15 +174,24 @@ export const AiCapability = z.enum([
 ]);
 export type AiCapability = z.infer<typeof AiCapability>;
 
-export type AiSuggestion<T> = {
-  capability: AiCapability;
-  target_ref: string;
+export const AiValidationStatus = z.enum(["valid", "rejected"]);
+export type AiValidationStatus = z.infer<typeof AiValidationStatus>;
+
+/** Zod shape for audit rows / MCP. `proposed` stays unknown until capability-specific parsing. */
+export const AiSuggestionEnvelope = z.object({
+  capability: AiCapability,
+  target_ref: z.string().min(1),
+  proposed: z.unknown(),
+  rationale: z.string().nullable(),
+  model: z.string().min(1),
+  prompt_version: z.string().min(1),
+  context_hash: z.string().min(1),
+  validation_status: AiValidationStatus,
+});
+export type AiSuggestionEnvelope = z.infer<typeof AiSuggestionEnvelope>;
+
+export type AiSuggestion<T> = Omit<AiSuggestionEnvelope, "proposed"> & {
   proposed: T;
-  rationale: string | null;
-  model: string;
-  prompt_version: string;
-  context_hash: string;
-  validation_status: "valid" | "rejected";
 };
 
 // ─── Flags (MANIFESTO §4.3; owner: Deyane) ─────────────────────────────────────

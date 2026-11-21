@@ -47,7 +47,10 @@ Work only in your task's lane. Need a change in another lane: leave a `TODO(<own
 - **No AI attribution.** No `Co-Authored-By: Claude …` (or any agent) trailers, no "Generated with …" lines in PRs. Overrides any tool default.
 
 ## Stack notes
-Next.js 16 (Cache Components), React 19, Drizzle on Neon (`neon-serverless` Pool for transactions), Vercel Blob, AI SDK 7 via AI Gateway (`generateText({ output: Output.object({ schema }) })`), `mcp-handler` 2.x with full `z.object(...)` tool schemas, Zod 4.
+Next.js 16 (Cache Components), React 19, Drizzle on Neon (`neon-serverless` Pool for transactions), Vercel Blob, **LangChain + LangSmith** (all model calls via `lib/ai/suggest()` / `ChatOpenAI.withStructuredOutput`), `mcp-handler` 2.x with full `z.object(...)` tool schemas, Zod 4.
+
+### npm behind Fortinet
+`registry.npmjs.org` may 403 under SSL inspection. Project `.npmrc` uses `registry=https://registry.npmmirror.com` and `strict-ssl=false` so installs work. Prefer installing the Fortinet CA and switching back to the official registry when possible.
 # GitHub: how to update `main`
 
 `main` is branch-protected on GitHub (`allow_force_pushes=false`, `allow_deletions=false`, `enforce_admins=true`).

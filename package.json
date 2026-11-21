@@ -12,18 +12,21 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "seed": "tsx scripts/seed-sample.ts",
-    "acceptance": "tsx scripts/acceptance.ts"
+    "acceptance": "tsx scripts/acceptance.ts",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@ai-sdk/gateway": "^4.0.152",
     "@base-ui/react": "^1.9.0",
+    "@langchain/core": "^1.5.0",
+    "@langchain/openai": "^1.8.5",
     "@modelcontextprotocol/server": "^2.4.0",
     "@neondatabase/serverless": "^1.2.1",
     "@vercel/blob": "^2.9.0",
-    "ai": "^7.0.179",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.2",
     "drizzle-orm": "^0.45.4",
+    "langchain": "^1.6.7",
+    "langsmith": "^0.13.1",
     "lucide-react": "^1.77.0",
     "mcp-handler": "^2.4.0",
     "next": "16.4.6",
@@ -47,6 +50,7 @@
     "eslint-config-next": "16.4.6",
     "tailwindcss": "4.3.3",
     "tsx": "^4.23.15",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.4"
   }
 }

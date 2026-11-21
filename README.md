@@ -68,4 +68,4 @@ grep -rn "notImplemented(\|TODO(" app lib scripts
 - **Next.js 16** with Cache Components on. Workspace pages stream inside the `<Suspense>` in `app/w/[ws]/layout.tsx`. **Never add `"use cache"` to figures**, because they must match `as_of`.
 - **DB:** Neon Postgres via Drizzle (`drizzle-orm/neon-serverless` Pool, so `applyImport` can use a transaction). Money is `bigint` minor units; it crosses JSON as decimal strings.
 - **MCP:** `mcp-handler` 2.x + `@modelcontextprotocol/server` 2.x. Tools take full `z.object(...)` schemas.
-- **AI:** AI SDK 7 via AI Gateway, structured output with `generateText({ output: Output.object({ schema }) })`. Only through `lib/ai/suggest()`.
+- **AI:** LangChain + LangSmith (`ChatOpenAI.withStructuredOutput`). Only through `lib/ai/suggest()`. `AI_ENABLED=false` keeps the full manual path.

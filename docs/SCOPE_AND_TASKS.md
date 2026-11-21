@@ -26,7 +26,7 @@ Multi-entity consolidation, FX conversion, XLSX, OCR of scanned images, bank fee
 - **App:** Next.js (App Router, TypeScript), Tailwind + shadcn/ui, one repo, one deploy.
 - **DB:** Postgres (Neon via the Vercel Marketplace), Drizzle ORM + SQL migrations. Money is stored as `bigint` minor units.
 - **Files:** Vercel Blob for originals; `pdf.js` / `react-pdf` for page rendering.
-- **AI:** AI SDK with AI Gateway: structured output for the column-mapping fallback and PDF field extraction (PDF passed as a file input).
+- **AI:** LangChain + LangSmith (structured output via `withStructuredOutput`) for the column-mapping fallback and PDF field extraction. All calls go through `lib/ai/suggest()`. OpenAI-compatible API key / optional base URL (e.g. gateway).
 - **MCP:** Next.js route `/api/mcp/[token]` using `mcp-handler` (Streamable HTTP), calling the same `lib/metrics` used by the UI.
 - **Hosting:** Vercel. Preview deploys per branch, production for the demo.
 - If the team already has an existing repo (research doc mentions `shigerudev/build-and-pitch`), reuse it **only if** it is on this stack. Otherwise start fresh.
