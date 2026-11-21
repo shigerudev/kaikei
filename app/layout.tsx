@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Kaikei", template: "%s · Kaikei" },
+  title: { default: "kaikei", template: "%s · kaikei" },
   description: "Every number opens down to the row.",
+  icons: { apple: "/brand/kaikei-app-icon-rounded.svg" },
 };
 
 export const viewport: Viewport = {
