@@ -1,0 +1,28 @@
+"""ASGI entry point: `uv run fastapi dev kaikei/main.py`."""
+
+from importlib.metadata import version
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from kaikei.api.routes import health
+from kaikei.settings import Settings, get_settings
+
+API_PREFIX = "/api/v1"
+
+
+def create_app(settings: Settings | None = None) -> FastAPI:
+    settings = settings or get_settings()
+    app = FastAPI(title="Kaikei engine", version=version("kaikei"))
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.cors_origin_list,
+        allow_methods=["GET", "POST"],
+        allow_headers=["*"],
+    )
+    app.include_router(health.router)
+    app.include_router(health.router, prefix=API_PREFIX)
+    return app
+
+
+app = create_app()

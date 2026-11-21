@@ -1,0 +1,1 @@
+"""Kaikei consolidation engine."""

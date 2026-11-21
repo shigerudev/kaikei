@@ -34,7 +34,7 @@ Work only in your task's lane. Need a change in another lane: leave a `TODO(<own
 - **Open work:** mark it `raise NotImplementedError("<what> (owner: <name>)")` / `TODO(<owner>)`. Find with `grep -rn "NotImplementedError\|TODO(" engine app`. Remove the marker when you implement it.
 
 ## Commands
-- Engine setup: `cd engine && uv sync`; `docker compose up -d postgres`; `uv run alembic upgrade head`.
+- Engine setup: `cd engine && uv sync`; `docker compose up -d postgres engine`; `docker compose exec engine uv run alembic upgrade head` (Postgres has no published port).
 - Engine check (must pass before "done"): `cd engine && uv run ruff check . && uv run ruff format --check . && uv run pytest`.
 - UI check (when you touch `app/`, `components/` or `lib/api/`): `npm run typecheck && npm run lint && npm run build`.
 - Behavior changes: also `uv run pytest tests/acceptance` against the fixture pack; report which AC checks you could not run.
