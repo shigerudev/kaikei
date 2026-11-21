@@ -1,0 +1,124 @@
+Fecha,Código,Nombre de cuenta,Moneda,Importe,Contraparte,Tipo
+31/01/2027,4.1.01,Ingresos por servicios logísticos,USD,"234,000.00",,Presupuesto
+31/01/2027,5.1.01,Costo de servicios,USD,"(85,500.00)",,Presupuesto
+31/01/2027,6.1.01,Planilla,USD,"(43,200.00)",,Presupuesto
+31/01/2027,6.1.02,Alquiler de bodegas,USD,"(12,600.00)",,Presupuesto
+31/01/2027,6.1.03,Publicidad,USD,"(4,500.00)",,Presupuesto
+31/01/2027,6.1.04,Depreciación,USD,"(8,100.00)",,Presupuesto
+31/01/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+31/01/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+31/01/2027,8.1.01,Impuesto,USD,"(6,300.00)",,Presupuesto
+28/02/2027,4.1.01,Ingresos por servicios logísticos,USD,"221,000.00",,Presupuesto
+28/02/2027,5.1.01,Costo de servicios,USD,"(80,750.00)",,Presupuesto
+28/02/2027,6.1.01,Planilla,USD,"(40,800.00)",,Presupuesto
+28/02/2027,6.1.02,Alquiler de bodegas,USD,"(11,900.00)",,Presupuesto
+28/02/2027,6.1.03,Publicidad,USD,"(4,250.00)",,Presupuesto
+28/02/2027,6.1.04,Depreciación,USD,"(7,650.00)",,Presupuesto
+28/02/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+28/02/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+28/02/2027,8.1.01,Impuesto,USD,"(5,950.00)",,Presupuesto
+31/03/2027,4.1.01,Ingresos por servicios logísticos,USD,"247,000.00",,Presupuesto
+31/03/2027,5.1.01,Costo de servicios,USD,"(90,250.00)",,Presupuesto
+31/03/2027,6.1.01,Planilla,USD,"(45,600.00)",,Presupuesto
+31/03/2027,6.1.02,Alquiler de bodegas,USD,"(13,300.00)",,Presupuesto
+31/03/2027,6.1.03,Publicidad,USD,"(4,750.00)",,Presupuesto
+31/03/2027,6.1.04,Depreciación,USD,"(8,550.00)",,Presupuesto
+31/03/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+31/03/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+31/03/2027,8.1.01,Impuesto,USD,"(6,650.00)",,Presupuesto
+30/04/2027,4.1.01,Ingresos por servicios logísticos,USD,"260,000.00",,Presupuesto
+30/04/2027,5.1.01,Costo de servicios,USD,"(95,000.00)",,Presupuesto
+30/04/2027,6.1.01,Planilla,USD,"(48,000.00)",,Presupuesto
+30/04/2027,6.1.02,Alquiler de bodegas,GTQ,"(108,500.00)",,Presupuesto
+30/04/2027,6.1.03,Publicidad,USD,"(5,000.00)",,Presupuesto
+30/04/2027,6.1.04,Depreciación,USD,"(9,000.00)",,Presupuesto
+30/04/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+30/04/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+30/04/2027,8.1.01,Impuesto,USD,"(7,000.00)",,Presupuesto
+31/05/2027,4.1.01,Ingresos por servicios logísticos,USD,"260,000.00",,Presupuesto
+31/05/2027,5.1.01,Costo de servicios,USD,"(95,000.00)",,Presupuesto
+31/05/2027,6.1.01,Planilla,USD,"(48,000.00)",,Presupuesto
+31/05/2027,6.1.02,Alquiler de bodegas,USD,"(14,000.00)",,Presupuesto
+31/05/2027,6.1.03,Publicidad,USD,"(5,000.00)",,Presupuesto
+31/05/2027,6.1.04,Depreciación,USD,"(9,000.00)",,Presupuesto
+31/05/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+31/05/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+31/05/2027,8.1.01,Impuesto,USD,"(7,000.00)",,Presupuesto
+30/06/2027,4.1.01,Ingresos por servicios logísticos,USD,"247,000.00",,Presupuesto
+30/06/2027,5.1.01,Costo de servicios,USD,"(90,250.00)",,Presupuesto
+30/06/2027,6.1.01,Planilla,USD,"(45,600.00)",,Presupuesto
+30/06/2027,6.1.02,Alquiler de bodegas,USD,"(13,300.00)",,Presupuesto
+30/06/2027,6.1.03,Publicidad,USD,"(4,750.00)",,Presupuesto
+30/06/2027,6.1.04,Depreciación,USD,"(8,550.00)",,Presupuesto
+30/06/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+30/06/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+30/06/2027,8.1.01,Impuesto,USD,"(6,650.00)",,Presupuesto
+31/07/2027,4.1.01,Ingresos por servicios logísticos,USD,"260,000.00",,Presupuesto
+31/07/2027,5.1.01,Costo de servicios,USD,"(95,000.00)",,Presupuesto
+31/07/2027,6.1.01,Planilla,USD,"(48,000.00)",,Presupuesto
+31/07/2027,6.1.02,Alquiler de bodegas,USD,"(14,000.00)",,Presupuesto
+31/07/2027,6.1.03,Publicidad,USD,"(5,000.00)",,Presupuesto
+31/07/2027,6.1.04,Depreciación,USD,"(9,000.00)",,Presupuesto
+31/07/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+31/07/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+31/07/2027,8.1.01,Impuesto,USD,"(7,000.00)",,Presupuesto
+31/08/2027,4.1.01,Ingresos por servicios logísticos,USD,"260,000.00",,Presupuesto
+31/08/2027,5.1.01,Costo de servicios,USD,"(95,000.00)",,Presupuesto
+31/08/2027,6.1.01,Planilla,USD,"(48,000.00)",,Presupuesto
+31/08/2027,6.1.02,Alquiler de bodegas,USD,"(14,000.00)",,Presupuesto
+31/08/2027,6.1.03,Publicidad,USD,"(5,000.00)",,Presupuesto
+31/08/2027,6.1.04,Depreciación,USD,"(9,000.00)",,Presupuesto
+31/08/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+31/08/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+31/08/2027,8.1.01,Impuesto,USD,"(7,000.00)",,Presupuesto
+30/09/2027,4.1.01,Ingresos por servicios logísticos,USD,"247,000.00",,Presupuesto
+30/09/2027,5.1.01,Costo de servicios,USD,"(90,250.00)",,Presupuesto
+30/09/2027,6.1.01,Planilla,USD,"(45,600.00)",,Presupuesto
+30/09/2027,6.1.02,Alquiler de bodegas,USD,"(13,300.00)",,Presupuesto
+30/09/2027,6.1.03,Publicidad,USD,"(4,750.00)",,Presupuesto
+30/09/2027,6.1.04,Depreciación,USD,"(8,550.00)",,Presupuesto
+30/09/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+30/09/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+30/09/2027,8.1.01,Impuesto,USD,"(6,650.00)",,Presupuesto
+31/10/2027,4.1.01,Ingresos por servicios logísticos,USD,"273,000.00",,Presupuesto
+31/10/2027,5.1.01,Costo de servicios,USD,"(99,750.00)",,Presupuesto
+31/10/2027,6.1.01,Planilla,USD,"(50,400.00)",,Presupuesto
+31/10/2027,6.1.02,Alquiler de bodegas,USD,"(14,700.00)",,Presupuesto
+31/10/2027,6.1.03,Publicidad,USD,"(5,250.00)",,Presupuesto
+31/10/2027,6.1.04,Depreciación,USD,"(9,450.00)",,Presupuesto
+31/10/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+31/10/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+31/10/2027,8.1.01,Impuesto,USD,"(7,350.00)",,Presupuesto
+30/11/2027,4.1.01,Ingresos por servicios logísticos,USD,"299,000.00",,Presupuesto
+30/11/2027,5.1.01,Costo de servicios,USD,"(109,250.00)",,Presupuesto
+30/11/2027,6.1.01,Planilla,USD,"(55,200.00)",,Presupuesto
+30/11/2027,6.1.02,Alquiler de bodegas,USD,"(16,100.00)",,Presupuesto
+30/11/2027,6.1.03,Publicidad,USD,"(5,750.00)",,Presupuesto
+30/11/2027,6.1.04,Depreciación,USD,"(10,350.00)",,Presupuesto
+30/11/2027,6.1.05,Cargo de gestión AG Holding,USD,"(15,000.00)",Holding,Presupuesto
+30/11/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+30/11/2027,8.1.01,Impuesto,USD,"(8,050.00)",,Presupuesto
+30/11/2027,9.9.99,Otros varios,USD,"(3,200.00)",,Presupuesto
+31/12/2027,4.1.01,Ingresos por servicios logísticos,USD,"338,000.00",,Presupuesto
+31/12/2027,5.1.01,Costo de servicios,USD,"(123,500.00)",,Presupuesto
+31/12/2027,6.1.01,Planilla,USD,"(62,400.00)",,Presupuesto
+31/12/2027,6.1.02,Alquiler de bodegas,USD,"(18,200.00)",,Presupuesto
+31/12/2027,6.1.03,Publicidad,USD,"(6,500.00)",,Presupuesto
+31/12/2027,6.1.04,Depreciación,USD,"(11,700.00)",,Presupuesto
+31/12/2027,7.1.01,Intereses préstamo AG Holding,USD,"(4,000.00)",Holding,Presupuesto
+31/12/2027,8.1.01,Impuesto,USD,"(9,100.00)",,Presupuesto
+31/12/2027,1.1.01,Efectivo,USD,"210,000.00",,Balance
+31/12/2027,1.2.01,Cuentas por cobrar,USD,"300,000.00",,Balance
+31/12/2027,1.5.01,Equipo y flota,USD,"1,100,000.00",,Balance
+31/12/2027,2.1.01,Proveedores,USD,"180,000.00",,Balance
+31/12/2027,2.4.01,Préstamo por pagar AG Holding,USD,"500,000.00",Holding,Balance
+31/12/2027,3.1.01,Patrimonio,USD,"930,000.00",,Balance
+31/12/2026,4.1.01,Ingresos por servicios logísticos,USD,"3,020,160.00",,Real 2026
+31/12/2026,5.1.01,Costo de servicios,USD,"(1,092,020.00)",,Real 2026
+31/12/2026,6.1.01,Planilla,USD,"(592,420.00)",,Real 2026
+31/12/2026,6.1.02,Alquiler de bodegas,USD,"(160,930.00)",,Real 2026
+31/12/2026,6.1.03,Publicidad,USD,"(61,100.00)",,Real 2026
+31/12/2026,6.1.04,Depreciación,USD,"(113,260.00)",,Real 2026
+31/12/2026,6.1.05,Cargo de gestión AG Holding,USD,"(183,600.00)",Holding,Real 2026
+31/12/2026,7.1.01,Intereses préstamo AG Holding,USD,"(47,040.00)",Holding,Real 2026
+31/12/2026,8.1.01,Impuesto,USD,"(83,010.00)",,Real 2026

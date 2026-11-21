@@ -1,0 +1,8 @@
+parameter,scope,value,unit,used_for,source
+reporting_currency,group,USD,ISO 4217,conversion target,ILLUSTRATIVE - defined by team
+wacc,group,0.11,ratio,EVA = NOPAT - WACC x invested capital,ILLUSTRATIVE - defined by team
+tax_rate,GT,0.25,ratio,NOPAT = EBIT x (1 - t),ILLUSTRATIVE - defined by team
+tax_rate,SV,0.30,ratio,NOPAT = EBIT x (1 - t),ILLUSTRATIVE - defined by team
+tax_rate,PA,0.25,ratio,NOPAT = EBIT x (1 - t),ILLUSTRATIVE - defined by team
+tax_rate,ES,0.25,ratio,NOPAT = EBIT x (1 - t),ILLUSTRATIVE - defined by team
+ic_match_tolerance,group,1.00,USD,intercompany pair matching after conversion,ILLUSTRATIVE - defined by team

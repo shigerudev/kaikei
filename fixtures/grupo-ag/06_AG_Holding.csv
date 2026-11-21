@@ -1,0 +1,136 @@
+Month,Account,Description,Debit (USD),Credit (USD),Intercompany,Type
+31-Jan-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+31-Jan-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+31-Jan-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+31-Jan-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+31-Jan-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+31-Jan-2027,E100,Salaries - corporate,38000,,,Budget
+31-Jan-2027,E200,Professional services,9000,,,Budget
+31-Jan-2027,E300,Office rent,6000,,,Budget
+31-Jan-2027,E400,Travel,4000,,,Budget
+31-Jan-2027,E500,Income tax,6500,,,Budget
+28-Feb-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+28-Feb-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+28-Feb-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+28-Feb-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+28-Feb-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+28-Feb-2027,E100,Salaries - corporate,38000,,,Budget
+28-Feb-2027,E200,Professional services,9000,,,Budget
+28-Feb-2027,E300,Office rent,6000,,,Budget
+28-Feb-2027,E400,Travel,4000,,,Budget
+28-Feb-2027,E500,Income tax,6500,,,Budget
+31-Mar-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+31-Mar-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+31-Mar-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+31-Mar-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+31-Mar-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+31-Mar-2027,E100,Salaries - corporate,38000,,,Budget
+31-Mar-2027,E200,Professional services,9000,,,Budget
+31-Mar-2027,E300,Office rent,6000,,,Budget
+31-Mar-2027,E400,Travel,4000,,,Budget
+31-Mar-2027,E500,Income tax,6500,,,Budget
+30-Apr-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+30-Apr-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+30-Apr-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+30-Apr-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+30-Apr-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+30-Apr-2027,E100,Salaries - corporate,38000,,,Budget
+30-Apr-2027,E200,Professional services,9000,,,Budget
+30-Apr-2027,E300,Office rent,6000,,,Budget
+30-Apr-2027,E400,Travel,4000,,,Budget
+30-Apr-2027,E500,Income tax,6500,,,Budget
+31-May-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+31-May-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+31-May-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+31-May-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+31-May-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+31-May-2027,E100,Salaries - corporate,38000,,,Budget
+31-May-2027,E200,Professional services,9000,,,Budget
+31-May-2027,E300,Office rent,6000,,,Budget
+31-May-2027,E400,Travel,4000,,,Budget
+31-May-2027,E500,Income tax,6500,,,Budget
+30-Jun-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+30-Jun-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+30-Jun-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+30-Jun-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+30-Jun-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+30-Jun-2027,E100,Salaries - corporate,38000,,,Budget
+30-Jun-2027,E200,Professional services,9000,,,Budget
+30-Jun-2027,E300,Office rent,6000,,,Budget
+30-Jun-2027,E400,Travel,4000,,,Budget
+30-Jun-2027,E500,Income tax,6500,,,Budget
+31-Jul-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+31-Jul-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+31-Jul-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+31-Jul-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+31-Jul-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+31-Jul-2027,E100,Salaries - corporate,38000,,,Budget
+31-Jul-2027,E200,Professional services,9000,,,Budget
+31-Jul-2027,E300,Office rent,6000,,,Budget
+31-Jul-2027,E400,Travel,4000,,,Budget
+31-Jul-2027,E500,Income tax,6500,,,Budget
+31-Aug-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+31-Aug-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+31-Aug-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+31-Aug-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+31-Aug-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+31-Aug-2027,E100,Salaries - corporate,38000,,,Budget
+31-Aug-2027,E200,Professional services,9000,,,Budget
+31-Aug-2027,E300,Office rent,6000,,,Budget
+31-Aug-2027,E400,Travel,4000,,,Budget
+31-Aug-2027,E500,Income tax,6500,,,Budget
+30-Sep-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+30-Sep-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+30-Sep-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+30-Sep-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+30-Sep-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+30-Sep-2027,E100,Salaries - corporate,38000,,,Budget
+30-Sep-2027,E200,Professional services,9000,,,Budget
+30-Sep-2027,E300,Office rent,6000,,,Budget
+30-Sep-2027,E400,Travel,4000,,,Budget
+30-Sep-2027,E500,Income tax,6500,,,Budget
+31-Oct-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+31-Oct-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+31-Oct-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+31-Oct-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+31-Oct-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+31-Oct-2027,E100,Salaries - corporate,38000,,,Budget
+31-Oct-2027,E200,Professional services,9000,,,Budget
+31-Oct-2027,E300,Office rent,6000,,,Budget
+31-Oct-2027,E400,Travel,4000,,,Budget
+31-Oct-2027,E500,Income tax,6500,,,Budget
+30-Nov-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+30-Nov-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+30-Nov-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+30-Nov-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+30-Nov-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+30-Nov-2027,E100,Salaries - corporate,38000,,,Budget
+30-Nov-2027,E200,Professional services,9000,,,Budget
+30-Nov-2027,E300,Office rent,6000,,,Budget
+30-Nov-2027,E400,Travel,4000,,,Budget
+30-Nov-2027,E500,Income tax,6500,,,Budget
+31-Dec-2027,R100,Management fees - AG Distribución GT,,15000,EMP1,Budget
+31-Dec-2027,R101,Management fees - AG El Salvador,,15000,EMP3,Budget
+31-Dec-2027,R102,Management fees - AG Panamá,,15000,EMP4,Budget
+31-Dec-2027,R103,Management fees - AG España,,15000,EMP5,Budget
+31-Dec-2027,R200,Interest income - loan AG Panamá,,4000,EMP4,Budget
+31-Dec-2027,E100,Salaries - corporate,38000,,,Budget
+31-Dec-2027,E200,Professional services,9000,,,Budget
+31-Dec-2027,E300,Office rent,6000,,,Budget
+31-Dec-2027,E400,Travel,4000,,,Budget
+31-Dec-2027,E500,Income tax,6500,,,Budget
+FY2026,R100,Management fees - AG Distribución GT,,185400,EMP1,Actual
+FY2026,R101,Management fees - AG El Salvador,,165600,EMP3,Actual
+FY2026,R102,Management fees - AG Panamá,,183600,EMP4,Actual
+FY2026,R103,Management fees - AG España,,190800,EMP5,Actual
+FY2026,R200,Interest income - loan AG Panamá,,47040,EMP4,Actual
+FY2026,E100,Salaries - corporate,483360,,,Actual
+FY2026,E200,Professional services,106920,,,Actual
+FY2026,E300,Office rent,77040,,,Actual
+FY2026,E400,Travel,44160,,,Actual
+FY2026,E500,Income tax,78780,,,Actual
+31-Dec-2027,A100,Cash,420000,,,Balance
+31-Dec-2027,A200,Loan receivable - AG Panamá,500000,,EMP4,Balance
+31-Dec-2027,A300,Office equipment,80000,,,Balance
+31-Dec-2027,L100,Accrued liabilities,,60000,,Balance
+31-Dec-2027,Q100,Equity,,940000,,Balance

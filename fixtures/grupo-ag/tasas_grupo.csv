@@ -1,0 +1,8 @@
+currency,rate_type,usd_per_unit,units_per_usd,period,applies_to,source
+GTQ,average,0.129032,7.75,2027,income statement (2027 budget),ILLUSTRATIVE - defined by team
+GTQ,closing,0.128205,7.80,2027-12-31,balance sheet,ILLUSTRATIVE - defined by team
+GTQ,average,0.128205,7.80,2026,income statement (2026 actual / variance base),ILLUSTRATIVE - defined by team
+EUR,average,1.080000,0.925926,2027,income statement (2027 budget),ILLUSTRATIVE - defined by team
+EUR,closing,1.090000,0.917431,2027-12-31,balance sheet,ILLUSTRATIVE - defined by team
+EUR,average,1.060000,0.943396,2026,income statement (2026 actual / variance base),ILLUSTRATIVE - defined by team
+USD,-,1.000000,1.000000,-,reporting currency,-
