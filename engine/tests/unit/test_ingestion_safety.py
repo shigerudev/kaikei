@@ -62,7 +62,7 @@ def test_ingest_rejects_binary_without_parsing():
 
 
 def test_xlsx_is_marked_open_work():
-    with pytest.raises(NotImplementedError, match="PIPER-64"):
+    with pytest.raises(NotImplementedError, match="XLSX adapter \\(owner: Jose\\)"):
         ingest_file("a.xlsx", b"PK\x03\x04....")
 
 

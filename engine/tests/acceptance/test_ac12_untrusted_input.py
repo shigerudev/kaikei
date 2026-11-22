@@ -23,7 +23,7 @@ def _reset_registry():
     try:
         from kaikei.application import sources
 
-        sources._REGISTRY.clear()
+        sources.reset_sample_packs()
     except Exception:  # noqa: BLE001
         pass
 

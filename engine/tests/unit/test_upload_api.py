@@ -50,6 +50,16 @@ def test_wrong_extension_400(tmp_path):
     assert r.status_code == 400
 
 
+def test_xlsx_is_415(tmp_path):
+    r = _post(
+        _client(None, LocalObjectStore(tmp_path)),
+        GID,
+        "pack.xlsx",
+        b"PK\x03\x04....",
+    )
+    assert r.status_code == 415
+
+
 def test_oversize_413(tmp_path):
     r = _post(
         _client(None, LocalObjectStore(tmp_path)), GID, "x.csv", b"a" * (MAX_UPLOAD_BYTES + 1)
@@ -104,6 +114,23 @@ def test_new_then_repeat_upload(db, tmp_path):
     assert client.get(f"/api/v1/files?group_id={gid}").json()[0]["id"] == body["file"]["id"]
     assert client.get(f"/api/v1/files/{body['file']['id']}").status_code == 200
     assert client.get(f"/api/v1/groups/{gid}/companies").json()[0]["aliases"]
+
+
+def test_any_filename_with_company_id(db, tmp_path):
+    factory, gid = db
+    client = _client(factory, LocalObjectStore(tmp_path))
+    with factory() as s:
+        company = s.scalars(select(models.Company)).first()
+        assert company is not None
+        cid = str(company.id)
+    r = client.post(
+        "/api/v1/files",
+        data={"group_id": gid, "company_id": cid},
+        files={"file": ("renamed-pack.csv", (PACK / "03_AG_ElSalvador.csv").read_bytes())},
+    )
+    assert r.status_code == 200
+    assert r.json()["file"]["company_id"] == cid
+    assert r.json()["file"]["filename"] == "renamed-pack.csv"
 
 
 def test_unresolved_company_is_null(db, tmp_path):

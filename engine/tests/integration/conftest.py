@@ -18,9 +18,9 @@ def _clean_store():
     pipeline.RUNS.clear()
     pipeline.RUN_ORDER.clear()
     pipeline.DECISIONS.clear()
-    sources_module._REGISTRY.clear()
+    sources_module.reset_sample_packs()
     yield
     pipeline.RUNS.clear()
     pipeline.RUN_ORDER.clear()
     pipeline.DECISIONS.clear()
-    sources_module._REGISTRY.clear()
+    sources_module.reset_sample_packs()

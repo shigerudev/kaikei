@@ -26,7 +26,7 @@ from kaikei.infrastructure.db.models import (
 from kaikei.infrastructure.storage import ObjectStore
 
 MAX_UPLOAD_BYTES = 20 * 1024 * 1024  # matches the UI dropzone cap
-ALLOWED_EXTENSIONS = (".csv", ".xlsx")
+ALLOWED_EXTENSIONS = (".csv",)
 
 
 class UploadError(Exception):
@@ -58,6 +58,15 @@ def parse_group_id(group_id: str) -> uuid.UUID:
         raise UploadError(404, f"group {group_id!r} not found") from None
 
 
+def resolve_group_uuid(session: Session, group_id: str) -> uuid.UUID:
+    from kaikei.application.group_service import ConfigError, get_group_row
+
+    try:
+        return get_group_row(session, group_id).id
+    except ConfigError as err:
+        raise UploadError(err.status, err.message) from err
+
+
 def _safe_name(filename: str) -> str:
     name = PurePosixPath((filename or "").replace("\\", "/")).name
     return name
@@ -69,8 +78,13 @@ def validate_upload(filename: str, data: bytes) -> str:
     if not name or "\x00" in name:
         raise UploadError(400, "file has no usable name")
     ext = PurePosixPath(name).suffix.lower()
+    if ext == ".xlsx":
+        raise UploadError(
+            415,
+            "XLSX is not supported in this build; upload a CSV (long, debit_credit, or wide)",
+        )
     if ext not in ALLOWED_EXTENSIONS:
-        raise UploadError(400, f"unsupported file type {ext or '(none)'}; use .csv or .xlsx")
+        raise UploadError(400, f"unsupported file type {ext or '(none)'}; use .csv")
     if len(data) > MAX_UPLOAD_BYTES:
         raise UploadError(413, f"file exceeds the {MAX_UPLOAD_BYTES // (1024 * 1024)} MB limit")
     if not data:
@@ -101,11 +115,35 @@ def _find(session: Session, group_id: uuid.UUID, sha256: str) -> SourceFile | No
     )
 
 
+def _resolve_company(
+    session: Session, group_id: uuid.UUID, filename: str, company_id: str | None
+) -> uuid.UUID | None:
+    if company_id:
+        try:
+            cid = uuid.UUID(company_id)
+        except (ValueError, AttributeError, TypeError):
+            row = session.scalar(
+                select(Company).where(Company.group_id == group_id, Company.code == company_id)
+            )
+            return None if row is None else row.id
+        row = session.get(Company, cid)
+        if row is None or row.group_id != group_id:
+            raise UploadError(404, f"company {company_id!r} not found in this group")
+        return row.id
+    return resolve_company_id(session, group_id, filename)
+
+
 def upload_file(
-    session: Session, store: ObjectStore, group_id: str, filename: str, data: bytes
+    session: Session,
+    store: ObjectStore,
+    group_id: str,
+    filename: str,
+    data: bytes,
+    *,
+    company_id: str | None = None,
 ) -> UploadResult:
     name = validate_upload(filename, data)
-    gid = parse_group_id(group_id)
+    gid = resolve_group_uuid(session, group_id)
     if session.get(Group, gid) is None:
         raise UploadError(404, f"group {group_id!r} not found")
 
@@ -114,15 +152,15 @@ def upload_file(
     if existing is not None:
         return UploadResult(existing, True)
 
-    company_id = resolve_company_id(session, gid, name)  # NULL when unresolved; never guessed
-    ingested = _ingest(session, company_id, name, data)
+    resolved = _resolve_company(session, gid, name, company_id)
+    ingested = _ingest(session, resolved, name, data)
     if ingested is not None:
         blockers = [f for f in ingested.findings if f.severity == Severity.BLOCKER]
         if blockers:  # MANIFESTO §4.1: unsafe or unreadable file -> reject it, store nothing
             raise UploadError(422, "; ".join(f"{f.rule_id}: {f.reason}" for f in blockers))
     uri = store.put(str(gid), sha256, name, data)
     row = SourceFile(
-        group_id=gid, company_id=company_id, filename=name, sha256=sha256, stored_uri=uri
+        group_id=gid, company_id=resolved, filename=name, sha256=sha256, stored_uri=uri
     )
     session.add(row)
     try:
@@ -143,13 +181,13 @@ def upload_file(
 def _ingest(
     session: Session, company_id: uuid.UUID | None, name: str, data: bytes
 ) -> IngestResult | None:
-    """Parse with PIPER-61 adapters. None when the format has no adapter yet (XLSX, PIPER-64)."""
+    """Parse with the CSV adapters. XLSX raises NotImplementedError (owner: Jose)."""
     company = session.get(Company, company_id) if company_id else None
     hint = IngestHint(currency=company.functional_currency) if company else None
     try:
         return ingest_file(name, data, hint=hint, max_bytes=MAX_UPLOAD_BYTES)
     except NotImplementedError:
-        return None
+        raise  # XLSX adapter (owner: Jose) — callers map this to HTTP 415
 
 
 def _persist_ingest(session: Session, file: SourceFile, result: IngestResult) -> None:

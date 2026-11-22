@@ -19,8 +19,8 @@ router = APIRouter(prefix="/api/v1", tags=["mappings"])
 def approve(mapping_id: str) -> SourceFileOut:
     """Freeze the mapping version for one company's pack.
 
-    Approval records the reviewer's confirmation; which layouts the pipeline can normalize is
-    a separate, documented scope cut (`pipeline._INGEST`), not something this route decides.
+    Approval records the reviewer's confirmation. The run then uses the latest
+    mapping-approved pack for each company.
     """
     group_id, _, company_id = mapping_id.partition(":")
     if not company_id:
