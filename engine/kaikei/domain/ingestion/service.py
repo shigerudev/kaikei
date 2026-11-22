@@ -34,7 +34,7 @@ def ingest_file(
     if not result.accepted:
         return result
     if filename.lower().endswith(".xlsx"):
-        raise NotImplementedError("XLSX ingestion adapter (owner: Jose, PIPER-64)")
+        raise NotImplementedError("XLSX adapter (owner: Jose)")
 
     file_ref = SourceRef(filename=filename)
     text, result.encoding = decode(data)

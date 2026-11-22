@@ -183,6 +183,9 @@ def snapshot_from_pack(pack: Path, slug: str, name: str | None = None) -> GroupS
 def seed_memory(pack: Path, slug: str, name: str | None = None) -> GroupState:
     state = snapshot_from_pack(pack, slug, name)
     put_state(state)
+    from kaikei.application.sources import register_sample_packs
+
+    register_sample_packs(state.meta.id, pack)
     return state
 
 

@@ -1,8 +1,8 @@
 """Consolidation runs (MANIFESTO §4.4, SCOPE §2 K6/K8) — happy-path slice.
 
-`POST /consolidations` runs the fixture pack slice `kaikei.application.pipeline` documents
-(EMP1 + EMP2, with its exact scope cuts). The body names the group and why the run exists;
-both are optional so a bare POST still starts a run on the default group.
+`POST /consolidations` runs every company that has a mapping-approved pack. The body names
+the group and why the run exists; both are optional so a bare POST still starts a run on
+the default group.
 
 `GET /consolidations/{run_id}/facts` serves the whole statement for one period: posted lines
 plus the subtotals and totals from the group chart of accounts, so the reviewer screen renders
@@ -51,7 +51,7 @@ def list_consolidations(group_id: str | None = Query(default=None)) -> list[RunO
 
 @router.post("/consolidations", response_model=RunOut, status_code=201)
 def create_consolidation(body: StartRunRequest | None = None) -> RunOut:
-    """Start a run on the group's packs (this slice: EMP1 + EMP2)."""
+    """Start a run on the group's mapping-approved packs."""
     request = body or StartRunRequest()
     group = group_or_404(request.group_id or default_group_id() or "")
     try:

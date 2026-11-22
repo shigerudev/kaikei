@@ -4,15 +4,8 @@ One pack per company. Each file is identified by the SHA-256 of its untouched by
 same hash in the same group is "already imported" rather than a second import (§4.1 ①), and
 nothing here ever rewrites a stored original (MANIFESTO principle 2).
 
-Scope cut, stated plainly: the group's packs live in its data directory and are registered
-from there at first read — they *are* the stored originals for this build. An upload of one
-of them is recognised by hash; an upload of a file this build has no layout for is refused
-with a reason rather than accepted and silently left unparsed. A pack's `status` is
-`MAPPING_APPROVED` only once a mapping has been approved for it, which for now means the
-packs `pipeline._INGEST` normalizes.
-
-TODO(Jo): K1 gives `source_files` / `source_rows` (append-only) and K2/K3 the layout
-detection an arbitrary upload needs. Until then this registry is the storage boundary.
+Production reads `source_files` / object storage. Tests keep an in-process registry filled by
+the seed helper or by `upload` — never by walking `fixtures/` at request time.
 """
 
 from __future__ import annotations
@@ -33,6 +26,7 @@ from kaikei.application.contracts import (
 from kaikei.application.pipeline import RunRecord
 from kaikei.application.presentation import file_id, money, source_ref_out
 from kaikei.application.rule_catalog import rule_info
+from kaikei.application.uploads import normalize_alias
 from kaikei.domain.validation.models import Severity
 
 _PREVIEW_ROWS = 20
@@ -53,6 +47,7 @@ class StoredFile:
     uploaded_at: datetime
     status: str
     mapping_version: str | None = None
+    data: bytes | None = None
 
 
 @dataclass
@@ -68,28 +63,38 @@ def _line_count(path: Path) -> int:
         return sum(1 for _ in fh)
 
 
+def reset_sample_packs() -> None:
+    """Drop stored originals and reload each configured group's seed packs."""
+    _REGISTRY.clear()
+    for state in group_config.list_states():
+        if state.pack_root is not None:
+            register_sample_packs(state.meta.id, state.pack_root)
+
+
 def registry(group_id: str) -> Registry:
-    """The group's stored originals, registered from its data directory on first read."""
+    """In-process originals for this group (tests / seed). Empty until something is stored."""
     existing = _REGISTRY.get(group_id)
     if existing is not None:
         return existing
-
-    from kaikei.application.pipeline import _INGEST
-
-    group = group_config.get_group(group_id)
-    if group is None:
-        _REGISTRY[group_id] = Registry()
-        return _REGISTRY[group_id]
-    root = group_config.pack_dir(group_id)
     reg = Registry()
+    _REGISTRY[group_id] = reg
+    return reg
+
+
+def register_sample_packs(group_id: str, pack_root: Path) -> None:
+    """Load each company's named pack from a seed directory (tests and the seed command only)."""
+    group = group_config.get_group(group_id)
+    if group is None or pack_root is None:
+        return
+    reg = registry(group_id)
     for company in group_config.load_companies(group_id):
-        if root is None or not company.entity.file:
+        if not company.entity.file:
             continue
-        path = root / company.entity.file
+        path = pack_root / company.entity.file
         if not path.is_file():
-            continue  # no pack on disk: the file is MISSING, reported as such below
+            continue
         data = path.read_bytes()
-        approved = company.entity.entity_id in _INGEST
+        approved = bool(group_config.mapping_entries(group_id, company.entity.entity_id))
         reg.files[company.entity.entity_id] = StoredFile(
             company_id=company.entity.entity_id,
             filename=company.entity.file,
@@ -98,9 +103,67 @@ def registry(group_id: str) -> Registry:
             uploaded_at=datetime.fromtimestamp(path.stat().st_mtime, tz=UTC),
             status="MAPPING_APPROVED" if approved else "UPLOADED",
             mapping_version=group.mapping_version if approved else None,
+            data=data,
         )
-    _REGISTRY[group_id] = reg
-    return reg
+
+
+def hydrate_packs_from_db(group_id: str) -> None:
+    """Fill missing pack bytes from `source_files` + object storage. Never opens fixtures/."""
+    session = group_config._try_session()
+    if session is None:
+        return
+    try:
+        from sqlalchemy import select
+
+        from kaikei.application.group_service import ConfigError, get_group_row
+        from kaikei.infrastructure.db.models import Company, SourceFile
+        from kaikei.infrastructure.storage import get_object_store
+        from kaikei.settings import get_settings
+
+        group = get_group_row(session, group_id)
+        store = get_object_store(get_settings())
+        companies = {
+            c.id: c for c in session.scalars(select(Company).where(Company.group_id == group.id))
+        }
+        files = session.scalars(
+            select(SourceFile)
+            .where(SourceFile.group_id == group.id)
+            .order_by(SourceFile.uploaded_at)
+        )
+        latest: dict = {}
+        for row in files:
+            if row.company_id is not None:
+                latest[row.company_id] = row
+        reg = registry(group_id)
+        meta = group_config.get_group(group_id)
+        for company_uuid, row in latest.items():
+            company = companies.get(company_uuid)
+            if company is None:
+                continue
+            existing = reg.files.get(company.code)
+            if existing is not None and existing.data:
+                continue
+            try:
+                data = store.get(row.stored_uri)
+            except Exception:  # noqa: BLE001 — storage miss is a missing pack, not a crash
+                continue
+            approved = bool(group_config.mapping_entries(group_id, company.code))
+            reg.files[company.code] = StoredFile(
+                company_id=company.code,
+                filename=row.filename,
+                sha256=row.sha256,
+                line_count=len(data.decode("utf-8-sig", errors="replace").splitlines()),
+                uploaded_at=row.uploaded_at,
+                status="MAPPING_APPROVED" if approved else "UPLOADED",
+                mapping_version=meta.mapping_version if meta and approved else None,
+                data=data,
+            )
+    except ConfigError:
+        return
+    except Exception:  # noqa: BLE001 — no DB / no store: leave the registry as-is
+        return
+    finally:
+        session.close()
 
 
 def _parse_warnings(record: RunRecord | None, company_id: str) -> list[str]:
@@ -225,11 +288,38 @@ def _is_text(data: bytes) -> bool:
     return not any(ch < " " and ch not in "\t\r\n" for ch in text)
 
 
-def upload(group_id: str, filename: str, data: bytes) -> UploadResultOut:
+def _resolve_upload_company(group_id: str, filename: str, company_id: str | None) -> str | None:
+    companies = group_config.load_companies(group_id)
+    ids = {c.entity.entity_id for c in companies}
+    if company_id:
+        if company_id in ids:
+            return company_id
+        raise UnknownUploadError(f"company {company_id!r} is not in this group")
+    expected = {c.entity.file: c.entity.entity_id for c in companies}
+    if filename in expected:
+        return expected[filename]
+    stem = normalize_alias(Path(filename).stem)
+    hits: list[str] = []
+    for company in companies:
+        aliases = [
+            normalize_alias(company.entity.entity_id),
+            normalize_alias(company.entity.name),
+            *(normalize_alias(a) for a in company.entity.aliases),
+        ]
+        if stem and stem in aliases:
+            hits.append(company.entity.entity_id)
+    if len(hits) == 1:
+        return hits[0]
+    return None
+
+
+def upload(
+    group_id: str, filename: str, data: bytes, *, company_id: str | None = None
+) -> UploadResultOut:
     """Store an original and say whether this exact file was already imported (§4.1 ①).
 
-    Identification is by hash first, then by the filename the group's configuration expects.
-    A file this build can't place is refused with a reason — never accepted and ignored.
+    Identification is by hash first. Any CSV name is accepted when `company_id` is given
+    or the filename uniquely matches a configured pack / alias.
     """
     reg = registry(group_id)
     sha256 = hashlib.sha256(data).hexdigest()
@@ -241,12 +331,11 @@ def upload(group_id: str, filename: str, data: bytes) -> UploadResultOut:
     if by_hash is not None:
         return UploadResultOut(file=_stored_out(group_id, by_hash), already_imported=True)
 
-    expected = {c.entity.file: c.entity.entity_id for c in group_config.load_companies(group_id)}
-    company_id = expected.get(filename)
-    if company_id is None:
+    resolved = _resolve_upload_company(group_id, filename, company_id)
+    if resolved is None:
         raise UnknownUploadError(
-            f"{filename!r} is not one of {group.name}'s expected packs "
-            f"({', '.join(sorted(expected))}). Layout detection for arbitrary files is K2 work."
+            f"{filename!r} does not uniquely identify a company in {group.name}; "
+            "pass company_id. Nothing was stored."
         )
     if filename.lower().endswith(".csv") and not _is_text(data):
         # A name is not evidence. MANIFESTO §4.1 ①: an unreadable file is rejected, and a
@@ -256,15 +345,16 @@ def upload(group_id: str, filename: str, data: bytes) -> UploadResultOut:
             "extension says. Nothing was stored."
         )
     stored = StoredFile(
-        company_id=company_id,
+        company_id=resolved,
         filename=filename,
         sha256=sha256,
         line_count=len(data.decode("utf-8-sig", errors="replace").splitlines()),
         uploaded_at=datetime.now(UTC),
         status="UPLOADED",
         mapping_version=None,
+        data=data,
     )
-    reg.files[company_id] = stored
+    reg.files[resolved] = stored
     return UploadResultOut(file=_stored_out(group_id, stored), already_imported=False)
 
 

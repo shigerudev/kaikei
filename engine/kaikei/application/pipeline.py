@@ -1,34 +1,17 @@
 """Run orchestration (K8): ingest -> normalize -> validate -> translate -> match -> eliminate
--> aggregate -> publish, over the fixture pack (MANIFESTO §4.1).
+-> aggregate -> publish (MANIFESTO §4.1).
 
-Minimal happy-path slice, by explicit scope cut (not a silent drop — each cut is load
-bearing and documented inline):
+Every configured company with a mapping-approved pack is ingested. Layout comes from
+`select_adapter` (long / debit_credit / wide), not from a company id. A company with no
+approved pack is a PARSER-010 finding — never a silent skip, and never a read of
+`fixtures/` on the request path.
 
-- Companies: **EMP1 + EMP2 only**. That pair alone carries the README's product-sale IC
-  flow and the planted E02 mismatch (mar-2027 "Compras a AG Manufactura" 472,500 GTQ vs
-  "Ventas a AG Distribución" 427,500 GTQ) — the exact scenario SCOPE_AND_TASKS.md's demo
-  and this build's acceptance test exercise. EMP3-EMP6 are out of this slice; any IC leg
-  whose counterparty is one of them (management fees to EMP6, EMP2->EMP3 product sales)
-  correctly surfaces as a traceable ONE_SIDED finding (VAL-007), never a silent drop.
-  Group configuration (`GET /groups/...`) still serves all six entities: it is read from
-  `entidades.csv`, independent of which packs this slice consolidates.
-  TODO(Jo): the normalizers for EMP3-EMP6's layouts are K2/K3 work; once they land, add
-  their packs to `_INGEST` below — nothing else here is company-specific.
-- EMP2 format: only its first stacked block (2027 budget P&L, CSV lines 2-17) is read.
-  Its balance-sheet and 2026-actual blocks use a different column shape (PLAN.md §6.4
-  PARSER-003) and are left for a later slice.
-- Validation: only VAL-002 (bad amount), VAL-003 (unmapped account, inherited from
-  normalize()), VAL-004/021 (FX), VAL-006 (duplicates), VAL-007/008 (IC) and VAL-013
-  (ambiguous elimination) fire here — the full VAL-xxx catalog (VAL-010 subtotals,
-  VAL-019 sign, VAL-023 balance, VAL-024 local-FX conflicts, ...) is Jose/Hugo's lane,
-  not reimplemented.
+Validation that fires here: VAL-002 (bad amount), VAL-003 (unmapped account), VAL-004/021
+(FX), VAL-006 (duplicates), VAL-007/008 (IC) and VAL-013 (ambiguous elimination). The rest
+of the VAL-xxx catalog is Jose/Hugo's lane.
 
-Every number still traces to a source cell: nothing above is a silent catch, each cut is
-simply never asked to produce a figure it hasn't validated.
-
-Reporting periods are the engine's own: each P&L record rolls into its month *and* the
-fiscal year (`chart_of_accounts.period_buckets`), so "FY 2027" is aggregated here from the
-same translated contributions rather than summed in the browser (MANIFESTO principle 1).
+Every number still traces to a source cell. Reporting periods are the engine's own: each
+P&L record rolls into its month *and* the fiscal year (`chart_of_accounts.period_buckets`).
 """
 
 from __future__ import annotations
@@ -36,7 +19,7 @@ from __future__ import annotations
 import hashlib
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from decimal import ROUND_HALF_EVEN, Decimal, InvalidOperation
+from decimal import ROUND_HALF_EVEN, Decimal
 from pathlib import Path
 from uuid import uuid4
 
@@ -82,35 +65,14 @@ from kaikei.domain.fx import (
     TranslatedRecord,
     translate_records,
 )
-from kaikei.domain.ingestion.csv_adapter import SourceRow, read_csv_rows
+from kaikei.domain.ingestion import IngestHint, ingest_file
 from kaikei.domain.ingestion.models import SourceRef
+from kaikei.domain.ingestion.rows import SourceRow
 from kaikei.domain.lineage import Lineage, LineageAdjustment, LineageContribution, build_lineage
-from kaikei.domain.normalization.long_format import LongAccount, LongLayout, LongMapping
 from kaikei.domain.normalization.models import CanonicalRecord, Statement
-from kaikei.domain.normalization.normalize import normalize, parse_period
 from kaikei.domain.validation.helpers import finding_id, observed_fields
 from kaikei.domain.validation.models import Finding, FindingStatus, Severity
 from kaikei.domain.validation.rules import find_duplicates
-
-_EMP2_MONTH_COLUMNS = [
-    "Ene",
-    "Feb",
-    "Mar",
-    "Abr",
-    "May",
-    "Jun",
-    "Jul",
-    "Ago",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dic",
-]
-_EMP2_BUDGET_ROWS = range(2, 18)  # the 2027-budget block only (see module docstring)
-
-# Which packs this slice consolidates, in company order. Adding a company is a line here
-# plus its normalizer — never a branch further down (MANIFESTO principle 8).
-_INGEST: tuple[str, ...] = ("EMP1", "EMP2")
 
 _STAGE_LABELS: tuple[tuple[str, str], ...] = (
     ("ingest", "Ingest"),
@@ -124,7 +86,7 @@ _STAGE_LABELS: tuple[tuple[str, str], ...] = (
 
 # Which rules speak for which stage, so a stage's status is read off the findings it owns.
 _STAGE_RULES: dict[str, tuple[str, ...]] = {
-    "ingest": (),
+    "ingest": ("PARSER-008", "PARSER-010"),
     "normalize": ("VAL-003",),
     "validate": ("VAL-002", "VAL-006", "VAL-010", "VAL-019", "VAL-020", "VAL-022", "VAL-023"),
     "translate": ("VAL-004", "VAL-021", "VAL-024"),
@@ -216,110 +178,15 @@ def _money(value: Decimal) -> str:
     return format(value.quantize(Decimal("0.0001"), rounding=ROUND_HALF_EVEN), "f")
 
 
-def _emp1_mapping(group_id: str) -> LongMapping:
-    group = group_config.get_group(group_id)
-    mapping_version = group.mapping_version if group else "v1"
-    structural = LongLayout(
-        mapping_version=mapping_version,
-        company_id="EMP1",
-        period_column="Mes",
-        account_column="Cuenta",
-        description_column="Descripción",
-        amount_column="Monto (GTQ)",
-        scenario_column="Escenario",
-        currency="GTQ",
-        scenario_map={
-            "Presupuesto": "BUDGET_2027",
-            "Real": "ACTUAL_2026",
-            "Balance": "BALANCE_2027",
-        },
-    )
-    accounts = group_config.account_mappings(group_id, "EMP1")
-    return LongMapping(structural=structural, accounts=accounts)
-
-
-def _normalize_emp2_budget(
-    rows: list[SourceRow], accounts: dict[str, LongAccount]
-) -> tuple[list[CanonicalRecord], list[Finding]]:
-    """EMP2's 2027-budget monthly block (CSV lines 2-17) reshaped wide -> long by hand.
-
-    Jose's `normalize()` only knows the "long" layout (one amount per row); EMP2 is wide
-    (months as columns) with three stacked tables in one file, which is out of this
-    slice's scope (see module docstring). Section-header and hardcoded-subtotal rows
-    ("Total ingresos", "Utilidad antes de impuestos", ...) are deliberately absent from
-    `answer_key_mapping.csv` (Jose's VAL-003/VAL-010 territory) and are skipped here
-    without a finding — they are not account data, and flagging them would be a false
-    positive this slice has no rule to justify.
-    """
-    records: list[CanonicalRecord] = []
-    findings: list[Finding] = []
-
-    for row in rows:
-        if row.row not in _EMP2_BUDGET_ROWS:
-            continue
-        concept = row.raw.get("Concepto", "").strip()
-        account = accounts.get(concept)
-        if account is None:
-            continue  # section header / subtotal row — see docstring
-
-        for month in _EMP2_MONTH_COLUMNS:
-            raw_amount = row.raw.get(month, "").strip()
-            if not raw_amount:
-                continue  # blank cell: never assumed zero (PLAN.md PARSER-005)
-
-            source = SourceRef(filename=row.filename, sheet=row.sheet, row=row.row, column=month)
-            try:
-                amount_local = Decimal(raw_amount)
-            except InvalidOperation:
-                reason = "invalid or missing monetary value"
-                findings.append(
-                    Finding(
-                        finding_id=finding_id("VAL-002", reason, [source]),
-                        rule_id="VAL-002",
-                        rule_version="v1",
-                        severity=Severity.BLOCKER,
-                        source_refs=[source],
-                        reason=reason,
-                        **observed_fields(raw_amount),
-                    )
-                )
-                continue
-
-            records.append(
-                CanonicalRecord(
-                    record_id=f"{source.filename}:{source.row}:{source.column}",
-                    source=source,
-                    company_id="EMP2",
-                    scenario_id="BUDGET_2027",
-                    scenario_year="2027",
-                    period=parse_period(f"{month.lower()}-2027"),
-                    statement=account.statement,
-                    group_account_code=account.group_account_code,
-                    local_account_code=concept,
-                    local_account_name=concept,
-                    amount_local=amount_local,
-                    currency="GTQ",
-                    mapping_version="emp2-budget-subset-v1",
-                )
-            )
-
-    return records, findings
-
-
 def _load_counterparty(group_id: str, company_id: str) -> dict[str, str]:
     """IC partner hint per local account, from the group's mapping snapshot."""
     return group_config.counterparties(group_id, company_id)
 
 
-def _raw_cells(rows: list[SourceRow]) -> dict[tuple[str, int, str], str]:
-    """(file, row, column) -> the cell's own text, so a finding can quote what it read.
-
-    TODO(Jo): `raw` belongs on K2's `SourceRef` (or on `source_rows`, which already keeps
-    `raw jsonb` per MANIFESTO §4.2) — the trail is incomplete without the value the engine
-    actually saw. Indexed here instead of adding a field to Jose's model.
-    """
+def _raw_cells(filename: str, rows: list[SourceRow]) -> dict[tuple[str, int, str], str]:
+    """(file, row, column) -> the cell's own text, so a finding can quote what it read."""
     return {
-        (row.filename, row.row, column): value for row in rows for column, value in row.raw.items()
+        (filename, row.row, header): cell.raw for row in rows for header, cell in row.cells.items()
     }
 
 
@@ -683,40 +550,79 @@ def run_consolidation(
     group_id: str | None = None,
     reason: str | None = None,
 ) -> RunRecord:
-    """Ingest -> normalize -> validate -> translate -> match -> eliminate -> aggregate,
-    for EMP1 + EMP2 (see module docstring for the exact, deliberate scope cuts)."""
+    """Ingest every company that has a mapping-approved pack; missing packs become findings."""
+    del fixtures_dir  # request path never opens fixtures/; packs come from storage/registry
+    from kaikei.application.canonical import canonical_from_ingest
+    from kaikei.application.sources import hydrate_packs_from_db, registry
+
     group_id = group_id or group_config.default_group_id() or ""
     group = group_config.get_group(group_id)
     if group is None:
         raise UnknownGroupError(group_id)
-    fixtures_dir = fixtures_dir or group_config.pack_dir(group_id)
-    if fixtures_dir is None:
-        raise UnknownGroupError(group_id)
+    hydrate_packs_from_db(group_id)
     run_id = str(uuid4())
 
     entities = group_config.entities(group_id)
     rate_set, _units = group_config.load_rates(group_id)
     tolerance = group_config.ic_tolerance(group_id)
     rate_by_id = {r.rate_id: r for r in rate_set.rates}
-    files_by_company = {
-        c.entity.entity_id: c.entity.file for c in group_config.load_companies(group_id)
-    }
+    try:
+        default_year = int(group.fiscal_year)
+    except (TypeError, ValueError):
+        default_year = None
 
-    emp1_sha, emp1_rows = read_csv_rows(fixtures_dir / files_by_company["EMP1"])
-    emp1_records, emp1_findings = normalize(emp1_rows, _emp1_mapping(group_id))
+    records: list[CanonicalRecord] = []
+    findings: list[FindingRecord] = []
+    raw_cells: dict[tuple[str, int, str], str] = {}
+    files_acc: list[tuple[str, str, str, int, int]] = []
+    ingested_row_count = 0
+    companies = group_config.load_companies(group_id)
+    packs = registry(group_id)
 
-    emp2_sha, emp2_rows = read_csv_rows(fixtures_dir / files_by_company["EMP2"])
-    emp2_accounts = group_config.account_mappings(group_id, "EMP2")
-    emp2_records, emp2_findings = _normalize_emp2_budget(emp2_rows, emp2_accounts)
+    for company in companies:
+        company_id = company.entity.entity_id
+        stored = packs.files.get(company_id)
+        if stored is None or stored.status != "MAPPING_APPROVED" or not stored.data:
+            expected = (stored.filename if stored else None) or company.entity.file or company_id
+            missing = _build_record(
+                rule_id="PARSER-010",
+                rule_version="v1",
+                severity=Severity.BLOCKER,
+                source_refs=[SourceRef(filename=expected)],
+                reason=f"no mapping-approved pack for company {company_id}",
+            )
+            missing.company_ids = [company_id]
+            findings.append(missing)
+            continue
+        hint = IngestHint(currency=company.entity.currency, default_year=default_year)
+        ingested = ingest_file(stored.filename, stored.data, hint=hint)
+        findings.extend(_plain_finding_record(f) for f in ingested.findings)
+        pack_records, pack_findings = canonical_from_ingest(
+            filename=stored.filename,
+            rows=ingested.rows,
+            company_id=company_id,
+            currency=company.entity.currency,
+            accounts=group_config.account_mappings(group_id, company_id),
+            mapping_version=stored.mapping_version or group.mapping_version,
+            default_scenario=group.scenario,
+            default_year=default_year,
+        )
+        records.extend(pack_records)
+        findings.extend(_plain_finding_record(f) for f in pack_findings)
+        raw_cells.update(_raw_cells(stored.filename, ingested.rows))
+        ingested_row_count += len(ingested.rows)
+        files_acc.append(
+            (
+                company_id,
+                stored.filename,
+                ingested.sha256,
+                len(ingested.rows),
+                len(pack_records),
+            )
+        )
 
-    source_rows = [*emp1_rows, *emp2_rows]
-    records = [*emp1_records, *emp2_records]
     record_index = {_record_id(r): r for r in records}
-
-    findings: list[FindingRecord] = [
-        _plain_finding_record(f)
-        for f in [*emp1_findings, *emp2_findings, *find_duplicates(records)]
-    ]
+    findings.extend(_plain_finding_record(f) for f in find_duplicates(records))
 
     canonical_amounts = [_to_canonical_amount(r, _record_id(r)) for r in records]
     translation = translate_records(
@@ -725,7 +631,10 @@ def run_consolidation(
     translated_index = {t.canonical_record_id: t for t in translation.translated}
     findings += [_fx_finding_to_record(f, record_index) for f in translation.findings]
 
-    counterparty = {company_id: _load_counterparty(group_id, company_id) for company_id in _INGEST}
+    counterparty = {
+        company.entity.entity_id: _load_counterparty(group_id, company.entity.entity_id)
+        for company in companies
+    }
     ic_candidates: list[IcCandidate] = []
     for record in records:
         if record.statement != Statement.PL:
@@ -813,7 +722,6 @@ def run_consolidation(
             if candidate_rid in record_index:
                 record_finding_ids.setdefault(candidate_rid, []).append(f.id)
 
-    raw_cells = _raw_cells(source_rows)
     company_by_file = group_config.company_by_file(group_id)
     for f in findings:
         f.company_ids = _company_ids_for(f, record_index, company_by_file)
@@ -837,19 +745,7 @@ def run_consolidation(
     ]
     status = RunStatus.BLOCKED if blockers_open else RunStatus.DRAFT
 
-    files = tuple(
-        (
-            company_id,
-            files_by_company[company_id],
-            sha,
-            len(rows),
-            sum(1 for r in records if r.company_id == company_id),
-        )
-        for company_id, sha, rows in (
-            ("EMP1", emp1_sha, emp1_rows),
-            ("EMP2", emp2_sha, emp2_rows),
-        )
-    )
+    files = tuple(files_acc)
     file_sha256s = {filename: sha for _c, filename, sha, _rows, _recs in files}
     decisions = _decision_digest()
     fingerprint = _fingerprint(
@@ -900,7 +796,7 @@ def run_consolidation(
             files=files,
             mapping_version=group.mapping_version,
             rate_set_id=rate_set.rate_set_id,
-            ingested_rows=len(source_rows),
+            ingested_rows=ingested_row_count,
         ),
         counts=counts,
     )
