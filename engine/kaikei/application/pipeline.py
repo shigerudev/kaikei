@@ -747,10 +747,14 @@ def run_consolidation(
 
     files = tuple(files_acc)
     file_sha256s = {filename: sha for _c, filename, sha, _rows, _recs in files}
+    mapping_pin = (
+        ",".join(f"{cid}:{packs.files[cid].mapping_version or 'unmapped'}" for cid, *_rest in files)
+        or group.mapping_version
+    )
     decisions = _decision_digest()
     fingerprint = _fingerprint(
         file_sha256s,
-        mapping_version=group.mapping_version,
+        mapping_version=mapping_pin,
         rate_set_id=rate_set.rate_set_id,
         rule_set_version=group.rule_set_version,
         decisions=decisions,
@@ -784,7 +788,7 @@ def run_consolidation(
                 RunInputFileOut(company_id=company_id, filename=filename, sha256=sha)
                 for company_id, filename, sha, _rows, _recs in files
             ],
-            mapping_version=group.mapping_version,
+            mapping_version=mapping_pin,
             rate_set_id=rate_set.rate_set_id,
             rule_set_version=group.rule_set_version,
             decisions=decisions,
@@ -794,7 +798,7 @@ def run_consolidation(
             counts=counts,
             group=group,
             files=files,
-            mapping_version=group.mapping_version,
+            mapping_version=mapping_pin,
             rate_set_id=rate_set.rate_set_id,
             ingested_rows=ingested_row_count,
         ),
@@ -817,6 +821,9 @@ def run_consolidation(
     )
     RUNS[run_id] = record
     order.append(run_id)
+    from kaikei.application.persist import save_run
+
+    save_run(record)
     return record
 
 
@@ -886,11 +893,21 @@ def excluded_companies(findings: list[FindingRecord]) -> dict[Statement, frozens
 
 
 def get_run(run_id: str) -> RunRecord | None:
+    hit = RUNS.get(run_id)
+    if hit is not None:
+        return hit
+    from kaikei.application.persist import hydrate_runs
+
+    for gid in list(RUN_ORDER) or []:
+        hydrate_runs(gid)
     return RUNS.get(run_id)
 
 
 def list_runs(group_id: str) -> list[RunRecord]:
     """Every run for a group, newest first (`GET /consolidations?group_id=`)."""
+    from kaikei.application.persist import hydrate_runs
+
+    hydrate_runs(group_id)
     return [RUNS[rid] for rid in reversed(RUN_ORDER.get(group_id, [])) if rid in RUNS]
 
 
@@ -908,6 +925,9 @@ def publish_run(run_id: str) -> RunRecord:
     if open_blockers:
         raise PublicationBlockedError(run_id, open_blockers)
     record.run = record.run.model_copy(update={"status": RunStatus.PUBLISHED.value})
+    from kaikei.application.persist import save_run
+
+    save_run(record)
     return record
 
 

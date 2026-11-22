@@ -31,8 +31,23 @@ export async function signUp(_prev: FormState, form: FormData): Promise<FormStat
   });
   const parsed = schema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return { errors: z.flattenError(parsed.error).fieldErrors, values: values(form, ["name", "email"]) };
-  const { name, email, plan } = parsed.data;
-  await setSession({ name, email, plan });
+  const { name, email, plan, password } = parsed.data;
+  const engine = process.env.KAIKEI_API_URL?.replace(/\/$/, "");
+  let token: string | undefined;
+  if (engine) {
+    const res = await fetch(`${engine}/api/v1/auth/signup`, {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({ email, name, password }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      return { errors: { email: [detail || e.email] }, values: values(form, ["name", "email"]) };
+    }
+    const body = (await res.json()) as { token?: string };
+    token = body.token;
+  }
+  await setSession({ name, email, plan, token });
   redirect(localize(lang, "/onboarding"));
 }
 
@@ -42,7 +57,23 @@ export async function logIn(_prev: FormState, form: FormData): Promise<FormState
   const parsed = schema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return { errors: z.flattenError(parsed.error).fieldErrors, values: values(form, ["email"]) };
   const existing = await readSession();
-  await setSession({ email: parsed.data.email, name: existing?.name ?? "", plan: existing?.plan ?? "free" });
+  const engine = process.env.KAIKEI_API_URL?.replace(/\/$/, "");
+  let token = existing?.token;
+  let name = existing?.name ?? "";
+  if (engine) {
+    const res = await fetch(`${engine}/api/v1/auth/login`, {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json" },
+      body: JSON.stringify({ email: parsed.data.email, password: parsed.data.password }),
+    });
+    if (!res.ok) {
+      return { errors: { password: [e.passwordRequired] }, values: values(form, ["email"]) };
+    }
+    const body = (await res.json()) as { token?: string; user?: { name?: string } };
+    token = body.token;
+    name = body.user?.name || name;
+  }
+  await setSession({ email: parsed.data.email, name, plan: existing?.plan ?? "free", token });
   const next = String(form.get("next") ?? "");
   redirect(safeNext(next) ?? appHomeFor((await headers()).get("host")));
 }
@@ -58,6 +89,30 @@ export async function completeOnboarding(_prev: FormState, form: FormData): Prom
   });
   const parsed = schema.safeParse(Object.fromEntries(form));
   if (!parsed.success) return { errors: z.flattenError(parsed.error).fieldErrors, values: values(form, ["group", "currency", "companies"]) };
-  // TODO(Antonio): create the group through the engine API (K6) and redirect to /g/<new-id>.
+  const engine = process.env.KAIKEI_API_URL?.replace(/\/$/, "");
+  if (engine) {
+    const session = await readSession();
+    const res = await fetch(`${engine}/api/v1/groups`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        ...(session?.token ? { authorization: `Bearer ${session.token}` } : {}),
+      },
+      body: JSON.stringify({
+        name: parsed.data.group,
+        reporting_currency: parsed.data.currency,
+        scenario: "BUDGET_2027",
+        fiscal_year: "2027",
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      return { errors: { group: [detail || e.group] }, values: values(form, ["group", "currency", "companies"]) };
+    }
+    const body = (await res.json()) as { slug?: string; id?: string };
+    const slug = body.slug || body.id;
+    if (slug) redirect(`/g/${slug}`);
+  }
   redirect(appHomeFor((await headers()).get("host")));
 }

@@ -193,7 +193,10 @@ def _mappings(
 ) -> dict[str, tuple[MappingEntry, ...]]:
     versions = session.scalars(
         select(models.MappingVersion)
-        .where(models.MappingVersion.group_id == group_id)
+        .where(
+            models.MappingVersion.group_id == group_id,
+            models.MappingVersion.approved_at.is_not(None),
+        )
         .order_by(models.MappingVersion.created_at.desc())
     ).all()
     if not versions:

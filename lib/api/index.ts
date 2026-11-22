@@ -45,8 +45,28 @@ export class ApiError extends Error {
   }
 }
 
+async function engineAuthHeaders(): Promise<HeadersInit> {
+  try {
+    const { cookies } = await import("next/headers");
+    const raw = (await cookies()).get("kaikei_session")?.value;
+    if (!raw) return {};
+    const parsed = JSON.parse(Buffer.from(raw, "base64url").toString("utf8")) as { token?: string };
+    if (typeof parsed.token === "string" && parsed.token) {
+      return { authorization: `Bearer ${parsed.token}` };
+    }
+  } catch {
+    return {};
+  }
+  return {};
+}
+
 async function api<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${BASE}/api/v1${path}`, { ...init, cache: "no-store", headers: { accept: "application/json", ...init?.headers } });
+  const auth = BASE ? await engineAuthHeaders() : {};
+  const res = await fetch(`${BASE}/api/v1${path}`, {
+    ...init,
+    cache: "no-store",
+    headers: { accept: "application/json", ...auth, ...init?.headers },
+  });
   if (!res.ok) {
     const body = await res.text().catch(() => "");
     throw new ApiError(body || res.statusText, res.status, path);
@@ -54,7 +74,11 @@ async function api<T>(path: string, init?: RequestInit): Promise<T> {
   return (await res.json()) as T;
 }
 
-const json = (body: unknown): RequestInit => ({ method: "POST", body: JSON.stringify(body), headers: { "content-type": "application/json" } });
+const json = (body: unknown, method = "POST"): RequestInit => ({
+  method,
+  body: JSON.stringify(body),
+  headers: { "content-type": "application/json" },
+});
 
 // ─── Group config ───────────────────────────────────────────────────────────────
 
@@ -90,12 +114,98 @@ export async function getFilePreview(fileId: string): Promise<FilePreview | null
   return api<FilePreview>(`/files/${fileId}/preview`);
 }
 
-export async function uploadFile(groupId: string, file: File): Promise<{ file: SourceFile; alreadyImported: boolean }> {
+export async function uploadFile(
+  groupId: string,
+  file: File,
+  companyId?: string,
+): Promise<{ file: SourceFile; alreadyImported: boolean }> {
   if (!BASE) return preview.upload(file.name, await file.arrayBuffer());
   const form = new FormData();
   form.set("group_id", groupId);
   form.set("file", file);
+  if (companyId) form.set("company_id", companyId);
   return api(`/files`, { method: "POST", body: form });
+}
+
+export async function createGroup(body: {
+  name: string;
+  reporting_currency: string;
+  slug?: string;
+  scenario?: string;
+  fiscal_year?: string;
+}): Promise<Group> {
+  if (!BASE) throw new ApiError("Preview cannot create groups.", 400, "/groups");
+  return api<Group>("/groups", json(body));
+}
+
+export async function addCompany(
+  groupId: string,
+  body: {
+    name: string;
+    country: string;
+    functional_currency: string;
+    ownership_pct: string;
+    aliases?: string[];
+    code?: string;
+  },
+): Promise<Company> {
+  if (!BASE) throw new ApiError("Preview cannot add companies.", 400, "/companies");
+  return api<Company>(`/groups/${groupId}/companies`, json(body));
+}
+
+export async function addRateSet(
+  groupId: string,
+  body: {
+    name?: string;
+    rates: {
+      from_ccy: string;
+      to_ccy: string;
+      period: string;
+      rate_type: "average" | "closing";
+      rate: string;
+      units_per_usd?: string;
+      source?: string;
+      applies_to?: string;
+    }[];
+  },
+): Promise<RateSet> {
+  if (!BASE) throw new ApiError("Preview cannot add rate sets.", 400, "/fx-rate-sets");
+  return api<RateSet>(`/groups/${groupId}/fx-rate-sets`, json(body));
+}
+
+export async function replaceParameters(groupId: string, rows: Parameter[]): Promise<Parameter[]> {
+  if (!BASE) throw new ApiError("Preview cannot edit parameters.", 400, "/parameters");
+  return api<Parameter[]>(`/groups/${groupId}/parameters`, json(rows, "PUT"));
+}
+
+export type MappingDraft = {
+  company_id: string;
+  accounts: {
+    local_code: string;
+    local_name: string;
+    group_account: string | null;
+    partner: string | null;
+    samples?: string[];
+  }[];
+};
+
+export async function getCompanyMapping(groupId: string, companyId: string): Promise<MappingDraft | null> {
+  if (!BASE) return null;
+  return api<MappingDraft>(`/groups/${groupId}/companies/${companyId}/mapping`);
+}
+
+export async function putCompanyMapping(
+  groupId: string,
+  companyId: string,
+  accounts: { local_code: string; local_name?: string; group_account?: string | null; partner?: string | null }[],
+): Promise<MappingDraft> {
+  if (!BASE) throw new ApiError("Preview mappings are already approved.", 400, "/mapping");
+  return api<MappingDraft>(`/groups/${groupId}/companies/${companyId}/mapping`, json({ accounts }, "PUT"));
+}
+
+export async function getGroupAccounts(groupId: string): Promise<{ code: string; name: string; ic_eligible: boolean }[]> {
+  if (!BASE) return [];
+  return api(`/groups/${groupId}/accounts`);
 }
 
 export async function approveMapping(groupId: string, companyId: string): Promise<void> {

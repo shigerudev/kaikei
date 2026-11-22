@@ -7,7 +7,7 @@ import { loadSamplePacksAction, uploadAction } from "@/app/g/[group]/actions";
 import { Button } from "@/components/ui/button";
 
 /** Multi-file drop zone. Files are identified by company and repeats are recognised by SHA-256. */
-export function UploadDropzone({ group, preview }: { group: string; preview: boolean }) {
+export function UploadDropzone({ group, preview, companies = [] }: { group: string; preview: boolean; companies?: { id: string; name: string }[] }) {
   const [dragging, setDragging] = useState(false);
   const [pending, start] = useTransition();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -16,6 +16,8 @@ export function UploadDropzone({ group, preview }: { group: string; preview: boo
     const files = list ? [...list] : [];
     if (!files.length) return;
     const form = new FormData();
+    const company = (document.getElementById("upload-company") as HTMLSelectElement | null)?.value;
+    if (company) form.set("company_id", company);
     for (const f of files) form.append("file", f);
     start(async () => {
       const res = await uploadAction(group, form);
@@ -55,10 +57,23 @@ export function UploadDropzone({ group, preview }: { group: string; preview: boo
         </span>
         <span className="space-y-1">
           <span className="block font-medium">{pending ? "Guardando originales y leyendo…" : "Suelta aquí los paquetes de las empresas o haz clic para elegir"}</span>
-          <span className="block text-sm text-muted-foreground">CSV o XLSX · varios a la vez · los originales se guardan byte a byte</span>
+          <span className="block text-sm text-muted-foreground">CSV · varios a la vez · los originales se guardan byte a byte</span>
         </span>
       </button>
-      <input ref={inputRef} type="file" multiple accept=".csv,.xlsx,text/csv" className="sr-only" onChange={(e) => send(e.target.files)} />
+      {companies.length > 0 && (
+        <label className="flex items-center gap-2 text-sm text-muted-foreground">
+          Empresa
+          <select id="upload-company" className="h-8 rounded-md border bg-background px-2 text-foreground">
+            <option value="">Detectar por alias / nombre</option>
+            {companies.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
+      <input ref={inputRef} type="file" multiple accept=".csv,text/csv" className="sr-only" onChange={(e) => send(e.target.files)} />
       {preview && (
         <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <span>Espacio de ejemplo:</span>

@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import sys
 from dataclasses import replace
+from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path, PurePosixPath
 
@@ -331,6 +332,7 @@ def seed_group(session: Session, pack: Path, group_name: str, slug: str | None =
                 version="answer_key_mapping.csv",
                 structural={},
                 approved_by="seed",
+                approved_at=datetime.now(UTC),
             )
             session.add(mv)
             session.flush()

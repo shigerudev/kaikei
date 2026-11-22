@@ -49,7 +49,7 @@ export default async function UploadsPage({ params }: PageProps<"/g/[group]/uplo
           {allReady && <StartRunButton group={group} variant="brand" />}
         </PageTitle>
 
-        <UploadDropzone group={group} preview={preview} />
+        <UploadDropzone group={group} preview={preview} companies={companies.map((c) => ({ id: c.id, name: c.name }))} />
 
         <section className="space-y-3">
           <div className="flex items-center justify-between">

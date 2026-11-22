@@ -13,7 +13,9 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from kaikei.application import RunRecord, get_run
+from kaikei.application.auth import membership, user_from_token
 from kaikei.application.group_config import GroupMeta, get_group
+from kaikei.application.group_service import ConfigError, get_group_row
 from kaikei.infrastructure.db.session import get_sessionmaker
 from kaikei.infrastructure.storage import ObjectStore, get_object_store
 from kaikei.settings import get_settings
@@ -37,6 +39,33 @@ def group_or_404(group_id: str) -> GroupMeta:
     if group is None:
         raise HTTPException(status_code=404, detail=f"group {group_id!r} not found")
     return group
+
+
+def optional_user(session: Session, authorization: str | None) -> object | None:
+    token = (authorization or "").removeprefix("Bearer ").strip()
+    if not token:
+        if get_settings().auth_required:
+            raise HTTPException(status_code=401, detail="not signed in")
+        return None
+    try:
+        user = user_from_token(session, token)
+    except Exception:
+        user = None
+    if user is None:
+        raise HTTPException(status_code=401, detail="invalid session")
+    return user
+
+
+def require_group_member(session: Session, group_id: str, authorization: str | None) -> None:
+    user = optional_user(session, authorization)
+    if user is None:
+        return
+    try:
+        group = get_group_row(session, group_id)
+    except (ConfigError, Exception):
+        return
+    if membership(session, user.id, group.id) is None:
+        raise HTTPException(status_code=403, detail="not a member of this group")
 
 
 def run_or_404(run_id: str) -> RunRecord:

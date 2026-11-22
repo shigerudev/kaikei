@@ -11,9 +11,12 @@ figures the engine computed and never adds any up itself.
 
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Query
+from typing import Annotated
 
-from kaikei.api.deps import group_or_404, run_or_404
+from fastapi import APIRouter, Depends, Header, HTTPException, Query
+from sqlalchemy.orm import Session
+
+from kaikei.api.deps import get_session, group_or_404, require_group_member, run_or_404
 from kaikei.application import (
     PublicationBlockedError,
     RunRecord,
@@ -50,10 +53,16 @@ def list_consolidations(group_id: str | None = Query(default=None)) -> list[RunO
 
 
 @router.post("/consolidations", response_model=RunOut, status_code=201)
-def create_consolidation(body: StartRunRequest | None = None) -> RunOut:
+def create_consolidation(
+    session: Annotated[Session, Depends(get_session)],
+    body: StartRunRequest | None = None,
+    authorization: Annotated[str | None, Header()] = None,
+) -> RunOut:
     """Start a run on the group's mapping-approved packs."""
     request = body or StartRunRequest()
-    group = group_or_404(request.group_id or default_group_id() or "")
+    gid = request.group_id or default_group_id() or ""
+    require_group_member(session, gid, authorization)
+    group = group_or_404(gid)
     try:
         record = run_consolidation(group_id=group.id, reason=request.reason)
     except UnknownGroupError as exc:  # pragma: no cover - group_or_404 already guards this

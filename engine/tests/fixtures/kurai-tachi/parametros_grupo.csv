@@ -1,0 +1,3 @@
+parameter,scope,value,unit,used_for,source
+reporting_currency,group,USD,ISO 4217,conversion target,ILLUSTRATIVE - defined by team
+ic_match_tolerance,group,1.00,USD,intercompany pair matching after conversion,ILLUSTRATIVE - defined by team

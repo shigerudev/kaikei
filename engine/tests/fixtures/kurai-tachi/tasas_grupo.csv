@@ -1,0 +1,4 @@
+currency,rate_type,usd_per_unit,units_per_usd,period,applies_to,source
+GTQ,average,0.1290322581,7.75,2027,income statement (2027 budget),ILLUSTRATIVE - defined by team
+GTQ,closing,0.1282051282,7.80,2027-12,balance sheet,ILLUSTRATIVE - defined by team
+USD,-,1.000000,1.000000,-,reporting currency,-

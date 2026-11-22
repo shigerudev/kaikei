@@ -6,7 +6,8 @@ import { EmptyState, load } from "@/components/states";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ApproveMapping } from "@/components/uploads/approve-mapping";
-import { dataSource, getCompanies, getFilePreview, getFiles, getRun } from "@/lib/api";
+import { MappingForm } from "@/components/uploads/mapping-form";
+import { dataSource, getCompanies, getCompanyMapping, getFilePreview, getFiles, getGroupAccounts, getRun } from "@/lib/api";
 import { formatAmount, formatPeriod } from "@/lib/ui/format";
 import { gPath } from "@/lib/ui/nav";
 
@@ -17,11 +18,17 @@ export default async function CompanyUploadPage({ params }: PageProps<"/g/[group
   const { group, company } = await params;
   const preview = dataSource() === "preview";
   const result = await load(async () => {
-    const [companies, files, run] = await Promise.all([getCompanies(group), getFiles(group), getRun(group)]);
+    const [companies, files, run, mapping, accounts] = await Promise.all([
+      getCompanies(group),
+      getFiles(group),
+      getRun(group),
+      getCompanyMapping(group, company),
+      getGroupAccounts(group),
+    ]);
     const c = companies.find((x) => x.id === company) ?? null;
     const f = files.find((x) => x.company_id === company) ?? null;
     const pv = f && f.status !== "MISSING" ? await getFilePreview(f.id) : null;
-    return { c, f, pv, run };
+    return { c, f, pv, run, mapping, accounts };
   });
   const c = result.ok ? result.data.c : null;
 
@@ -107,6 +114,14 @@ export default async function CompanyUploadPage({ params }: PageProps<"/g/[group
                     <p className="text-xs text-muted-foreground">Primeras filas normalizadas: signo según el saldo normal de cada cuenta, números según el formato del archivo y contrapartes resueltas con la tabla de alias.</p>
                   </TabsContent>
                   <TabsContent value="mapping">
+                    {!preview && result.data.mapping ? (
+                      <MappingForm
+                        group={group}
+                        companyId={c.id}
+                        draft={result.data.mapping}
+                        accounts={result.data.accounts}
+                      />
+                    ) : (
                     <div className="overflow-x-auto rounded-xl border">
                       <table className="w-full min-w-[640px] text-sm">
                         <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
@@ -131,6 +146,7 @@ export default async function CompanyUploadPage({ params }: PageProps<"/g/[group
                         </tbody>
                       </table>
                     </div>
+                    )}
                   </TabsContent>
                 </Tabs>
               </>
