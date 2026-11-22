@@ -1,0 +1,20 @@
+{
+  "group_name": "Kurai Tachi SA",
+  "reporting_currency": "USD",
+  "scenario": "BUDGET_2027",
+  "rates": {
+    "GTQ_average_units_per_usd": "7.75",
+    "GTQ_closing_units_per_usd": "7.80"
+  },
+  "facts": {
+    "PL:2027-01:REV_SALES": "10000.0000",
+    "PL:2027-01:REV_IC": "645.1613"
+  },
+  "notes": [
+    "Hand-computed. Do not regenerate from engine output.",
+    "REV_SALES Jan = (38750 STUDIOS + 38750 FARMS) / 7.75 = 10000 USD.",
+    "Hosting 7750 GTQ STUDIOS REV_IC vs KURAI REV_IC is a match (1000 USD) and is eliminated.",
+    "Farms REV_IC 5000 GTQ vs Studios COGS_IC 4000 GTQ is a mismatch; leftover REV_IC = 5000/7.75 = 645.16129032… half-even to 4dp = 645.1613.",
+    "Local account 9999 is intentionally unmapped (VAL-003)."
+  ]
+}

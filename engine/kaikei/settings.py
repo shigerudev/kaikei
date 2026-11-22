@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     s3_region: str = "us-east-1"
     s3_access_key: str = "kaikei"
     s3_secret_key: SecretStr = SecretStr("kaikei-local-secret")
+    # When true, group-scoped routes require a valid session (production). Tests stay open.
+    auth_required: bool = False
 
     @property
     def cors_origin_list(self) -> list[str]:

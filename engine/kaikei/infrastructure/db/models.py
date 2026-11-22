@@ -24,12 +24,14 @@ from sqlalchemy import (
     DateTime,
     ForeignKey,
     Integer,
+    LargeBinary,
     Numeric,
     String,
     Text,
     UniqueConstraint,
     func,
 )
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from kaikei.infrastructure.db.base import (
@@ -312,6 +314,7 @@ class ConsolidationRun(Base):
     fingerprint: Mapped[str] = mapped_column(String(64), index=True)
     status: Mapped[str] = mapped_column(String(32), default="CREATED")
     inputs: Mapped[dict[str, Any]]  # file sha256s, mapping versions, rate set (K8 Run.inputs)
+    snapshot: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
     created_at: Mapped[created_ts]
     published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
@@ -487,3 +490,52 @@ class ConsolidatedFact(Base):
     period: Mapped[period_str]
     amount_group: Mapped[money]
     currency_group: Mapped[ccy]
+
+
+# --------------------------------------------------------------------------- auth (D2)
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[uuid_pk]
+    email: Mapped[str] = mapped_column(String(320), unique=True)
+    name: Mapped[str] = mapped_column(String(200))
+    password_salt: Mapped[bytes] = mapped_column(LargeBinary)
+    password_hash: Mapped[bytes] = mapped_column(LargeBinary)
+    created_at: Mapped[created_ts]
+
+
+class Membership(Base):
+    __tablename__ = "memberships"
+    __table_args__ = (
+        UniqueConstraint("user_id", "group_id"),
+        CheckConstraint("role IN ('owner', 'member')", name="membership_role"),
+    )
+
+    id: Mapped[uuid_pk]
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), index=True)
+    group_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("groups.id"), index=True)
+    role: Mapped[str] = mapped_column(String(16), default="member")
+    created_at: Mapped[created_ts]
+
+
+class AuthSession(Base):
+    __tablename__ = "auth_sessions"
+
+    id: Mapped[uuid_pk]
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[created_ts]
+
+
+class GroupMcpToken(Base):
+    __tablename__ = "group_mcp_tokens"
+
+    id: Mapped[uuid_pk]
+    group_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("groups.id"), index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    label: Mapped[str] = mapped_column(String(200), default="")
+    created_at: Mapped[created_ts]
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

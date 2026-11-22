@@ -1,0 +1,7 @@
+entity,local_account,local_name,group_account,type,counterparty
+STUDIOS,4101,Ventas locales,REV_SALES,PL,
+STUDIOS,4102,Hosting a Kurai,REV_IC,PL,KURAI
+STUDIOS,5102,Compras a Farms,COGS_IC,PL,FARMS
+KURAI,R100,Hosting from Studios,REV_IC,PL,STUDIOS
+FARMS,Ventas locales,Ventas locales,REV_SALES,PL,
+FARMS,Ventas a Studios,Ventas a Studios,REV_IC,PL,STUDIOS

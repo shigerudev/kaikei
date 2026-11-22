@@ -1,0 +1,4 @@
+entity,name,country,currency,ownership_pct,aliases,file,format
+STUDIOS,Kurai Studios,GT,GTQ,100,Kurai Studios|Studios,01_kurai_studios.csv,long
+KURAI,Kur AI,GT,GTQ,100,Kur AI|Kurai,02_kur_ai.csv,debit_credit
+FARMS,Kurai Farms,GT,GTQ,100,Kurai Farms|Farms,03_kurai_farms.csv,wide

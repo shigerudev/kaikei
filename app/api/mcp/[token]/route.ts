@@ -11,7 +11,15 @@ import { registerTools } from "@/lib/mcp/tools";
 
 async function handle(req: Request, ctx: RouteContext<"/api/mcp/[token]">) {
   const { token } = await ctx.params;
-  const groupId = resolveGroupId(token);
+  let groupId = resolveGroupId(token);
+  if (!groupId && process.env.KAIKEI_API_URL) {
+    const base = process.env.KAIKEI_API_URL.replace(/\/$/, "");
+    const res = await fetch(`${base}/api/v1/mcp/resolve/${encodeURIComponent(token)}`, { cache: "no-store" });
+    if (res.ok) {
+      const body = (await res.json()) as { group?: string };
+      groupId = body.group ?? null;
+    }
+  }
   if (!groupId) return new Response("Unknown group token", { status: 404 });
 
   const handler = createMcpHandler(

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { CompanyTag } from "@/components/badges";
+import { AddCompanyForm, AddRateForm, ParametersForm } from "@/components/settings/config-forms";
 import { ResetPreview, SettingRow, ThemeSetting } from "@/components/settings/settings-forms";
 import { load } from "@/components/states";
 import { dataSource, getCompanies, getGroup, getParameters, getRateSet } from "@/lib/api";
@@ -31,6 +32,7 @@ async function Section({ section, group, preview }: { section: string; group: st
       const res = await load(() => getCompanies(group));
       if (!res.ok) return res.node;
       return (
+        <div className="space-y-4">
         <div className="overflow-x-auto rounded-xl border">
           <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
@@ -60,6 +62,8 @@ async function Section({ section, group, preview }: { section: string; group: st
               ))}
             </tbody>
           </table>
+        </div>
+        {!preview && <AddCompanyForm group={group} />}
         </div>
       );
     }
@@ -97,6 +101,7 @@ async function Section({ section, group, preview }: { section: string; group: st
               </tbody>
             </table>
           </div>
+          {!preview && <AddRateForm group={group} />}
         </div>
       );
     }
@@ -112,6 +117,7 @@ async function Section({ section, group, preview }: { section: string; group: st
               </div>
             </SettingRow>
           ))}
+          {!preview && <ParametersForm group={group} rows={res.data[0]} />}
         </div>
       );
     }

@@ -4,13 +4,23 @@ from __future__ import annotations
 
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query
+from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
-from kaikei.api.deps import get_session, group_or_404
+from kaikei.api.deps import get_session, group_or_404, require_group_member
 from kaikei.application import latest_run, list_runs
+from kaikei.application.auth import (
+    AuthError,
+    add_member_by_email,
+    add_owner,
+    issue_mcp_token,
+    membership,
+    resolve_mcp_token,
+    user_from_token,
+)
 from kaikei.application.contracts import (
     CompanyOut,
     CreateCompanyRequest,
@@ -80,10 +90,16 @@ def _hydrate(session: Session, group_id: str) -> str:
 
 @router.post("/groups", response_model=GroupOut, status_code=201)
 def post_group(
-    body: CreateGroupRequest, session: Annotated[Session, Depends(get_session)]
+    body: CreateGroupRequest,
+    session: Annotated[Session, Depends(get_session)],
+    authorization: Annotated[str | None, Header()] = None,
 ) -> GroupOut:
     try:
         group = create_group(session, body)
+        token = (authorization or "").removeprefix("Bearer ").strip()
+        user = user_from_token(session, token) if token else None
+        if user is not None:
+            add_owner(session, user.id, group.id)
         session.commit()
         return _group_out_row(session, group)
     except ConfigError as err:
@@ -92,18 +108,32 @@ def post_group(
 
 
 @router.get("/groups", response_model=list[GroupOut])
-def get_groups(session: Annotated[Session, Depends(get_session)]) -> list[GroupOut]:
+def get_groups(
+    session: Annotated[Session, Depends(get_session)],
+    authorization: Annotated[str | None, Header()] = None,
+) -> list[GroupOut]:
+    token = (authorization or "").removeprefix("Bearer ").strip()
+    user = user_from_token(session, token) if token else None
     try:
         rows = session.scalars(select(models.Group).order_by(models.Group.name)).all()
     except SQLAlchemyError:
         rows = []
+    if user is not None and rows:
+        rows = [g for g in rows if membership(session, user.id, g.id) is not None]
     if rows:
         return [_group_out_row(session, g) for g in rows]
+    if user is not None:
+        return []
     return [group_out(s.meta) for s in list_states()]
 
 
 @router.get("/groups/{group_id}", response_model=GroupOut)
-def get_group(group_id: str, session: Annotated[Session, Depends(get_session)]) -> GroupOut:
+def get_group(
+    group_id: str,
+    session: Annotated[Session, Depends(get_session)],
+    authorization: Annotated[str | None, Header()] = None,
+) -> GroupOut:
+    require_group_member(session, group_id, authorization)
     slug = _hydrate(session, group_id)
     return group_out(group_or_404(slug))
 
@@ -210,6 +240,59 @@ def get_accounts(
         )
         for code, name, statement, account_type, normal_balance, ic_eligible in rows
     ]
+
+
+class MemberIn(BaseModel):
+    email: str
+
+
+class McpTokenIn(BaseModel):
+    label: str = ""
+
+
+@router.post("/groups/{group_id}/members", status_code=201)
+def post_member(
+    group_id: str,
+    body: MemberIn,
+    session: Annotated[Session, Depends(get_session)],
+    authorization: Annotated[str | None, Header()] = None,
+) -> dict[str, str]:
+    require_group_member(session, group_id, authorization)
+    group = get_group_row(session, group_id)
+    token = (authorization or "").removeprefix("Bearer ").strip()
+    user = user_from_token(session, token) if token else None
+    if user is not None:
+        mine = membership(session, user.id, group.id)
+        if mine is None or mine.role != "owner":
+            raise HTTPException(403, "only an owner can add members")
+    try:
+        row = add_member_by_email(session, group.id, body.email)
+        session.commit()
+    except AuthError as err:
+        raise HTTPException(err.status, err.message) from err
+    return {"user_id": str(row.user_id), "role": row.role}
+
+
+@router.post("/groups/{group_id}/mcp-tokens", status_code=201)
+def post_mcp_token(
+    group_id: str,
+    session: Annotated[Session, Depends(get_session)],
+    authorization: Annotated[str | None, Header()] = None,
+    body: McpTokenIn | None = None,
+) -> dict[str, str]:
+    require_group_member(session, group_id, authorization)
+    group = get_group_row(session, group_id)
+    token = issue_mcp_token(session, group.id, body.label if body else "")
+    session.commit()
+    return {"token": token, "group": group.slug}
+
+
+@router.get("/mcp/resolve/{token}")
+def mcp_resolve(token: str, session: Annotated[Session, Depends(get_session)]) -> dict[str, str]:
+    group = resolve_mcp_token(session, token)
+    if group is None:
+        raise HTTPException(404, "unknown group token")
+    return {"group": group.slug}
 
 
 @router.get("/groups/{group_id}/search", response_model=list[SearchHitOut])

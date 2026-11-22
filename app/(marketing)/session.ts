@@ -3,7 +3,7 @@ import "server-only";
 import { cookies, headers } from "next/headers";
 import { COOKIE_DOMAIN, sharesCookie } from "@/lib/hosts";
 
-export type Session = { email: string; name: string; plan: string };
+export type Session = { email: string; name: string; plan: string; token?: string };
 
 const SESSION_COOKIE = "kaikei_session";
 
